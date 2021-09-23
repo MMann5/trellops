@@ -6,9 +6,9 @@ export const SOCKET_EVENT_REVIEW_ADDED = 'review-added';
 export const SOCKET_EVENT_REVIEW_ABOUT_YOU = 'review-about-you';
 
 
-const baseUrl = (process.env.NODE_ENV === 'production')? '' : '//localhost:3030'
-// export const socketService = createSocketService()
-export const socketService = createDummySocketService()
+const baseUrl = (process.env.NODE_ENV === 'production') ? '' : '//localhost:3030'
+export const socketService = createSocketService()
+// export const socketService = createDummySocketService()
 
 window.socketService = socketService
 
@@ -19,13 +19,13 @@ socketService.setup()
 function createSocketService() {
   var socket = null;
   const socketService = {
-    async setup() {
+    setup() {
       socket = io(baseUrl)
     },
     on(eventName, cb) {
       socket.on(eventName, cb)
     },
-    off(eventName, cb=null) {
+    off(eventName, cb = null) {
       if (!socket) return;
       if (!cb) socket.removeAllListeners(eventName)
       else socket.off(eventName, cb)
@@ -66,9 +66,10 @@ function createDummySocketService() {
       })
     },
     debugMsg() {
-      this.emit('chat addMsg', {from: 'Someone', txt: 'Aha it worked!'})
+      this.emit('chat addMsg', { from: 'Someone', txt: 'Aha it worked!' })
     },
   }
+  window.listenersMap = listenersMap;
   return socketService
 }
 
@@ -76,6 +77,15 @@ function createDummySocketService() {
 // Basic Tests
 // function cb(x) {console.log('Socket Test - Expected Puk, Actual:', x)}
 // socketService.on('baba', cb)
+// socketService.on('baba', cb)
+// socketService.on('baba', cb)
+// socketService.on('mama', cb)
 // socketService.emit('baba', 'Puk')
 // socketService.off('baba', cb)
+
+
+socketService.on(SOCKET_EVENT_REVIEW_ABOUT_YOU, review => {
+  console.log('Review about me!', review);
+
+})
 
