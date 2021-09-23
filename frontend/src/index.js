@@ -5,6 +5,7 @@ import { HashRouter as Router } from 'react-router-dom'
 import { App } from './RootCmps';
 import { store } from "./store/store.js";
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
+import './assets/styles/main.scss';
 
 ReactDOM.render(
   // <Provider store={store}>
