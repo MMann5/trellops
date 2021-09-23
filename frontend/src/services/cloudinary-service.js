@@ -1,13 +1,13 @@
-export const cloudinaryService = {
-    uploadFile
-}
-function uploadFile(ev) {
-    const CLOUD_NAME = 'plcrased'
-    const PRESET_NAME = 'suhu9tpl'
-    const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/auto/upload`;
+function uploadImg(ev) {
+    const CLOUD_NAME = 'madmicke'
+    const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`
+
     const formData = new FormData();
+    console.log('target', ev.target)
     formData.append('file', ev.target.files[0])
-    formData.append('upload_preset', PRESET_NAME);
+    console.log('ev.target.files[0]):', ev.target.files[0])
+    formData.append('upload_preset', 'wr9cnjss');
+    console.log('formData:', formData)
 
     return fetch(UPLOAD_URL, {
         method: 'POST',
@@ -15,10 +15,9 @@ function uploadFile(ev) {
     })
         .then(res => res.json())
         .then(res => {
-            console.log(res)
-
-            return res
+            const elImg = document.createElement('img');
+            elImg.src = res.url;
+            document.body.append(elImg);
         })
         .catch(err => console.error(err))
-}  
-
+}
