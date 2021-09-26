@@ -1,0 +1,47 @@
+.boards-nav-bar {
+    background-color:#026AA7;
+    backdrop-filter: blur(24px);
+    max-height: 44px;
+    padding: 6px 4px;
+    align-items: center;
+    .left-boards-nav {
+        align-items: center;
+        .home-icon{
+            margin-left: 5px;
+            background-color:hsla(0,0%,100%,.3);
+            border-radius: 3px;
+            border: none;
+            padding: 4px;
+        }
+        h3{
+            font-size: 16px;
+            font-family: SourceSans-SemiBold;
+            margin-left: 5px;
+            color: #fff;
+            background-color:hsla(0,0%,100%,.3);
+            border-radius: 3px;
+            border: none;
+            padding: 4px;
+        }
+    }
+    .logo{
+        display: flex;
+        align-items: center;
+        font-size: rem(14px);
+        line-height: 1.5;
+        font-family: SourceSans-Bold;
+        color: #fff;
+        img{
+            width: 14px;
+            height: 14px;
+            margin-right: 8px;
+        }
+    }
+    .profile-page-link{
+        img{
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+        }
+    }
+}

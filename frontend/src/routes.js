@@ -1,5 +1,5 @@
-import { Home } from './pages/HomePage'
-// import { Workspace } from './pages/Workspace'
+import { HomePage } from './pages/HomePage'
+import { WorkSpace } from './pages/WorkSpace'
 // import { LoginSignup } from './pages/LoginSignup'
 import { BoardApp } from './pages/BoardApp'
 
@@ -16,12 +16,12 @@ export const routes = [
     //     path: '/signup',
     //     component: LoginSignup,
     // },
-    // {
-    //     path: '/workspace',
-    //     component: Workspace,
-    // },
+    {
+        path: '/workspace',
+        component: WorkSpace,
+    },
     {
         path: '/',
-        component: Home,
+        component: HomePage,
     }
 ]

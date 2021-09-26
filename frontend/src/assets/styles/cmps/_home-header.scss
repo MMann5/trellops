@@ -4,13 +4,17 @@
         padding: 16px;
         display: flex;
         flex-wrap: wrap;
+        align-items: center;
         .logo{
             display: flex;
             align-items: center;
-            font-size: rem(36px);
-            line-height: rem(36px);
+            font-size: rem(28px);
+            line-height: 1.5;
             font-family: SourceSans-Bold;
             color: #293856;
+            @media (min-width: $mobile-breakpoint){
+                font-size: rem(36px);
+            }
             img{
                 width: 26px;
                 height: 26px;
@@ -23,7 +27,7 @@
                 letter-spacing: 1px;
                 color: #0065ff;
                 padding: 10px;
-                transition: color .15s ease-in-out, background-color .15s ease-in-out;
+                transition: color .15s ease-in-out;
                 font-size: rem(17.5px);
                 border-radius: 3px;
             }
@@ -32,7 +36,7 @@
                 color: #fff;
                 background-color: #0065ff;
                 padding: 10px;
-                transition: color .15s ease-in-out, background-color .15s ease-in-out;
+                transition: background-color .15s ease-in-out;
                 font-size: rem(17.5px);
                 border-radius: 3px;
             }

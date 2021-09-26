@@ -11,51 +11,98 @@
                 display:flex;
                 align-items: center;
                 justify-content: center;
-                padding: 112px 0 80px;
+                padding: 0px 0 60px;
+                text-align: center;  
+                @media (min-width: $narrow-breakpoint){
+                    text-align: unset;  
+                }
                 .hero-info{
                     display: flex;
                     flex-direction: column;
                     padding: 0 .9375rem;
-                    margin-right: 95px;
-                    max-width: 56%;
+                    max-width: 80%;
+                    @media (min-width: $narrow-breakpoint){
+                        margin-right: 95px;
+                        max-width: 56%;
+                    }
                     h1{
-                        font-size: 3rem;
                         font-family: "SourceSans-Semibold";
+                        font-size: rem(32px);
+                        margin: 0;
+                        @media (min-width: $mobile-breakpoint){
+                            margin: unset;
+                        }
+                        @media (min-width: $narrow-breakpoint) {
+                            font-size: 3rem;
+                        }
                     }
                     p{
                         font-size: 1.25rem;
-                        font-family: "SourceSans-Light";
+                        font-family: "SourceSans-Regular";
+                        @media (max-width: $mobile-breakpoint){
+                            margin-top: 3px;
+                            margin-bottom: 10px;
+                        }
                     }
                     a{
                         border-radius: 6px;
-                        font-size: 1.75rem;
+                        font-size: rem(20px);
+                        height: 44px;
                         font-family: "SourceSans-Light";
                         line-height: 2;
-                        width: 50%;
                         letter-spacing: 1px;
                         color: #fff;
                         background-color: #0065ff;
                         text-align: center;
+                        @media (min-width: $narrow-breakpoint){
+                            font-size: 1.35rem;
+                            height: 40px;
+                        }
+                        @media (min-width: $normal-breakpoint){
+                            font-size: 1.75rem;
+                            height: unset;
+                            width: 50%;
+                        }
                     }
                 }
-                .hero-img{
-                    max-height: 434px;
-                    img{
-                        height: 434px;
+                .hero-img {
+                    img { 
+                        max-height: 434px;
+                        display: none;                       
+                        @media (min-width: $mobile-breakpoint){
+                        }
+                        @media (min-width: $narrow-breakpoint){
+                            height: 350px;
+                            display: inline;
+                        }
+                        @media (min-width: $normal-breakpoint){
+                            height: 434px; 
+                        } 
                     }
                 }
             }
         }
         .product{
             text-align: center;
+            @media (min-width: $mobile-breakpoint){
+                max-width: 80%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                margin: auto;
+            }
             .product-info{
                 h2 {
-                    font-size: 2.25rem;
+                    font-size: rem(24px);
                     font-family: "SourceSans-Semibold";
+                    @media (min-width: $narrow-breakpoint) {
+                        font-size: 2.25rem;
+                    }
                 }
                 p{
                     font-size: 1.25rem;
-                    font-family: "SourceSans-Light";
+                    font-family: "SourceSans-Regular";
                 }
             }
             a{
@@ -69,6 +116,15 @@
                 background-color: transparent;
                 background-image: none;
                 border: 1px solid #0065ff;
+            }
+            .product-img-container{
+                margin-top: 15px;
+            img {
+                    width: 114%;
+                    max-width: 1100px;
+                    height: auto;
+                    display: block;
+               }
             }
         }
     }
