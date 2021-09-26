@@ -20,9 +20,7 @@ export class HomePage extends Component {
                   unique—accomplish it all with Trellops.
                 </p>
                 <Link
-                  to='/workspace'
-                  className='clean-link'
-                >
+                  to='/board/b101'                >
                   Get started!
                 </Link>
               </div>
@@ -42,7 +40,7 @@ export class HomePage extends Component {
                 teamwork grows. Manage projects, organize tasks, and
                 build team spirit—all in one place.
               </p>
-              <Link to='/signup' className='clean-link'>
+              <Link to='/workspace'>
                 Start doing →
               </Link>
             </div>
