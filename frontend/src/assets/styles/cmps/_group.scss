@@ -1,62 +1,55 @@
 .group-container {
-    min-width: 272px;
-    margin: 4px;
+  min-width: 272px;
+  margin: 4px;
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: top;
+  white-space: nowrap;
+
+  .container {
+    background-color: #ebecf0;
+    // background-color: transparent;
+    border-radius: $borderRad1;
     box-sizing: border-box;
-    display: inline-block;
-    vertical-align: top;
-    white-space: nowrap;
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    position: relative;
+    white-space: normal;
 
-
-    .container {
-        background-color: #ebecf0;
-        background-color: transparent;
-        border-radius: $borderRad1;
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-        max-height: 100%;
-        position: relative;
-        white-space: normal;
-
-        .card-list {
-            height: 100%;
-            padding: rem(5px) rem(5px);
-            // border: 2px solid $clr1;
-            // background-color: blueviolet;
-            flex: 1;
-            border-radius: $borderRad1;
-            font-size: 14px;
-            transition: all 1s;
-            font-size: rem(16px);
-            font-weight: 600;
-            margin-inline-start: 3px;
-            margin: 0 4px;
-            padding: 0 4px;
-
-
-        }
-
-        .card-list-cards {
-            flex: 1 1 auto;
-            height: 70vh;
-            overflow-y: auto;
-
-            &::-webkit-scrollbar {
-                width: 8px;
-            }
-
-            &::-webkit-scrollbar-track {
-                border-radius: $borderRad2;
-                margin-bottom: 2px;
-                background-color: #dadbe2;
-            }
-
-            &::-webkit-scrollbar-thumb {
-                border-radius: $borderRad2;
-                background-color: #bfc4ce;
-            }
-
-        }
-
+    .card-list {
+      height: 100%;
+      padding: rem(5px) rem(5px);
+      flex: 1;
+      border-radius: $borderRad1;
+      font-size: 14px;
+      transition: all 1s;
+      font-size: rem(16px);
+      font-weight: 600;
+      margin-inline-start: 3px;
+      margin: 0 4px;
+      padding: 0 4px;
     }
+
+    .card-list-cards {
+      flex: 1 1 auto;
+      height: 70vh;
+      overflow-y: auto;
+
+      &::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      &::-webkit-scrollbar-track {
+        border-radius: $borderRad2;
+        margin-bottom: 2px;
+        background-color: #dadbe2;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        border-radius: $borderRad2;
+        background-color: #bfc4ce;
+      }
+    }
+  }
 }

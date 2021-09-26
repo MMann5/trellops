@@ -1,27 +1,27 @@
-import { HomePage } from './pages/HomePage'
-import { WorkSpace } from './pages/WorkSpace'
+import { HomePage } from './pages/HomePage';
+import { Workspace } from './pages/Workspace';
 // import { LoginSignup } from './pages/LoginSignup'
-import { BoardApp } from './pages/BoardApp'
+import { BoardApp } from './pages/BoardApp';
 
 export const routes = [
-    {
-        path: '/board/:boardId',
-        component: BoardApp,
-    },
-    // {
-    //     path: '/login',
-    //     component: LoginSignup,
-    // },
-    // {
-    //     path: '/signup',
-    //     component: LoginSignup,
-    // },
-    {
-        path: '/workspace',
-        component: WorkSpace,
-    },
-    {
-        path: '/',
-        component: HomePage,
-    }
-]
+  {
+    path: '/board/:boardId',
+    component: BoardApp,
+  },
+  // {
+  //     path: '/login',
+  //     component: LoginSignup,
+  // },
+  // {
+  //     path: '/signup',
+  //     component: LoginSignup,
+  // },
+  {
+    path: '/workspace',
+    component: Workspace,
+  },
+  {
+    path: '/',
+    component: HomePage,
+  },
+];

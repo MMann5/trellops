@@ -1,8 +1,15 @@
 import { utilService } from './util-service.js';
-var gBoard = require('../data/boards.json');
+var gBoards = require('../data/boards.json');
 
-export function getBoards() {
-  return gBoard;
+export const boardService = {
+  fetchBoards,
+  getBoards,
+};
+function getBoards() {
+  return gBoards;
+}
+function fetchBoards() {
+  return Promise.resolve(gBoards);
 }
 
 export function getEmptyBoard() {
@@ -91,21 +98,12 @@ export function getEmptyBoard() {
   };
 }
 
-export function getEmptyGroup() {
+export function getEmptyGroup(txt) {
   const id = utilService.makeId();
   return {
     id,
-    title: utilService.makeLorem(),
-    tasks: [
-      {
-        id: utilService.makeId(),
-        title: utilService.makeLorem(),
-      },
-      {
-        id: utilService.makeId(),
-        title: utilService.makeLorem(),
-      }
-    ],
+    title: txt,
+    tasks: [],
     style: {},
   };
 }
