@@ -14,10 +14,17 @@
 // Components
 @import "cmps/home-header";
 @import "cmps/boards-nav-bar";
+@import "cmps/group";
+@import "cmps/task";
 // @import "cmps/app-header";
 // @import "cmps/app-footer";
 // @import "cmps/user-msg";
 
 // Pages
+<<<<<<< HEAD
 @import "pages/home-page";
 @import "pages/work-space";
+=======
+@import "./pages/home-page";
+@import "./pages/board-app";
+>>>>>>> 4a1fbf8dbfff9181de62ea869bb29ca0a195fa1d

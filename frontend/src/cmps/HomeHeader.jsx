@@ -1,4 +1,5 @@
 import logo from '../assets/imgs/home-logo.svg';
+
 export function HomeHeader() {
   return (
     <section className='home-header'>
