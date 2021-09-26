@@ -1,25 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TextField } from '@material-ui/core';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadBoards } from '../store/actions/boards-actions.js';
+import { Checklist } from '../cmps/Checklist';
 import Group from '../cmps/Group';
 import {
-  getBoards,
   getEmptyGroup,
   constructTask,
 } from '../services/board-service.js';
-const boardsJson = getBoards();
+import { boardService } from '../services/board-service.js';
 export function BoardApp(props) {
-  const board = boardsJson.find(
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loadBoards());
+  }, [dispatch]);
+  const { boards } = useSelector((state) => state.boardModule);
+
+  const board = boards.find(
     (value) => value._id === props.match.params.boardId
   );
   const [boardState, setBoardState] = useState(board);
-  const addEmptyGroup = () => {
+
+  const [groupName, setGroupName] = useState('');
+
+  const composeGroup = (ev) => {
+    setGroupName(ev.target.value);
+  };
+
+  const onAddEmptyGroup = () => {
     setBoardState((prevState) => {
       return {
         ...prevState,
-        groups: [...boardState.groups, getEmptyGroup()],
+        groups: [...boardState.groups, getEmptyGroup(groupName)],
       };
     });
   };
+
   const onRemoveGroup = (groupId) => {
     setBoardState((prevState) => {
       return {
@@ -51,6 +67,29 @@ export function BoardApp(props) {
       };
     });
   };
+  const onSetTask = (ev, groupId, taskId) => {
+    const group = boardState.groups.find(
+      (value) => value.id === groupId
+    );
+    const groupCopy = { ...group };
+    const taskIdx = groupCopy.tasks.findIndex(
+      (task) => task.id === taskId
+    );
+    groupCopy.tasks[taskIdx].title = ev.target.value;
+    const idx = boardState.groups
+      .map((group) => {
+        return group.id;
+      })
+      .indexOf(groupId);
+    let boardGroupsCopy = [...boardState.groups];
+    boardGroupsCopy.splice(idx, 1, groupCopy);
+    setBoardState((prevState) => {
+      return {
+        ...prevState,
+        groups: boardGroupsCopy,
+      };
+    });
+  };
 
   const onRemoveTask = (groupId, taskId) => {
     const group = boardState.groups.find(
@@ -66,7 +105,6 @@ export function BoardApp(props) {
     const taskIdx = groupCopy.tasks
       .map((task) => task.id)
       .indexOf(taskId);
-    console.log(taskIdx);
     groupCopy.tasks.splice(taskIdx, 1);
     let boardGroupsCopy = [...boardState.groups];
     boardGroupsCopy.splice(groupIdx, 1, groupCopy);
@@ -109,6 +147,7 @@ export function BoardApp(props) {
       key={group.id}
       onAddTask={onAddTask}
       onRemoveTask={onRemoveTask}
+      onSetTask={onSetTask}
     />
   ));
   return (
@@ -116,11 +155,13 @@ export function BoardApp(props) {
       <h1>{board.title}</h1>
       <div className='group-list'>
         {groups}
-        {/* <TextField
-          variant='outlined'
-        /> */}
-        <button onClick={addEmptyGroup}>Add Group</button>
+        <TextField
+          variant='standard'
+          placeholder='Add Group'
+          onChange={composeGroup}
+        />
+        <button onClick={onAddEmptyGroup}>Add Group</button>
       </div>
-    </div >
+    </div>
   );
 }

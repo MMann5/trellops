@@ -1,26 +1,27 @@
 // Setup
-@import "setup/variables";
-@import "setup/functions";
-@import "setup/mixins";
-@import "setup/typography";
+@import 'setup/variables';
+@import 'setup/functions';
+@import 'setup/mixins';
+@import 'setup/typography';
 
 // Basics
-@import "basics/helpers";
+@import 'basics/helpers';
 // @import "basics/layout";
-@import "basics/base";
+@import 'basics/base';
 // @import "basics/links";
 // @import "basics/forms";
 
 // Components
-@import "cmps/home-header";
-@import "cmps/boards-nav-bar";
-@import "cmps/group";
-@import "cmps/task";
+@import 'cmps/home-header';
+@import 'cmps/boards-nav-bar';
+@import 'cmps/group';
+@import 'cmps/task';
+@import 'cmps/file-attachments';
 // @import "cmps/app-header";
 // @import "cmps/app-footer";
 // @import "cmps/user-msg";
 
 // Pages
-@import "pages/home-page";
-@import "pages/work-space";
-@import "pages/board-app";
+@import 'pages/home-page';
+@import 'pages/work-space';
+@import 'pages/board-app';
