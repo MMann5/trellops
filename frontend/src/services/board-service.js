@@ -104,15 +104,7 @@ export function getEmptyGroup() {
       {
         id: utilService.makeId(),
         title: utilService.makeLorem(),
-      },
-      {
-        id: utilService.makeId(),
-        title: utilService.makeLorem(),
-      },
-      {
-        id: utilService.makeId(),
-        title: utilService.makeLorem(),
-      },
+      }
     ],
     style: {},
   };

@@ -1,0 +1,48 @@
+.task-preview {
+    position: relative;
+    border: solid black 1px;
+    width: 272px;
+    background-color: #fff;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    cursor: pointer;
+    display: block;
+    margin-bottom: 8px;
+    max-width: 300px;
+    min-height: 20px;
+    position: relative;
+    text-decoration: none;
+    z-index: 0;
+
+    overflow: hidden;
+    padding: rem(6px) rem(10px) rem(2px);
+    box-shadow: 0px 1px 0 #c0c6d0;
+
+    .header {
+        height: 32px;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+}
+
+.btn-pop {
+    display: flex;
+    flex-direction: column;
+
+    button {
+        margin: auto;
+        margin: 5px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: black;
+            color: white;
+        }
+    }
+}

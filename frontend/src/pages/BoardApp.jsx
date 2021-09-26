@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { TextField } from '@material-ui/core';
 import Group from '../cmps/Group';
 import {
   getBoards,
@@ -111,10 +112,15 @@ export function BoardApp(props) {
     />
   ));
   return (
-    <div>
+    <div className='board-app flex column'>
       <h1>{board.title}</h1>
-      <button onClick={addEmptyGroup}>Add Group</button>
-      <div>{groups}</div>
-    </div>
+      <div className='group-list'>
+        {groups}
+        {/* <TextField
+          variant='outlined'
+        /> */}
+        <button onClick={addEmptyGroup}>Add Group</button>
+      </div>
+    </div >
   );
 }

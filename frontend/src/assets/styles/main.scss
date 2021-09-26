@@ -1,5 +1,5 @@
 // Setup
-// @import "setup/variables";
+@import "setup/variables";
 @import "setup/functions";
 @import "setup/mixins";
 @import "./setup/typography";
@@ -13,9 +13,12 @@
 
 // Components
 @import "cmps/home-header";
+@import "cmps/group";
+@import "cmps/task";
 // @import "cmps/app-header";
 // @import "cmps/app-footer";
 // @import "cmps/user-msg";
 
 // Pages
 @import "./pages/home-page";
+@import "./pages/board-app";
