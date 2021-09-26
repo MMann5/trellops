@@ -44,7 +44,7 @@
                             margin-bottom: 10px;
                         }
                     }
-                    a{
+                    a {
                         border-radius: 6px;
                         font-size: rem(20px);
                         height: 44px;
@@ -53,6 +53,7 @@
                         letter-spacing: 1px;
                         color: #fff;
                         background-color: #0065ff;
+                        transition: background-color .15s ease-in-out;
                         text-align: center;
                         @media (min-width: $narrow-breakpoint){
                             font-size: 1.35rem;
@@ -63,6 +64,9 @@
                             height: unset;
                             width: 50%;
                         }
+                    }
+                    a:hover{
+                        background-color: #065ee2;
                     }
                 }
                 .hero-img {
@@ -116,6 +120,11 @@
                 background-color: transparent;
                 background-image: none;
                 border: 1px solid #0065ff;
+                transition: background-color .15s ease-in-out, color .15s ease-in-out;
+            }
+            a:hover{
+                background-color: #065ee2;
+                color: #fff;
             }
             .product-img-container{
                 margin-top: 15px;

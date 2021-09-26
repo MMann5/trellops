@@ -1,4 +1,4 @@
-import logo from '../assets/imgs/home-logo.svg';
+import logo from '../assets/imgs/‏‏homelogo2.svg';
 import david from '../assets/imgs/profiles/david.jpg';
 import homeIcon from '../assets/imgs/icons/home.svg';
 import React, { Component } from 'react';

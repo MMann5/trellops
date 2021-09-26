@@ -1,5 +1,6 @@
 .boards-nav-bar {
-    background-color:#026AA7;
+    // background-color:#026AA7; original color
+    background-color: rgba(0,0,0,.15);;
     backdrop-filter: blur(24px);
     max-height: 44px;
     padding: 6px 4px;
@@ -27,14 +28,17 @@
     .logo{
         display: flex;
         align-items: center;
-        font-size: rem(14px);
+        font-size: rem(22px);
         line-height: 1.5;
         font-family: SourceSans-Bold;
         color: #fff;
         img{
-            width: 14px;
-            height: 14px;
+            width: 16px;
+            height: 16px;
             margin-right: 8px;
+        }
+        a{
+            color: #fff;
         }
     }
     .profile-page-link{
