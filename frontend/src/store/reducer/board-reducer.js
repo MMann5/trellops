@@ -12,7 +12,6 @@ export function boardReducer(state = initialState, action) {
       return state;
   }
   // For debug:
-  window.carState = newState;
   console.log('Prev State:', state);
   console.log('Action:', action);
   console.log('New State:', newState);

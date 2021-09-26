@@ -1,27 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import { TextField } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadBoards } from '../store/actions/boards-actions.js';
-import { Checklist } from '../cmps/Checklist';
+import {
+  loadBoards,
+  setBoards,
+} from '../store/actions/boards-actions.js';
 import Group from '../cmps/Group';
 import {
   getEmptyGroup,
   constructTask,
 } from '../services/board-service.js';
-import { boardService } from '../services/board-service.js';
+
 export function BoardApp(props) {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadBoards());
   }, [dispatch]);
   const { boards } = useSelector((state) => state.boardModule);
-
   const board = boards.find(
     (value) => value._id === props.match.params.boardId
   );
   const [boardState, setBoardState] = useState(board);
 
   const [groupName, setGroupName] = useState('');
+
+  useEffect(() => {
+    const boardsCopy = [...boards];
+    const idx = boardsCopy.findIndex(
+      (value) => value._id === boardState._id
+    );
+    boardsCopy.splice(idx, 1, { ...boardState });
+    dispatch(setBoards(boardsCopy));
+  }, [dispatch, boardState]);
 
   const composeGroup = (ev) => {
     setGroupName(ev.target.value);

@@ -16,3 +16,12 @@ export function loadBoards() {
       });
   };
 }
+
+export function setBoards(boards) {
+  return (dispatch) => {
+    dispatch({
+      type: 'SET_BOARDS',
+      boards,
+    });
+  };
+}
