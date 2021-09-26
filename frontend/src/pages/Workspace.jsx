@@ -1,9 +1,9 @@
-import {BoardsNavBar} from '../cmps/BoardsNavBar'
-export function WorkSpace() {
+import { BoardsNavBar } from '../cmps/BoardsNavBar'
+export function Workspace() {
     const fakeBoards = [{ "title": "Robot dev proj" }, { "title": "Trip to Sinai" }, { "title": "Final sprint" }]
     return (
         <div className="work-space">
-            <BoardsNavBar/>
+            <BoardsNavBar />
             <h2>Workspace</h2>
             <div className="general-boards">
                 <h3>Most popular templates</h3>
