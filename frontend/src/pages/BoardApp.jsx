@@ -10,13 +10,10 @@ import {
   getEmptyGroup,
   constructTask,
 } from '../services/board-service.js';
-<<<<<<< HEAD
 import { boardService } from '../services/board-service.js';
 import { BoardsNavBar } from '../cmps/BoardsNavBar.jsx';
 import addIcon from '../assets/imgs/icons/add.svg';
-=======
 
->>>>>>> 444bf27fcec3b0f8f7ee50258d3cd2be6f9bcc97
 export function BoardApp(props) {
   const dispatch = useDispatch();
   useEffect(() => {
