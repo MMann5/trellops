@@ -14,6 +14,11 @@ import {
 // import { boardService } from '../services/board-service.js';
 import { BoardsNavBar } from '../cmps/BoardsNavBar.jsx';
 import addIcon from '../assets/imgs/icons/add.svg';
+import {
+  DragDropContext,
+  Droppable,
+  Draggable,
+} from 'react-beautiful-dnd';
 
 export function BoardApp(props) {
   const dispatch = useDispatch();
@@ -141,37 +146,65 @@ export function BoardApp(props) {
       };
     });
   };
+  const handleOnDragEnd = (result) => {
+    const items = Array.from(boardState.groups);
+    const [reorderedGroup] = items.splice(result.source.index, 1);
+    if (!result.destination) return;
+    items.splice(result.destination.index, 0, reorderedGroup);
+    setBoardState({ ...boardState, groups: items });
+  };
 
-  const groups = boardState.groups.map((group) => (
-    <Group
-      onRemoveGroup={onRemoveGroup}
-      group={group}
-      setGroupTitle={setGroupTitle}
-      key={group.id}
-      onAddTask={onAddTask}
-      onRemoveTask={onRemoveTask}
-      onSetTask={onSetTask}
-    />
-  ));
+  const groups = boardState.groups.map((group, idx) => {
+    return (
+      <Draggable key={group.id} draggableId={group.id} index={idx}>
+        {(provided) => (
+          <span
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+            ref={provided.innerRef}
+          >
+            <Group
+              onRemoveGroup={onRemoveGroup}
+              group={group}
+              setGroupTitle={setGroupTitle}
+              key={group.id}
+              onAddTask={onAddTask}
+              onRemoveTask={onRemoveTask}
+              onSetTask={onSetTask}
+            />
+          </span>
+        )}
+      </Draggable>
+    );
+  });
+
   return (
     <div className='board-app flex column'>
       <BoardsNavBar />
       <h1>{board.title}</h1>
-      <div className='group-list'>
-        {groups}
-        {/* <TextField
-          variant='standard'
-          placeholder='Add Group'
-          onChange={composeGroup}
-          inputProps={{
-            style: { color:'red', fontSize:'14px' }
-          }}
-        /> */}
-        <button className='add-group-btn' onClick={onAddEmptyGroup}>
-          <img src={addIcon} alt='' />
-          Add another list
-        </button>
-      </div>
+      <DragDropContext onDragEnd={handleOnDragEnd}>
+        <div className='group-list'>
+          <Droppable droppableId='groups'>
+            {(provided) => (
+              <div
+                className='groups'
+                {...provided.droppableProps}
+                ref={provided.innerRef}
+              >
+                {groups}
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
+          <button
+            className='add-group-btn'
+            onClick={onAddEmptyGroup}
+          >
+            <img src={addIcon} alt='' />
+            Add another list
+          </button>
+        </div>
+      </DragDropContext>
     </div>
   );
 }
