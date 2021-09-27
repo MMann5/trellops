@@ -3,43 +3,40 @@ import { TextField } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   loadBoards,
-  setBoards,
+  loadBoard,
+  onSaveBoard,
 } from '../store/actions/boards-actions.js';
 import Group from '../cmps/Group';
 import {
   getEmptyGroup,
   constructTask,
 } from '../services/board-service.js';
-import { boardService } from '../services/board-service.js';
+// import { boardService } from '../services/board-service.js';
 import { BoardsNavBar } from '../cmps/BoardsNavBar.jsx';
 import addIcon from '../assets/imgs/icons/add.svg';
+import {
+  DragDropContext,
+  Droppable,
+  Draggable,
+} from 'react-beautiful-dnd';
 
 export function BoardApp(props) {
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(loadBoards());
-  }, [dispatch]);
-  const { boards } = useSelector((state) => state.boardModule);
-  const board = boards.find(
-    (value) => value._id === props.match.params.boardId
-  );
+  const { board } = useSelector((state) => state.boardModule);
   const [boardState, setBoardState] = useState(board);
-
-  const [groupName, setGroupName] = useState('');
+  useEffect(() => {
+    dispatch(loadBoard(props.match.params.boardId));
+  }, [dispatch]);
+  useEffect(() => {
+    setBoardState(board);
+  }, [board]);
 
   useEffect(() => {
-    const boardsCopy = [...boards];
-    const idx = boardsCopy.findIndex(
-      (value) => value._id === boardState._id
-    );
-    boardsCopy.splice(idx, 1, { ...boardState });
-    dispatch(setBoards(boardsCopy));
-  }, [dispatch, boardState]);
+    dispatch(onSaveBoard(boardState));
+  }, [boardState, dispatch]);
 
-  const composeGroup = (ev) => {
-    setGroupName(ev.target.value);
-  };
-
+  const { boards } = useSelector((state) => state.boardModule);
+  const [groupName, setGroupName] = useState('');
   const onAddEmptyGroup = () => {
     setBoardState((prevState) => {
       return {
@@ -48,7 +45,6 @@ export function BoardApp(props) {
       };
     });
   };
-
   const onRemoveGroup = (groupId) => {
     setBoardState((prevState) => {
       return {
@@ -150,37 +146,65 @@ export function BoardApp(props) {
       };
     });
   };
+  const handleOnDragEnd = (result) => {
+    const items = Array.from(boardState.groups);
+    const [reorderedGroup] = items.splice(result.source.index, 1);
+    if (!result.destination) return;
+    items.splice(result.destination.index, 0, reorderedGroup);
+    setBoardState({ ...boardState, groups: items });
+  };
 
-  const groups = boardState.groups.map((group) => (
-    <Group
-      onRemoveGroup={onRemoveGroup}
-      group={group}
-      setGroupTitle={setGroupTitle}
-      key={group.id}
-      onAddTask={onAddTask}
-      onRemoveTask={onRemoveTask}
-      onSetTask={onSetTask}
-    />
-  ));
+  const groups = boardState.groups.map((group, idx) => {
+    return (
+      <Draggable key={group.id} draggableId={group.id} index={idx}>
+        {(provided) => (
+          <span
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+            ref={provided.innerRef}
+          >
+            <Group
+              onRemoveGroup={onRemoveGroup}
+              group={group}
+              setGroupTitle={setGroupTitle}
+              key={group.id}
+              onAddTask={onAddTask}
+              onRemoveTask={onRemoveTask}
+              onSetTask={onSetTask}
+            />
+          </span>
+        )}
+      </Draggable>
+    );
+  });
+
   return (
     <div className='board-app flex column'>
-      <BoardsNavBar/>
+      <BoardsNavBar />
       <h1>{board.title}</h1>
-      <div className='group-list'>
-        {groups}
-        {/* <TextField
-          variant='standard'
-          placeholder='Add Group'
-          onChange={composeGroup}
-          inputProps={{
-            style: { color:'red', fontSize:'14px' }
-          }}
-        /> */}
-        <button className="add-group-btn" onClick={onAddEmptyGroup}>
-        <img src={addIcon} alt='' />
-          Add another list
+      <DragDropContext onDragEnd={handleOnDragEnd}>
+        <div className='group-list'>
+          <Droppable droppableId='groups'>
+            {(provided) => (
+              <div
+                className='groups'
+                {...provided.droppableProps}
+                ref={provided.innerRef}
+              >
+                {groups}
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
+          <button
+            className='add-group-btn'
+            onClick={onAddEmptyGroup}
+          >
+            <img src={addIcon} alt='' />
+            Add another list
           </button>
-      </div>
+        </div>
+      </DragDropContext>
     </div>
   );
 }
