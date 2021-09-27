@@ -95,15 +95,24 @@
             ],
             "checklists": [
               {
-                "id": "YEhmF",
-                "title": "Checklist",
-                "todos": [
-                  {
-                    "id": "212jX",
-                    "title": "To Do 1",
-                    "isDone": false
-                  }
-                ]
+                "id": "212jX",
+                "title": "Do checklist",
+                "isDone": false
+              },
+              {
+                "id": "212jfX",
+                "title": "todo details",
+                "isDone": true
+              },
+              {
+                "id": "242jX",
+                "title": "trello app",
+                "isDone": false
+              },
+              {
+                "id": "262jX",
+                "title": "hey you",
+                "isDone": true
               }
             ],
             "members": [

@@ -4,6 +4,9 @@ var gBoards = require('../data/boards.json');
 export const boardService = {
   fetchBoards,
   getBoards,
+  getBoardById,
+  query,
+  _save,
 };
 function getBoards() {
   return gBoards;
@@ -113,4 +116,59 @@ export function constructTask(txt) {
     id: utilService.makeId(),
     title: txt,
   };
+}
+
+function query(entityType = 'boardsDB', boardId) {
+  var entities = JSON.parse(localStorage.getItem(entityType)) || {
+    ...gBoards,
+  };
+  return new Promise((resolve, reject) => {
+    resolve(entities);
+  });
+}
+
+function get(entityType = 'boardsDB', entityId) {
+  return query(entityType).then((entities) =>
+    entities.find((entity) => entity._id === entityId)
+  );
+}
+
+function post(entityType = 'boardsDB', newEntity) {
+  newEntity._id = utilService.makeId();
+  newEntity.createdAt = Date.now();
+  return query(entityType).then((entities) => {
+    entities.push(newEntity);
+    _save(entityType, entities);
+    return newEntity;
+  });
+}
+
+function put(entityType = 'boardsDB', updatedEntity) {
+  return query(entityType).then((entities) => {
+    // const idx = entities.findIndex(entity => entity._id === updatedEntity._id)
+    // entities.splice(idx, 1, updatedEntity)
+    _save(entityType, updatedEntity);
+    return updatedEntity;
+  });
+}
+
+function remove(entityType = 'boardsDB', entityId) {
+  return query(entityType).then((entities) => {
+    const idx = entities.findIndex(
+      (entity) => entity._id === entityId
+    );
+    entities.splice(idx, 1);
+    _save(entityType, entities);
+  });
+}
+
+function _save(entityType = 'boardsDB', entities) {
+  localStorage.setItem(entityType, JSON.stringify(entities));
+}
+
+function getBoardById(boardId) {
+  var board = gBoards.find((board) => {
+    return boardId === board._id;
+  });
+  return board;
 }

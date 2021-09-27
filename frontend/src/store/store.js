@@ -9,7 +9,7 @@ import {
 } from 'redux';
 import thunk from 'redux-thunk';
 
-import { boardReducer } from './reducer/board-reducer';
+import { boardReducer } from './reducer/board-reducer.js';
 
 const rootReducer = combineReducers({
   boardModule: boardReducer,
