@@ -4,7 +4,8 @@ import Modal from 'react-modal';
 import { Checklist } from './Checklist';
 import { DatePick } from './DatePick';
 import { FileAttachment } from './FileAttachment';
-
+import laptopIcon from '../assets/imgs/icons/laptop.png'
+import { TaskNav } from './TaskNav';
 const customStyles = {
   content: {
     top: '40%',
@@ -14,6 +15,8 @@ const customStyles = {
     transform: 'translate(-50%, -50%)',
     width: '50%',
     height: '80%',
+    marginTop: '20px',
+    padding: '30px'
   },
 };
 Modal.setAppElement('#root');
@@ -48,6 +51,11 @@ export function DetailModal({ taskId, setColorFunc }) {
         contentLabel='Example Modal'
       >
         <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
+        <div className="modal-header">
+          <img src={laptopIcon} alt="" />
+          <h3 className="modal-title">Task Title</h3>
+        </div>
+        <p>in list <span>To Do</span></p>
         <button onClick={closeModal}>close</button>
         <div>{id}</div>
         <input
@@ -57,6 +65,7 @@ export function DetailModal({ taskId, setColorFunc }) {
         <Checklist />
         <DatePick />
         <FileAttachment />
+        <TaskNav/>
       </Modal>
     </div>
   );

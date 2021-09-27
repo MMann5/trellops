@@ -17,11 +17,13 @@
 @import 'cmps/group';
 @import 'cmps/task';
 @import 'cmps/file-attachments';
+@import 'cmps/modal';
+@import 'cmps/task-nav';
 // @import "cmps/app-header";
 // @import "cmps/app-footer";
 // @import "cmps/user-msg";
 
 // Pages
 @import 'pages/home-page';
-@import 'pages/work-space';
+@import 'pages/workspace';
 @import 'pages/board-app';

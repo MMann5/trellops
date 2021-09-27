@@ -1,5 +1,7 @@
 .board-app {
   height: 96vh;
+  background-image: url('../../imgs/backgrounds/backgrounds.jpg');
+  background-size: cover;
 
   .group-list {
     overflow-x: auto;
@@ -9,6 +11,7 @@
     white-space: nowrap;
     padding-bottom: 10px;
     margin-bottom: 10px;
+    background-color: #0000;;
 
     &::-webkit-scrollbar {
       height: 12px;
@@ -23,6 +26,14 @@
     &::-webkit-scrollbar-thumb {
       border-radius: $borderRad2;
       background-color: rgba($color: #fff, $alpha: 0.35);
+    }
+    .add-group-btn{
+      border: none;
+      background-color: #00000014;
+      border-radius: 3px;
+      font-size: rem(14px);
+      img{
+      }
     }
   }
 }

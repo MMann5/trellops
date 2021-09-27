@@ -30,7 +30,6 @@
       margin: 0 4px;
       padding: 0 4px;
     }
-
     .card-list-cards {
       flex: 1 1 auto;
       height: 70vh;
@@ -49,6 +48,17 @@
       &::-webkit-scrollbar-thumb {
         border-radius: $borderRad2;
         background-color: #bfc4ce;
+      }
+      .card-btn-container{
+        padding: 5px;
+        img{
+          height: rem(14px);
+          margin: auto;
+        }
+        .card-btn{
+          border: none;
+          padding: 4px, 1px;
+        }
       }
     }
   }

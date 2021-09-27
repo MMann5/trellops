@@ -28,4 +28,22 @@
     background-repeat: no-repeat;
     background-position: center center;
   }
+  .task-btns{
+    display: none;
+    button{
+      border: none;
+      background-color: transparent; 
+    }
+    button:hover{
+      cursor: pointer;
+    }
+    img{
+      height: 14px;
+    }
+  }
+}
+
+.task-preview:hover .task-btns{
+  display: flex;
+  justify-content: flex-end;
 }

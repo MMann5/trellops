@@ -9,6 +9,8 @@ import {
   constructTask,
 } from '../services/board-service.js';
 import { boardService } from '../services/board-service.js';
+import { BoardsNavBar } from '../cmps/BoardsNavBar.jsx';
+import addIcon from '../assets/imgs/icons/add.svg';
 export function BoardApp(props) {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -46,7 +48,6 @@ export function BoardApp(props) {
       };
     });
   };
-
   const onAddTask = (groupId, txt) => {
     const group = boardState.groups.find(
       (value) => value.id === groupId
@@ -152,15 +153,22 @@ export function BoardApp(props) {
   ));
   return (
     <div className='board-app flex column'>
+      <BoardsNavBar/>
       <h1>{board.title}</h1>
       <div className='group-list'>
         {groups}
-        <TextField
+        {/* <TextField
           variant='standard'
           placeholder='Add Group'
           onChange={composeGroup}
-        />
-        <button onClick={onAddEmptyGroup}>Add Group</button>
+          inputProps={{
+            style: { color:'red', fontSize:'14px' }
+          }}
+        /> */}
+        <button className="add-group-btn" onClick={onAddEmptyGroup}>
+        <img src={addIcon} alt='' />
+          Add another list
+          </button>
       </div>
     </div>
   );

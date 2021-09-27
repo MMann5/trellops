@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { TextField } from '@material-ui/core';
 import { Task } from './Task';
+import addIcon from '../assets/imgs/icons/add.svg';
 export default function Group({
   group,
   onRemoveGroup,
@@ -37,28 +38,33 @@ export default function Group({
       </button>
       <div className='container'>
         <TextField
+          className="group-title"
           fullWidth
+          placeholder="Enter list title..."
           variant='standard'
           value={group.title}
           onChange={(ev) => setGroupTitle(ev, group.id)}
+          inputProps={{
+            style: { fontSize: '14px', fontFamily: 'SourceSans-SemiBold', paddingLeft: '10px' }
+          }}
         />
 
         <div className='card-list'>
           <div className='card-list-cards'>
             {list}
             <div>
-              <TextField
+              {/* <TextField
                 variant='outlined'
                 placeholder='new task'
                 fullWidth
                 onChange={composeTask}
-              />
-              <div>
+              /> */}
+              <div className="card-btn-container">
+                <img src={addIcon} alt='' />
                 <button
                   className='card-btn'
                   onClick={() => onAddTask(group.id, taskVal)}
-                >
-                  Add Task
+                > Add a Card
                 </button>
               </div>
             </div>
