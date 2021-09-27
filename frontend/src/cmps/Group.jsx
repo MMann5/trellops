@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import { TextField } from '@material-ui/core';
 import { Task } from './Task';
 import addIcon from '../assets/imgs/icons/add.svg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import {
   DragDropContext,
   Droppable,
   Draggable,
 } from 'react-beautiful-dnd';
+
 export default function Group({
   group,
   onRemoveGroup,
@@ -52,29 +55,35 @@ export default function Group({
 
   return (
     <div className='group-container'>
-      <button
-        onClick={() => {
-          onRemoveGroup(group.id);
-        }}
-      >
-        Delete
-      </button>
+
       <div className='container'>
-        <TextField
-          className='group-title'
-          fullWidth
-          placeholder='Enter list title...'
-          variant='standard'
-          value={group.title}
-          onChange={(ev) => setGroupTitle(ev, group.id)}
-          inputProps={{
-            style: {
-              fontSize: '14px',
-              fontFamily: 'SourceSans-SemiBold',
-              paddingLeft: '10px',
-            },
-          }}
-        />
+        <div className='remove-div'>
+          <TextField
+            className='group-title'
+            // fullWidth
+            placeholder='Enter list title...'
+            variant='standard'
+            value={group.title}
+            onChange={(ev) => setGroupTitle(ev, group.id)}
+            InputProps={{
+              disableUnderline: true, // <== added this
+            }}
+            inputProps={{
+              style: {
+                fontSize: '16px',
+                fontFamily: 'SourceSans-SemiBold',
+                paddingLeft: '10px',
+              },
+            }}
+          />
+          <button className="remove-group"
+            onClick={() => {
+              onRemoveGroup(group.id);
+            }}
+          >
+            <FontAwesomeIcon icon={faTrash} />
+          </button>
+        </div>
 
         <div className='card-list'>
           <DragDropContext onDragEnd={handleOnDragEnd}>

@@ -150,6 +150,9 @@ export function BoardApp(props) {
     const items = Array.from(boardState.groups);
     const [reorderedGroup] = items.splice(result.source.index, 1);
     if (!result.destination) return;
+    console.log(result.destination, 'destination');
+    console.log(result.source, 'source');
+    console.log(result.type, 'type');
     items.splice(result.destination.index, 0, reorderedGroup);
     setBoardState({ ...boardState, groups: items });
   };
@@ -184,6 +187,13 @@ export function BoardApp(props) {
       <h1>{board.title}</h1>
       <DragDropContext onDragEnd={handleOnDragEnd}>
         <div className='group-list'>
+          <button
+            className='add-group-btn'
+            onClick={onAddEmptyGroup}
+          >
+            <img src={addIcon} alt='' />
+            Add another list
+          </button>
           <Droppable droppableId='groups'>
             {(provided) => (
               <div
@@ -196,13 +206,13 @@ export function BoardApp(props) {
               </div>
             )}
           </Droppable>
-          <button
+          {/* <button
             className='add-group-btn'
             onClick={onAddEmptyGroup}
           >
             <img src={addIcon} alt='' />
             Add another list
-          </button>
+          </button> */}
         </div>
       </DragDropContext>
     </div>

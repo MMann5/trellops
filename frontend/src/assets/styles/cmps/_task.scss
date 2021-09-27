@@ -1,8 +1,7 @@
 .task-preview {
   position: relative;
-  // border: solid black 1px;
   width: 272px;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.500);
   border-radius: 3px;
   background-size: cover;
   background-repeat: no-repeat;
@@ -15,35 +14,36 @@
   position: relative;
   text-decoration: none;
   z-index: 0;
-
   overflow: hidden;
   padding: rem(6px) rem(10px) rem(2px);
   box-shadow: 0px 1px 0 #c0c6d0;
 
-  .header {
-    height: 32px;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-  }
-  .task-btns{
-    display: none;
-    button{
-      border: none;
-      background-color: transparent; 
+  &:hover {
+    background-color: #fff;
+
+    &:hover .task-btns {
+      transition-delay: 0.1s;
+      visibility: visible;
+
     }
-    button:hover{
+  }
+
+  .task-btns {
+    visibility: hidden;
+    display: flex;
+    justify-content: flex-end;
+
+    button {
+      border: none;
+      background-color: transparent;
+    }
+
+    button:hover {
       cursor: pointer;
     }
-    img{
+
+    img {
       height: 14px;
     }
   }
-}
-
-.task-preview:hover .task-btns{
-  display: flex;
-  justify-content: flex-end;
 }
