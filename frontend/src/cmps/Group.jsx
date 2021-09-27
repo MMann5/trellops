@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 import { TextField } from '@material-ui/core';
 import { Task } from './Task';
 import addIcon from '../assets/imgs/icons/add.svg';
+import {
+  DragDropContext,
+  Droppable,
+  Draggable,
+} from 'react-beautiful-dnd';
 export default function Group({
   group,
   onRemoveGroup,
@@ -10,21 +15,39 @@ export default function Group({
   onRemoveTask,
   onSetTask,
 }) {
-  var list = group.tasks.map((task) => {
+  const [tasks, setTasks] = useState(group.tasks);
+
+  var list = tasks.map((task, idx) => {
     return (
-      <Task
-        key={task.id}
-        task={task}
-        onRemoveTask={onRemoveTask}
-        groupId={group.id}
-        onSetTask={onSetTask}
-      />
+      <Draggable key={task.id} draggableId={task.id} index={idx}>
+        {(provided) => (
+          <div
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+            ref={provided.innerRef}
+          >
+            <Task
+              key={task.id}
+              task={task}
+              onRemoveTask={onRemoveTask}
+              groupId={group.id}
+              onSetTask={onSetTask}
+            />
+          </div>
+        )}
+      </Draggable>
     );
   });
 
   const [taskVal, setTaskVal] = useState('');
   const composeTask = (ev) => {
     setTaskVal(ev.target.value);
+  };
+  const handleOnDragEnd = (result) => {
+    const items = Array.from(tasks);
+    const [reorderedTask] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedTask);
+    setTasks(items);
   };
 
   return (
@@ -38,37 +61,50 @@ export default function Group({
       </button>
       <div className='container'>
         <TextField
-          className="group-title"
+          className='group-title'
           fullWidth
-          placeholder="Enter list title..."
+          placeholder='Enter list title...'
           variant='standard'
           value={group.title}
           onChange={(ev) => setGroupTitle(ev, group.id)}
           inputProps={{
-            style: { fontSize: '14px', fontFamily: 'SourceSans-SemiBold', paddingLeft: '10px' }
+            style: {
+              fontSize: '14px',
+              fontFamily: 'SourceSans-SemiBold',
+              paddingLeft: '10px',
+            },
           }}
         />
 
         <div className='card-list'>
-          <div className='card-list-cards'>
-            {list}
-            <div>
-              {/* <TextField
-                variant='outlined'
-                placeholder='new task'
-                fullWidth
-                onChange={composeTask}
-              /> */}
-              <div className="card-btn-container">
-                <img src={addIcon} alt='' />
-                <button
-                  className='card-btn'
-                  onClick={() => onAddTask(group.id, taskVal)}
-                > Add a Card
-                </button>
+          <DragDropContext onDragEnd={handleOnDragEnd}>
+            <div className='card-list-cards'>
+              <Droppable droppableId='tasks'>
+                {(provided) => (
+                  <div
+                    className='tasks'
+                    {...provided.droppableProps}
+                    ref={provided.innerRef}
+                  >
+                    {list}
+                    {provided.placeholder}
+                  </div>
+                )}
+              </Droppable>
+              <div>
+                <div className='card-btn-container'>
+                  <img src={addIcon} alt='' />
+                  <button
+                    className='card-btn'
+                    onClick={() => onAddTask(group.id, taskVal)}
+                  >
+                    {' '}
+                    Add a Card
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
+          </DragDropContext>
         </div>
       </div>
     </div>
