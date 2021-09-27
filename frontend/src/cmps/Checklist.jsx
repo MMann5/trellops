@@ -1,7 +1,7 @@
 import React from 'react';
 import { TextField } from '@material-ui/core';
 import Checkbox from 'rc-checkbox';
-export function Checklist() {
+export function Checklist({closePopup}) {
   const [stateVal, createStateVal] = React.useState({});
   const [listStateVal, createListVal] = React.useState([]);
   function onChange(e, idx) {
@@ -27,6 +27,7 @@ export function Checklist() {
 
   return (
     <div className='checklist'>
+      <button onClick={()=>{closePopup('isCheckOpen')}}>x</button>
       <TextField
         fullWidth
         size='small'

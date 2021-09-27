@@ -17,7 +17,8 @@ const customStyles = {
     marginTop: '20px',
     padding: '30px',
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    backGroundColor:'#f4f5f7'
   },
 };
 Modal.setAppElement('#root');
@@ -43,7 +44,6 @@ export function DetailModal({ taskId, setColorFunc }) {
   const id = taskId;
   return (
     <div>
-      <div className="screen"></div>
       <button onClick={openModal}>Open Modal</button>
       <Modal
         isOpen={modalIsOpen}

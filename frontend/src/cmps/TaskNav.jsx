@@ -14,18 +14,25 @@ export class TaskNav extends Component {
         isDateOpen: false,
         isFileOpen: false,
     }
-    toggleOption = (stateOption)=>{
-        if (stateOption==='isCheckOpen'){
-            this.setState({isCheckOpen:!this.state.isCheckOpen})
-        } else if(stateOption==='isDateOpen'){
-            this.setState({isDateOpen:!this.state.isDateOpen})            
-        } else if(stateOption==='isFileOpen'){
-            this.setState({isFileOpen:!this.state.isFileOpen})            
+    toggleOption = (stateOption) => {
+        if (stateOption === 'isCheckOpen') {
+            this.setState({ isCheckOpen: !this.state.isCheckOpen })
+        } else if (stateOption === 'isDateOpen') {
+            this.setState({ isDateOpen: !this.state.isDateOpen })
+        } else if (stateOption === 'isFileOpen') {
+            this.setState({ isFileOpen: !this.state.isFileOpen })
         }
         document.body.classList.toggle('popover-open')
     }
+    // closeOption = (ev) => {
+    //     ev.stopPropagation();
+    //     this.setState({ isCheckOpen: !this.state.isCheckOpen })
+    //     this.setState({ isDateOpen: !this.state.isDateOpen })
+    //     this.setState({ isFileOpen: !this.state.isFileOpen })
+    //     document.body.classList.toggle('popover-open')
+    // }
     render() {
-        const {isCheckOpen, isDateOpen, isFileOpen} = this.state
+        const { isCheckOpen, isDateOpen, isFileOpen } = this.state
         return (
             <div className="task-nav">
                 <div className="options">
@@ -36,25 +43,25 @@ export class TaskNav extends Component {
                     <img src={labelIcon} alt="" />
                     Labels
                 </div>
-                <div className="options" onClick={()=> this.toggleOption('isCheckOpen')}>
+                <div className="options" onClick={() => this.toggleOption('isCheckOpen')}>
                     <FontAwesomeIcon icon={faCheckSquare} className="margin-5" />
                     CheckList
-                    <Box display={isCheckOpen? 'block' :'none'}>
-                        <Checklist/>
-                    </Box>
                 </div>
-                <div className="options" onClick={()=> this.toggleOption('isDateOpen')}>
+                    <Box display={isCheckOpen ? 'block' : 'none'}>
+                        <Checklist closePopup ={this.toggleOption}/>
+                    </Box>
+                <div className="options" onClick={() => this.toggleOption('isDateOpen')}>
                     <img src={dateIcon} alt="" />
                     Dates
-                    <Box display={isDateOpen? 'block' :'none'}>
-                        <DatePick/>
+                    <Box display={isDateOpen ? 'block' : 'none'}>
+                        <DatePick />
                     </Box>
                 </div>
-                <div className="options" onClick={()=> this.toggleOption('isFileOpen')}>
+                <div className="options" onClick={() => this.toggleOption('isFileOpen')}>
                     <FontAwesomeIcon icon={faPaperclip} className="margin-5" />
                     Attachment
-                    <Box display={isFileOpen? 'block' :'none'}>
-                        <FileAttachment/>
+                    <Box display={isFileOpen ? 'block' : 'none'}>
+                        <FileAttachment />
                     </Box>
                 </div>
             </div>
