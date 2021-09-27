@@ -1,10 +1,9 @@
 import React from 'react';
 // import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
-import { Checklist } from './Checklist';
-import { DatePick } from './DatePick';
-import { FileAttachment } from './FileAttachment';
 import laptopIcon from '../assets/imgs/icons/laptop.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAlignLeft } from '@fortawesome/free-solid-svg-icons'
 import { TaskNav } from './TaskNav';
 const customStyles = {
   content: {
@@ -16,7 +15,9 @@ const customStyles = {
     width: '50%',
     height: '80%',
     marginTop: '20px',
-    padding: '30px'
+    padding: '30px',
+    display: 'flex',
+    flexDirection: 'column'
   },
 };
 Modal.setAppElement('#root');
@@ -42,6 +43,7 @@ export function DetailModal({ taskId, setColorFunc }) {
   const id = taskId;
   return (
     <div>
+      <div className="screen"></div>
       <button onClick={openModal}>Open Modal</button>
       <Modal
         isOpen={modalIsOpen}
@@ -50,22 +52,30 @@ export function DetailModal({ taskId, setColorFunc }) {
         style={customStyles}
         contentLabel='Example Modal'
       >
-        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
+        <button className="close-modal-btn" onClick={closeModal}>x</button>
         <div className="modal-header">
-          <img src={laptopIcon} alt="" />
-          <h3 className="modal-title">Task Title</h3>
+          <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
+          <div className="modal-title flex align-center">
+            <img src={laptopIcon} alt="" />
+            <h3>Task Title</h3>
+          </div>
+          <p>in list <span>List Title</span></p>
+          <div>{id}</div>
+          <div className="modal-main-container flex justify-space-between">
+            <div className="modal-details flex column">
+              <div className="description-title flex align-center">
+                <FontAwesomeIcon icon={faAlignLeft} />
+                <h3>Description</h3>
+              </div>
+              <p className="description-txt">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, quo repellat molestiae dignissimos reprehenderit non laborum at magnam ad inventore magni. Cum quisquam iusto delectus laborum, sit omnis culpa id.</p>
+              <input
+                type='color'
+                onChange={(ev) => setColor(ev.target.value)}
+              />
+            </div>
+            <TaskNav />
+          </div>
         </div>
-        <p>in list <span>To Do</span></p>
-        <button onClick={closeModal}>close</button>
-        <div>{id}</div>
-        <input
-          type='color'
-          onChange={(ev) => setColor(ev.target.value)}
-        />
-        <Checklist />
-        <DatePick />
-        <FileAttachment />
-        <TaskNav/>
       </Modal>
     </div>
   );

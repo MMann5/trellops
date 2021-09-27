@@ -1,9 +1,22 @@
 .task-nav{
     height: 50%;
-    width: 20%;
-    button{
+    width: 34%;
+    margin-left: 30px;
+    .options{
+        width: 168px;
+        height: 32px;
         display: flex;
         align-items: center;
+        font-size: 14px;
+        background-color: rgba(9, 30, 66, 0.04);
+        color: rgb(23, 43, 77);
+        margin-bottom: 5px;
+        .margin-5{
+            margin: 5px;
+        }
+    }
+    .options:hover{
+        cursor: pointer;
     }
     img{
         height: 16px;
