@@ -1,7 +1,9 @@
 import React, { Component, useState } from 'react';
 import { TextField } from '@material-ui/core';
 import { DetailModal } from './Modal';
-import trashIcon from '../assets/imgs/icons/trash.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+
 export function Task({ task, onRemoveTask, groupId, onSetTask }) {
   const [color, setColor] = useState('#fffff');
   const setColorFunc = (colorVal) => {
@@ -28,7 +30,7 @@ export function Task({ task, onRemoveTask, groupId, onSetTask }) {
       />
       <div className="task-btns">
         <button onClick={() => onRemoveTask(groupId, task.id)}>
-          <img src={trashIcon} alt="" />
+          <FontAwesomeIcon icon={faTrash} />
         </button>
         <DetailModal taskId={task.id} setColorFunc={setColorFunc} />
       </div>

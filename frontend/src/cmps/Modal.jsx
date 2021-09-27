@@ -44,7 +44,7 @@ export function DetailModal({ taskId, setColorFunc }) {
   return (
     <div>
       <div className="screen"></div>
-      <button onClick={openModal}>Open Modal</button>
+      <button onClick={openModal}><FontAwesomeIcon icon={faAlignLeft} /></button>
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
