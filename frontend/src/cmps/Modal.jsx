@@ -3,7 +3,7 @@ import React from 'react';
 import Modal from 'react-modal';
 import laptopIcon from '../assets/imgs/icons/laptop.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAlignLeft } from '@fortawesome/free-solid-svg-icons'
+import { faAlignLeft, faExternalLinkSquareAlt } from '@fortawesome/free-solid-svg-icons'
 import { TaskNav } from './TaskNav';
 const customStyles = {
   content: {
@@ -18,7 +18,7 @@ const customStyles = {
     padding: '30px',
     display: 'flex',
     flexDirection: 'column',
-    backGroundColor:'#f4f5f7'
+    backGroundColor: '#f4f5f7'
   },
 };
 Modal.setAppElement('#root');
@@ -44,7 +44,7 @@ export function DetailModal({ taskId, setColorFunc }) {
   const id = taskId;
   return (
     <div>
-      <button onClick={openModal}>Open Modal</button>
+      <button onClick={openModal}>  <FontAwesomeIcon icon={faExternalLinkSquareAlt} /></button>
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}

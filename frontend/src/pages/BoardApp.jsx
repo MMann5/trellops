@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { TextField } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
-  loadBoards,
   loadBoard,
   onSaveBoard,
 } from '../store/actions/boards-actions.js';
@@ -11,19 +10,21 @@ import {
   getEmptyGroup,
   constructTask,
 } from '../services/board-service.js';
-// import { boardService } from '../services/board-service.js';
 import { BoardsNavBar } from '../cmps/BoardsNavBar.jsx';
-import addIcon from '../assets/imgs/icons/add.svg';
+import { BoardHeader } from '../cmps/BoardHeader.jsx';
 import {
   DragDropContext,
   Droppable,
   Draggable,
 } from 'react-beautiful-dnd';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+
 
 export function BoardApp(props) {
   const dispatch = useDispatch();
   const { board } = useSelector((state) => state.boardModule);
   const [boardState, setBoardState] = useState(board);
+
   useEffect(() => {
     dispatch(loadBoard(props.match.params.boardId));
   }, [dispatch]);
@@ -35,8 +36,9 @@ export function BoardApp(props) {
     dispatch(onSaveBoard(boardState));
   }, [boardState, dispatch]);
 
-  const { boards } = useSelector((state) => state.boardModule);
+  // const { boards } = useSelector((state) => state.boardModule);
   const [groupName, setGroupName] = useState('');
+
   const onAddEmptyGroup = () => {
     setBoardState((prevState) => {
       return {
@@ -45,6 +47,7 @@ export function BoardApp(props) {
       };
     });
   };
+
   const onRemoveGroup = (groupId) => {
     setBoardState((prevState) => {
       return {
@@ -55,17 +58,21 @@ export function BoardApp(props) {
       };
     });
   };
+
   const onAddTask = (groupId, txt) => {
     const group = boardState.groups.find(
       (value) => value.id === groupId
     );
+
     const groupCopy = { ...group };
     groupCopy.tasks.push(constructTask(txt));
+
     const idx = boardState.groups
       .map((group) => {
         return group.id;
       })
       .indexOf(groupId);
+
     let boardGroupsCopy = [...boardState.groups];
     boardGroupsCopy.splice(idx, 1, groupCopy);
     setBoardState((prevState) => {
@@ -75,21 +82,26 @@ export function BoardApp(props) {
       };
     });
   };
+
   const onSetTask = (ev, groupId, taskId) => {
     const group = boardState.groups.find(
       (value) => value.id === groupId
     );
+
     const groupCopy = { ...group };
+
     const taskIdx = groupCopy.tasks.findIndex(
       (task) => task.id === taskId
     );
     groupCopy.tasks[taskIdx].title = ev.target.value;
+
     const idx = boardState.groups
       .map((group) => {
         return group.id;
       })
       .indexOf(groupId);
     let boardGroupsCopy = [...boardState.groups];
+
     boardGroupsCopy.splice(idx, 1, groupCopy);
     setBoardState((prevState) => {
       return {
@@ -150,9 +162,6 @@ export function BoardApp(props) {
     const items = Array.from(boardState.groups);
     const [reorderedGroup] = items.splice(result.source.index, 1);
     if (!result.destination) return;
-    console.log(result.destination, 'destination');
-    console.log(result.source, 'source');
-    console.log(result.type, 'type');
     items.splice(result.destination.index, 0, reorderedGroup);
     setBoardState({ ...boardState, groups: items });
   };
@@ -184,16 +193,9 @@ export function BoardApp(props) {
   return (
     <div className='board-app flex column'>
       <BoardsNavBar />
-      <h1>{board.title}</h1>
+      <BoardHeader boardTitle={board.title} />
       <DragDropContext onDragEnd={handleOnDragEnd}>
         <div className='group-list'>
-          <button
-            className='add-group-btn'
-            onClick={onAddEmptyGroup}
-          >
-            <img src={addIcon} alt='' />
-            Add another list
-          </button>
           <Droppable droppableId='groups'>
             {(provided) => (
               <div
@@ -202,17 +204,17 @@ export function BoardApp(props) {
                 ref={provided.innerRef}
               >
                 {groups}
+                <div
+                  className='add-group-btn'
+                  onClick={onAddEmptyGroup}
+                >
+                  <FontAwesomeIcon icon={faPlus} />
+                  <span>Add list</span>
+                </div>
                 {provided.placeholder}
               </div>
             )}
           </Droppable>
-          {/* <button
-            className='add-group-btn'
-            onClick={onAddEmptyGroup}
-          >
-            <img src={addIcon} alt='' />
-            Add another list
-          </button> */}
         </div>
       </DragDropContext>
     </div>

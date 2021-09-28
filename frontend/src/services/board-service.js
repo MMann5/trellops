@@ -17,7 +17,7 @@ function fetchBoards() {
 
 export function getEmptyBoard() {
   return {
-    id: utilService.makeId(),
+    id: `_${utilService.makeId()}`,
     title: utilService.makeLorem(),
     createdAt: Date.now(),
     createdBy: {

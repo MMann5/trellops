@@ -13,6 +13,16 @@ export function boardReducer(state = initialState, action) {
       return { ...state, board: action.board };
     case 'SAVE_BOARD':
       return { ...state, board: action.board };
+
+    // case 'REMOVE_BOARD':
+    //   const lastRemovedBoard = state.boards.find(board => board._id === action.boardId)
+    //   boards = state.boards.filter(board => board._id !== action.boardId)
+    //   newState = { ...state, boards, lastRemovedBoard }
+    //   break
+    // case 'ADD_BOARD':
+    //   newState = { ...state, boards: [...state.boards, action.board] }
+    //   break
+
     default:
       return state;
   }
