@@ -4,6 +4,7 @@ export function loadBoards() {
   return async (dispatch) => {
     try {
       const boards = await boardService.query();
+      console.log('hey');
       dispatch({ type: 'SET_BOARDS', boards });
     } catch (err) {
       console.log(err);
@@ -33,18 +34,13 @@ export function onSaveBoard(board) {
   };
 }
 
-export function createBoard(board) {
+export function setBoards(boards) {
   return async (dispatch) => {
     try {
-      const savedBoard = await boardService._save(board);
-      dispatch({ type: 'SET_BOARD', board: savedBoard });
+      boardService._save('boardsDB', boards);
+      dispatch({ type: 'SET_BOARDS', boards });
     } catch (err) {
       console.log('BoardActions: err in onSaveBoard', err);
     }
-  };
-}
-export function unsetBoard() {
-  return (dispatch) => {
-    dispatch({ type: 'SET_BOARD', board: null });
   };
 }

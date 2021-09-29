@@ -1,4 +1,5 @@
 import logo from '../assets/imgs/home-logo.svg';
+import { Link } from 'react-router-dom';
 
 export function HomeHeader() {
   return (
@@ -9,10 +10,10 @@ export function HomeHeader() {
           <a href='/#'>Trellops</a>
         </div>
         <div className='nav-btns'>
-          <a className='login-btn' href='/#'>
+          <Link className='login-btn' to='/login'>
             Log in
-          </a>
-          <a className='signup-btn' href='/#'>
+          </Link>
+          <a className='signup-btn' href='/'>
             Sign up
           </a>
         </div>

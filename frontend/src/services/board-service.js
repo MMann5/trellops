@@ -9,16 +9,16 @@ export const boardService = {
   _save,
 };
 function getBoards() {
-  return gBoards;
+  return JSON.parse(localStorage.getItem('boardsDB')) || gBoards;
 }
 function fetchBoards() {
   return Promise.resolve(gBoards);
 }
 
-export function getEmptyBoard() {
+export function getEmptyBoard(txt) {
   return {
-    id: `_${utilService.makeId()}`,
-    title: utilService.makeLorem(),
+    _id: utilService.makeId(),
+    title: txt,
     createdAt: Date.now(),
     createdBy: {
       _id: 'u101',
@@ -119,9 +119,8 @@ export function constructTask(txt) {
 }
 
 function query(entityType = 'boardsDB', boardId) {
-  var entities = JSON.parse(localStorage.getItem(entityType)) || {
-    ...gBoards,
-  };
+  var entities =
+    JSON.parse(localStorage.getItem(entityType)) || gBoards;
   return new Promise((resolve, reject) => {
     resolve(entities);
   });
@@ -162,12 +161,15 @@ function remove(entityType = 'boardsDB', entityId) {
   });
 }
 
-function _save(entityType = 'boardsDB', entities) {
+function _save(entityType, entities) {
+  console.log(entities);
   localStorage.setItem(entityType, JSON.stringify(entities));
 }
 
 function getBoardById(boardId) {
-  var board = gBoards.find((board) => {
+  var boards =
+    JSON.parse(localStorage.getItem('boardsDB')) || gBoards;
+  var board = boards.find((board) => {
     return boardId === board._id;
   });
   return board;

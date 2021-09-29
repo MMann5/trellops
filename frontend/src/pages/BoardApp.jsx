@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   loadBoard,
   onSaveBoard,
@@ -18,7 +18,6 @@ import {
   Draggable,
 } from 'react-beautiful-dnd';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-
 
 export function BoardApp(props) {
   const dispatch = useDispatch();
@@ -166,11 +165,11 @@ export function BoardApp(props) {
     setBoardState({ ...boardState, groups: items });
   };
 
-  const groups = boardState.groups.map((group, idx) => {
+  var groups = boardState.groups.map((group, idx) => {
     return (
       <Draggable key={group.id} draggableId={group.id} index={idx}>
         {(provided) => (
-          <span
+          <div
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             ref={provided.innerRef}
@@ -184,7 +183,7 @@ export function BoardApp(props) {
               onRemoveTask={onRemoveTask}
               onSetTask={onSetTask}
             />
-          </span>
+          </div>
         )}
       </Draggable>
     );
@@ -193,28 +192,25 @@ export function BoardApp(props) {
   return (
     <div className='board-app flex column'>
       <BoardsNavBar />
-      <BoardHeader boardTitle={board.title} />
+      <BoardHeader board={board} />
       <DragDropContext onDragEnd={handleOnDragEnd}>
         <div className='group-list'>
-          <Droppable droppableId='groups'>
+          <Droppable droppableId='groups' direction='horizontal'>
             {(provided) => (
-              <div
+              <span
                 className='groups'
                 {...provided.droppableProps}
                 ref={provided.innerRef}
               >
                 {groups}
-                <div
-                  className='add-group-btn'
-                  onClick={onAddEmptyGroup}
-                >
-                  <FontAwesomeIcon icon={faPlus} />
-                  <span>Add list</span>
-                </div>
                 {provided.placeholder}
-              </div>
+              </span>
             )}
           </Droppable>
+          <div className='add-group-btn' onClick={onAddEmptyGroup}>
+            <FontAwesomeIcon icon={faPlus} />
+            <span>Add list</span>
+          </div>
         </div>
       </DragDropContext>
     </div>

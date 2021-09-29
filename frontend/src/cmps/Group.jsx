@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { TextField } from '@material-ui/core';
 import { Task } from './Task';
 import addIcon from '../assets/imgs/icons/add.svg';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import {
   DragDropContext,
   Droppable,
@@ -61,8 +61,8 @@ export default function Group({
       <div className='container'>
         <div className='remove-div'>
           <TextField
+            autoFocus
             className='group-title'
-            // fullWidth
             placeholder='Enter list title...'
             variant='standard'
             value={group.title}
@@ -78,7 +78,8 @@ export default function Group({
               },
             }}
           />
-          <button className="remove-group"
+          <button
+            className='remove-group'
             onClick={() => {
               onRemoveGroup(group.id);
             }}
