@@ -47,6 +47,9 @@ export default function Group({
     setTaskVal(ev.target.value);
   };
   const handleOnDragEnd = (result) => {
+    console.log(result.destination, 'destination');
+    console.log(result.source, 'source');
+    console.log(result.draggableId, 'dr');
     const items = Array.from(tasks);
     const [reorderedTask] = items.splice(result.source.index, 1);
     items.splice(result.destination.index, 0, reorderedTask);
@@ -55,7 +58,6 @@ export default function Group({
 
   return (
     <div className='group-container'>
-
       <div className='container'>
         <div className='remove-div'>
           <TextField

@@ -1,20 +1,24 @@
-.work-space{
+.work-space {
     background-color: $clr1;
     height: 100vh;
+
     .general-boards {
         max-width: 825px;
         min-width: 288px;
         margin: 40px 16px 0;
-        font-family:SourceSans-SemiBold;
+        font-family: SourceSans-SemiBold;
+
         .work-space-boards {
             width: 100%;
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
             column-gap: 14px;
             row-gap: 10px;
+
             .board-preview {
                 border-radius: 3px;
-                background-color:#ec6d6d;;
+                background-color: #ec6d6d;
+                ;
                 color: #FFFFFF;
                 height: 96px;
                 margin-bottom: 2%;

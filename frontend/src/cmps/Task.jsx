@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import { TextField } from '@material-ui/core';
 import { DetailModal } from './Modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
