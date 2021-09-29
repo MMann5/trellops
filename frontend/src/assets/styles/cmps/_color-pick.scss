@@ -13,6 +13,7 @@
         height: 100%;
         display: grid;
         grid-template-columns: repeat(5, 1fr);
+        padding-top: 8px;
         .color-container{
             height: 30px;
             width: 30px;

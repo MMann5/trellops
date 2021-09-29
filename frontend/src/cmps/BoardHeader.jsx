@@ -1,9 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import { TextField } from '@material-ui/core';
+import { RightMenu } from './RightMenu';
 
 
 export function BoardHeader({ boardTitle }) {
+    // const [isMenuOpenState, showMenu] = useState(isMenuOpen);
+    // const showMenu = ()=>{
+    //     isMenuOpen =
+    // }
     return (
         <div className="board-header">
             {/* <div className="board-title" > */}
@@ -36,6 +41,7 @@ export function BoardHeader({ boardTitle }) {
                     <span className="wide-layout">Show Menu</span>
                 </button>
             </div>
+            <RightMenu/>
         </div>
     )
 }
