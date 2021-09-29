@@ -3,7 +3,7 @@ import React from 'react';
 import Modal from 'react-modal';
 import laptopIcon from '../assets/imgs/icons/laptop.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAlignLeft, faExternalLinkSquareAlt } from '@fortawesome/free-solid-svg-icons'
+import { faAlignLeft, faExternalLinkSquareAlt, faLaptop } from '@fortawesome/free-solid-svg-icons'
 import { TaskNav } from './TaskNav';
 const customStyles = {
   content: {
@@ -11,9 +11,9 @@ const customStyles = {
     left: '50%',
     right: 'auto',
     bottom: 'auto',
-    transform: 'translate(-50%, -50%)',
-    width: '50%',
-    height: '80%',
+    transform: 'translate(-50%, -45%)',
+    width: '68%',
+    height: '90%',
     marginTop: '20px',
     padding: '30px',
     display: 'flex',
@@ -30,10 +30,10 @@ export function DetailModal({ taskId, setColorFunc }) {
     setIsOpen(true);
   }
 
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    subtitle.style.color = '#f00';
-  }
+  // function afterOpenModal() {
+  //   // references are now sync'd and can be accessed.
+  //   subtitle.style.color = '#f00';
+  // }
 
   function closeModal() {
     setIsOpen(false);
@@ -41,26 +41,24 @@ export function DetailModal({ taskId, setColorFunc }) {
   function setColor(color) {
     setColorFunc(color);
   }
-  const id = taskId;
   return (
     <div>
       <button onClick={openModal}>  <FontAwesomeIcon icon={faExternalLinkSquareAlt} /></button>
       <Modal
         isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
+        // onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel='Example Modal'
       >
         <button className="close-modal-btn" onClick={closeModal}>x</button>
         <div className="modal-header">
-          <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
+          {/* <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2> */}
           <div className="modal-title flex align-center">
-            <img src={laptopIcon} alt="" />
+          <FontAwesomeIcon icon={faLaptop} />
             <h3>Task Title</h3>
           </div>
           <p>in list <span>List Title</span></p>
-          <div>{id}</div>
           <div className="modal-main-container flex justify-space-between">
             <div className="modal-details flex column">
               <div className="description-title flex align-center">

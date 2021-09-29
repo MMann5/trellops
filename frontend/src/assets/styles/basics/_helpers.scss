@@ -35,6 +35,39 @@
     transition: inherit;
     border-radius: inherit;
 }
+.clean-btn{
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background-color:transparent;
+}
+.blue-btn{
+    border-radius: 5px;
+    border: none;
+    font-family: "SourceSans-Light";
+    line-height: 1;
+    letter-spacing: 1px;
+    color: #fff;
+    background-color: #0065ff;
+    transition: background-color .15s ease-in-out;
+    text-align: center;
+}
+.blue-btn:hover{
+    background-color: #065ee2;
+}
+.nav-option-header{
+    border-bottom: 1px solid rgba(9,30,66,.13);
+    h3{
+        font-family: 'SourceSans-Light';
+        font-size: 1rem;
+        color: #a6a6a6;
+    }
+    button{
+        position: relative;
+        right: -80px;
+        color: #a6a6a6;
+    }
+}
 // Media helpers
 
 // .square-ratio {

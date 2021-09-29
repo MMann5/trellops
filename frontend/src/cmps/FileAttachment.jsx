@@ -1,7 +1,9 @@
 import React from 'react';
 import { TextField } from '@material-ui/core';
 import ReactPlayer from 'react-player';
-export function FileAttachment() {
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
+export function FileAttachment({ closePopup }) {
   const [stateVal, createStateVal] = React.useState('');
   const [fileStateVal, createFileVal] = React.useState([]);
 
@@ -22,6 +24,12 @@ export function FileAttachment() {
 
   return (
     <div className='checkfile'>
+      <div className="nav-option-header flex justify-center">
+        <h3>Attach a file</h3>
+        <button className="clean-btn" onClick={() => { closePopup('isFileOpen') }}>
+          <FontAwesomeIcon icon={faTimes} className="close-x" />
+        </button>
+      </div>
       <TextField
         // fullWidth
         size='small'
@@ -36,8 +44,9 @@ export function FileAttachment() {
             createFileVal([...fileStateVal, stateVal]);
             createStateVal('');
           }}
+          className="attach-btn blue-btn"
         >
-          add file
+          Add file
         </button>
       </div>
       <div className='checkfile-display'>

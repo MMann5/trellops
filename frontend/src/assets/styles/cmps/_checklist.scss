@@ -18,4 +18,18 @@
         bottom: 0;
         position: fixed;
     }
+    button{
+        font-size: 1rem;
+        padding: 7px 24px;
+        // position: absolute;
+        // top: 50%;
+        // right: 0;
+    }
+    .checkbox-li{
+        font-family: 'SourceSans-Light';
+        font-size: 1rem;
+    }
+    .checkbox-btn{
+        color: #a6a6a6;
+    }
 }

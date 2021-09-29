@@ -3,11 +3,8 @@ import { Checklist } from './Checklist';
 import { DatePick } from './DatePick';
 import { FileAttachment } from './FileAttachment';
 import { Box } from '@material-ui/core';
-import labelIcon from '../assets/imgs/icons/label.png';
-import membersIcon from '../assets/imgs/icons/members.svg';
-import dateIcon from '../assets/imgs/icons/date.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCheckSquare, faPaperclip, faPalette } from '@fortawesome/free-solid-svg-icons'
+import { faCheckSquare, faPaperclip, faPalette, faClock, faTag, faMedal, faUser } from '@fortawesome/free-solid-svg-icons'
 import { ColorPick } from './ColorPick';
 export class TaskNav extends Component {
     state = {
@@ -34,12 +31,10 @@ export class TaskNav extends Component {
             <div className="task-nav">
                 {/* <div onClick={() => { this.toggleOption('isCheckOpen') }} className="overlay"></div> */}
                 <div className="options">
-                    <img src={membersIcon} alt="" />
-                    Members
+                <FontAwesomeIcon icon={faUser} className="margin-5" />                    Members
                 </div>
                 <div className="options">
-                    <img src={labelIcon} alt="" />
-                    Labels
+                <FontAwesomeIcon icon={faTag} className="margin-5" />                    Labels
                 </div>
                 <div className="options" onClick={() => this.toggleOption('isCheckOpen')}>
                     <FontAwesomeIcon icon={faCheckSquare} className="margin-5" />
@@ -49,18 +44,17 @@ export class TaskNav extends Component {
                     <Checklist closePopup={this.toggleOption} />
                 </Box>
                 <div className="options" onClick={() => this.toggleOption('isDateOpen')}>
-                    <img src={dateIcon} alt="" />
-                    Dates
+                <FontAwesomeIcon icon={faClock} className="margin-5" />                    Dates
                 </div>
                 <Box display={isDateOpen ? 'block' : 'none'}>
-                    <DatePick />
+                    <DatePick closePopup={this.toggleOption}/>
                 </Box>
                 <div className="options" onClick={() => this.toggleOption('isFileOpen')}>
                     <FontAwesomeIcon icon={faPaperclip} className="margin-5" />
                     Attachment
                 </div>
                 <Box display={isFileOpen ? 'block' : 'none'}>
-                    <FileAttachment />
+                    <FileAttachment closePopup={this.toggleOption}/>
                 </Box>
                 <div className="options" onClick={() => this.toggleOption('isPaleteOpen')}>
                     <FontAwesomeIcon icon={faPalette} className="margin-5" />
@@ -68,7 +62,7 @@ export class TaskNav extends Component {
                 </div>
                 <Box display={isPaleteOpen ? 'block' : 'none'}>
                 {/* <input type='color' onChange={(ev) => this.props.setColor(ev.target.value)}/> */}
-                <ColorPick setColor={this.props.setColor}/>
+                <ColorPick setColor={this.props.setColor} closePopup={this.toggleOption}/>
                 </Box>
             </div>
         )
