@@ -65,6 +65,26 @@
           {
             "id": "c102",
             "title": "Add Samples"
+          },
+          {
+            "id": "c103",
+            "title": "Add member's photos"
+          },
+          {
+            "id": "c104",
+            "title": "Create more Tasks"
+          },
+          {
+            "id": "c105",
+            "title": "Erase Local Storage"
+          },
+          {
+            "id": "c106",
+            "title": "Check task Id is good"
+          },
+          {
+            "id": "c106",
+            "title": "Render Board's backgorund"
           }
         ],
         "style": {}
@@ -193,6 +213,14 @@
           {
             "id": "c202",
             "title": "Add Samples"
+          },
+          {
+            "id": "c203",
+            "title": "Fix Paddings"
+          },
+          {
+            "id": "c204",
+            "title": "Change font type"
           }
         ],
         "style": {}

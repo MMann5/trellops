@@ -1,8 +1,21 @@
 import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 export class ColorPick extends Component {
   render() {
     return (
       <div className='color-pick'>
+        <div className='nav-option-header flex justify-center'>
+          <h3>Choose a color</h3>
+          <button
+            className='clean-btn'
+            onClick={() => {
+              this.props.closePopup('isPaleteOpen');
+            }}
+          >
+            <FontAwesomeIcon icon={faTimes} className='close-x' />
+          </button>
+        </div>
         <div className='colors'>
           <div
             className='color-container green'

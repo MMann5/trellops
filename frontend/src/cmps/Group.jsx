@@ -62,7 +62,7 @@ export default function Group({
         <div className='remove-div'>
           <TextField
             autoFocus
-            className='group-title'
+            // className='group-title'
             placeholder='Enter list title...'
             variant='standard'
             value={group.title}

@@ -1,9 +1,14 @@
 import React from 'react';
 // import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
-import laptopIcon from '../assets/imgs/icons/laptop.png'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAlignLeft, faExternalLinkSquareAlt, faLaptop } from '@fortawesome/free-solid-svg-icons'
+import laptopIcon from '../assets/imgs/icons/laptop.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faAlignLeft,
+  faExternalLinkSquareAlt,
+  faLaptop,
+  faTimes,
+} from '@fortawesome/free-solid-svg-icons';
 import { TaskNav } from './TaskNav';
 const customStyles = {
   content: {
@@ -18,7 +23,7 @@ const customStyles = {
     padding: '30px',
     display: 'flex',
     flexDirection: 'column',
-    backGroundColor: '#f4f5f7'
+    backGroundColor: '#f4f5f7',
   },
 };
 Modal.setAppElement('#root');
@@ -43,7 +48,9 @@ export function DetailModal({ taskId, setColorFunc }) {
   }
   return (
     <div>
-      <button onClick={openModal}>  <FontAwesomeIcon icon={faExternalLinkSquareAlt} /></button>
+      <button onClick={openModal}>
+        <FontAwesomeIcon icon={faExternalLinkSquareAlt} />
+      </button>
       <Modal
         isOpen={modalIsOpen}
         // onAfterOpen={afterOpenModal}
@@ -51,23 +58,33 @@ export function DetailModal({ taskId, setColorFunc }) {
         style={customStyles}
         contentLabel='Example Modal'
       >
-        <button className="close-modal-btn" onClick={closeModal}>x</button>
-        <div className="modal-header">
+        <button className='close-modal-btn' onClick={closeModal}>
+          <FontAwesomeIcon icon={faTimes} className='svg-close' />
+        </button>
+        <div className='modal-header'>
           {/* <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2> */}
-          <div className="modal-title flex align-center">
-          <FontAwesomeIcon icon={faLaptop} />
+          <div className='modal-title flex align-center'>
+            <FontAwesomeIcon icon={faLaptop} />
             <h3>Task Title</h3>
           </div>
-          <p>in list <span>List Title</span></p>
-          <div className="modal-main-container flex justify-space-between">
-            <div className="modal-details flex column">
-              <div className="description-title flex align-center">
+          <p>
+            in list <span>List Title</span>
+          </p>
+          <div className='modal-main-container flex justify-space-between'>
+            <div className='modal-details flex column'>
+              <div className='description-title flex align-center'>
                 <FontAwesomeIcon icon={faAlignLeft} />
                 <h3>Description</h3>
               </div>
-              <p className="description-txt">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, quo repellat molestiae dignissimos reprehenderit non laborum at magnam ad inventore magni. Cum quisquam iusto delectus laborum, sit omnis culpa id.</p>
+              <p className='description-txt'>
+                Lorem, ipsum dolor sit amet consectetur adipisicing
+                elit. Nesciunt, quo repellat molestiae dignissimos
+                reprehenderit non laborum at magnam ad inventore
+                magni. Cum quisquam iusto delectus laborum, sit omnis
+                culpa id.
+              </p>
             </div>
-            <TaskNav setColor={setColor}/>
+            <TaskNav setColor={setColor} />
           </div>
         </div>
       </Modal>

@@ -1,55 +1,56 @@
-.close-modal-btn{
-    position: absolute;
-    top: 4px;
-    right: 4px;
-    background-color: transparent;
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
-    color: #42526e;
-    font-size: 1.65rem;
+.close-modal-btn {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background-color: transparent;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  color: #42526e;
+  font-size: 1.65rem;
+  .svg-close {
+    width: 0.4875em;
+  }
 }
-.modal-header{
-    height: 14px;
-    margin-bottom: 36px;
-    .modal-title{
-        height: 100%;
-        img{
-            height: 100%;
-        }
-        h3{
-            margin-left: 15px;
-            font-size: rem(20px);
-            font-family: SourceSans-Regular;
-        }
-        button{
+.modal-header {
+  height: 14px;
+  margin-bottom: 36px;
+  .modal-title {
+    height: 100%;
+    img {
+      height: 100%;
+    }
+    h3 {
+      margin-left: 15px;
+      font-size: rem(20px);
+      font-family: SourceSans-Regular;
+    }
+    button {
+    }
+  }
+  p {
+    font-family: SourceSans-Light;
+    span {
+      text-decoration: underline;
+    }
+  }
+}
 
-        }
-    }
-    p{
-        font-family: SourceSans-Light;
-        span{
-            text-decoration: underline;
-        }
-    }
+.modal-title {
 }
-
-.modal-title{
-    
-}
-.modal-main-container{
-    align-items: center;
-    .modal-details{
-        width: 66%;
-        .description-title{
-            h3{
-                margin-left: 15px;
-                font-family: SourceSans-Regular;
-            }
-        }
-        .description-txt{
-            margin-left: 30px;
-            font-family: SourceSans-Light;
-        }
+.modal-main-container {
+  align-items: center;
+  .modal-details {
+    width: 66%;
+    .description-title {
+      h3 {
+        margin-left: 15px;
+        font-family: SourceSans-Regular;
+      }
     }
+    .description-txt {
+      margin-left: 30px;
+      font-family: SourceSans-Light;
+    }
+  }
 }

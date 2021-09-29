@@ -1,21 +1,18 @@
 .board-app {
   height: 100vh;
-  background: linear-gradient(to top, #eb5757, #000000);
+  background: lightcoral;
   background-size: cover;
 
   .group-list {
     overflow-x: auto;
     overflow-y: hidden;
-    height: 100%;
     margin: 0 4px;
     white-space: nowrap;
     padding-bottom: 10px;
     margin-bottom: 10px;
     background-color: #0000;
-
-    .groups {
-      display: flex;
-    }
+    display: flex;
+    align-items: flex-start;
 
     &::-webkit-scrollbar {
       height: 12px;
@@ -30,6 +27,10 @@
     &::-webkit-scrollbar-thumb {
       border-radius: $borderRad2;
       background-color: rgba($color: #fff, $alpha: 0.35);
+    }
+
+    .groups {
+      display: flex;
     }
 
     .add-group-btn {
@@ -49,6 +50,30 @@
 
       span {
         padding-left: 15px;
+      }
+
+      .add-group-btn {
+        padding: 4px 1pc;
+        vertical-align: top;
+        cursor: pointer;
+        font-weight: 700;
+        line-height: 22px;
+        border: none;
+        background-color: #00000070;
+        color: #fff;
+        border-radius: 3px;
+        border: none;
+        outline: 0;
+        flex-shrink: 0;
+        background-color: #e2e4e6;
+        border-radius: 3px;
+        width: 230px;
+        margin-left: 10px;
+        margin-right: 10px;
+
+        &:hover {
+          background-color: #00000080;
+        }
       }
     }
   }

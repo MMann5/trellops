@@ -1,5 +1,5 @@
 .group-container {
-  min-width: 272px;
+  width: 272px;
   margin: 4px;
   box-sizing: border-box;
   display: inline-block;
@@ -8,13 +8,11 @@
 
   .container {
     background-color: #ebecf0;
-    // height: auto;
-    // background-color: transparent;
     border-radius: $borderRad1;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    max-height: 100%;
+    // max-height: 100%;
     position: relative;
     white-space: normal;
 
@@ -61,22 +59,28 @@
 
     .card-list-cards {
       flex: 1 1 auto;
-      height: 70vh;
       overflow-y: auto;
+      overflow-x: hidden;
 
-      &::-webkit-scrollbar {
-        width: 8px;
-      }
+      .tasks {
+        overflow-y: auto;
+        position: relative;
+        max-height: 70vh;
 
-      &::-webkit-scrollbar-track {
-        border-radius: $borderRad2;
-        margin-bottom: 2px;
-        background-color: #dadbe2;
-      }
+        &::-webkit-scrollbar {
+          width: 8px;
+        }
 
-      &::-webkit-scrollbar-thumb {
-        border-radius: $borderRad2;
-        background-color: #bfc4ce;
+        &::-webkit-scrollbar-track {
+          border-radius: $borderRad2;
+          margin-bottom: 2px;
+          background-color: #dadbe2;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          border-radius: $borderRad2;
+          background-color: #bfc4ce;
+        }
       }
 
       .card-btn-container {
@@ -93,5 +97,25 @@
         }
       }
     }
+  }
+
+  .group-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0 8px;
+    overflow-y: auto;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 300px;
+    min-height: 30px;
+    margin-bottom: 6px;
+    padding: 6px;
+    position: relative;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 14px;
   }
 }

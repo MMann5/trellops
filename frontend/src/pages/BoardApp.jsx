@@ -190,6 +190,7 @@ export function BoardApp(props) {
   });
 
   return (
+    // flex column
     <div className='board-app flex column'>
       <BoardsNavBar />
       <BoardHeader board={board} />

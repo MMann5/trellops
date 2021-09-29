@@ -12,80 +12,84 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { NavLogin } from '../cmps/NavLogin';
 
 export function LoginSignup() {
   return (
-    <Container component='main' maxWidth='xs'>
-      <CssBaseline />
-      <div
-        style={{
-          marginTop: '40px',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-        }}
-      >
-        <Avatar
+    <section>
+      <NavLogin />
+      <Container component='main' maxWidth='xs'>
+        <CssBaseline />
+        <div
           style={{
-            margin: '40px',
-            backgroundColor: 'blue',
-          }}
-        >
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component='h1' variant='h5'>
-          Login
-        </Typography>
-        <form
-          style={{
-            width: '100%',
             marginTop: '40px',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
           }}
-          noValidate
         >
-          <TextField
-            variant='outlined'
-            margin='normal'
-            required
-            fullWidth
-            id='username'
-            label='Username'
-            name='username'
-            autoComplete='username'
-            autoFocus
-          />
-          <TextField
-            variant='outlined'
-            margin='normal'
-            required
-            fullWidth
-            name='password'
-            label='Password'
-            type='password'
-            id='password'
-            autoComplete='current-password'
-          />
-          <Button
-            type='submit'
-            fullWidth
-            variant='contained'
-            color='secondary'
+          <Avatar
             style={{
-              margin: '40px 0',
+              margin: '40px',
+              backgroundColor: 'blue',
             }}
-            onClick={(ev) => ev.preventDefault()}
           >
-            Sign In
-          </Button>
-          <Grid container>
-            <Grid item>
-              <Link href='#' variant='body2'>
-                {"Don't have an account? Sign Up"}
-              </Link>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component='h1' variant='h5'>
+            Login
+          </Typography>
+          <form
+            style={{
+              width: '100%',
+              marginTop: '40px',
+            }}
+            noValidate
+          >
+            <TextField
+              variant='outlined'
+              margin='normal'
+              required
+              fullWidth
+              id='username'
+              label='Username'
+              name='username'
+              autoComplete='username'
+              autoFocus
+            />
+            <TextField
+              variant='outlined'
+              margin='normal'
+              required
+              fullWidth
+              name='password'
+              label='Password'
+              type='password'
+              id='password'
+              autoComplete='current-password'
+            />
+            <Button
+              type='submit'
+              fullWidth
+              variant='contained'
+              color='secondary'
+              style={{
+                margin: '40px 0',
+              }}
+              onClick={(ev) => ev.preventDefault()}
+            >
+              Sign In
+            </Button>
+            <Grid container>
+              <Grid item>
+                <Link href='#' variant='body2'>
+                  {"Don't have an account? Sign Up"}
+                </Link>
+              </Grid>
             </Grid>
-          </Grid>
-        </form>
-      </div>
-    </Container>
+          </form>
+        </div>
+      </Container>
+    </section>
   );
 }
