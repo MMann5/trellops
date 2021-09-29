@@ -1,0 +1,57 @@
+.color-pick{
+    background: #fff;
+    border-radius: 3px;
+    position: fixed;
+    padding: 0 12px 12px;
+    min-width: 20rem;
+    margin-right: 4px;
+    max-width: 100%;
+    top: 415px;
+    right: 28px;
+    box-shadow: 0 8px 16px -4px rgba(9 ,30 ,66 ,0.25), 0 0 0 1px rgba(9 ,30 ,66  ,0.08);
+    .colors{
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        .color-container{
+            height: 30px;
+            width: 30px;
+            border-radius: 4px;
+            margin: 3px;
+            &.green{
+                background-color: #7BC86C;
+            }
+            &.yellow{
+                background-color: #F5DD29;
+            }
+            &.orange{
+                background-color: #FFAF3F;
+            }
+            
+            &.red{
+                background-color: #EF7564;
+            }
+            &.purple{
+                background-color: #CD8DE5;
+            }
+            &.blue{
+                background-color: #5BA4CF;
+            }
+            &.light-blue{
+                background-color: #29CCE5;
+            }
+            &.dark-blue{
+                background-color: #172B4D;
+            }
+            &.light-green{
+                background-color: #6DECA9;
+            }
+            &.pink{
+                background-color: #FF8ED4;
+            }
+        }
+        .color-container:hover{
+            cursor: pointer;
+        }
+    }
+}

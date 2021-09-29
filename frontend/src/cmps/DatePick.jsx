@@ -4,10 +4,18 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 export function DatePick() {
   const [startDate, setStartDate] = useState(new Date());
+  
   return (
-    <DatePicker
-      selected={startDate}
-      onChange={(date) => setStartDate(date)}
-    />
+    <div className="date-pick">
+      <DatePicker
+        selected={startDate}
+        onChange={(date) => setStartDate(date)}
+        tetherConstraints={[]}
+        popperModifiers={{
+          tetherConstraints: {
+          }
+      }}
+      />
+    </div>
   );
 }

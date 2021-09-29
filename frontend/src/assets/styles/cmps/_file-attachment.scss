@@ -1,4 +1,4 @@
-.checklist {
+.checkfile{
     background: #fff;
     border-radius: 3px;
     position: fixed;
@@ -9,13 +9,4 @@
     top: 415px;
     right: 28px;
     box-shadow: 0 8px 16px -4px rgba(9 ,30 ,66 ,0.25), 0 0 0 1px rgba(9 ,30 ,66  ,0.08);
-    .overlay{
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        position: fixed;
-    }
 }

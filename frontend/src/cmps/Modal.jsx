@@ -3,7 +3,7 @@ import React from 'react';
 import Modal from 'react-modal';
 import laptopIcon from '../assets/imgs/icons/laptop.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAlignLeft } from '@fortawesome/free-solid-svg-icons'
+import { faAlignLeft, faSignInAlt } from '@fortawesome/free-solid-svg-icons'
 import { TaskNav } from './TaskNav';
 const customStyles = {
   content: {
@@ -44,7 +44,9 @@ export function DetailModal({ taskId, setColorFunc }) {
   const id = taskId;
   return (
     <div>
-      <button onClick={openModal}>Open Modal</button>
+      <button onClick={openModal}>
+      <FontAwesomeIcon icon={faSignInAlt} />
+      </button>
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
@@ -68,12 +70,8 @@ export function DetailModal({ taskId, setColorFunc }) {
                 <h3>Description</h3>
               </div>
               <p className="description-txt">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, quo repellat molestiae dignissimos reprehenderit non laborum at magnam ad inventore magni. Cum quisquam iusto delectus laborum, sit omnis culpa id.</p>
-              <input
-                type='color'
-                onChange={(ev) => setColor(ev.target.value)}
-              />
             </div>
-            <TaskNav />
+            <TaskNav setColor={setColor}/>
           </div>
         </div>
       </Modal>
