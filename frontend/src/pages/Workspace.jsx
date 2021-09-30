@@ -74,7 +74,7 @@ export function Workspace() {
         <div className='work-space-boards'>
           {boards.map((board, idx) => (
             <Link to={`/board/${board._id}`} key={idx}>
-              <div className='board-preview flex justify-center'>
+              <div className='board-preview flex justify-center' style={{backgroundColor: board.bgColor}}>
                 {board.title}
                 <button
                   className='remove-board'

@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   loadBoard,
   onSaveBoard,
+  setBoards
 } from '../store/actions/boards-actions.js';
 import Group from '../cmps/Group';
 import {
@@ -35,7 +36,7 @@ export function BoardApp(props) {
     dispatch(onSaveBoard(boardState));
   }, [boardState, dispatch]);
 
-  // const { boards } = useSelector((state) => state.boardModule);
+  const { boards } = useSelector((state) => state.boardModule);
   const [groupName, setGroupName] = useState('');
 
   const onAddEmptyGroup = () => {
@@ -188,16 +189,26 @@ export function BoardApp(props) {
       </Draggable>
     );
   });
-  const [bgColor, setBGColor] = useState('#fffff');
-  const setBGColorFunc = (colorVal) => {
-    return setBGColor(colorVal);
-  };
+  // const [bgColor, setBGColor] = useState('#fffff');
+  // const setBGColorFunc = (colorVal) => {
+  //   return setBGColor(colorVal);
+  // };
+
+  const setBgColor = (colorVal)=>{
+  const boardCpy = {...board};
+  boardCpy.bgColor = colorVal;
+  const boardsCpy = [...boards]
+  const boardIdx = boardsCpy.findIndex((val)=> val._id=== board._id);
+  boardsCpy.splice(boardIdx,1,boardCpy);
+  dispatch(setBoards(boardsCpy))
+  setBoardState(boardCpy)
+  }
 
   return (
     // flex column
-    <div className='board-app flex column' style={(bgColor)?{ backgroundColor: bgColor }:''}>
+    <div className='board-app flex column' style={{backgroundColor:boardState.bgColor}}>
       <BoardsNavBar />
-      <BoardHeader board={board} setBGColorFunc={setBGColorFunc}/>
+      <BoardHeader board={board} setBgColor={setBgColor} />
       <DragDropContext onDragEnd={handleOnDragEnd}>
         <div className='group-list'>
           <Droppable droppableId='groups' direction='horizontal'>

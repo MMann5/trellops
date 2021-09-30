@@ -4,7 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import { TextField } from '@material-ui/core';
 import { setBoards } from '../store/actions/boards-actions.js';
 import {RightMenu} from './RightMenu';
-export function BoardHeader({ board, setBGColorFunc}) {
+export function BoardHeader({ board, setBgColor}) {
   const dispatch = useDispatch();
   const { boards } = useSelector((state) => state.boardModule);
   const { boardId } = useParams();
@@ -25,10 +25,6 @@ export function BoardHeader({ board, setBGColorFunc}) {
     boardsCopy.splice(idx, 1, newBoard);
     dispatch(setBoards(boardsCopy));
   }, [dispatch, boardName]);
-  const clasVar = isMenuOpen ? 'menu-open' : '';
-  function setBGC(bgColor){
-    setBGColorFunc(bgColor)
-  }
 
   return (
     <div className='board-header'>
@@ -55,7 +51,7 @@ export function BoardHeader({ board, setBGColorFunc}) {
         <Link to={'/board/'} className='clean-link'>
           <h4 className='wide-layout'>Dashboard</h4>
         </Link>
-      <RightMenu setBGColorFunc={setBGColorFunc}/>
+      <RightMenu setBgColor={setBgColor}/>
       </div>
     </div>
   );

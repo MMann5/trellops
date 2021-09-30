@@ -25,7 +25,7 @@ export function getEmptyBoard(txt) {
       fullname: 'Abi Abambi',
       imgUrl: 'http://some-img',
     },
-    style: {},
+    bgColor:'#0079bf',
     labels: [
       {
         id: 'l101',
