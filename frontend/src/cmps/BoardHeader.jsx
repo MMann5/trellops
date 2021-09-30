@@ -2,25 +2,30 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { TextField } from '@material-ui/core';
+
 import { setBoards } from '../store/actions/boards-actions.js';
-import {RightMenu} from './RightMenu';
-export function BoardHeader({ board, setBgColor}) {
+
+import { RightMenu } from './RightMenu';
+
+
+export function BoardHeader({ board, setBgColor }) {
   const dispatch = useDispatch();
   const { boards } = useSelector((state) => state.boardModule);
   const { boardId } = useParams();
-  console.log(boardId);
+
   if (!boardId) board._id = boardId;
   const currBoard = boards.find(
     (boardVal) => boardVal._id === boardId
   );
+
   const [boardName, setBoardName] = useState(currBoard.title);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const idx = boards.findIndex(
     (boardUnit) => boardId === boardUnit._id
   );
+
   useEffect(() => {
     const newBoard = { ...currBoard, title: boardName };
-    console.log(newBoard);
     const boardsCopy = [...boards];
     boardsCopy.splice(idx, 1, newBoard);
     dispatch(setBoards(boardsCopy));
@@ -37,8 +42,19 @@ export function BoardHeader({ board, setBgColor}) {
         }}
         inputProps={{
           style: {
-            fontSize: '1.2rem',
-            color: 'white',
+            display: 'flex',
+            padding: '5px',
+            alignItems: 'center',
+            cursor: 'pointer',
+            backgroundColor: 'rgba(255, 255, 255, 0.2)',
+            borderRadius: '3px',
+            color: '#ffffff',
+            outline: 'unset',
+            border: 'unset',
+            position: 'relative',
+            height: '22px',
+            marginInlineEnd: '5px',
+            fontWeight: 'bold'
           },
         }}
       />
@@ -51,7 +67,7 @@ export function BoardHeader({ board, setBgColor}) {
         <Link to={'/board/'} className='clean-link'>
           <h4 className='wide-layout'>Dashboard</h4>
         </Link>
-      <RightMenu setBgColor={setBgColor}/>
+        <RightMenu setBgColor={setBgColor} />
       </div>
     </div>
   );

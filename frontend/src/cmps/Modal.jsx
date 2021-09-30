@@ -1,6 +1,6 @@
 import React from 'react';
-// import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
+// import ReactDOM from 'react-dom';
 import laptopIcon from '../assets/imgs/icons/laptop.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {

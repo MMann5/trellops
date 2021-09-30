@@ -6,10 +6,8 @@
 
 // Basics
 @import 'basics/helpers';
-// @import "basics/layout";
 @import 'basics/base';
-// @import "basics/links";
-// @import "basics/forms";
+
 
 // Components
 @import 'cmps/home-header';
@@ -23,9 +21,6 @@
 @import 'cmps/_color-pick';
 @import 'cmps/date-pick';
 @import 'cmps/board-header';
-// @import "cmps/app-header";
-// @import "cmps/app-footer";
-// @import "cmps/user-msg";
 
 // Pages
 @import 'pages/home-page';

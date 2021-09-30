@@ -8,8 +8,9 @@
     max-width: 100%;
     top: 415px;
     right: 28px;
-    box-shadow: 0 8px 16px -4px rgba(9 ,30 ,66 ,0.25), 0 0 0 1px rgba(9 ,30 ,66  ,0.08);
-    .overlay{
+    box-shadow: 0 8px 16px -4px rgba(9, 30, 66, 0.25), 0 0 0 1px rgba(9, 30, 66, 0.08);
+
+    .overlay {
         width: 100%;
         height: 100%;
         top: 0;
@@ -18,18 +19,18 @@
         bottom: 0;
         position: fixed;
     }
-    button{
+
+    button {
         font-size: 1rem;
         padding: 7px 24px;
-        // position: absolute;
-        // top: 50%;
-        // right: 0;
     }
-    .checkbox-li{
+
+    .checkbox-li {
         font-family: 'SourceSans-Light';
         font-size: 1rem;
     }
-    .checkbox-btn{
+
+    .checkbox-btn {
         color: #a6a6a6;
     }
 }

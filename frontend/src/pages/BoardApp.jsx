@@ -1,24 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { DragDropContext, Droppable, Draggable, } from 'react-beautiful-dnd';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  loadBoard,
-  onSaveBoard,
-  setBoards
-} from '../store/actions/boards-actions.js';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+
 import Group from '../cmps/Group';
-import {
-  getEmptyGroup,
-  constructTask,
-} from '../services/board-service.js';
 import { BoardsNavBar } from '../cmps/BoardsNavBar.jsx';
 import { BoardHeader } from '../cmps/BoardHeader.jsx';
-import {
-  DragDropContext,
-  Droppable,
-  Draggable,
-} from 'react-beautiful-dnd';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+
+import { loadBoard, onSaveBoard, setBoards } from '../store/actions/boards-actions.js';
+import { getEmptyGroup, constructTask, } from '../services/board-service.js';
+
+
+
 
 export function BoardApp(props) {
   const dispatch = useDispatch();
@@ -158,6 +153,7 @@ export function BoardApp(props) {
       };
     });
   };
+
   const handleOnDragEnd = (result) => {
     const items = Array.from(boardState.groups);
     const [reorderedGroup] = items.splice(result.source.index, 1);
@@ -189,24 +185,19 @@ export function BoardApp(props) {
       </Draggable>
     );
   });
-  // const [bgColor, setBGColor] = useState('#fffff');
-  // const setBGColorFunc = (colorVal) => {
-  //   return setBGColor(colorVal);
-  // };
 
-  const setBgColor = (colorVal)=>{
-  const boardCpy = {...board};
-  boardCpy.bgColor = colorVal;
-  const boardsCpy = [...boards]
-  const boardIdx = boardsCpy.findIndex((val)=> val._id=== board._id);
-  boardsCpy.splice(boardIdx,1,boardCpy);
-  dispatch(setBoards(boardsCpy))
-  setBoardState(boardCpy)
+  const setBgColor = (colorVal) => {
+    const boardCpy = { ...board };
+    boardCpy.bgColor = colorVal;
+    const boardsCpy = [...boards]
+    const boardIdx = boardsCpy.findIndex((val) => val._id === board._id);
+    boardsCpy.splice(boardIdx, 1, boardCpy);
+    dispatch(setBoards(boardsCpy))
+    setBoardState(boardCpy)
   }
 
   return (
-    // flex column
-    <div className='board-app flex column' style={{backgroundColor:boardState.bgColor}}>
+    <div className='board-app flex column' style={{ backgroundColor: boardState.bgColor }}>
       <BoardsNavBar />
       <BoardHeader board={board} setBgColor={setBgColor} />
       <DragDropContext onDragEnd={handleOnDragEnd}>
