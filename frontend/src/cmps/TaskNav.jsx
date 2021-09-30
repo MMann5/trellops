@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Checklist } from './Checklist';
 import { DatePick } from './DatePick';
 import { FileAttachment } from './FileAttachment';
+import { MemberPick } from './MemberPick';
 import { Box } from '@material-ui/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -42,14 +43,20 @@ export class TaskNav extends Component {
       isDateOpen,
       isFileOpen,
       isPaleteOpen,
+      isMemberOpen
     } = this.state;
     return (
       <div className='task-nav'>
-        {/* <div onClick={() => { this.toggleOption('isCheckOpen') }} className="overlay"></div> */}
-        <div className='options'>
+        <div className='options' onClick={() => this.toggleOption('isMemberOpen')}>
           <FontAwesomeIcon icon={faUser} className='margin-5' />{' '}
           <span>Members</span>
         </div>
+        <Box display={isMemberOpen ? 'block' : 'none'}>
+          <MemberPick
+            setColor={this.props.setColor}
+            closePopup={this.toggleOption}
+          />
+        </Box>
         <div className='options'>
           <FontAwesomeIcon icon={faTag} className='margin-5' />{' '}
           Labels

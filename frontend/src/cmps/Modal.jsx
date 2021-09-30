@@ -1,8 +1,10 @@
 import React from 'react';
 // import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
-import laptopIcon from '../assets/imgs/icons/laptop.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import david from '../assets/imgs/profiles/david.jpg';
+import michael from '../assets/imgs/profiles/michael.png';
+import chang from '../assets/imgs/profiles/chang.jpg';
 import {
   faAlignLeft,
   faExternalLinkSquareAlt,
@@ -10,6 +12,8 @@ import {
   faTimes,
 } from '@fortawesome/free-solid-svg-icons';
 import { TaskNav } from './TaskNav';
+import { ModalDetailsMembers } from './ModalDetailsMembers';
+import { ModalDetailsLables } from './ModalDetailsLables';
 const customStyles = {
   content: {
     top: '40%',
@@ -72,6 +76,10 @@ export function DetailModal({ taskId, setColorFunc }) {
           </p>
           <div className='modal-main-container flex justify-space-between'>
             <div className='modal-details flex column'>
+              <div className="modal-details-items flex">
+              <ModalDetailsMembers/>
+              <ModalDetailsLables/>
+              </div>
               <div className='description-title flex align-center'>
                 <FontAwesomeIcon icon={faAlignLeft} />
                 <h3>Description</h3>

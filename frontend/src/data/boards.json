@@ -13,7 +13,7 @@
       {
         "id": "l101",
         "title": "Done",
-        "color": "#61bd4f"
+        "color": "#7BC86C"
       },
       {
         "id": "l102",
@@ -23,12 +23,17 @@
       {
         "id": "l103",
         "title": "Important",
-        "color": "#bd4f"
+        "color": "#F5DD29"
       },
       {
         "id": "l104",
         "title": "Optional",
         "color": "#d4f"
+      },
+      {
+        "id": "l105",
+        "title": "Complex",
+        "color": "#FFAF3F"
       }
     ],
     "members": [
