@@ -188,12 +188,16 @@ export function BoardApp(props) {
       </Draggable>
     );
   });
+  const [bgColor, setBGColor] = useState('#fffff');
+  const setBGColorFunc = (colorVal) => {
+    return setBGColor(colorVal);
+  };
 
   return (
     // flex column
-    <div className='board-app flex column'>
+    <div className='board-app flex column' style={(bgColor)?{ backgroundColor: bgColor }:''}>
       <BoardsNavBar />
-      <BoardHeader board={board} />
+      <BoardHeader board={board} setBGColorFunc={setBGColorFunc}/>
       <DragDropContext onDragEnd={handleOnDragEnd}>
         <div className='group-list'>
           <Droppable droppableId='groups' direction='horizontal'>

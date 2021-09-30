@@ -20,6 +20,7 @@ export class TaskNav extends Component {
     isDateOpen: false,
     isFileOpen: false,
     isPaleteOpen: false,
+    isMemberOpen: false,
   };
   toggleOption = (stateOption) => {
     if (stateOption === 'isCheckOpen') {
@@ -30,6 +31,8 @@ export class TaskNav extends Component {
       this.setState({ isFileOpen: !this.state.isFileOpen });
     } else if (stateOption === 'isPaleteOpen') {
       this.setState({ isPaleteOpen: !this.state.isPaleteOpen });
+    } else if (stateOption === 'isMemberOpen') {
+      this.setState({ isMemberOpen: !this.state.isMemberOpen });
     }
     document.body.classList.toggle('popover-open');
   };

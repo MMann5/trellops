@@ -1,7 +1,7 @@
 [
   {
     "_id": "b101",
-    "title": "Robot dev proj",
+    "title": "My awsome board",
     "createdAt": 1589983468418,
     "createdBy": {
       "_id": "u101",
@@ -56,7 +56,7 @@
     "groups": [
       {
         "id": "g101",
-        "title": "Group 1",
+        "title": "Make a Trello",
         "tasks": [
           {
             "id": "c101",
@@ -83,7 +83,7 @@
             "title": "Check task Id is good"
           },
           {
-            "id": "c106",
+            "id": "c107",
             "title": "Render Board's backgorund"
           }
         ],
@@ -91,7 +91,7 @@
       },
       {
         "id": "g102",
-        "title": "Group 2",
+        "title": "Bonus Tasks",
         "tasks": [
           {
             "id": "c103",
@@ -155,6 +155,25 @@
             "style": {
               "bgColor": "#26de81"
             }
+          }
+        ],
+        "style": {}
+      },
+      {
+        "id": "g103",
+        "title": "Personal Todos",
+        "tasks": [
+          {
+            "id": "d104",
+            "title": "Make pizzas"
+          },
+          {
+            "id": "d105",
+            "title": "Clean the room"
+          },
+          {
+            "id": "d106",
+            "title": "Do my laundry"
           }
         ],
         "style": {}
