@@ -1,11 +1,31 @@
 // Font Sizes
-.fs12 { font-size: rem(12px); }
-.fs14 { font-size: rem(14px); }
-.fs18 { font-size: rem(18px); }
-.fs20 { font-size: rem(20px); }
-.fs24 { font-size: rem(24px); }
-.fs28 { font-size: rem(28px); }
-.fs30 { font-size: rem(30px); }
+.fs12 {
+    font-size: rem(12px);
+}
+
+.fs14 {
+    font-size: rem(14px);
+}
+
+.fs18 {
+    font-size: rem(18px);
+}
+
+.fs20 {
+    font-size: rem(20px);
+}
+
+.fs24 {
+    font-size: rem(24px);
+}
+
+.fs28 {
+    font-size: rem(28px);
+}
+
+.fs30 {
+    font-size: rem(30px);
+}
 
 // flex helpers
 
@@ -13,33 +33,38 @@
 
     display: flex;
 
-    > *.full {
+    >*.full {
         flex: 1;
     }
+
     &.column {
         flex-direction: column;
     }
+
     &.justify-center {
         justify-content: center;
     }
-    &.justify-space-between{
+
+    &.justify-space-between {
         justify-content: space-between;
     }
+
     &.align-center {
         align-items: center;
     }
 }
 
-.clean-link{
+.clean-link {
     padding: inherit;
     transition: inherit;
     border-radius: inherit;
 }
-.clean-btn{
+
+.clean-btn {
     outline: none;
     border: none;
     cursor: pointer;
-    background-color:transparent;
+    background-color: transparent;
 }
 .clean-list{
     list-style-type: none;
@@ -57,22 +82,27 @@
     transition: background-color .15s ease-in-out;
     text-align: center;
 }
-.blue-btn:hover{
+
+.blue-btn:hover {
     background-color: #065ee2;
 }
-.nav-option-header{
-    border-bottom: 1px solid rgba(9,30,66,.13);
-    h3{
+
+.nav-option-header {
+    border-bottom: 1px solid rgba(9, 30, 66, .13);
+
+    h3 {
         font-family: 'SourceSans-Light';
         font-size: 1rem;
         color: #a6a6a6;
     }
-    button{
+
+    button {
         position: relative;
         right: -80px;
         color: #a6a6a6;
     }
 }
+
 // Media helpers
 
 // .square-ratio {

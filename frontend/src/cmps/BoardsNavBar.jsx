@@ -1,8 +1,10 @@
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
 import logo from '../assets/imgs/‏‏homelogo2.svg';
 import david from '../assets/imgs/profiles/david.jpg';
 import homeIcon from '../assets/imgs/icons/home.svg';
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+
 export class BoardsNavBar extends Component {
   render() {
     return (

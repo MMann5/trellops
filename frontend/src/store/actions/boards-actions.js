@@ -4,7 +4,6 @@ export function loadBoards() {
   return async (dispatch) => {
     try {
       const boards = await boardService.query();
-      console.log('hey');
       dispatch({ type: 'SET_BOARDS', boards });
     } catch (err) {
       console.log(err);

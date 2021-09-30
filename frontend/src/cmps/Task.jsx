@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
+
 import { TextField } from '@material-ui/core';
-import { DetailModal } from './Modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faTrash,
   faArrowRight,
 } from '@fortawesome/free-solid-svg-icons';
+
+import { DetailModal } from './Modal';
 
 export function Task({ task, onRemoveTask, groupId, onSetTask }) {
   const [color, setColor] = useState('#fffff');

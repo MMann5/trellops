@@ -1,12 +1,16 @@
 import React from 'react';
+
 import { TextField } from '@material-ui/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
+
 import Checkbox from 'rc-checkbox';
+
 export function Checklist({ closePopup }) {
   const [stateVal, createStateVal] = React.useState({});
   const [listStateVal, createListVal] = React.useState([]);
-  function onChange(e, idx) {
+
+  const onChange = (e, idx) => {
     const copyList = [...listStateVal];
     copyList[idx].checked = e.target.checked;
     createListVal(copyList);

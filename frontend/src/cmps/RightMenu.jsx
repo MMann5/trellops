@@ -11,7 +11,7 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { color } from '@mui/system';
 
-export function RightMenu({setBGColorFunc}) {
+export function RightMenu({setBgColor}) {
   const [state, setState] = React.useState({
     top: false,
     left: false,
@@ -34,32 +34,40 @@ export function RightMenu({setBGColorFunc}) {
     <Box
       sx={{
         width:
-          anchor === 'top' || anchor === 'bottom' ? 'auto' : 250,
+          anchor === 'top' || anchor === 'bottom' ? 'auto' : 200,
       }}
       role='presentation'
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {['green', 'yellow', 'orange', 'red'].map(
+        {[
+        '#60bd4f',
+        '#f2d600',
+        '#ff9e1a',
+        '#eb5a46',
+        '#c277e0',
+        '#0279bf',
+        '#52e898',
+        '#ff78cb',
+        '#334563',
+        '#b3bac5',
+        '#D90368',
+        '#820263'
+
+    ].map(
           (text, index) => (
             <ListItem button key={text} onClick={()=>{
-              setBGCFunc(text)
+              setBgColor(text)
             }
             }>
-              {/* <ListItemIcon>sid
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon> */}
-              <ListItemText primary={text} />
+              <ListItemText style={{backgroundColor : text, height: '50px'}}/>
             </ListItem>
           )
         )}
       </List>
     </Box>
   );
-  function setBGCFunc(bgColor){
-    setBGColorFunc(bgColor)
-  }
 
   return (
     <div>

@@ -25,7 +25,7 @@ export function getEmptyBoard(txt) {
       fullname: 'Abi Abambi',
       imgUrl: 'http://some-img',
     },
-    style: {},
+    bgColor: '#0079bf',
     labels: [
       {
         id: 'l101',
@@ -50,38 +50,7 @@ export function getEmptyBoard(txt) {
         imgUrl: 'https://www.google.com',
       },
     ],
-    groups: [
-      {
-        id: utilService.makeId(),
-        title: 'Group 1',
-        tasks: [
-          {
-            id: utilService.makeId(),
-            title: 'Replace logo',
-          },
-          {
-            id: 'c102',
-            title: 'Add Samples',
-          },
-        ],
-        style: {},
-      },
-      {
-        id: utilService.makeId(),
-        title: 'Group 2',
-        tasks: [
-          {
-            id: utilService.makeId(),
-            title: 'Replace logo',
-          },
-          {
-            id: 'c102',
-            title: 'Add Samples',
-          },
-        ],
-        style: {},
-      },
-    ],
+    groups: [],
     activities: [
       {
         id: utilService.makeId(),
@@ -162,7 +131,6 @@ function remove(entityType = 'boardsDB', entityId) {
 }
 
 function _save(entityType, entities) {
-  console.log(entities);
   localStorage.setItem(entityType, JSON.stringify(entities));
 }
 

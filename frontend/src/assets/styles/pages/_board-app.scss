@@ -1,6 +1,5 @@
 .board-app {
   height: 100vh;
-  background: lightcoral;
   background-size: cover;
 
   .group-list {
@@ -35,45 +34,20 @@
 
     .add-group-btn {
       width: 272px;
-      cursor: pointer;
       color: #fff;
-      border: none;
-      background-color: #00000050;
-      border-radius: 3px;
-      padding: 10px 15px;
+      padding: 15px 15px;
       margin: 4px;
-      box-sizing: border-box;
-      display: inline-block;
-      vertical-align: top;
-      white-space: nowrap;
-      justify-content: flex-start;
+      cursor: pointer;
+      background-color: #00000070;
+      border-radius: 3px;
+      border: none;
 
       span {
         padding-left: 15px;
       }
 
-      .add-group-btn {
-        padding: 4px 1pc;
-        vertical-align: top;
-        cursor: pointer;
-        font-weight: 700;
-        line-height: 22px;
-        border: none;
-        background-color: #00000070;
-        color: #fff;
-        border-radius: 3px;
-        border: none;
-        outline: 0;
-        flex-shrink: 0;
-        background-color: #e2e4e6;
-        border-radius: 3px;
-        width: 230px;
-        margin-left: 10px;
-        margin-right: 10px;
-
-        &:hover {
-          background-color: #00000080;
-        }
+      &:hover {
+        background-color: #00000080;
       }
     }
   }

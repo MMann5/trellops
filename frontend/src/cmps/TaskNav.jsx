@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Checklist } from './Checklist';
-import { DatePick } from './DatePick';
+
 import { FileAttachment } from './FileAttachment';
 import { MemberPick } from './MemberPick';
 import { Box } from '@material-ui/core';
@@ -11,10 +10,13 @@ import {
   faPalette,
   faClock,
   faTag,
-  faMedal,
   faUser,
 } from '@fortawesome/free-solid-svg-icons';
+
 import { ColorPick } from './ColorPick';
+import { Checklist } from './Checklist';
+import { DatePick } from './DatePick';
+
 export class TaskNav extends Component {
   state = {
     isCheckOpen: false,

@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import { TextField } from '@material-ui/core';
-import { Task } from './Task';
-import addIcon from '../assets/imgs/icons/add.svg';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import {
   DragDropContext,
   Droppable,
   Draggable,
 } from 'react-beautiful-dnd';
+
+import { TextField } from '@material-ui/core';
+import addIcon from '../assets/imgs/icons/add.svg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+
+import { Task } from './Task';
 
 export default function Group({
   group,
@@ -47,9 +49,6 @@ export default function Group({
     setTaskVal(ev.target.value);
   };
   const handleOnDragEnd = (result) => {
-    console.log(result.destination, 'destination');
-    console.log(result.source, 'source');
-    console.log(result.draggableId, 'dr');
     const items = Array.from(tasks);
     const [reorderedTask] = items.splice(result.source.index, 1);
     items.splice(result.destination.index, 0, reorderedTask);

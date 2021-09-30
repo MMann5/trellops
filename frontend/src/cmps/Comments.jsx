@@ -1,10 +1,12 @@
 import React from 'react';
+
 import { TextField } from '@material-ui/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faTrashAlt,
   faPlus,
 } from '@fortawesome/free-solid-svg-icons';
+
 export function Comments(/*{ closePopup }*/) {
   const [stateVal, createStateVal] = React.useState({});
   const [commentStateVal, createCommentVal] = React.useState([]);

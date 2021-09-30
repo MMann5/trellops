@@ -1,12 +1,13 @@
 .boards-nav-bar {
-  // background-color:#026AA7; original color
-  background-color: rgba(0, 0, 0, 0.15);
+  background-color: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(24px);
   max-height: 50px;
   padding: 6px 4px;
   align-items: center;
+
   .left-boards-nav {
     align-items: center;
+
     .home-icon {
       margin-left: 5px;
       background-color: hsla(0, 0%, 100%, 0.3);
@@ -14,6 +15,7 @@
       border: none;
       padding: 4px;
     }
+
     h3 {
       font-family: SourceSans-SemiBold;
       margin-left: 5px;
@@ -24,6 +26,7 @@
       padding: 4px;
     }
   }
+
   .logo {
     display: flex;
     align-items: center;
@@ -31,18 +34,22 @@
     line-height: 1.5;
     font-family: SourceSans-Bold;
     color: #fff;
+
     img {
       width: 16px;
       height: 16px;
       margin-right: 8px;
     }
+
     a {
       color: #fff;
     }
   }
+
   .profile-page-link {
     padding-inline-end: 20px;
     padding-top: 4px;
+
     img {
       height: 40px;
       width: 40px;

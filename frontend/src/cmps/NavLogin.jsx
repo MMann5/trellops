@@ -1,5 +1,5 @@
-import logo from '../assets/imgs/home-logo.svg';
 import { Link } from 'react-router-dom';
+import logo from '../assets/imgs/home-logo.svg';
 
 export function NavLogin() {
   return (

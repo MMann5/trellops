@@ -1,8 +1,11 @@
 import React from 'react';
-import { TextField } from '@material-ui/core';
 import ReactPlayer from 'react-player';
+
+import { TextField } from '@material-ui/core';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
+
 export function FileAttachment({ closePopup }) {
   const [stateVal, createStateVal] = React.useState('');
   const [fileStateVal, createFileVal] = React.useState([]);

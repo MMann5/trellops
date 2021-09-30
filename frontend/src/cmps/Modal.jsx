@@ -1,10 +1,6 @@
 import React from 'react';
-// import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import david from '../assets/imgs/profiles/david.jpg';
-import michael from '../assets/imgs/profiles/michael.png';
-import chang from '../assets/imgs/profiles/chang.jpg';
 import {
   faAlignLeft,
   faExternalLinkSquareAlt,
