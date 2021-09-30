@@ -7,9 +7,11 @@ import {
   faLaptop,
   faTimes,
 } from '@fortawesome/free-solid-svg-icons';
+import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
 import { TaskNav } from './TaskNav';
 import { ModalDetailsMembers } from './ModalDetailsMembers';
 import { ModalDetailsLables } from './ModalDetailsLables';
+import { Comments } from './Comments';
 const customStyles = {
   content: {
     top: '40%',
@@ -59,7 +61,7 @@ export function DetailModal({ taskId, setColorFunc }) {
         contentLabel='Example Modal'
       >
         <button className='close-modal-btn' onClick={closeModal}>
-          <FontAwesomeIcon icon={faTimes} className='svg-close' />
+        <CloseRoundedIcon className="svg-close"/>        
         </button>
         <div className='modal-header'>
           {/* <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2> */}
@@ -87,6 +89,7 @@ export function DetailModal({ taskId, setColorFunc }) {
                 magni. Cum quisquam iusto delectus laborum, sit omnis
                 culpa id.
               </p>
+              <Comments/>
             </div>
             <TaskNav setColor={setColor} />
           </div>

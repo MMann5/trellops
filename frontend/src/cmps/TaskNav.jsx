@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import { FileAttachment } from './FileAttachment';
 import { MemberPick } from './MemberPick';
+import { LabelPick } from './LabelPick';
 import { Box } from '@material-ui/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -24,6 +25,7 @@ export class TaskNav extends Component {
     isFileOpen: false,
     isPaleteOpen: false,
     isMemberOpen: false,
+    isLabelOpen: false,
   };
   toggleOption = (stateOption) => {
     if (stateOption === 'isCheckOpen') {
@@ -36,6 +38,8 @@ export class TaskNav extends Component {
       this.setState({ isPaleteOpen: !this.state.isPaleteOpen });
     } else if (stateOption === 'isMemberOpen') {
       this.setState({ isMemberOpen: !this.state.isMemberOpen });
+    } else if (stateOption === 'isLabelOpen') {
+      this.setState({ isLabelOpen: !this.state.isLabelOpen });
     }
     document.body.classList.toggle('popover-open');
   };
@@ -45,7 +49,8 @@ export class TaskNav extends Component {
       isDateOpen,
       isFileOpen,
       isPaleteOpen,
-      isMemberOpen
+      isMemberOpen,
+      isLabelOpen
     } = this.state;
     return (
       <div className='task-nav'>
@@ -54,15 +59,15 @@ export class TaskNav extends Component {
           <span>Members</span>
         </div>
         <Box display={isMemberOpen ? 'block' : 'none'}>
-          <MemberPick
-            setColor={this.props.setColor}
-            closePopup={this.toggleOption}
-          />
+          <MemberPick closePopup={this.toggleOption} />
         </Box>
-        <div className='options'>
+        <div className='options' onClick={() => this.toggleOption('isLabelOpen')}>
           <FontAwesomeIcon icon={faTag} className='margin-5' />{' '}
           Labels
         </div>
+        <Box display={isLabelOpen ? 'block' : 'none'}>
+          <LabelPick closePopup={this.toggleOption}/>
+        </Box>
         <div
           className='options'
           onClick={() => this.toggleOption('isCheckOpen')}
