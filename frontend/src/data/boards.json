@@ -76,10 +76,6 @@
             "title": "Add member's photos"
           },
           {
-            "id": "c104",
-            "title": "Create more Tasks"
-          },
-          {
             "id": "c105",
             "title": "Erase Local Storage"
           },
@@ -99,7 +95,7 @@
         "title": "Bonus Tasks",
         "tasks": [
           {
-            "id": "c103",
+            "id": "c10553",
             "title": "Add Test Data"
           },
           {
@@ -210,7 +206,7 @@
       "fullname": "Abi Abambi",
       "imgUrl": "http://some-img"
     },
-    "bgColor" : "#0079bf",
+    "bgColor": "#0079bf",
     "labels": [
       {
         "id": "l2101",
