@@ -53,7 +53,7 @@ export class TaskNav extends Component {
       isLabelOpen
     } = this.state;
     return (
-      <div className='task-nav'>
+      <div className='task-nav flex column'>
         <div className='options' onClick={() => this.toggleOption('isMemberOpen')}>
           <FontAwesomeIcon icon={faUser} className='margin-5' />{' '}
           <span>Members</span>

@@ -22,7 +22,7 @@ const customStyles = {
     width: '768px',
     height: '90%',
     marginTop: '20px',
-    padding: '30px',
+    padding: '24px 16px',
     display: 'flex',
     flexDirection: 'column',
     backGroundColor: '#f4f5f7',
@@ -60,7 +60,7 @@ export function DetailModal({ taskId, setColorFunc }) {
         style={customStyles}
         contentLabel='Example Modal'
       >
-        <button className='close-modal-btn' onClick={closeModal}>
+        <button className='close-modal-btn flex align-center justify-center' onClick={closeModal}>
         <CloseRoundedIcon className="svg-close"/>        
         </button>
         <div className='modal-header'>
