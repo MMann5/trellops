@@ -1,4 +1,11 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD
+=======
+
+import { FileAttachment } from './FileAttachment';
+import { MemberPick } from './MemberPick';
+import { LabelPick } from './LabelPick';
+>>>>>>> e40e53c7a341d52ea1455f2c1315488d59bd633d
 import { Box } from '@material-ui/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -23,6 +30,7 @@ export class TaskNav extends Component {
     isFileOpen: false,
     isPaleteOpen: false,
     isMemberOpen: false,
+    isLabelOpen: false,
   };
   toggleOption = (stateOption) => {
     if (stateOption === 'isCheckOpen') {
@@ -35,6 +43,8 @@ export class TaskNav extends Component {
       this.setState({ isPaleteOpen: !this.state.isPaleteOpen });
     } else if (stateOption === 'isMemberOpen') {
       this.setState({ isMemberOpen: !this.state.isMemberOpen });
+    } else if (stateOption === 'isLabelOpen') {
+      this.setState({ isLabelOpen: !this.state.isLabelOpen });
     }
     document.body.classList.toggle('popover-open');
   };
@@ -45,7 +55,8 @@ export class TaskNav extends Component {
       isDateOpen,
       isFileOpen,
       isPaleteOpen,
-      isMemberOpen
+      isMemberOpen,
+      isLabelOpen
     } = this.state;
     return (
       <div className='task-nav'>
@@ -56,10 +67,7 @@ export class TaskNav extends Component {
           <span>Members</span>
         </div>
         <Box display={isMemberOpen ? 'block' : 'none'}>
-          <MemberPick
-            setColor={this.props.setColor}
-            closePopup={this.toggleOption}
-          />
+          <MemberPick closePopup={this.toggleOption} />
         </Box>
         <div
           style={{ justifyContent: 'flex-start', paddingLeft: '30px', textTransform: 'capitalize' }}
@@ -67,6 +75,9 @@ export class TaskNav extends Component {
           <FontAwesomeIcon icon={faTag} className='margin-5' />{' '}
           Labels
         </div>
+        <Box display={isLabelOpen ? 'block' : 'none'}>
+          <LabelPick closePopup={this.toggleOption} />
+        </Box>
         <div
           style={{ justifyContent: 'flex-start', paddingLeft: '30px', textTransform: 'capitalize' }}
           className='options'
