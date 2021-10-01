@@ -1,22 +1,30 @@
 import React, { useState } from 'react';
-
 import { TextField } from '@material-ui/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faTrash,
-  faArrowRight,
 } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
-import { DetailModal } from './Modal';
+import { DetailModal } from './DetailModal';
 
-export function Task({ task, onRemoveTask, groupId, onSetTask }) {
+export function Task({ task, onRemoveTask, groupId, onSetTask, boardId }) {
   const [color, setColor] = useState('#fffff');
   const setColorFunc = (colorVal) => {
     return setColor(colorVal);
   };
 
+  const [modalIsOpen, setIsOpen] = useState(false);
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
   return (
-    <div className='task-preview' style={{ backgroundColor: color }}>
+    <div className='task-preview' style={{ backgroundColor: color }} >
       <TextField
         fullWidth
         size='small'
@@ -28,12 +36,15 @@ export function Task({ task, onRemoveTask, groupId, onSetTask }) {
           disableUnderline: true, // <== added this
         }}
       />
-      <div className='task-btns'>
-        <button onClick={() => onRemoveTask(groupId, task.id)}>
-          <FontAwesomeIcon icon={faTrash} />
-        </button>
-        <DetailModal taskId={task.id} setColorFunc={setColorFunc} />
-      </div>
+      <Link to='/signup'>
+        <div className='task-btns' >
+          <button onClick={() => onRemoveTask(groupId, task.id)}>
+            <FontAwesomeIcon icon={faTrash} />
+          </button>
+          {/* <DetailModal taskId={task.id} setColorFunc={setColorFunc} closeModal={closeModal} modalIsOpen={modalIsOpen}
+          setIsOpen={setIsOpen} /> */}
+        </div>
+      </Link>
     </div>
   );
 }

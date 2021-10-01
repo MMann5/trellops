@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-
-import { FileAttachment } from './FileAttachment';
-import { MemberPick } from './MemberPick';
 import { Box } from '@material-ui/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -13,6 +10,8 @@ import {
   faUser,
 } from '@fortawesome/free-solid-svg-icons';
 
+import { FileAttachment } from './FileAttachment';
+import { MemberPick } from './MemberPick';
 import { ColorPick } from './ColorPick';
 import { Checklist } from './Checklist';
 import { DatePick } from './DatePick';
@@ -39,6 +38,7 @@ export class TaskNav extends Component {
     }
     document.body.classList.toggle('popover-open');
   };
+
   render() {
     const {
       isCheckOpen,
@@ -49,7 +49,9 @@ export class TaskNav extends Component {
     } = this.state;
     return (
       <div className='task-nav'>
-        <div className='options' onClick={() => this.toggleOption('isMemberOpen')}>
+        <div
+          style={{ justifyContent: 'flex-start', paddingLeft: '30px', textTransform: 'capitalize' }}
+          className='options' onClick={() => this.toggleOption('isMemberOpen')}>
           <FontAwesomeIcon icon={faUser} className='margin-5' />{' '}
           <span>Members</span>
         </div>
@@ -59,11 +61,14 @@ export class TaskNav extends Component {
             closePopup={this.toggleOption}
           />
         </Box>
-        <div className='options'>
+        <div
+          style={{ justifyContent: 'flex-start', paddingLeft: '30px', textTransform: 'capitalize' }}
+          className='options'>
           <FontAwesomeIcon icon={faTag} className='margin-5' />{' '}
           Labels
         </div>
         <div
+          style={{ justifyContent: 'flex-start', paddingLeft: '30px', textTransform: 'capitalize' }}
           className='options'
           onClick={() => this.toggleOption('isCheckOpen')}
         >
@@ -77,6 +82,7 @@ export class TaskNav extends Component {
           <Checklist closePopup={this.toggleOption} />
         </Box>
         <div
+          style={{ justifyContent: 'flex-start', paddingLeft: '30px', textTransform: 'capitalize' }}
           className='options'
           onClick={() => this.toggleOption('isDateOpen')}
         >
@@ -87,6 +93,7 @@ export class TaskNav extends Component {
           <DatePick closePopup={this.toggleOption} />
         </Box>
         <div
+          style={{ justifyContent: 'flex-start', paddingLeft: '30px', textTransform: 'capitalize' }}
           className='options'
           onClick={() => this.toggleOption('isFileOpen')}
         >
@@ -97,6 +104,7 @@ export class TaskNav extends Component {
           <FileAttachment closePopup={this.toggleOption} />
         </Box>
         <div
+          style={{ justifyContent: 'flex-start', paddingLeft: '30px', textTransform: 'capitalize' }}
           className='options'
           onClick={() => this.toggleOption('isPaleteOpen')}
         >

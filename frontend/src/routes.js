@@ -2,7 +2,9 @@ import { HomePage } from './pages/HomePage';
 import { Workspace } from './pages/Workspace';
 import { LoginSignup } from './pages/LoginSignup';
 import { BoardApp } from './pages/BoardApp';
-// import { DetailModal } from './cmps/Modal';
+import {
+  TaskDetails
+} from './pages/TaskDetails';
 
 export const routes = [
   {
@@ -11,7 +13,7 @@ export const routes = [
   },
   // {
   //   path: '/board/:boardId/:taskId',
-  //   render: DetailModal,
+  //   render: TaskDetails,
   // },
   {
     path: '/login',
@@ -19,7 +21,7 @@ export const routes = [
   },
   {
     path: '/signup',
-    component: LoginSignup,
+    component: TaskDetails,
   },
   {
     path: '/workspace',

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-import { TextField } from '@material-ui/core';
+import { TextField, TextareaAutosize } from '@material-ui/core';
 
 import { setBoards } from '../store/actions/boards-actions.js';
 

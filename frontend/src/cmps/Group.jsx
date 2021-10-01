@@ -19,6 +19,7 @@ export default function Group({
   onAddTask,
   onRemoveTask,
   onSetTask,
+  boardId
 }) {
   const { board } = useSelector((state) => state.boardModule);
   const currGroup = board.groups.find((g) => g.id === group.id);
@@ -52,6 +53,7 @@ export default function Group({
               onRemoveTask={onRemoveTask}
               groupId={group.id}
               onSetTask={onSetTask}
+              boardId={board._id}
             />
           </div>
         )}

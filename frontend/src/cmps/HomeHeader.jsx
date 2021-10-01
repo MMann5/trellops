@@ -14,9 +14,9 @@ export function HomeHeader() {
           <Link className='login-btn' to='/login'>
             Log in
           </Link>
-          <a className='signup-btn' href='/'>
-            Sign up
-          </a>
+          <Link className='signup-btn' to='/signup'>
+            Sign Up
+          </Link>
         </div>
       </nav>
     </section>

@@ -196,6 +196,7 @@ export function BoardApp(props) {
             ref={provided.innerRef}
           >
             <Group
+              boardId={board._id}
               onRemoveGroup={onRemoveGroup}
               group={group}
               setGroupTitle={setGroupTitle}
