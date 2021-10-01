@@ -1,11 +1,4 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
-=======
-
-import { FileAttachment } from './FileAttachment';
-import { MemberPick } from './MemberPick';
-import { LabelPick } from './LabelPick';
->>>>>>> e40e53c7a341d52ea1455f2c1315488d59bd633d
 import { Box } from '@material-ui/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
