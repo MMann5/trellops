@@ -28,14 +28,9 @@ import { TaskMembers } from '../cmps/TaskDetails/TaskMembers';
 import { MemberPick } from '../cmps/MemberPick';
 import { FileAttachment } from '../cmps/FileAttachment'
 import { ModalDetailsLables } from '../cmps/ModalDetailsLables'
-<<<<<<< HEAD
 import { TaskAttachments } from '../cmps/TaskDetails/TaskAttachments';
 import { TaskCheckList } from '../cmps/TaskDetails/TaskChecklist';
 import { DynamicPopover } from '../cmps/DynamicPopover';
-=======
-
-
->>>>>>> d84c34efc2f3ff67a7826890149c74547870d542
 export function TaskDetails({ props, board }) {
     const [task, setTask] = useState(null)
     const [boardId, setBoardId] = useState(null)
@@ -231,7 +226,7 @@ export function TaskDetails({ props, board }) {
                                     </div>
                                     <span className="element-overlay"></span>
                                 </button>
-                                <button className="secondary-btn actions-btn"  onClick={() => togglePopover('LABELS', board.labels)}>
+                                <button className="secondary-btn actions-btn" onClick={() => togglePopover('LABELS', board.labels)}>
                                     <div className="actions-btn-content flex align-center">
                                         <LabelIcon />
                                         <span>Labels</span>
@@ -267,7 +262,7 @@ export function TaskDetails({ props, board }) {
                                 </button>
 
 
-                                <button className="secondary-btn actions-btn"  onClick={() => togglePopover('COVER')}>
+                                <button className="secondary-btn actions-btn" onClick={() => togglePopover('COVER')}>
                                     <div className="actions-btn-content flex align-center">
                                         <CoverIcon />
                                         <span>Cover</span>
@@ -292,7 +287,7 @@ export function TaskDetails({ props, board }) {
                                     </div>
                                 </button>
                             </div>
-                            {currPopover && <DynamicPopover name={currPopover} props={currProps} setCurrPopover={setCurrPopover}/>}
+                            {currPopover && <DynamicPopover name={currPopover} props={currProps} setCurrPopover={setCurrPopover} />}
                         </div>
                     </div>
                 </div>
