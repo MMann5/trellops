@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
-export function FileAttachment({ closePopup,attachment }) {
+export function FileAttachment({ setCurrPopover, attachment }) {
   const [stateVal, createStateVal] = React.useState('');
   const [fileStateVal, createFileVal] = React.useState([]);
 
@@ -45,7 +45,7 @@ export function FileAttachment({ closePopup,attachment }) {
         <div className='checkfile'>
       <div className="nav-option-header flex justify-center">
         <h3>Attach a file</h3>
-        <button className="clean-btn" onClick={() => { closePopup('isFileOpen') }}>
+        <button className="clean-btn" onClick={() => { setCurrPopover(null) }}>
           <FontAwesomeIcon icon={faTimes} className="close-x" />
         </button>
       </div>

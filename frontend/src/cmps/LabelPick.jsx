@@ -6,14 +6,16 @@ import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
-export function LabelPick({ closePopup }) {
+export function LabelPick({ props, setCurrPopover }) {
     const [stateVal, createStateVal] = React.useState('');
-    const labels = [{ name: 'Done', color: '#7BC86C' }, { name: 'Important', color: '#F5DD29' }, { name: 'Complex', color: '#FFAF3F' }];
+    // const labels = [{ name: 'Done', color: '#7BC86C' }, { name: 'Important', color: '#F5DD29' }, { name: 'Complex', color: '#FFAF3F' }];
+    const labels = props;
+    console.log(props);
     return (
         <div className="label-pick">
             <div className="nav-option-header flex justify-center">
                 <h3>Labels</h3>
-                <button className="clean-btn" onClick={() => { closePopup('isLabelOpen') }}>
+                <button className="clean-btn" onClick={() => { setCurrPopover(null) }}>
                     <FontAwesomeIcon icon={faTimes} className="close-x" />
                 </button>
             </div>
@@ -29,8 +31,10 @@ export function LabelPick({ closePopup }) {
             <div className="label-list flex column">
                 {labels.map((label, idx) =>
                     <div key={idx} className="labelAndBtn flex align-center">
-                        <div style={{ backgroundColor: label.color }} className="label">{label.name}</div>
-                        <div className="label-btn"> <FontAwesomeIcon icon={faPen} /></div>
+                        <div style={{ backgroundColor: label.color }} className="label"
+                        >{label.title}</div>
+                        <div className="label-btn" onClick={()=>{setCurrPopover('CHANGELABEL', label.title)}}> 
+                        <FontAwesomeIcon icon={faPen} /></div>
                     </div>
                 )}
             </div>

@@ -6,7 +6,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 import Checkbox from 'rc-checkbox';
 
-export function Checklist({ closePopup }) {
+export function Checklist({ setCurrPopover }) {
   const [stateVal, createStateVal] = React.useState({});
   const [listStateVal, createListVal] = React.useState([]);
 
@@ -35,7 +35,7 @@ export function Checklist({ closePopup }) {
     <div className='checklist'>
       <div className="nav-option-header flex justify-center">
         <h3>Add a Checklist</h3>
-        <button className="clean-btn" onClick={() => { closePopup('isCheckOpen') }}>
+        <button className="clean-btn" onClick={() => { setCurrPopover(null) }}>
           <FontAwesomeIcon icon={faTimes} className="close-x" />
         </button>
       </div>
