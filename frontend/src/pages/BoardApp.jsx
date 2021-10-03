@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Route } from 'react-router-dom'
+import { Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   DragDropContext,
@@ -26,14 +26,14 @@ export function BoardApp(props) {
   const dispatch = useDispatch();
   const { board } = useSelector((state) => state.boardModule);
   const [boardState, setBoardState] = useState(board);
-  const [modalState, setModalState] = useState(false)
-  useEffect(()=>{
-    if (props.match.params.taskId){
-      setModalState(true)
-    } else{
-      setModalState(false)
+  const [modalState, setModalState] = useState(false);
+  useEffect(() => {
+    if (props.match.params.taskId) {
+      setModalState(true);
+    } else {
+      setModalState(false);
     }
-  })
+  });
 
   useEffect(() => {
     dispatch(loadBoard(props.match.params.boardId));
@@ -94,6 +94,7 @@ export function BoardApp(props) {
   };
 
   const onSetTask = (ev, groupId, taskId) => {
+    ev.stopPropagation();
     const group = boardState.groups.find(
       (value) => value.id === groupId
     );
@@ -238,7 +239,7 @@ export function BoardApp(props) {
       <BoardsNavBar />
       <BoardHeader board={board} setBgColor={setBgColor} />
       <DragDropContext onDragEnd={handleOnDragEnd}>
-      {modalState && <TaskDetails props={props} board={board}/>}
+        {modalState && <TaskDetails props={props} board={board} />}
         <div className='group-list'>
           <Droppable
             droppableId='groups'

@@ -25,7 +25,6 @@ export function getEmptyGroup(txt) {
   };
 }
 
-
 export function getEmptyBoard(txt) {
   return {
     _id: utilService.makeId(),
@@ -42,31 +41,37 @@ export function getEmptyBoard(txt) {
   };
 }
 
+// export function constructTask(txt) {
+//   return {
+//     description: 'No Description',
+//     id: utilService.makeId(),
+//     title: txt,
+//     comments: [],
+//   };
+// }
+
+export function addComment(txt) {
+  return {
+    id: utilService.makeId(),
+    txt,
+    createdAt: Date.now(),
+    byMember: { _id: 'u101', fullname: 'Tal Tarablus' },
+  };
+}
 export function constructTask(txt) {
   return {
     id: utilService.makeId(),
     title: txt,
+    description: '',
+    attachments: [],
+    checklists: [],
+    members: [],
+    style: {
+      coverColor: '',
+      coverImg: '',
+    },
   };
 }
-
-//   export function constructTask(txt) {
-//     return {
-//       id: utilService.makeId(),
-//       title: txt,
-//       description: '',
-//       attachments: [],
-//       checklists: [],
-//       members: [],
-//       style: {
-//         coverColor: '',
-//         coverImg: '',
-//       },
-//     };
-//   };
-// }
-
-
-
 
 function query(entityType = 'boardsDB', boardId) {
   var entities =
@@ -124,7 +129,7 @@ function getBoardById(boardId) {
   return board;
 }
 
-  // export function getEmptyBoard(txt) {
+// export function getEmptyBoard(txt) {
 //   return {
 //     _id: utilService.makeId(),
 //     title: txt,
