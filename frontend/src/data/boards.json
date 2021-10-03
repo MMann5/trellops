@@ -86,11 +86,16 @@
                 "fullname": "Michael Mann",
                 "imgUrl": "https://www.google.com/search?q=random+profile+picture&rlz=1C1NDCM_iwIL777IL777&sxsrf=AOaemvLNrFQ_vcG_2SPRhZdP-9hoYvlmyw:1633208139399&tbm=isch&source=iu&ictx=1&fir=28WseG_shT2cbM%252CTBlIsmmBIzRPHM%252C_%253Bd6nmAc1DACZdzM%252CIc6AIIfNZlZBdM%252C_%253BQJp4PLZLW3DUnM%252CLzzf4C4aN0_oiM%252C_%253BjjsTNt1nEG1RBM%252C_mqehD_6s57tiM%252C_%253BKSRL2R-EekQGPM%252C5ASeylnN9drX2M%252C_%253BqnoR3ksUxXE0wM%252CFChdS8tJ7QZuLM%252C_%253BUM07qGtUp3qmSM%252Cril1qDShORbXNM%252C_%253B6COpRQnftBH9qM%252CIFfQzOn3RF9cMM%252C_%253BGG-6UwPtWbX5ZM%252CQ02J6CqfDevs0M%252C_%253BW2w1aYfaoHhIpM%252CHUJ6_jt__ZegVM%252C_%253B-MDL8yZl08DHlM%252C0kQOENfh8kv4_M%252C_%253BZjK9EBRJFJ3a9M%252CHLlFTfW3mQg0SM%252C_%253BSkLwQL72hwiC_M%252CAVDhH1QPlikjaM%252C_%253BRQiUAYwo2NmE-M%252CHLlFTfW3mQg0SM%252C_%253B2emqwDGerYzuOM%252CxLJE5qqC6JDDRM%252C_%253B51UIF7o30diFrM%252CntsyisVRCbFhsM%252C_&vet=1&usg=AI4_-kTzJpSAQMvb4VFBlLgqAbK3C_ZbYQ&sa=X&sqi=2&ved=2ahUKEwjMwPi3zqzzAhVtQfEDHa_5DaMQ9QF6BAgpEAE#imgrc=-MDL8yZl08DHlM"
               }
-            ], "labels": [
+            ], 
+            "labels": [
               {
                 "id": "l101",
                 "title": "Done",
                 "color": "#7BC86C"
+              },{
+                "id": "l105",
+                "title": "Complex",
+                "color": "#FFAF3F"
               }
             ],
             "attachments": [
@@ -101,23 +106,81 @@
           },
           {
             "id": "c102",
-            "title": "Add Samples"
+            "title": "Add Samples",
+            "labels": [
+              {
+                "id": "l102",
+                "title": "In Progress",
+                "color": "#61bd"
+              },
+              {
+                "id": "l103",
+                "title": "Important",
+                "color": "#F5DD29"
+              }
+            ]
           },
           {
             "id": "c103",
-            "title": "Add member's photos"
+            "title": "Add member's photos",
+            "labels": [
+              {
+                "id": "l101",
+                "title": "Done",
+                "color": "#7BC86C"
+              },{
+                "id": "l105",
+                "title": "Complex",
+                "color": "#FFAF3F"
+              }
+            ]
           },
           {
             "id": "c105",
-            "title": "Erase Local Storage"
+            "title": "Erase Local Storage",
+            "labels": [
+              {
+                "id": "l102",
+                "title": "In Progress",
+                "color": "#61bd"
+              },
+              {
+                "id": "l103",
+                "title": "Important",
+                "color": "#F5DD29"
+              }
+            ]
           },
           {
             "id": "c106",
-            "title": "Check task Id is good"
+            "title": "Check task Id is good",
+            "labels": [
+              {
+                "id": "l101",
+                "title": "Done",
+                "color": "#7BC86C"
+              },{
+                "id": "l105",
+                "title": "Complex",
+                "color": "#FFAF3F"
+              }
+            ]
           },
           {
             "id": "c107",
-            "title": "Render Board's backgorund"
+            "title": "Render Board's backgorund",
+            "labels": [
+              {
+                "id": "l102",
+                "title": "In Progress",
+                "color": "#61bd"
+              },
+              {
+                "id": "l103",
+                "title": "Important",
+                "color": "#F5DD29"
+              }
+            ]
           }
         ],
         "style": {}
@@ -135,6 +198,23 @@
                 "username": "Michael",
                 "fullname": "Michael Mann",
                 "imgUrl": "https://www.google.com/search?q=random+profile+picture&rlz=1C1NDCM_iwIL777IL777&sxsrf=AOaemvLNrFQ_vcG_2SPRhZdP-9hoYvlmyw:1633208139399&tbm=isch&source=iu&ictx=1&fir=28WseG_shT2cbM%252CTBlIsmmBIzRPHM%252C_%253Bd6nmAc1DACZdzM%252CIc6AIIfNZlZBdM%252C_%253BQJp4PLZLW3DUnM%252CLzzf4C4aN0_oiM%252C_%253BjjsTNt1nEG1RBM%252C_mqehD_6s57tiM%252C_%253BKSRL2R-EekQGPM%252C5ASeylnN9drX2M%252C_%253BqnoR3ksUxXE0wM%252CFChdS8tJ7QZuLM%252C_%253BUM07qGtUp3qmSM%252Cril1qDShORbXNM%252C_%253B6COpRQnftBH9qM%252CIFfQzOn3RF9cMM%252C_%253BGG-6UwPtWbX5ZM%252CQ02J6CqfDevs0M%252C_%253BW2w1aYfaoHhIpM%252CHUJ6_jt__ZegVM%252C_%253B-MDL8yZl08DHlM%252C0kQOENfh8kv4_M%252C_%253BZjK9EBRJFJ3a9M%252CHLlFTfW3mQg0SM%252C_%253BSkLwQL72hwiC_M%252CAVDhH1QPlikjaM%252C_%253BRQiUAYwo2NmE-M%252CHLlFTfW3mQg0SM%252C_%253B2emqwDGerYzuOM%252CxLJE5qqC6JDDRM%252C_%253B51UIF7o30diFrM%252CntsyisVRCbFhsM%252C_&vet=1&usg=AI4_-kTzJpSAQMvb4VFBlLgqAbK3C_ZbYQ&sa=X&sqi=2&ved=2ahUKEwjMwPi3zqzzAhVtQfEDHa_5DaMQ9QF6BAgpEAE#imgrc=-MDL8yZl08DHlM"
+              },
+              {
+                "_id": "u103",
+                "username": "Ron",
+                "fullname": "Ron Konti",
+                "imgUrl": "https://www.google.com/search?q=random+profile+picture&rlz=1C1NDCM_iwIL777IL777&sxsrf=AOaemvLNrFQ_vcG_2SPRhZdP-9hoYvlmyw:1633208139399&tbm=isch&source=iu&ictx=1&fir=28WseG_shT2cbM%252CTBlIsmmBIzRPHM%252C_%253Bd6nmAc1DACZdzM%252CIc6AIIfNZlZBdM%252C_%253BQJp4PLZLW3DUnM%252CLzzf4C4aN0_oiM%252C_%253BjjsTNt1nEG1RBM%252C_mqehD_6s57tiM%252C_%253BKSRL2R-EekQGPM%252C5ASeylnN9drX2M%252C_%253BqnoR3ksUxXE0wM%252CFChdS8tJ7QZuLM%252C_%253BUM07qGtUp3qmSM%252Cril1qDShORbXNM%252C_%253B6COpRQnftBH9qM%252CIFfQzOn3RF9cMM%252C_%253BGG-6UwPtWbX5ZM%252CQ02J6CqfDevs0M%252C_%253BW2w1aYfaoHhIpM%252CHUJ6_jt__ZegVM%252C_%253B-MDL8yZl08DHlM%252C0kQOENfh8kv4_M%252C_%253BZjK9EBRJFJ3a9M%252CHLlFTfW3mQg0SM%252C_%253BSkLwQL72hwiC_M%252CAVDhH1QPlikjaM%252C_%253BRQiUAYwo2NmE-M%252CHLlFTfW3mQg0SM%252C_%253B2emqwDGerYzuOM%252CxLJE5qqC6JDDRM%252C_%253B51UIF7o30diFrM%252CntsyisVRCbFhsM%252C_&vet=1&usg=AI4_-kTzJpSAQMvb4VFBlLgqAbK3C_ZbYQ&sa=X&sqi=2&ved=2ahUKEwjMwPi3zqzzAhVtQfEDHa_5DaMQ9QF6BAgpEAE#imgrc=-MDL8yZl08DHlM"
+              }
+            ],
+            "labels": [
+              {
+                "id": "l101",
+                "title": "Done",
+                "color": "#7BC86C"
+              },{
+                "id": "l105",
+                "title": "Complex",
+                "color": "#FFAF3F"
               }
             ]
           },
@@ -184,9 +264,17 @@
                 "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
               }
             ],
-            "labelIds": [
-              "l101",
-              "l102"
+            "labels": [
+              {
+                "id": "l102",
+                "title": "In Progress",
+                "color": "#61bd"
+              },
+              {
+                "id": "l103",
+                "title": "Important",
+                "color": "#F5DD29"
+              }
             ],
             "createdAt": 1590999730348,
             "dueDate": 16156215211,
@@ -209,15 +297,39 @@
         "tasks": [
           {
             "id": "d104",
-            "title": "Make pizzas"
+            "title": "Make pizzas",
+            "labels": [
+            ]
           },
           {
             "id": "d105",
-            "title": "Clean the room"
+            "title": "Clean the room",
+            "labels": [
+              {
+                "id": "l101",
+                "title": "Done",
+                "color": "#7BC86C"
+              },{
+                "id": "l105",
+                "title": "Complex",
+                "color": "#FFAF3F"
+              }
+            ]
           },
           {
             "id": "d106",
-            "title": "Do my laundry"
+            "title": "Do my laundry",
+            "labels": [
+              {
+                "id": "l101",
+                "title": "Done",
+                "color": "#7BC86C"
+              },{
+                "id": "l105",
+                "title": "Complex",
+                "color": "#FFAF3F"
+              }
+            ]
           }
         ],
         "style": {}
@@ -271,19 +383,63 @@
         "tasks": [
           {
             "id": "c201",
-            "title": "Replace logo"
+            "title": "Replace logo",
+            "labels": [
+              {
+                "id": "l101",
+                "title": "Done",
+                "color": "#7BC86C"
+              },{
+                "id": "l105",
+                "title": "Complex",
+                "color": "#FFAF3F"
+              }
+            ]
           },
           {
             "id": "c202",
-            "title": "Add Samples"
+            "title": "Add Samples",
+            "labels": [
+              {
+                "id": "l101",
+                "title": "Done",
+                "color": "#7BC86C"
+              },{
+                "id": "l105",
+                "title": "Complex",
+                "color": "#FFAF3F"
+              }
+            ]
           },
           {
             "id": "c203",
-            "title": "Fix Paddings"
+            "title": "Fix Paddings",
+            "labels": [
+              {
+                "id": "l101",
+                "title": "Done",
+                "color": "#7BC86C"
+              },{
+                "id": "l105",
+                "title": "Complex",
+                "color": "#FFAF3F"
+              }
+            ]
           },
           {
             "id": "c204",
-            "title": "Change font type"
+            "title": "Change font type",
+            "labels": [
+              {
+                "id": "l101",
+                "title": "Done",
+                "color": "#7BC86C"
+              },{
+                "id": "l105",
+                "title": "Complex",
+                "color": "#FFAF3F"
+              }
+            ]
           }
         ],
         "style": {}

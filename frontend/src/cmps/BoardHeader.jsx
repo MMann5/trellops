@@ -64,9 +64,6 @@ export function BoardHeader({ board, setBgColor }) {
             <h4 className='wide-layout'>Invite</h4>
           </a>
         </div>
-        <Link to={'/board/'} className='clean-link'>
-          <h4 className='wide-layout'>Dashboard</h4>
-        </Link>
         <RightMenu setBgColor={setBgColor} />
       </div>
     </div>

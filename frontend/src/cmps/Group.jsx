@@ -23,7 +23,6 @@ export default function Group({
 }) {
   const { board } = useSelector((state) => state.boardModule);
   const currGroup = board.groups.find((g) => g.id === group.id);
-  console.log(currGroup);
   const [tasks, setTasks] = useState(group.tasks);
   useEffect(() => {
     setTasks(currGroup ? currGroup.tasks : group.tasks);

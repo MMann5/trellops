@@ -28,9 +28,14 @@ import { TaskMembers } from '../cmps/TaskDetails/TaskMembers';
 import { MemberPick } from '../cmps/MemberPick';
 import { FileAttachment } from '../cmps/FileAttachment'
 import { ModalDetailsLables } from '../cmps/ModalDetailsLables'
+<<<<<<< HEAD
 import { TaskAttachments } from '../cmps/TaskDetails/TaskAttachments';
 import { TaskCheckList } from '../cmps/TaskDetails/TaskChecklist';
 import { DynamicPopover } from '../cmps/DynamicPopover';
+=======
+
+
+>>>>>>> d84c34efc2f3ff67a7826890149c74547870d542
 export function TaskDetails({ props, board }) {
     const [task, setTask] = useState(null)
     const [boardId, setBoardId] = useState(null)
@@ -74,6 +79,21 @@ export function TaskDetails({ props, board }) {
         setAnchorEl(null);
     };
 
+    const open = Boolean(anchorEl);
+    const id = open ? 'simple-popover' : undefined;
+
+
+
+
+
+
+
+
+
+
+
+
+
     const togglePopover = (name, props) => {
         setCurrPopover(name)
         setCurrProps(props)
@@ -107,6 +127,20 @@ export function TaskDetails({ props, board }) {
                                 <div className="card-details-labels item-container flex column align-flex-end">
                                     <h3 className="card-details-item-header">Labels</h3>
                                     <div className="labels-container flex wrap">
+                                        {/* <span
+                                            className="label" style={{ backgroundColor: 'blue' }}>
+                                            LabelTitle
+                                        </span>
+                                        <span
+                                            className="label" style={{ backgroundColor: 'red' }}>
+                                            LabelTitle
+                                        </span>
+                                        <span
+                                            className="label" style={{ backgroundColor: 'green' }}>
+                                            LabelTitle
+                                        </span>
+                                        <button className="secondary-btn"
+                                        ><AddIcon /></button> */}
                                         <ModalDetailsLables labels={(task) ? task.labels : null} />
                                     </div>
                                 </div>
