@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import Moment from 'react-moment';
 import CheckBoxOutlinedIcon from '@material-ui/icons/CheckBoxOutlined'
 import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
@@ -16,42 +16,93 @@ import LabelIcon from '@material-ui/icons/LocalOfferOutlined'
 import CheckboxIcon from '@material-ui/icons/CheckBoxOutlined'
 import CoverIcon from '@material-ui/icons/VideoLabel';
 import MinusIcon from '@material-ui/icons/RemoveOutlined';
+import Popover from '@mui/material/Popover';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 import CopyIcon from '@material-ui/icons/FileCopyOutlined';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCalendarDay,
     faPaperclip,
 } from '@fortawesome/free-solid-svg-icons';
+import { TaskMembers } from '../cmps/TaskDetails/TaskMembers';
+import { MemberPick } from '../cmps/MemberPick';
+import {FileAttachment} from '../cmps/FileAttachment'
+import {ModalDetailsLables} from '../cmps/ModalDetailsLables'
 
 
-export function TaskDetails() {
+export function TaskDetails({ props, board }) {
+    const [task, setTask] = useState(null)
+    const [boardId, setBoardId] = useState(null)
+    const [group, setGroup] = useState(null)
+    useEffect(() => {
+        if (props.match.params.boardId) {
+            setBoardId(props.match.params.boardId)
+        } if (props.match.params.groupIdId) {//DOn't know why grouId is named groupIdId
+            const currGroup = getGroup(props.match.params.groupIdId)
+            setGroup(currGroup)
+        } if (props.match.params.taskId) {
+            const currTask = getTask(props.match.params.taskId)
+            setTask(currTask)
+        }
+    })
+    const getGroup = (groupId) => {
+        const currGroup = board.groups.find(
+            (value) => value.id === groupId
+        );
+        return currGroup
+    }
+    const getTask = (taskId) => {
+        const currTask = group?.tasks.find(task => {
+            return task.id === taskId
+        })
+        return currTask
+    }
+    const closeModal = () => {
+        debugger;
+        props.history.push(`/board/${boardId}`)
+    }
+
     const [anchorEl, setAnchorEl] = React.useState(null);
 
     const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
+      setAnchorEl(event.currentTarget);
     };
-
+  
     const handleClose = () => {
-        setAnchorEl(null);
+      setAnchorEl(null);
     };
-
+  
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     return (
         <section className="card-details-container">
             <section className="card-details flex column">
-                <button className="close-window-btn"> <CloseRoundedIcon /></button>
+                <button className="close-window-btn" onClick={closeModal}> <CloseRoundedIcon /></button>
                 <div className="card-details-header">
                     <div className="header-content flex">
                         <WebAssetIcon />
-                        <TextareaAutosize value='Task Title'
+                        <TextareaAutosize value={(task) ? task.tit : null}
                             aria-label="empty textarea"
                         />
                     </div>
                     <p className="bottom-list-name">
-                        GroupList...
+                        {(group) ? group.title : 'No List'}
                     </p>
                 </div>
                 <div className="card-details-main-container">
@@ -59,16 +110,11 @@ export function TaskDetails() {
                         <div className="card-details-items flex wrap">
                             <div className="card-details-members item-container flex column">
                                 <h3 className="card-details-item-header">Members</h3>
-                                <div className="members-container flex wrap">
-                                    <img src={michael} style={{ width: '30px', height: '30px', borderRadius: '50%' }} />
-                                    <img src={ron} style={{ width: '30px', height: '30px', borderRadius: '50%' }} />
-                                    <img src={david} style={{ width: '30px', height: '30px', borderRadius: '50%' }} />
-                                    <button className="secondary-btn"><AddIcon /></button>
-                                </div>
+                                <TaskMembers members={(task) ? task.members : null} />
                                 <div className="card-details-labels item-container flex column align-flex-end">
                                     <h3 className="card-details-item-header">Labels</h3>
                                     <div className="labels-container flex wrap">
-                                        <span
+                                        {/* <span
                                             className="label" style={{ backgroundColor: 'blue' }}>
                                             LabelTitle
                                         </span>
@@ -81,7 +127,8 @@ export function TaskDetails() {
                                             LabelTitle
                                         </span>
                                         <button className="secondary-btn"
-                                        ><AddIcon /></button>
+                                        ><AddIcon /></button> */}
+                                        <ModalDetailsLables labels={(task) ? task.labels : null}/>
                                     </div>
                                 </div>
                             </div>
@@ -94,7 +141,7 @@ export function TaskDetails() {
                             </div>
                             <div className="card-description-edit flex column">
                                 <TextareaAutosize
-                                    value='Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam dolorum deserunt, aliquid harum facere expedita reprehenderit sit nesciunt, excepturi asperiores commodi? Libero sapiente ipsam corrupti vel eligendi perferendis pariatur error.'
+                                    value={(task) ? task.description : 'No description'}
                                 />
                             </div>
                         </div>
@@ -223,6 +270,7 @@ export function TaskDetails() {
                                     </div>
                                     <span className="element-overlay"></span>
                                 </button>
+
 
                                 <button className="secondary-btn actions-btn">
                                     <div className="actions-btn-content flex align-center">

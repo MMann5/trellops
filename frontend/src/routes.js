@@ -5,24 +5,21 @@ import { BoardApp } from './pages/BoardApp';
 import {
   TaskDetails
 } from './pages/TaskDetails';
+import { DetailModal } from './cmps/DetailModal';
 
 export const routes = [
   {
-    path: '/board/:boardId',
+    path: '/board/:boardId/:groupIdId?/:taskId?',
     component: BoardApp,
   },
-  // {
-  //   path: '/board/:boardId/:taskId',
-  //   render: TaskDetails,
-  // },
   {
     path: '/login',
     component: LoginSignup,
   },
-  {
-    path: '/signup',
-    component: TaskDetails,
-  },
+  // {
+  //   path: '/signup',
+  //   component: TaskDetails,
+  // },
   {
     path: '/workspace',
     component: Workspace,

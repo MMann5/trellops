@@ -45,7 +45,7 @@
       {
         "_id": "u102",
         "fullname": "Michael Mann",
-        "imgUrl": "https://www.google.com"
+        "imgUrl": "https://www.google.com/search?q=random+profile+picture&rlz=1C1NDCM_iwIL777IL777&sxsrf=AOaemvLNrFQ_vcG_2SPRhZdP-9hoYvlmyw:1633208139399&tbm=isch&source=iu&ictx=1&fir=28WseG_shT2cbM%252CTBlIsmmBIzRPHM%252C_%253Bd6nmAc1DACZdzM%252CIc6AIIfNZlZBdM%252C_%253BQJp4PLZLW3DUnM%252CLzzf4C4aN0_oiM%252C_%253BjjsTNt1nEG1RBM%252C_mqehD_6s57tiM%252C_%253BKSRL2R-EekQGPM%252C5ASeylnN9drX2M%252C_%253BqnoR3ksUxXE0wM%252CFChdS8tJ7QZuLM%252C_%253BUM07qGtUp3qmSM%252Cril1qDShORbXNM%252C_%253B6COpRQnftBH9qM%252CIFfQzOn3RF9cMM%252C_%253BGG-6UwPtWbX5ZM%252CQ02J6CqfDevs0M%252C_%253BW2w1aYfaoHhIpM%252CHUJ6_jt__ZegVM%252C_%253B-MDL8yZl08DHlM%252C0kQOENfh8kv4_M%252C_%253BZjK9EBRJFJ3a9M%252CHLlFTfW3mQg0SM%252C_%253BSkLwQL72hwiC_M%252CAVDhH1QPlikjaM%252C_%253BRQiUAYwo2NmE-M%252CHLlFTfW3mQg0SM%252C_%253B2emqwDGerYzuOM%252CxLJE5qqC6JDDRM%252C_%253B51UIF7o30diFrM%252CntsyisVRCbFhsM%252C_&vet=1&usg=AI4_-kTzJpSAQMvb4VFBlLgqAbK3C_ZbYQ&sa=X&sqi=2&ved=2ahUKEwjMwPi3zqzzAhVtQfEDHa_5DaMQ9QF6BAgpEAE#imgrc=-MDL8yZl08DHlM"
       },
       {
         "_id": "u103",
@@ -65,7 +65,34 @@
         "tasks": [
           {
             "id": "c101",
-            "title": "Replace logo"
+            "title": "Replace logo",
+            "description": "It's important to find a good logo.",
+            "comments": [
+              {
+                "id": "ZdPnm",
+                "txt": "@Michael, did you find anything?",
+                "createdAt": 1590779817436.0,
+                "byMember": {
+                  "_id": "u101",
+                  "fullname": "Tal Tarablus",
+                  "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                }
+              }
+            ],
+            "members": [
+              {
+                "_id": "u102",
+                "username": "Michael",
+                "fullname": "Michael Mann",
+                "imgUrl": "https://www.google.com/search?q=random+profile+picture&rlz=1C1NDCM_iwIL777IL777&sxsrf=AOaemvLNrFQ_vcG_2SPRhZdP-9hoYvlmyw:1633208139399&tbm=isch&source=iu&ictx=1&fir=28WseG_shT2cbM%252CTBlIsmmBIzRPHM%252C_%253Bd6nmAc1DACZdzM%252CIc6AIIfNZlZBdM%252C_%253BQJp4PLZLW3DUnM%252CLzzf4C4aN0_oiM%252C_%253BjjsTNt1nEG1RBM%252C_mqehD_6s57tiM%252C_%253BKSRL2R-EekQGPM%252C5ASeylnN9drX2M%252C_%253BqnoR3ksUxXE0wM%252CFChdS8tJ7QZuLM%252C_%253BUM07qGtUp3qmSM%252Cril1qDShORbXNM%252C_%253B6COpRQnftBH9qM%252CIFfQzOn3RF9cMM%252C_%253BGG-6UwPtWbX5ZM%252CQ02J6CqfDevs0M%252C_%253BW2w1aYfaoHhIpM%252CHUJ6_jt__ZegVM%252C_%253B-MDL8yZl08DHlM%252C0kQOENfh8kv4_M%252C_%253BZjK9EBRJFJ3a9M%252CHLlFTfW3mQg0SM%252C_%253BSkLwQL72hwiC_M%252CAVDhH1QPlikjaM%252C_%253BRQiUAYwo2NmE-M%252CHLlFTfW3mQg0SM%252C_%253B2emqwDGerYzuOM%252CxLJE5qqC6JDDRM%252C_%253B51UIF7o30diFrM%252CntsyisVRCbFhsM%252C_&vet=1&usg=AI4_-kTzJpSAQMvb4VFBlLgqAbK3C_ZbYQ&sa=X&sqi=2&ved=2ahUKEwjMwPi3zqzzAhVtQfEDHa_5DaMQ9QF6BAgpEAE#imgrc=-MDL8yZl08DHlM"
+              }
+            ], "labels": [
+              {
+                "id": "l101",
+                "title": "Done",
+                "color": "#7BC86C"
+              }
+            ]
           },
           {
             "id": "c102",
@@ -96,12 +123,20 @@
         "tasks": [
           {
             "id": "c10553",
-            "title": "Add Test Data"
+            "title": "Add Test Data",
+            "members": [
+              {
+                "_id": "u102",
+                "username": "Michael",
+                "fullname": "Michael Mann",
+                "imgUrl": "https://www.google.com/search?q=random+profile+picture&rlz=1C1NDCM_iwIL777IL777&sxsrf=AOaemvLNrFQ_vcG_2SPRhZdP-9hoYvlmyw:1633208139399&tbm=isch&source=iu&ictx=1&fir=28WseG_shT2cbM%252CTBlIsmmBIzRPHM%252C_%253Bd6nmAc1DACZdzM%252CIc6AIIfNZlZBdM%252C_%253BQJp4PLZLW3DUnM%252CLzzf4C4aN0_oiM%252C_%253BjjsTNt1nEG1RBM%252C_mqehD_6s57tiM%252C_%253BKSRL2R-EekQGPM%252C5ASeylnN9drX2M%252C_%253BqnoR3ksUxXE0wM%252CFChdS8tJ7QZuLM%252C_%253BUM07qGtUp3qmSM%252Cril1qDShORbXNM%252C_%253B6COpRQnftBH9qM%252CIFfQzOn3RF9cMM%252C_%253BGG-6UwPtWbX5ZM%252CQ02J6CqfDevs0M%252C_%253BW2w1aYfaoHhIpM%252CHUJ6_jt__ZegVM%252C_%253B-MDL8yZl08DHlM%252C0kQOENfh8kv4_M%252C_%253BZjK9EBRJFJ3a9M%252CHLlFTfW3mQg0SM%252C_%253BSkLwQL72hwiC_M%252CAVDhH1QPlikjaM%252C_%253BRQiUAYwo2NmE-M%252CHLlFTfW3mQg0SM%252C_%253B2emqwDGerYzuOM%252CxLJE5qqC6JDDRM%252C_%253B51UIF7o30diFrM%252CntsyisVRCbFhsM%252C_&vet=1&usg=AI4_-kTzJpSAQMvb4VFBlLgqAbK3C_ZbYQ&sa=X&sqi=2&ved=2ahUKEwjMwPi3zqzzAhVtQfEDHa_5DaMQ9QF6BAgpEAE#imgrc=-MDL8yZl08DHlM"
+              }
+            ]
           },
           {
             "id": "c104",
             "title": "Help me",
-            "description": "description",
+            "description": "I need a lot of help cleaning my code.",
             "comments": [
               {
                 "id": "ZdPnm",
@@ -144,7 +179,10 @@
                 "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
               }
             ],
-            "labelIds": ["l101", "l102"],
+            "labelIds": [
+              "l101",
+              "l102"
+            ],
             "createdAt": 1590999730348,
             "dueDate": 16156215211,
             "byMember": {

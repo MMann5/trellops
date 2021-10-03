@@ -23,9 +23,8 @@
 @import 'cmps/board-header';
 @import 'cmps/member-pick';
 @import 'cmps/label-pick';
-@import 'cmps/modal-deatails-members';
 @import 'cmps/modal-details-labels';
-@import 'cmps/popover';
+@import 'cmps/task-members';
 // @import "cmps/app-header";
 // @import "cmps/app-footer";
 // @import "cmps/user-msg";
@@ -34,3 +33,4 @@
 @import 'pages/home-page';
 @import 'pages/workspace';
 @import 'pages/board-app';
+@import 'pages/task-details';

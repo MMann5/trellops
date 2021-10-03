@@ -1,12 +1,13 @@
 .card-details-container {
     overflow-y: auto;
-    // top: 0;
-    // padding: 48px;
-    // height: 100%;
-    // width: 100%;
-    // z-index: 4;
-    // position: fixed;
-    // background-color: rgb(18, 192, 134);
+    top: 0;
+    padding: 48px;
+    height: 100%;
+    width: 100%;
+    z-index: 4;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    
 
     &::after {
         content: "";

@@ -15,6 +15,7 @@ import { MemberPick } from './MemberPick';
 import { ColorPick } from './ColorPick';
 import { Checklist } from './Checklist';
 import { DatePick } from './DatePick';
+import { LabelPick } from './LabelPick';
 
 export class TaskNav extends Component {
   state = {

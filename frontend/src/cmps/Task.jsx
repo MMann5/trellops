@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { TextField } from '@material-ui/core';
+import { TaskDetails } from '../pages/TaskDetails';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faTrash,
@@ -36,7 +37,7 @@ export function Task({ task, onRemoveTask, groupId, onSetTask, boardId }) {
           disableUnderline: true, // <== added this
         }}
       />
-      <Link to='/signup'>
+      <Link to={`/board/${boardId}/${groupId}/${task.id}`}>
         <div className='task-btns' >
           <button onClick={() => onRemoveTask(groupId, task.id)}>
             <FontAwesomeIcon icon={faTrash} />

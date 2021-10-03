@@ -2,11 +2,12 @@ import React from 'react';
 import ReactPlayer from 'react-player';
 
 import { TextField } from '@material-ui/core';
-
+import Popover from '@mui/material/Popover';
+import Button from '@mui/material/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
-export function FileAttachment({ closePopup }) {
+export function FileAttachment({ closePopup,attachment }) {
   const [stateVal, createStateVal] = React.useState('');
   const [fileStateVal, createFileVal] = React.useState([]);
 
@@ -25,8 +26,23 @@ export function FileAttachment({ closePopup }) {
     );
   });
 
+
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
+
   return (
-    <div className='checkfile'>
+        <div className='checkfile'>
       <div className="nav-option-header flex justify-center">
         <h3>Attach a file</h3>
         <button className="clean-btn" onClick={() => { closePopup('isFileOpen') }}>

@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { Route } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import {
   DragDropContext,
   Droppable,
   Draggable,
 } from 'react-beautiful-dnd';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-
 import Group from '../cmps/Group';
 import { BoardsNavBar } from '../cmps/BoardsNavBar.jsx';
 import { BoardHeader } from '../cmps/BoardHeader.jsx';
-
 import {
   loadBoard,
   onSaveBoard,
@@ -22,11 +20,20 @@ import {
   getEmptyGroup,
   constructTask,
 } from '../services/board-service.js';
+import { TaskDetails } from './TaskDetails';
 
 export function BoardApp(props) {
   const dispatch = useDispatch();
   const { board } = useSelector((state) => state.boardModule);
   const [boardState, setBoardState] = useState(board);
+  const [modalState, setModalState] = useState(false)
+  useEffect(()=>{
+    if (props.match.params.taskId){
+      setModalState(true)
+    } else{
+      setModalState(false)
+    }
+  })
 
   useEffect(() => {
     dispatch(loadBoard(props.match.params.boardId));
@@ -231,6 +238,7 @@ export function BoardApp(props) {
       <BoardsNavBar />
       <BoardHeader board={board} setBgColor={setBgColor} />
       <DragDropContext onDragEnd={handleOnDragEnd}>
+      {modalState && <TaskDetails props={props} board={board}/>}
         <div className='group-list'>
           <Droppable
             droppableId='groups'

@@ -10,6 +10,7 @@ import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
 import { TaskNav } from './TaskNav';
 import { ModalDetailsMembers } from './ModalDetailsMembers';
 import { ModalDetailsLables } from './ModalDetailsLables';
+import { Comments } from './Comments';
 const customStyles = {
   content: {
     top: '40%',
