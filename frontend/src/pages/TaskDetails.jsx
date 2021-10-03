@@ -55,7 +55,9 @@ export function TaskDetails({ props, board }) {
   const [task, setTask] = useState(getTask(taskId));
   const [commentVal, setCommentVal] = useState('');
   const dispatch = useDispatch();
-  useEffect(() => {}, [task.comments]);
+  useEffect(() => {
+    sendTask(false);
+  }, [task.comments]);
 
   const sendTask = (isRemove) => {
     const currGrp = board.groups.find(
