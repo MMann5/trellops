@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Moment from 'react-moment';
 import CheckBoxOutlinedIcon from '@material-ui/icons/CheckBoxOutlined'
 import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
@@ -27,14 +26,17 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { TaskMembers } from '../cmps/TaskDetails/TaskMembers';
 import { MemberPick } from '../cmps/MemberPick';
-import {FileAttachment} from '../cmps/FileAttachment'
-import {ModalDetailsLables} from '../cmps/ModalDetailsLables'
-
-
+import { FileAttachment } from '../cmps/FileAttachment'
+import { ModalDetailsLables } from '../cmps/ModalDetailsLables'
+import { TaskAttachments } from '../cmps/TaskDetails/TaskAttachments';
+import { TaskCheckList } from '../cmps/TaskDetails/TaskChecklist';
+import { DynamicPopover } from '../cmps/DynamicPopover';
 export function TaskDetails({ props, board }) {
     const [task, setTask] = useState(null)
     const [boardId, setBoardId] = useState(null)
     const [group, setGroup] = useState(null)
+    const [currPopover, setCurrPopover] = useState('')
+    const [currProps, setCurrProps] = useState('')
     useEffect(() => {
         if (props.match.params.boardId) {
             setBoardId(props.match.params.boardId)
@@ -59,36 +61,27 @@ export function TaskDetails({ props, board }) {
         return currTask
     }
     const closeModal = () => {
-        debugger;
         props.history.push(`/board/${boardId}`)
     }
 
     const [anchorEl, setAnchorEl] = React.useState(null);
 
     const handleClick = (event) => {
-      setAnchorEl(event.currentTarget);
+        setAnchorEl(event.currentTarget);
     };
-  
+
     const handleClose = () => {
-      setAnchorEl(null);
+        setAnchorEl(null);
     };
-  
+
+    const togglePopover = (name, props) => {
+        setCurrPopover(name)
+        setCurrProps(props)
+        console.log('details props', props);
+    }
+
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     return (
         <section className="card-details-container">
@@ -97,7 +90,7 @@ export function TaskDetails({ props, board }) {
                 <div className="card-details-header">
                     <div className="header-content flex">
                         <WebAssetIcon />
-                        <TextareaAutosize value={(task) ? task.tit : null}
+                        <TextareaAutosize value={(task) ? task.title : null}
                             aria-label="empty textarea"
                         />
                     </div>
@@ -114,21 +107,7 @@ export function TaskDetails({ props, board }) {
                                 <div className="card-details-labels item-container flex column align-flex-end">
                                     <h3 className="card-details-item-header">Labels</h3>
                                     <div className="labels-container flex wrap">
-                                        {/* <span
-                                            className="label" style={{ backgroundColor: 'blue' }}>
-                                            LabelTitle
-                                        </span>
-                                        <span
-                                            className="label" style={{ backgroundColor: 'red' }}>
-                                            LabelTitle
-                                        </span>
-                                        <span
-                                            className="label" style={{ backgroundColor: 'green' }}>
-                                            LabelTitle
-                                        </span>
-                                        <button className="secondary-btn"
-                                        ><AddIcon /></button> */}
-                                        <ModalDetailsLables labels={(task) ? task.labels : null}/>
+                                        <ModalDetailsLables labels={(task) ? task.labels : null} />
                                     </div>
                                 </div>
                             </div>
@@ -152,22 +131,8 @@ export function TaskDetails({ props, board }) {
                                     <h3>Attachments</h3>
                                 </div>
                                 <div className="attachments-container">
-                                    <a
-                                        href='/#' className="clean-link">
-                                        <div className="attach-preview flex">
-                                            <div className="img-container">
-                                                <img src={michael} />
-                                            </div>
-                                            <div className="attach-content flex column full">
-                                                <span className="file-name">Attachment Name</span>
-                                                <div className="time-n-actions flex wrap align-center ">
-                                                    <Moment>createdAt</Moment>
-                                                    <span>-</span>
-                                                    <button
-                                                    >Delete</button>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <a href='/#' className="clean-link">
+                                        <TaskAttachments task={task} />
                                     </a>
                                 </div>
                                 <button className="secondary-btn"
@@ -175,7 +140,7 @@ export function TaskDetails({ props, board }) {
                             </div>
                         </div>
                         <div className="card-checklists" >
-                            <div className="checklist-preview">
+                            {/* <div className="checklist-preview">
                                 <div className="window-modal-title flex align-center justify-space-between">
                                     <div className="flex align-center">
                                         <CheckBoxOutlinedIcon />
@@ -183,29 +148,16 @@ export function TaskDetails({ props, board }) {
                                     </div>
                                     <button
                                         className="secondary-btn">Delete</button>
-                                </div>
-                                <div className="title-editor flex">
-                                    <CheckBoxOutlinedIcon />
-                                    <div className="flex column">
-                                        <TextareaAutosize
-                                            value='checklist title'
-                                        />
-                                        <div className="checklist-controllers flex align-center">
-                                            <button className="secondary-btn">
-                                                Save
-                                            </button>
-                                            <CloseRoundedIcon className="close-svg" />
-                                        </div >
-                                    </div>
-                                </div>
-                                <div>
+                                </div> */}
+                            <TaskCheckList task={task} />
+                            {/* <div>
                                     <div>Todo List</div>
                                     <TextField value='Todo add'
                                     />
                                     <button>Todo Add</button>
                                 </div>
 
-                            </div>
+                            </div> */}
                         </div>
                         <div className="card-activities flex column">
                             <div className="window-modal-title flex justify-space-between">
@@ -238,14 +190,14 @@ export function TaskDetails({ props, board }) {
                     <div className="card-details-sidebar flex column full">
                         <div className="details-actions-wrapper flex">
                             <div className="add-section flex column">
-                                <button className="secondary-btn actions-btn ">
+                                <button className="secondary-btn actions-btn " onClick={() => togglePopover('MEMBERS', [board, group.id, task])}>
                                     <div className="actions-btn-content flex align-center">
                                         <MemberIcon />
                                         <span>Members</span>
                                     </div>
                                     <span className="element-overlay"></span>
                                 </button>
-                                <button className="secondary-btn actions-btn">
+                                <button className="secondary-btn actions-btn"  onClick={() => togglePopover('LABELS', board.labels)}>
                                     <div className="actions-btn-content flex align-center">
                                         <LabelIcon />
                                         <span>Labels</span>
@@ -254,7 +206,7 @@ export function TaskDetails({ props, board }) {
                                 </button>
 
 
-                                <button className="secondary-btn actions-btn">
+                                <button className="secondary-btn actions-btn" onClick={() => togglePopover('CHECKLIST', task)}>
                                     <div className="actions-btn-content flex align-center">
                                         <CheckboxIcon />
                                         <span>Checklist</span>
@@ -263,7 +215,7 @@ export function TaskDetails({ props, board }) {
                                 </button>
 
 
-                                <button className="secondary-btn actions-btn">
+                                <button className="secondary-btn actions-btn" onClick={() => togglePopover('DATE')}>
                                     <div className="actions-btn-content flex align-center">
                                         <FontAwesomeIcon icon={faCalendarDay} />
                                         <span>Date</span>
@@ -272,7 +224,7 @@ export function TaskDetails({ props, board }) {
                                 </button>
 
 
-                                <button className="secondary-btn actions-btn">
+                                <button className="secondary-btn actions-btn" onClick={() => togglePopover('ATTACHMENTE')}>
                                     <div className="actions-btn-content flex align-center">
                                         <FontAwesomeIcon icon={faPaperclip} />
                                         <span>Attachment</span>
@@ -281,7 +233,7 @@ export function TaskDetails({ props, board }) {
                                 </button>
 
 
-                                <button className="secondary-btn actions-btn">
+                                <button className="secondary-btn actions-btn"  onClick={() => togglePopover('COVER')}>
                                     <div className="actions-btn-content flex align-center">
                                         <CoverIcon />
                                         <span>Cover</span>
@@ -306,6 +258,7 @@ export function TaskDetails({ props, board }) {
                                     </div>
                                 </button>
                             </div>
+                            {currPopover && <DynamicPopover name={currPopover} props={currProps} setCurrPopover={setCurrPopover}/>}
                         </div>
                     </div>
                 </div>

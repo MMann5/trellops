@@ -5,7 +5,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
-export function DatePick({ closePopup }) {
+export function DatePick({ setCurrPopover }) {
   const [startDate, setStartDate] = useState(new Date());
 
   return (
@@ -15,7 +15,7 @@ export function DatePick({ closePopup }) {
         <button
           className='clean-btn'
           onClick={() => {
-            closePopup('isDateOpen');
+            setCurrPopover(null);
           }}
         >
           <FontAwesomeIcon icon={faTimes} className='close-x' />
