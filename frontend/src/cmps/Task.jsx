@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 import { TextField } from '@material-ui/core';
+import CheckBoxOutlinedIcon from '@material-ui/icons/CheckBoxOutlined'
+import CheckboxIcon from '@material-ui/icons/CheckBoxOutlined'
 import { TaskDetails } from '../pages/TaskDetails';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faTrash,
 } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-
-import { DetailModal } from './DetailModal';
+import SubjectIcon from '@material-ui/icons/Subject';
+import Avatar from '@mui/material/Avatar';
+import Stack from '@mui/material/Stack';
+import { deepOrange, deepPurple } from '@mui/material/colors';
 
 export function Task({ task, onRemoveTask, groupId, onSetTask, boardId }) {
   const [color, setColor] = useState('#fffff');
@@ -15,17 +19,15 @@ export function Task({ task, onRemoveTask, groupId, onSetTask, boardId }) {
     return setColor(colorVal);
   };
 
-  const [modalIsOpen, setIsOpen] = useState(false);
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
+  // const [toggleLabel, SetToggleLabel] = useState(false)
 
   return (
     <div className='task-preview' style={{ backgroundColor: color }} >
+      <div className="label-view">{task.labels?.map((label, idx) => {
+        return (
+          <span className='labels-task' style={{ backgroundColor: label.color }} key={idx}>{label.title}</span>
+        )
+      })}</div>
       <TextField
         fullWidth
         size='small'
@@ -39,13 +41,20 @@ export function Task({ task, onRemoveTask, groupId, onSetTask, boardId }) {
       />
       <Link to={`/board/${boardId}/${groupId}/${task.id}`}>
         <div className='task-btns' >
-          <button onClick={() => onRemoveTask(groupId, task.id)}>
-            <FontAwesomeIcon icon={faTrash} />
-          </button>
-          {/* <DetailModal taskId={task.id} setColorFunc={setColorFunc} closeModal={closeModal} modalIsOpen={modalIsOpen}
-          setIsOpen={setIsOpen} /> */}
+          <div className="sign-task">
+            <span>{task.description ? <SubjectIcon /> : ''}</span>
+            <span>{task.checklists ? <CheckBoxOutlinedIcon /> : ''}</span>
+          </div>
+          <div className="avatar">{task.members?.map((member, idx) => {
+            return (<span key={idx} className="avatar-img"><Stack direction="row" spacing={2}>
+              <Avatar sx={{ width: 20, height: 20, bgcolor: deepPurple[500] }}>{member.username.charAt(0)}</Avatar>
+            </Stack></span>)
+          })}</div>
         </div>
       </Link>
     </div>
   );
 }
+{/* /* <button onClick={() => onRemoveTask(groupId, task.id)}>
+            <FontAwesomeIcon icon={faTrash} />
+          </button> */}

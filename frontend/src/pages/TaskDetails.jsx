@@ -27,8 +27,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { TaskMembers } from '../cmps/TaskDetails/TaskMembers';
 import { MemberPick } from '../cmps/MemberPick';
-import {FileAttachment} from '../cmps/FileAttachment'
-import {ModalDetailsLables} from '../cmps/ModalDetailsLables'
+import { FileAttachment } from '../cmps/FileAttachment'
+import { ModalDetailsLables } from '../cmps/ModalDetailsLables'
 
 
 export function TaskDetails({ props, board }) {
@@ -66,13 +66,13 @@ export function TaskDetails({ props, board }) {
     const [anchorEl, setAnchorEl] = React.useState(null);
 
     const handleClick = (event) => {
-      setAnchorEl(event.currentTarget);
+        setAnchorEl(event.currentTarget);
     };
-  
+
     const handleClose = () => {
-      setAnchorEl(null);
+        setAnchorEl(null);
     };
-  
+
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
 
@@ -128,7 +128,7 @@ export function TaskDetails({ props, board }) {
                                         </span>
                                         <button className="secondary-btn"
                                         ><AddIcon /></button> */}
-                                        <ModalDetailsLables labels={(task) ? task.labels : null}/>
+                                        <ModalDetailsLables labels={(task) ? task.labels : null} />
                                     </div>
                                 </div>
                             </div>

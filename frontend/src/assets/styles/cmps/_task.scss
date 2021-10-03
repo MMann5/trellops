@@ -20,17 +20,42 @@
 
   &:hover {
     background-color: #fff;
+  }
 
-    &:hover .task-btns {
-      transition-delay: 0.1s;
-      visibility: visible;
+  .label-view {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .labels-task {
+      border-radius: 4px;
+      padding: 2px;
+      color: #fff;
+      margin-inline-end: 5px;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
     }
   }
 
   .task-btns {
-    visibility: hidden;
     display: flex;
-    justify-content: flex-end;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    .avatar {
+      display: flex;
+      flex-direction: row;
+
+      .avatar-img {
+        margin-inline-end: 2px;
+      }
+    }
+
+    svg {
+      width: 15px;
+    }
 
     button {
       border: none;
