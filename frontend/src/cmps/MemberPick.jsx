@@ -1,62 +1,75 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { TextField } from '@material-ui/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import david from '../assets/imgs/profiles/david.jpg';
-import michael from '../assets/imgs/profiles/michael.png';
-import ron from '../assets/imgs/profiles/ron.png';
-import {
-    loadBoard,
-    onSaveBoard,
-    setBoards,
-  } from '../store/actions/boards-actions.js';
-import { useDispatch, useSelector } from 'react-redux';
-export function MemberPick({props, setCurrPopover}) {
-    const dispatch = useDispatch();
-    const members = props[0].members
-    const checkMemberInTask = (memberId) => {
-        const taskMembers = props[2].members
-        const isInTask = taskMembers.find(member => member._id === memberId)
-        if (isInTask) return true;
-        else return false;
-    }
-    const toggleMember = (member) => {
-        const board = props[0]
-        const task = props[2]
-        const isInTask = checkMemberInTask(member._id)
-        if (isInTask) {
-            const memberIdx = task.members.findIndex(currMember => currMember._id === member._id)
-            task.members.splice(memberIdx, 1)
-        } else {
-            task.members.push(member)
-        }
-        const groupId = props[1]
-        const currGrp = board.groups.find(group => group.id === groupId)
-        const taskIdx = currGrp.tasks.findIndex(currTask => currTask._id === task._id)
-        const currGrpIdx = board.groups.findIndex(group => group.id === groupId)
-        currGrp.tasks.splice(taskIdx, 1, task)
-        board.groups.splice(currGrpIdx, 1, currGrp)
-        dispatch(onSaveBoard(board));
-    }
+import { Popover } from '@material-ui/core';
+import Checkbox from 'rc-checkbox';
+import David from '../assets/imgs/profiles/david.jpg';
+import Michael from '../assets/imgs/profiles/michael.png';
+import Ron from '../assets/imgs/profiles/ron.png';
+import Tal from '../assets/imgs/profiles/tal.jpg';
+import Avatar from '@mui/material/Avatar';
+import Stack from '@mui/material/Stack';
+import { deepOrange, deepPurple } from '@mui/material/colors';
 
-    return(
-            <div className="member-pick">
-                <div className="nav-option-header flex justify-center">
-                    <h3>Members</h3>
-                    <button className="clean-btn" onClick={() => { setCurrPopover(null) }}>
-                        <FontAwesomeIcon icon={faTimes} className="close-x" />
-                    </button>
-                </div>
-                <div className="member-container">
-                    <h4>Board Members</h4>
-                    <ul className="member-list clean-list">
-                        {members?.map((member, idx) => {
-                            return <li key={idx} className='profile-container flex align-center' onClick={() => { toggleMember(member) }}>
-                                <img src={`../assets/imgs/profiles/${member.imgUrl}`} alt='' />
-                                <span>{member.fullname}</span> <span>{checkMemberInTask(member._id) && '✓'}</span>
-                            </li>
-                        })}
-                    </ul>
-                </div>
-            </div>
-        )
+export function MemberPick({ props, setCurrPopover, sendTask }) {
+  const getMembers = () => {
+    return board.members.map((boardMember) => {
+      return props.members.length > 0
+        ? props.members.find(
+            (member) => member._id === boardMember._id
+          )
+        : false
+        ? { ...boardMember, checked: true }
+        : boardMember;
+    });
+  };
+  const { board } = useSelector((state) => state.boardModule);
+  const [stateVal, createStateVal] = React.useState({});
+  const [memberStateVal, createMemberVal] = React.useState(
+    getMembers()
+  );
+
+  const onChange = (e, idx) => {
+    const copyMember = [...memberStateVal];
+    copyMember[idx].checked = e.target.checked;
+    createMemberVal(copyMember);
+    const copySend = [...copyMember];
+    console.log(copyMember);
+    console.log(copySend);
+    const checkedMembers = copySend.filter(
+      (member) => member.checked
+    );
+    sendTask(false, { ...props, members: checkedMembers });
+  };
+
+  const members = memberStateVal.map((val, idx) => {
+    return (
+      <li key={idx}>
+        <Checkbox
+          onChange={(ev) => onChange(ev, idx)}
+          checked={val.checked}
+        />
+        {val.fullname}
+      </li>
+    );
+  });
+
+  return (
+    <div className='checklist'>
+      <div className='nav-option-header flex justify-center'>
+        <h3>Add Members</h3>
+        <ul>{members}</ul>
+        <button
+          className='clean-btn'
+          onClick={() => {
+            setCurrPopover(null);
+          }}
+        >
+          <FontAwesomeIcon icon={faTimes} className='close-x' />
+        </button>
+      </div>
+    </div>
+  );
 }

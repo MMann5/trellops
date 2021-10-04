@@ -1,43 +1,79 @@
 import React from 'react';
-import { TextField } from '@material-ui/core';
+import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes, faPen } from '@fortawesome/free-solid-svg-icons';
-import Popover from '@mui/material/Popover';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+// import Checkbox from 'rc-checkbox';
 
-export function LabelPick({ props, setCurrPopover }) {
-    const [stateVal, createStateVal] = React.useState('');
-    // const labels = [{ name: 'Done', color: '#7BC86C' }, { name: 'Important', color: '#F5DD29' }, { name: 'Complex', color: '#FFAF3F' }];
-    const labels = props;
-    console.log(props);
+import Checkbox from '@mui/material/Checkbox';
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
+
+export function LabelPick({ props, setCurrPopover, sendTask }) {
+  const getLabels = () => {
+    return board.labels.map((boardLabel) => {
+      return props.labels.length > 0
+        ? props.labels.find((label) => label.id === boardLabel.id)
+        : false
+        ? { ...boardLabel, checked: true }
+        : boardLabel;
+    });
+  };
+  const { board } = useSelector((state) => state.boardModule);
+  const [stateVal, createStateVal] = React.useState({});
+  const [labelStateVal, createLabelVal] = React.useState(
+    getLabels()
+  );
+
+  const onChange = (e, idx) => {
+    const copyLabel = [...labelStateVal];
+    copyLabel[idx].checked = e.target.checked;
+    createLabelVal(copyLabel);
+    const copySend = [...copyLabel];
+    console.log(copyLabel);
+    console.log(copySend);
+    const checkedLabels = copySend.filter((label) => label.checked);
+    sendTask(false, { ...props, labels: checkedLabels });
+  };
+
+  const labels = labelStateVal.map((val, idx) => {
     return (
-        <div className="label-pick">
-            <div className="nav-option-header flex justify-center">
-                <h3>Labels</h3>
-                <button className="clean-btn" onClick={() => { setCurrPopover(null) }}>
-                    <FontAwesomeIcon icon={faTimes} className="close-x" />
-                </button>
-            </div>
-            <TextField
-                fullWidth
-                size='small'
-                margin='normal'
-                variant='outlined'
-                placeholder='Search labels...'
-                onChange={(ev) => createStateVal(ev.target.value)}
-                value={stateVal ? stateVal : ''}
-            />
-            <div className="label-list flex column">
-                {labels.map((label, idx) =>
-                    <div key={idx} className="labelAndBtn flex align-center">
-                        <div style={{ backgroundColor: label.color }} className="label"
-                        >{label.title}</div>
-                        <div className="label-btn" onClick={()=>{setCurrPopover('CHANGELABEL', label.title)}}> 
-                        <FontAwesomeIcon icon={faPen} /></div>
-                    </div>
-                )}
-            </div>
-        </div>
-    )
+      <li
+        className='label'
+        key={idx}
+        style={{
+          backgroundColor: val.color,
+          color: 'white',
+          padding: 5,
+          marginBottom: 10,
+          height: '50px',
+          width: '100%',
+        }}
+      >
+        <Checkbox
+          onChange={(ev) => onChange(ev, idx)}
+          checked={val.checked}
+          icon={<BookmarkBorderIcon />}
+          checkedIcon={<BookmarkIcon />}
+        />
+        {val.title}
+      </li>
+    );
+  });
+
+  return (
+    <div className='checklist'>
+      <div className='nav-option-header justify-center card-details-labels'>
+        {/* <h3>Add a Labels</h3> */}
+        <ul className='labels-container'>{labels}</ul>
+        <button
+          className='clean-btn'
+          onClick={() => {
+            setCurrPopover(null);
+          }}
+        >
+          <FontAwesomeIcon icon={faTimes} className='close-x' />
+        </button>
+      </div>
+    </div>
+  );
 }

@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
-import DatePicker from 'react-datepicker';
+import React, { useState, useEffect } from 'react';
 import 'react-datepicker/dist/react-datepicker.css';
 
+import {
+  DatePicker,
+  MuiPickersUtilsProvider,
+} from '@material-ui/pickers';
+import DateFnsUtils from '@date-io/date-fns';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-
-export function DatePick({ setCurrPopover }) {
-  const [startDate, setStartDate] = useState(new Date());
-
+export function DatePick({ props, setCurrPopover, sendTask }) {
+  const [startDate, setStartDate] = useState(Date.now());
+  useEffect(() => {
+    sendTask(false, { ...props, dueDate: startDate });
+  }, [startDate]);
   return (
     <div className='date-pick'>
       <div className='nav-option-header flex justify-center'>
@@ -21,13 +26,15 @@ export function DatePick({ setCurrPopover }) {
           <FontAwesomeIcon icon={faTimes} className='close-x' />
         </button>
       </div>
-      <DatePicker
-        className='date-picker'
-        selected={startDate}
-        onChange={(date) => setStartDate(date)}
-        tetherConstraints={[]}
-        popperModifiers={{}}
-      />
+      <MuiPickersUtilsProvider utils={DateFnsUtils}>
+        <DatePicker
+          autoOk
+          variant='static'
+          openTo='date'
+          value={startDate}
+          onChange={(date) => setStartDate(date)}
+        />
+      </MuiPickersUtilsProvider>
     </div>
   );
 }

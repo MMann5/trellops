@@ -1,24 +1,53 @@
-import Moment from 'react-moment';
-export function TaskAttachments({ task }) {
-    return (
-        <div className="attach-preview flex">
-            {task?.attachments?.map((attachment, idx) =>
-                <div key={idx}>
-                    <div className="img-container">
-                        <img src={attachment.attachUrl} alt="No attachments" />
+import React, { useState, useEffect } from 'react';
 
-                    </div>
-                    <div className="attach-content flex column full">
-                        <span className="file-name">{ attachment.title}</span>
-                        <div className="time-n-actions flex wrap align-center ">
-                            <Moment>createdAt</Moment>
-                            <span>-</span>
-                            <button
-                            >Delete</button>
-                        </div>
-                    </div>
-                </div>
-            )}
-        </div>
-    )
+export function TaskAttachments({ task, sendTask }) {
+  const [attachmentStateVal, createAttachmentVal] = React.useState(
+    task.attachments ? task.attachments : ''
+  );
+  console.log(task);
+  console.log(attachmentStateVal);
+  useEffect(() => {
+    sendTask(false, {
+      ...task,
+      attachments: attachmentStateVal,
+    });
+  }, [attachmentStateVal]);
+
+  const deleteAttachment = (idx) => {
+    const attachmentCopy = [...task.attachments];
+    attachmentCopy.splice(idx, 1);
+    createAttachmentVal(attachmentCopy);
+  };
+  const attachment = task.attachments
+    ? task.attachments.map((val, idx) => {
+        return (
+          <li key={idx}>
+            <a
+              href={val}
+              target='_blank'
+              rel='noopener noreferrer'
+              style={{ cursor: 'pointer' }}
+            >
+              <img
+                style={{ display: 'block', objectFit: 'cover' }}
+                src={val}
+                alt='attachment file'
+                style={{ width: '20%' }}
+              />
+            </a>
+            <button
+              style={{
+                marginInlineStart: '10px',
+                width: '150px',
+              }}
+              onClick={() => deleteAttachment(idx)}
+              className='checkbox-btn clean-btn'
+            >
+              delete
+            </button>
+          </li>
+        );
+      })
+    : '';
+  return <ul>{attachment}</ul>;
 }

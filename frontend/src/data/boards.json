@@ -40,7 +40,7 @@
       {
         "_id": "u101",
         "fullname": "Tal Tarablus",
-        "imgUrl": "https://www.google.com"
+        "imgUrl": "tal.jpg"
       },
       {
         "_id": "u102",
@@ -67,6 +67,8 @@
             "id": "c101",
             "title": "Replace logo",
             "description": "It's important to find a good logo.",
+            "dueDate": 16156215211,
+            "bgColor": "rgba(255,255,255,0.5)",
             "comments": [
               {
                 "id": "ZdPnm",
@@ -100,15 +102,16 @@
               }
             ],
             "attachments": [
-              {
-              "attachUrl": "https://i.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U",
-              "title":"Dog for Logo"
-            }]
+              "https://i.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U"
+            ]
           },
           {
             "id": "c102",
             "title": "Add Samples",
             "description": "It's important to find a good logo.",
+            "members": [],
+            "bgColor": "rgba(255,255,255,0.5)",
+            "dueDate": 16156215211,
             "comments": [],
             "labels": [
               {
@@ -127,6 +130,8 @@
             "id": "c103",
             "title": "Add member's photos",
             "description": "It's important to find a good logo.",
+            "members": [],
+            "bgColor": "rgba(255,255,255,0.5)",
             "comments": [],
             "labels": [
               {
@@ -145,7 +150,11 @@
             "id": "c105",
             "title": "Erase Local Storage",
             "description": "It's important to find a good logo.",
+
+            "bgColor": "rgba(255,255,255,0.5)",
+            "dueDate": 16156215211,
             "comments": [],
+            "members": [],
             "labels": [
               {
                 "id": "l102",
@@ -163,6 +172,8 @@
             "id": "c106",
             "title": "Check task Id is good",
             "description": "It's important to find a good logo.",
+            "bgColor": "rgba(255,255,255,0.5)",
+            "members": [],
             "comments": [],
             "labels": [
               {
@@ -181,6 +192,8 @@
             "id": "c107",
             "title": "Render Board's backgorund",
             "description": "It's important to find a good logo.",
+            "members": [],
+            "bgColor": "rgba(255,255,255,0.5)",
             "comments": [],
             "labels": [
               {
@@ -195,8 +208,7 @@
               }
             ]
           }
-        ],
-        "style": {}
+        ]
       },
       {
         "id": "g102",
@@ -206,6 +218,8 @@
             "id": "c10553",
             "title": "Add Test Data",
             "description": "It's important to find a good logo.",
+
+            "bgColor": "rgba(255,255,255,0.5)",
             "comments": [],
             "members": [
               {
@@ -238,6 +252,8 @@
             "id": "c104",
             "title": "Help me",
             "description": "I need a lot of help cleaning my code.",
+
+            "bgColor": "rgba(255,255,255,0.5)",
             "comments": [
               {
                 "id": "ZdPnm",
@@ -254,22 +270,22 @@
               {
                 "id": "212jX",
                 "title": "Do checklist",
-                "isDone": false
+                "checked": false
               },
               {
                 "id": "212jfX",
                 "title": "todo details",
-                "isDone": true
+                "checked": true
               },
               {
                 "id": "242jX",
                 "title": "trello app",
-                "isDone": false
+                "checked": false
               },
               {
                 "id": "262jX",
                 "title": "hey you",
-                "isDone": true
+                "checked": true
               }
             ],
             "members": [
@@ -304,8 +320,7 @@
               "bgColor": "#26de81"
             }
           }
-        ],
-        "style": {}
+        ]
       },
       {
         "id": "g103",
@@ -315,6 +330,8 @@
             "id": "d104",
             "title": "Make pizzas",
             "description": "I need a lot of help cleaning my code.",
+            "members": [],
+            "bgColor": "rgba(255,255,255,0.5)",
             "comments": [],
             "labels": []
           },
@@ -322,6 +339,8 @@
             "id": "d105",
             "title": "Clean the room",
             "description": "I need a lot of help cleaning my code.",
+            "members": [],
+            "bgColor": "rgba(255,255,255,0.5)",
             "comments": [],
             "labels": [
               {
@@ -340,6 +359,8 @@
             "id": "d106",
             "title": "Do my laundry",
             "description": "I need a lot of help cleaning my code.",
+            "members": [],
+            "bgColor": "rgba(255,255,255,0.5)",
             "comments": [],
             "labels": [
               {
@@ -354,8 +375,7 @@
               }
             ]
           }
-        ],
-        "style": {}
+        ]
       }
     ],
     "activities": [
@@ -408,6 +428,7 @@
             "id": "c201",
             "title": "Replace logo",
             "description": "I need a lot of help cleaning my code.",
+            "bgColor": "rgba(255,255,255,0.5)",
             "comments": [],
             "labels": [
               {
@@ -426,6 +447,8 @@
             "id": "c202",
             "title": "Add Samples",
             "description": "I need a lot of help cleaning my code.",
+            "members": [],
+            "bgColor": "rgba(255,255,255,0.5)",
             "comments": [],
             "labels": [
               {
@@ -444,6 +467,8 @@
             "id": "c203",
             "title": "Fix Paddings",
             "description": "I need a lot of help cleaning my code.",
+            "members": [],
+            "bgColor": "rgba(255,255,255,0.5)",
             "comments": [],
             "labels": [
               {
@@ -462,6 +487,8 @@
             "id": "c204",
             "title": "Change font type",
             "description": "I need a lot of help cleaning my code.",
+            "members": [],
+            "bgColor": "rgba(255,255,255,0.5)",
             "comments": [],
             "labels": [
               {
@@ -476,8 +503,7 @@
               }
             ]
           }
-        ],
-        "style": {}
+        ]
       }
     ],
     "activities": [

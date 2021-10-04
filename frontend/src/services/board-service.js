@@ -21,7 +21,7 @@ export function getEmptyGroup(txt) {
     id,
     title: txt,
     tasks: [],
-    style: {},
+    bgColor: '',
   };
 }
 
@@ -41,15 +41,6 @@ export function getEmptyBoard(txt) {
   };
 }
 
-// export function constructTask(txt) {
-//   return {
-//     description: 'No Description',
-//     id: utilService.makeId(),
-//     title: txt,
-//     comments: [],
-//   };
-// }
-
 export function addComment(txt) {
   return {
     id: utilService.makeId(),
@@ -64,12 +55,11 @@ export function constructTask(txt) {
     title: txt,
     description: '',
     attachments: [],
+    bgColor: 'rgba(255,255,255,0.5)',
     checklists: [],
+    labels: [],
+    comments: [],
     members: [],
-    style: {
-      coverColor: '',
-      coverImg: '',
-    },
   };
 }
 
@@ -128,58 +118,3 @@ function getBoardById(boardId) {
   });
   return board;
 }
-
-// export function getEmptyBoard(txt) {
-//   return {
-//     _id: utilService.makeId(),
-//     title: txt,
-//     createdAt: Date.now(),
-//     createdBy: {
-//       _id: 'u101',
-//       fullname: 'Abi Abambi',
-//       imgUrl: 'http://some-img',
-//     },
-//     bgColor: '#0079bf',
-//     labels: [
-//       {
-//         id: 'l101',
-//         title: 'Done',
-//         color: '#61bd4f',
-//       },
-//       {
-//         id: 'l102',
-//         title: 'In Progress',
-//         color: '#61bd4f',
-//       },
-//     ],
-//     members: [
-//       {
-//         _id: 'u101',
-//         fullname: 'Tal Tarablus',
-//         imgUrl: 'https://www.google.com',
-//       },
-//       {
-//         _id: 'u102',
-//         fullname: 'Michael Mann',
-//         imgUrl: 'https://www.google.com',
-//       },
-//     ],
-//     groups: [],
-//     activities: [
-//       {
-//         id: utilService.makeId(),
-//         txt: 'Changed Color',
-//         createdAt: 154514,
-//         byMember: {
-//           _id: 'u101',
-//           fullname: 'Abi Abambi',
-//           imgUrl: 'http://some-img',
-//         },
-//         task: {
-//           id: utilService.makeId(),
-//           title: 'Replace Logo',
-//         },
-//       },
-//     ],
-//   };
-// }
