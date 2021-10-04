@@ -64,7 +64,7 @@ export function BoardHeader({ board, setBgColor }) {
             <h4 className='wide-layout'>Invite</h4>
           </a>
         </div>
-        <RightMenu setBgColor={setBgColor} />
+        <RightMenu setBgColor={setBgColor} board={board}/>
       </div>
     </div>
   );

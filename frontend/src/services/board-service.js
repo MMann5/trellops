@@ -7,6 +7,8 @@ export const boardService = {
   getBoardById,
   query,
   _save,
+  createActivity,
+  findGroupById,
 };
 function getBoards() {
   return JSON.parse(localStorage.getItem('boardsDB')) || gBoards;
@@ -118,3 +120,82 @@ function getBoardById(boardId) {
   });
   return board;
 }
+
+function createActivity(currUser, txt, task = null) {
+  const id = utilService.makeId();
+  const newActivity = {
+    id,
+    txt,
+    createdAt: Date.now(),
+    byMember: {
+      _id: 'u101',
+      fullname: 'Abi Abambi',
+      imgUrl: 'http://some-img',
+    },
+  };
+  if (task) {
+    newActivity.task = task;
+  }
+  return newActivity;
+}
+
+function findGroupById(board, groupId) {
+  const group = board.groups.find((group) => group.id === groupId);
+  return group;
+}
+
+// export function getEmptyBoard(txt) {
+// export function getEmptyBoard(txt) {
+//   return {
+//     _id: utilService.makeId(),
+//     title: txt,
+//     createdAt: Date.now(),
+//     createdBy: {
+//       _id: 'u101',
+//       fullname: 'Abi Abambi',
+//       imgUrl: 'http://some-img',
+//     },
+//     bgColor: '#0079bf',
+//     labels: [
+//       {
+//         id: 'l101',
+//         title: 'Done',
+//         color: '#61bd4f',
+//       },
+//       {
+//         id: 'l102',
+//         title: 'In Progress',
+//         color: '#61bd4f',
+//       },
+//     ],
+//     members: [
+//       {
+//         _id: 'u101',
+//         fullname: 'Tal Tarablus',
+//         imgUrl: 'https://www.google.com',
+//       },
+//       {
+//         _id: 'u102',
+//         fullname: 'Michael Mann',
+//         imgUrl: 'https://www.google.com',
+//       },
+//     ],
+//     groups: [],
+//     activities: [
+//       {
+//         id: utilService.makeId(),
+//         txt: 'Changed Color',
+//         createdAt: 154514,
+//         byMember: {
+//           _id: 'u101',
+//           fullname: 'Abi Abambi',
+//           imgUrl: 'http://some-img',
+//         },
+//         task: {
+//           id: utilService.makeId(),
+//           title: 'Replace Logo',
+//         },
+//       },
+//     ],
+//   };
+// }
