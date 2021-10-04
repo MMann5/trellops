@@ -5,7 +5,6 @@ import { BoardApp } from './pages/BoardApp';
 import {
   TaskDetails
 } from './pages/TaskDetails';
-import { DetailModal } from './cmps/DetailModal';
 
 export const routes = [
   {
@@ -16,10 +15,6 @@ export const routes = [
     path: '/login',
     component: LoginSignup,
   },
-  // {
-  //   path: '/signup',
-  //   component: TaskDetails,
-  // },
   {
     path: '/workspace',
     component: Workspace,

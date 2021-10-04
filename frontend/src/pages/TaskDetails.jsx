@@ -60,33 +60,6 @@ export function TaskDetails({ props, board }) {
         })
         return currTask
     }
-    const closeModal = () => {
-        props.history.push(`/board/${boardId}`)
-    }
-
-    const [anchorEl, setAnchorEl] = React.useState(null);
-
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
-
-    const open = Boolean(anchorEl);
-    const id = open ? 'simple-popover' : undefined;
-
-
-
-
-
-
-
-
-
-
-
 
 
     const togglePopover = (name, props) => {
@@ -94,9 +67,10 @@ export function TaskDetails({ props, board }) {
         setCurrProps(props)
         console.log('details props', props);
     }
+    const closeModal = ()=>{
+        props.history.push(`/board/${board._id}`)
+    }
 
-    const open = Boolean(anchorEl);
-    const id = open ? 'simple-popover' : undefined;
 
     return (
         <section className="card-details-container">

@@ -7,6 +7,8 @@ export const boardService = {
   getBoardById,
   query,
   _save,
+  createActivity,
+  findGroupById
 };
 function getBoards() {
   return JSON.parse(localStorage.getItem('boardsDB')) || gBoards;
@@ -122,6 +124,29 @@ function getBoardById(boardId) {
     return boardId === board._id;
   });
   return board;
+}
+
+function createActivity(currUser, txt, task=null) {
+  const id = utilService.makeId();
+  const newActivity = {
+      id,
+      txt,
+      createdAt: (Date.now()),
+      byMember: {
+          _id: 'u101',
+          fullname: 'Abi Abambi',
+          imgUrl: 'http://some-img'
+      }
+  }
+  if (task){
+      newActivity.task = task
+  }
+  return newActivity
+}
+
+function findGroupById(board, groupId){
+  const group = board.groups.find(group=>group.id===groupId)
+  return group
 }
 
   // export function getEmptyBoard(txt) {

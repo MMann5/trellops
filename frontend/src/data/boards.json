@@ -8,7 +8,7 @@
       "fullname": "Abi Abambi",
       "imgUrl": "http://some-img"
     },
-    "bgColor": "#0079bf",
+    "style": {"bgColor":"/static/media/night.ef79fbd8.png"},
     "labels": [
       {
         "id": "l101",
@@ -361,7 +361,7 @@
       "fullname": "Abi Abambi",
       "imgUrl": "http://some-img"
     },
-    "bgColor": "#0079bf",
+    "style":{"bgColor": "#0079bf"},
     "labels": [
       {
         "id": "l2101",

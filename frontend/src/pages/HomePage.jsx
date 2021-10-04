@@ -18,7 +18,7 @@ export function HomePage() {
             <div className="hero-info">
               <h1>Trellops helps teams move work forward.</h1>
               <p>Collaborate, manage projects, and reach new productivity peaks. From high rises to the home office, the way your team works is unique—accomplish it all with Trellops.</p>
-              <Link to={`/board/${board._id}`}>Get started!</Link>
+              <Link to="/workspace">Get started!</Link>
             </div>
             <div className="hero-img">
               <img src={heroImgUrl} alt="" />
@@ -29,7 +29,7 @@ export function HomePage() {
           <div className="product-info">
             <h2>It's more than work. It's a way of working together.</h2>
             <p>Start with a Trellops board, lists, and cards. Customize and expand with more features as your teamwork grows. Manage projects, organize tasks, and build team spirit—all in one place.</p>
-            <Link to="/workspace" className="clean-link" >Start doing →</Link>
+            <Link to={`/board/${board._id}`} className="clean-link" >Start doing →</Link>
           </div>
           <div>
             <img src={productImgUrl} alt="" />

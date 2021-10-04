@@ -19,6 +19,7 @@ import {
 import {
   getEmptyGroup,
   constructTask,
+  boardService,
 } from '../services/board-service.js';
 import { TaskDetails } from './TaskDetails';
 
@@ -50,21 +51,26 @@ export function BoardApp(props) {
   const [groupName, setGroupName] = useState('');
 
   const onAddEmptyGroup = () => {
+    const currUser = 'Avi Abambi';
+    const newActivity = boardService.createActivity(currUser, 'added a new group')
     setBoardState((prevState) => {
       return {
         ...prevState,
         groups: [...boardState.groups, getEmptyGroup(groupName)],
+        activities:[...boardState.activities, newActivity ]
       };
     });
   };
 
   const onRemoveGroup = (groupId) => {
+    const currGroup= boardService.findGroupById(board, groupId)
+    const newActivity = boardService.createActivity('Avi Abambi', 'removed group')
     setBoardState((prevState) => {
       return {
         ...prevState,
         groups: boardState.groups.filter(
           (value) => value.id !== groupId
-        ),
+        ), activities: [...boardState.activities, newActivity]
       };
     });
   };
@@ -220,7 +226,7 @@ export function BoardApp(props) {
 
   const setBgColor = (colorVal) => {
     const boardCpy = { ...board };
-    boardCpy.bgColor = colorVal;
+    boardCpy.style.bgColor = colorVal;
     const boardsCpy = [...boards];
     const boardIdx = boardsCpy.findIndex(
       (val) => val._id === board._id
@@ -233,7 +239,7 @@ export function BoardApp(props) {
   return (
     <div
       className='board-app flex column'
-      style={{ backgroundColor: boardState.bgColor }}
+      style={{ backgroundColor: boardState.style?.bgColor, backgroundImage : `url(${boardState.style?.bgColor})` }}
     >
       <BoardsNavBar />
       <BoardHeader board={board} setBgColor={setBgColor} />
