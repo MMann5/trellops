@@ -14,21 +14,20 @@ import Stack from '@mui/material/Stack';
 import { deepOrange, deepPurple } from '@mui/material/colors';
 
 export function MemberPick({ props, setCurrPopover, sendTask }) {
-  const getMembers = () => {
-    return board.members.map((boardMember) => {
-      return props.members.length > 0
-        ? props.members.find(
-            (member) => member._id === boardMember._id
-          )
-        : false
-        ? { ...boardMember, checked: true }
-        : boardMember;
-    });
-  };
   const { board } = useSelector((state) => state.boardModule);
   const [stateVal, createStateVal] = React.useState({});
   const [memberStateVal, createMemberVal] = React.useState(
-    getMembers()
+    board.members.map((boardMember) => {
+      if (
+        props.members.some(
+          (member) => member._id === boardMember._id
+        )
+      ) {
+        return { ...boardMember, checked: true };
+      } else {
+        return { ...boardMember, checked: false };
+      }
+    })
   );
 
   const onChange = (e, idx) => {

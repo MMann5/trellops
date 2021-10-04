@@ -9,19 +9,17 @@ import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 
 export function LabelPick({ props, setCurrPopover, sendTask }) {
-  const getLabels = () => {
-    return board.labels.map((boardLabel) => {
-      return props.labels.length > 0
-        ? props.labels.find((label) => label.id === boardLabel.id)
-        : false
-        ? { ...boardLabel, checked: true }
-        : boardLabel;
-    });
-  };
+  const getLabels = () => {};
   const { board } = useSelector((state) => state.boardModule);
   const [stateVal, createStateVal] = React.useState({});
   const [labelStateVal, createLabelVal] = React.useState(
-    getLabels()
+    board.labels.map((boardLabel) => {
+      if (props.labels.some((label) => label.id === boardLabel.id)) {
+        return { ...boardLabel, checked: true };
+      } else {
+        return { ...boardLabel, checked: false };
+      }
+    })
   );
 
   const onChange = (e, idx) => {
@@ -36,6 +34,7 @@ export function LabelPick({ props, setCurrPopover, sendTask }) {
   };
 
   const labels = labelStateVal.map((val, idx) => {
+    console.log(val);
     return (
       <li
         className='label'
