@@ -18,17 +18,15 @@ export function Workspace() {
   const [boardsState, setBoardsState] = useState(boards);
   const [boardName, setBoardName] = useState('');
   const [isPopShown, setIsPopShown] = useState(false);
-  const [boardBackground, setboardBackground] = useState('#0079bf');
+  const [boardBackground, setBoardBackground] = useState('#0079bf');
 
-  const onAddEmptyBoard = () => {
+  const onAddEmptyBoard = (boardName, boardBackground) => {
     dispatch(
       setBoards([
         ...boards,
         getEmptyBoard(boardName, boardBackground),
       ])
     );
-    setBoardName('');
-    setboardBackground('#0079bf');
   };
 
   const onRemoveBoard = (ev, boardId) => {
@@ -55,12 +53,6 @@ export function Workspace() {
       <div className='general-boards'>
         <h3>My Boards</h3>
         <div className='work-space-boards'>
-          <button
-            className='board-preview flex justify-center add-board'
-            onClick={onAddEmptyBoard}
-          >
-            Add A New Board..
-          </button>
           {boards.map((board, idx) => (
             <Link to={`/board/${board._id}`} key={idx}>
               <div
@@ -96,7 +88,7 @@ export function Workspace() {
           setBoardName={setBoardName}
           boardName={boardName}
           onClosePopup={onClosePopup}
-          setboardBackground={setboardBackground}
+          setBoardBackground={setBoardBackground}
           boardBackground={boardBackground}
         />
       )}

@@ -33,7 +33,7 @@ export function getEmptyBoard(txt, bgColor = '#0079bf') {
     title: txt,
     createdAt: Date.now(),
     createdBy: {},
-    style: { bgColor: '#0079bf' },
+    style: { bgColor },
     labels: [
       {
         id: 'l101',
