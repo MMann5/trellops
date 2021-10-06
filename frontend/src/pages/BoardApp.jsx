@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Route } from 'react-router-dom';
+import Loader from 'react-loader-spinner';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   DragDropContext,
@@ -13,6 +13,7 @@ import { BoardsNavBar } from '../cmps/BoardsNavBar.jsx';
 import { BoardHeader } from '../cmps/BoardHeader.jsx';
 import {
   loadBoard,
+  loadBoards,
   onSaveBoard,
   setBoards,
 } from '../store/actions/boards-actions.js';
@@ -24,7 +25,12 @@ import {
 import { TaskDetails } from './TaskDetails';
 
 export function BoardApp(props) {
+  const [isLoaded, setIsLoaded] = useState(false);
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loadBoard(props.match.params.boardId, setIsLoaded));
+    dispatch(loadBoards());
+  }, []);
   const { board } = useSelector((state) => state.boardModule);
   const [boardState, setBoardState] = useState(board);
   const [modalState, setModalState] = useState(false);
@@ -35,17 +41,13 @@ export function BoardApp(props) {
       setModalState(false);
     }
   });
-
-  useEffect(() => {
-    dispatch(loadBoard(props.match.params.boardId));
-  }, [dispatch]);
   useEffect(() => {
     setBoardState(board);
   }, [board]);
 
   useEffect(() => {
-    dispatch(onSaveBoard(boardState));
-  }, [boardState, dispatch]);
+    boardState._id && dispatch(onSaveBoard(boardState));
+  }, [boardState]);
 
   const { boards } = useSelector((state) => state.boardModule);
   const [groupName, setGroupName] = useState('');
@@ -68,7 +70,7 @@ export function BoardApp(props) {
   const onRemoveGroup = (groupId) => {
     const currGroup = boardService.findGroupById(board, groupId);
     const newActivity = boardService.createActivity(
-      'Avi Abambi',
+      'Ron Kontigaro',
       'removed group'
     );
     setBoardState((prevState) => {
@@ -207,30 +209,36 @@ export function BoardApp(props) {
     }
   };
 
-  var groups = boardState.groups.map((group, idx) => {
-    return (
-      <Draggable key={group.id} draggableId={group.id} index={idx}>
-        {(provided) => (
-          <div
-            {...provided.draggableProps}
-            {...provided.dragHandleProps}
-            ref={provided.innerRef}
+  var groups = boardState.groups
+    ? boardState.groups.map((group, idx) => {
+        return (
+          <Draggable
+            key={group.id}
+            draggableId={group.id}
+            index={idx}
           >
-            <Group
-              boardId={board._id}
-              onRemoveGroup={onRemoveGroup}
-              group={group}
-              setGroupTitle={setGroupTitle}
-              key={group.id}
-              onAddTask={onAddTask}
-              onRemoveTask={onRemoveTask}
-              onSetTask={onSetTask}
-            />
-          </div>
-        )}
-      </Draggable>
-    );
-  });
+            {(provided) => (
+              <div
+                {...provided.draggableProps}
+                {...provided.dragHandleProps}
+                ref={provided.innerRef}
+              >
+                <Group
+                  boardId={boardState._id}
+                  onRemoveGroup={onRemoveGroup}
+                  group={group}
+                  setGroupTitle={setGroupTitle}
+                  key={group.id}
+                  onAddTask={onAddTask}
+                  onRemoveTask={onRemoveTask}
+                  onSetTask={onSetTask}
+                />
+              </div>
+            )}
+          </Draggable>
+        );
+      })
+    : '';
 
   const setBgColor = (colorVal) => {
     const boardCpy = { ...board };
@@ -243,8 +251,7 @@ export function BoardApp(props) {
     dispatch(setBoards(boardsCpy));
     setBoardState(boardCpy);
   };
-
-  return (
+  return boardState._id ? (
     <div
       className='board-app flex column'
       style={{
@@ -253,9 +260,15 @@ export function BoardApp(props) {
       }}
     >
       <BoardsNavBar />
-      <BoardHeader board={board} setBgColor={setBgColor} />
+      <BoardHeader
+        boards={boards}
+        board={boardState}
+        setBgColor={setBgColor}
+      />
       <DragDropContext onDragEnd={handleOnDragEnd}>
-        {modalState && <TaskDetails props={props} board={board} />}
+        {modalState && (
+          <TaskDetails props={props} board={boardState} />
+        )}
         <div className='group-list'>
           <Droppable
             droppableId='groups'
@@ -282,6 +295,10 @@ export function BoardApp(props) {
           </Droppable>
         </div>
       </DragDropContext>
+    </div>
+  ) : (
+    <div style={{ margin: 'auto', textAlign: 'center' }}>
+      <Loader type='Bars' color='#0079bf' height={200} width={200} />
     </div>
   );
 }

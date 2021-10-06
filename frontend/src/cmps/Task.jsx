@@ -25,9 +25,18 @@ export function Task({
       className='task-preview'
       style={{ backgroundColor: task.bgColor }}
     >
-      {task.attachments? 
-      <div className='task-background' style={{backgroundImage: `url(${task.attachments[0]})`, backgroundSize:'cover', backgroundPosition: 'center' }}></div> : ''
-      }
+      {task.attachments.length > 0 ? (
+        <div
+          className='task-background'
+          style={{
+            backgroundImage: `url(${task.attachments[0]})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        ></div>
+      ) : (
+        ''
+      )}
       <Link to={`/board/${boardId}/${groupId}/${task.id}`}>
         <div className='label-view'>
           {task.labels?.map((label, idx) => {
@@ -56,11 +65,7 @@ export function Task({
               )}
             </span>
             <span>
-              {task.comments.length ? (
-                <ChatBubbleOutlineIcon />
-              ) : (
-                ''
-              )}
+              {task.comments.length ? <ChatBubbleOutlineIcon /> : ''}
             </span>
             <span>{task.dueDate ? <TimerIcon /> : ''}</span>
             <span>
@@ -81,9 +86,9 @@ export function Task({
                         width: 28,
                         height: 28,
                         // bgcolor: deepOrange[300],
-                        fontSize: "0.85rem",
+                        fontSize: '0.85rem',
                         fontWeight: 400,
-                        backgroundColor: member.avatarColor
+                        backgroundColor: member.avatarColor,
                       }}
                     >
                       {member.fullname

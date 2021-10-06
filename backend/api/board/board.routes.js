@@ -8,7 +8,10 @@ const {
 } = require('./board.controller');
 
 const router = express.Router();
-
+router.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+  next();
+});
 router.get('/', getBoards);
 router.get('/:id', getBoard);
 router.post('/', addBoard);

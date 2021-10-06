@@ -1,4 +1,5 @@
 import { utilService } from './util-service.js';
+import { httpService } from './http-service.js';
 var gBoards = require('../data/boards.json');
 
 export const boardService = {
@@ -9,6 +10,12 @@ export const boardService = {
   _save,
   createActivity,
   findGroupById,
+  getBoardsPrm,
+  pushGroupPrm,
+  getBoardPrm,
+  deleteBoardPrm,
+  addBoardPrm,
+  updateBoardPrm,
 };
 function getBoards() {
   return JSON.parse(localStorage.getItem('boardsDB')) || gBoards;
@@ -178,7 +185,7 @@ function createActivity(currUser, txt, task = null) {
     createdAt: Date.now(),
     byMember: {
       _id: 'u101',
-      fullname: 'Abi Abambi',
+      fullname: 'Ron Kontigaro',
       imgUrl: 'http://some-img',
     },
   };
@@ -193,104 +200,48 @@ function findGroupById(board, groupId) {
   return group;
 }
 
-// import { utilsService } from './utils.service'
-// import { httpService } from './http.service'
-// import { userService } from './user.service'
-
-// export const boardService = {
-//     query,
-//     remove,
-//     getById,
-//     save,
-//     updateCardInBoard,
-
-//     createActivity,
-
-//     setPopoverPos,
-//     removeCard,
-//     getFilteredList,
-// }
-
-// async function query(filterBy = { ctg: '' }) {
-//     try {
-//         return await httpService.get('board', filterBy)
-//     } catch (err) {
-//         throw err
-//     }
-// }
-
-// async function remove(boardId) {
-//     try {
-//         await httpService.delete(`board/${boardId}`)
-//     } catch (err) {
-//         throw err
-//     }
-// }
-
-// async function getById(boardId) {
-//     try {
-//         return await httpService.get(`board/${boardId}`)
-
-//     } catch (err) {
-//         throw err
-//     }
-// }
-
-// async function save(board) {
-//     if (board._id) {
-//         try {
-//             return await httpService.put(`board/${board._id}`, board)
-//         } catch (err) {
-//             throw err
-//         }
-//     } else {
-//         try {
-//             return await httpService.post('board', board)
-//         } catch (err) {
-//             throw err
-//         }
-//     }
-// }
-
-// // sync functions
-
-// export function updateCardInBoard(board, updatedCard) {
-//     board.lists.forEach(list => {
-//         list.cards.forEach((card, idx) => {
-//             if (card.id === updatedCard.id) list.cards[idx] = updatedCard
-//         })
-//     })
-//     return { ...board }
-// }
-
-// export function createActivity(actionType, txt = '', card = null) {
-
-//     const loggedInUser = userService.getLoggedinUser()
-
-//     const { _id, fullname, imgUrl } = loggedInUser
-
-//     const byMember = {
-//         _id,
-//         fullname,
-//         imgUrl
-//     }
-
-//     let savedCard
-//     if (card) {
-//         savedCard = {
-//             id: card.id,
-//             title: card.title,
-//             members: card.members
-//         }
-//     }
-
-//     const savedActivity = {
-//         id: utilsService.makeId(),
-//         actionType,
-//         txt,
-//         createdAt: Date.now(),
-//         byMember,
-//         card: savedCard || null,
-//     }
-//     return savedActivity
-// }
+function getBoardsPrm() {
+  try {
+    return httpService.get('board');
+  } catch (err) {
+    throw err;
+  }
+}
+function getBoardPrm(boardId) {
+  try {
+    return httpService.get(`board/${boardId}`);
+  } catch (err) {
+    throw err;
+  }
+}
+function deleteBoardPrm(boardId) {
+  try {
+    return httpService.delete(`board/${boardId}`);
+  } catch (err) {
+    throw err;
+  }
+}
+function addBoardPrm(boardName) {
+  try {
+    return httpService.post(`board`, { txt: boardName });
+  } catch (err) {
+    throw err;
+  }
+}
+function updateBoardPrm(updateObj) {
+  try {
+    return httpService.put(`board`, updateObj);
+  } catch (err) {
+    throw err;
+  }
+}
+function pushGroupPrm(boardId, groupObj) {
+  try {
+    return httpService.put(`board`, {
+      id: boardId,
+      group: groupObj,
+    });
+  } catch (err) {
+    throw err;
+  }
+}
