@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
+import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import { TextField } from '@material-ui/core';
 import CheckBoxOutlinedIcon from '@material-ui/icons/CheckBoxOutlined';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
@@ -10,7 +11,6 @@ import SubjectIcon from '@material-ui/icons/Subject';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import { deepOrange } from '@mui/material/colors';
-
 export function Task({
   task,
   onRemoveTask,
@@ -25,6 +25,9 @@ export function Task({
       className='task-preview'
       style={{ backgroundColor: task.bgColor }}
     >
+      {task.attachments? 
+      <div className='task-background' style={{backgroundImage: `url(${task.attachments[0]})`, backgroundSize:'cover', backgroundPosition: 'center' }}></div> : ''
+      }
       <Link to={`/board/${boardId}/${groupId}/${task.id}`}>
         <div className='label-view'>
           {task.labels?.map((label, idx) => {
@@ -54,7 +57,7 @@ export function Task({
             </span>
             <span>
               {task.comments.length ? (
-                <FormatListBulletedIcon />
+                <ChatBubbleOutlineIcon />
               ) : (
                 ''
               )}
@@ -75,9 +78,12 @@ export function Task({
                   <Stack direction='row' spacing={2}>
                     <Avatar
                       sx={{
-                        width: 20,
-                        height: 20,
-                        bgcolor: deepOrange[300],
+                        width: 28,
+                        height: 28,
+                        // bgcolor: deepOrange[300],
+                        fontSize: "0.85rem",
+                        fontWeight: 400,
+                        backgroundColor: member.avatarColor
                       }}
                     >
                       {member.fullname

@@ -30,7 +30,7 @@ export function RightMenu({ setBgColor, board }) {
     bottom: false,
     right: false,
   });
-  const [openedList, setOpenedList] = React.useState('MenuList')
+  const [openedList, setOpenedList] = React.useState('menuList')
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -46,7 +46,7 @@ export function RightMenu({ setBgColor, board }) {
     setOpenedList(currList)
   }
 
-  const MenuList = (anchor) => (
+  const menuList = (anchor) => (
     <Box
       sx={{
         width:
@@ -78,9 +78,6 @@ export function RightMenu({ setBgColor, board }) {
                   {text.title}
                 </div>
               </div>
-              <ListItemText style={{
-                backgroundColor: '#fff', height: '50px'
-              }} />
             </ListItem>
           )
         )}
@@ -119,7 +116,7 @@ export function RightMenu({ setBgColor, board }) {
               setBgColor(text)
             }
             }>
-              <ListItemText style={{ backgroundColor: text, height: '50px' }} />
+              <ListItemText style={{ backgroundColor: text, height: '80px', padding: '10px 10px' }} />
             </ListItem>
           )
         )}
@@ -143,8 +140,9 @@ export function RightMenu({ setBgColor, board }) {
           (text, index) => (
             <ListItem button key={text} onClick={() => {
               setBgColor(text)
-            }}>
-              <ListItemText style={{ backgroundImage: `url(${text})`, height: '50px', backgroundSize:'cover', backgroundPosition: 'center'}} />
+            }}
+            style={{margin:'5px 0'}}>
+              <ListItemText style={{ backgroundImage: `url(${text})`, width:'177', height: '96px', padding: '10px 10px', backgroundSize:'cover', backgroundPosition: 'center'}} />
             </ListItem>
           )
         )}
@@ -175,7 +173,7 @@ export function RightMenu({ setBgColor, board }) {
             onClose={toggleDrawer(anchor, false)}
           >
             <div className="nav-option-header flex justify-center">
-              {(openedList !== 'MenuList') && <button className="clean-btn left-btn" onClick={() => { setOpenedList('MenuList') }}>
+              {(openedList !== 'menuList') && <button className="clean-btn left-btn" onClick={() => { setOpenedList('menuList') }}>
                 <FontAwesomeIcon icon={faChevronLeft} className="close-x" />
               </button>}
               <h3>Menu</h3>
@@ -183,7 +181,7 @@ export function RightMenu({ setBgColor, board }) {
                 <FontAwesomeIcon icon={faTimes} className="close-x" />
               </button>
             </div>
-            {(openedList === 'MenuList') && MenuList(anchor)}
+            {(openedList === 'menuList') && menuList(anchor)}
             {(openedList === 'list') && list(anchor)}
             {(openedList === 'imgList') && imgList(anchor)}
             <ActivityList board={board}/>

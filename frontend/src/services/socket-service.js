@@ -4,7 +4,7 @@ const baseUrl = (process.env.NODE_ENV === 'production') ? '' : '//localhost:3030
 export const socketService = createSocketService()
 
 
-var socketIsReady = false;
+var socketIsReady = false; //in my code this is commented and there is socketService.setup()
 
 function createSocketService() {
   var socket = null;

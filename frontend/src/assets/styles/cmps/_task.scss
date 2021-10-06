@@ -21,6 +21,10 @@
   &:hover {
     background-color: #fff;
   }
+  .task-background{
+    height: 250px;
+    margin-bottom: 10px;
+  }
 
   .label-view {
     display: flex;
@@ -33,7 +37,7 @@
       color: #fff;
       margin-inline-end: 5px;
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 500;
       white-space: nowrap;
     }
   }
@@ -43,6 +47,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 3px;
 
     .avatar {
       display: flex;

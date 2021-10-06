@@ -1,11 +1,10 @@
+import { height } from '@mui/system';
 import React, { useState, useEffect } from 'react';
 
 export function TaskAttachments({ task, sendTask }) {
   const [attachmentStateVal, createAttachmentVal] = React.useState(
     task.attachments ? task.attachments : ''
   );
-  console.log(task);
-  console.log(attachmentStateVal);
   useEffect(() => {
     sendTask(false, {
       ...task,
@@ -20,34 +19,20 @@ export function TaskAttachments({ task, sendTask }) {
   };
   const attachment = task.attachments
     ? task.attachments.map((val, idx) => {
-        return (
-          <li key={idx}>
-            <a
-              href={val}
-              target='_blank'
-              rel='noopener noreferrer'
-              style={{ cursor: 'pointer' }}
-            >
-              <img
-                style={{ display: 'block', objectFit: 'cover' }}
-                src={val}
-                alt='attachment file'
-                style={{ width: '20%' }}
-              />
-            </a>
-            <button
-              style={{
-                marginInlineStart: '10px',
-                width: '150px',
-              }}
-              onClick={() => deleteAttachment(idx)}
-              className='checkbox-btn clean-btn'
-            >
-              delete
-            </button>
-          </li>
-        );
-      })
+      return (
+        <li style={{ display: 'flex', height: '100px', marginBottom: '30px' }}>
+          <img src={val} alt="" style={{ height: '120px', objectFit: 'contain', margin: '2px' }} />
+          <div style={{ width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-betwween', padding: '6px 10px' }} >
+            <div>
+              <h5>{val}</h5>
+              {/* <p>activity</p> */}
+              <button>Delete</button>
+            </div>
+          </div>
+        </li >
+
+      );
+    })
     : '';
-  return <ul>{attachment}</ul>;
+  return <ul className="attachment-main-container">{attachment}</ul>;
 }

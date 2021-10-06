@@ -1,24 +1,28 @@
 import React, { useState } from 'react';
 import { TextField } from '@material-ui/core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
-
-export function FileAttachment({ props, setCurrPopover, sendTask }) {
+import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
+export function FileAttachment({ props, setCurrPopover, sendTask, popoverPos }) {
   const [stateVal, createStateVal] = useState('');
   const checkUrl = (url) =>
     url.match(/\.(jpeg|jpg|gif|png)$/) != null;
 
   return (
-    <div className='checklist'>
-      <div className='nav-option-header flex justify-center'>
-        <h3>Attach a Image link</h3>
+    <div className='checklist'
+    style={{ left: popoverPos.leftPos, top: popoverPos.topPos }}>
+      <div className='nav-option-header flex align-center'>
+      <button 
+          className='clean-btn hide'
+        >
+          <CloseRoundedIcon/>
+        </button>
+        <h3>Attach an Image link</h3>
         <button
           className='clean-btn'
           onClick={() => {
             setCurrPopover(null);
           }}
         >
-          <FontAwesomeIcon icon={faTimes} className='close-x' />
+          <CloseRoundedIcon/>
         </button>
       </div>
       <TextField
@@ -40,7 +44,7 @@ export function FileAttachment({ props, setCurrPopover, sendTask }) {
               });
             createStateVal('');
           }}
-          className='attach-btn blue-btn'
+          className='blue-btn attach-btn'
         >
           Add file
         </button>

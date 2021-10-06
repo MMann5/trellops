@@ -1,8 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { TextField } from '@material-ui/core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
 import { Popover } from '@material-ui/core';
 import Checkbox from 'rc-checkbox';
 import David from '../assets/imgs/profiles/david.jpg';
@@ -13,7 +12,7 @@ import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import { deepOrange, deepPurple } from '@mui/material/colors';
 
-export function MemberPick({ props, setCurrPopover, sendTask }) {
+export function MemberPick({ props, setCurrPopover, sendTask, popoverPos }) {
   const { board } = useSelector((state) => state.boardModule);
   const [stateVal, createStateVal] = React.useState({});
   const [memberStateVal, createMemberVal] = React.useState(
@@ -46,6 +45,7 @@ export function MemberPick({ props, setCurrPopover, sendTask }) {
   const members = memberStateVal.map((val, idx) => {
     return (
       <li key={idx}>
+        <img src={require(`../assets/imgs/profiles/${val.imgUrl}`).default} alt="" />
         <Checkbox
           onChange={(ev) => onChange(ev, idx)}
           checked={val.checked}
@@ -56,19 +56,25 @@ export function MemberPick({ props, setCurrPopover, sendTask }) {
   });
 
   return (
-    <div className='checklist'>
-      <div className='nav-option-header flex justify-center'>
+    <div className='checklist and-member-pick'
+      style={{ left: popoverPos.leftPos, top: popoverPos.topPos }}>
+      <div className='nav-option-header flex align-center'>
+        <button
+          className='clean-btn hide'
+        >
+          <CloseRoundedIcon />
+        </button>
         <h3>Add Members</h3>
-        <ul>{members}</ul>
         <button
           className='clean-btn'
           onClick={() => {
             setCurrPopover(null);
           }}
         >
-          <FontAwesomeIcon icon={faTimes} className='close-x' />
+          <CloseRoundedIcon />
         </button>
       </div>
+      <ul>{members}</ul>
     </div>
   );
 }

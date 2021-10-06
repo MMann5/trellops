@@ -3,6 +3,7 @@
   background-size: cover;
 
   .group-list {
+    flex-grow: 1;
     overflow-x: auto;
     overflow-y: hidden;
     margin: 0 4px;

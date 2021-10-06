@@ -51,7 +51,7 @@
       font-size: 14px;
       transition: all 1s;
       font-size: rem(16px);
-      font-weight: 600;
+      font-weight: 400;
       margin-inline-start: 3px;
       margin: 0 4px;
       padding: 0 4px;
@@ -85,6 +85,7 @@
 
       .card-btn-container {
         padding: 5px;
+        color: #5e6c84;
 
         img {
           height: rem(14px);
@@ -94,6 +95,7 @@
         .card-btn {
           border: none;
           padding: 4px, 1px;
+          color: #5e6c84;
         }
       }
     }
