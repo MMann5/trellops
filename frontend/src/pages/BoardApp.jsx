@@ -52,25 +52,32 @@ export function BoardApp(props) {
 
   const onAddEmptyGroup = () => {
     const currUser = 'Avi Abambi';
-    const newActivity = boardService.createActivity(currUser, 'added a new group')
+    const newActivity = boardService.createActivity(
+      currUser,
+      'added a new group'
+    );
     setBoardState((prevState) => {
       return {
         ...prevState,
         groups: [...boardState.groups, getEmptyGroup(groupName)],
-        activities:[...boardState.activities, newActivity ]
+        activities: [...boardState.activities, newActivity],
       };
     });
   };
 
   const onRemoveGroup = (groupId) => {
-    const currGroup= boardService.findGroupById(board, groupId)
-    const newActivity = boardService.createActivity('Avi Abambi', 'removed group')
+    const currGroup = boardService.findGroupById(board, groupId);
+    const newActivity = boardService.createActivity(
+      'Avi Abambi',
+      'removed group'
+    );
     setBoardState((prevState) => {
       return {
         ...prevState,
         groups: boardState.groups.filter(
           (value) => value.id !== groupId
-        ), activities: [...boardState.activities, newActivity]
+        ),
+        activities: [...boardState.activities, newActivity],
       };
     });
   };
@@ -178,15 +185,16 @@ export function BoardApp(props) {
 
   const handleOnDragEnd = (result) => {
     const { destination, source, type } = result;
+    const groupsCpy = Array.from(boardState.groups);
     if (!destination) return;
     if (result.type === 'group') {
-      const items = Array.from(boardState.groups);
-      const [reorderedGroup] = items.splice(result.source.index, 1);
-      if (!result.destination) return;
-      items.splice(result.destination.index, 0, reorderedGroup);
-      setBoardState({ ...boardState, groups: items });
+      const [reorderedGroup] = groupsCpy.splice(
+        result.source.index,
+        1
+      );
+      groupsCpy.splice(result.destination.index, 0, reorderedGroup);
+      setBoardState({ ...boardState, groups: groupsCpy });
     } else {
-      const groupsCpy = Array.from(boardState.groups);
       const destGrp = groupsCpy.find(
         (group) => group.id === destination.droppableId
       );
@@ -195,7 +203,6 @@ export function BoardApp(props) {
       );
       const card = srcGrp.tasks.splice(source.index, 1);
       destGrp.tasks.splice(destination.index, 0, card[0]);
-      console.log(groupsCpy);
       setBoardState({ ...boardState, groups: groupsCpy });
     }
   };
@@ -240,7 +247,10 @@ export function BoardApp(props) {
   return (
     <div
       className='board-app flex column'
-      style={{ backgroundColor: boardState.style?.bgColor, backgroundImage : `url(${boardState.style?.bgColor})` }}
+      style={{
+        backgroundColor: boardState.style?.bgColor,
+        backgroundImage: `url(${boardState.style?.bgColor})`,
+      }}
     >
       <BoardsNavBar />
       <BoardHeader board={board} setBgColor={setBgColor} />

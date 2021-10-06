@@ -31,15 +31,60 @@ export function getEmptyBoard(txt) {
   return {
     _id: utilService.makeId(),
     title: txt,
-    createdAt: null,
+    createdAt: Date.now(),
     createdBy: {},
-    bgColor: '#0079bf',
-    labels: [],
-    members: [],
+    style: { bgColor: '#0079bf' },
+    labels: [
+      {
+        id: 'l101',
+        title: 'Done',
+        color: '#7BC86C',
+      },
+      {
+        id: 'l102',
+        title: 'In Progress',
+        color: '#61bd',
+      },
+      {
+        id: 'l103',
+        title: 'Important',
+        color: '#F5DD29',
+      },
+      {
+        id: 'l104',
+        title: 'Optional',
+        color: '#d4f',
+      },
+      {
+        id: 'l105',
+        title: 'Complex',
+        color: '#FFAF3F',
+      },
+    ],
+    members: [
+      {
+        _id: 'u101',
+        fullname: 'Tal Tarablus',
+        imgUrl: 'tal.jpg',
+      },
+      {
+        _id: 'u102',
+        fullname: 'Michael Mann',
+        imgUrl: 'michael.png',
+      },
+      {
+        _id: 'u103',
+        fullname: 'Ron Shmuel Kotigaro',
+        imgUrl: 'ron.png',
+      },
+      {
+        _id: 'u104',
+        fullname: 'David Ben Ishai',
+        imgUrl: 'david.jpg',
+      },
+    ],
     groups: [],
     activities: [],
-    lastViewedAt: null,
-    isStarred: false,
   };
 }
 
@@ -144,58 +189,104 @@ function findGroupById(board, groupId) {
   return group;
 }
 
-// export function getEmptyBoard(txt) {
-// export function getEmptyBoard(txt) {
-//   return {
-//     _id: utilService.makeId(),
-//     title: txt,
-//     createdAt: Date.now(),
-//     createdBy: {
-//       _id: 'u101',
-//       fullname: 'Abi Abambi',
-//       imgUrl: 'http://some-img',
-//     },
-//     bgColor: '#0079bf',
-//     labels: [
-//       {
-//         id: 'l101',
-//         title: 'Done',
-//         color: '#61bd4f',
-//       },
-//       {
-//         id: 'l102',
-//         title: 'In Progress',
-//         color: '#61bd4f',
-//       },
-//     ],
-//     members: [
-//       {
-//         _id: 'u101',
-//         fullname: 'Tal Tarablus',
-//         imgUrl: 'https://www.google.com',
-//       },
-//       {
-//         _id: 'u102',
-//         fullname: 'Michael Mann',
-//         imgUrl: 'https://www.google.com',
-//       },
-//     ],
-//     groups: [],
-//     activities: [
-//       {
-//         id: utilService.makeId(),
-//         txt: 'Changed Color',
-//         createdAt: 154514,
-//         byMember: {
-//           _id: 'u101',
-//           fullname: 'Abi Abambi',
-//           imgUrl: 'http://some-img',
-//         },
-//         task: {
-//           id: utilService.makeId(),
-//           title: 'Replace Logo',
-//         },
-//       },
-//     ],
-//   };
+// import { utilsService } from './utils.service'
+// import { httpService } from './http.service'
+// import { userService } from './user.service'
+
+// export const boardService = {
+//     query,
+//     remove,
+//     getById,
+//     save,
+//     updateCardInBoard,
+
+//     createActivity,
+
+//     setPopoverPos,
+//     removeCard,
+//     getFilteredList,
+// }
+
+// async function query(filterBy = { ctg: '' }) {
+//     try {
+//         return await httpService.get('board', filterBy)
+//     } catch (err) {
+//         throw err
+//     }
+// }
+
+// async function remove(boardId) {
+//     try {
+//         await httpService.delete(`board/${boardId}`)
+//     } catch (err) {
+//         throw err
+//     }
+// }
+
+// async function getById(boardId) {
+//     try {
+//         return await httpService.get(`board/${boardId}`)
+
+//     } catch (err) {
+//         throw err
+//     }
+// }
+
+// async function save(board) {
+//     if (board._id) {
+//         try {
+//             return await httpService.put(`board/${board._id}`, board)
+//         } catch (err) {
+//             throw err
+//         }
+//     } else {
+//         try {
+//             return await httpService.post('board', board)
+//         } catch (err) {
+//             throw err
+//         }
+//     }
+// }
+
+// // sync functions
+
+// export function updateCardInBoard(board, updatedCard) {
+//     board.lists.forEach(list => {
+//         list.cards.forEach((card, idx) => {
+//             if (card.id === updatedCard.id) list.cards[idx] = updatedCard
+//         })
+//     })
+//     return { ...board }
+// }
+
+// export function createActivity(actionType, txt = '', card = null) {
+
+//     const loggedInUser = userService.getLoggedinUser()
+
+//     const { _id, fullname, imgUrl } = loggedInUser
+
+//     const byMember = {
+//         _id,
+//         fullname,
+//         imgUrl
+//     }
+
+//     let savedCard
+//     if (card) {
+//         savedCard = {
+//             id: card.id,
+//             title: card.title,
+//             members: card.members
+//         }
+//     }
+
+//     const savedActivity = {
+//         id: utilsService.makeId(),
+//         actionType,
+//         txt,
+//         createdAt: Date.now(),
+//         byMember,
+//         card: savedCard || null,
+//     }
+//     return savedActivity
 // }

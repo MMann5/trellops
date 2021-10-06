@@ -4,11 +4,11 @@
     "title": "My awsome board",
     "createdAt": 1589983468418,
     "createdBy": {
-      "_id": "u101",
+      "_id": "u108",
       "fullname": "Abi Abambi",
       "imgUrl": "http://some-img"
     },
-    "style": {"bgColor":"/static/media/night.ef79fbd8.png"},
+    "style": { "bgColor": "/static/media/night.ef79fbd8.png" },
     "labels": [
       {
         "id": "l101",
@@ -404,7 +404,7 @@
       "fullname": "Abi Abambi",
       "imgUrl": "http://some-img"
     },
-    "style":{"bgColor": "#0079bf"},
+    "style": { "bgColor": "#0079bf" },
     "labels": [
       {
         "id": "l2101",

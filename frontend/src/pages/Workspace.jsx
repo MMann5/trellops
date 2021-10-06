@@ -4,12 +4,17 @@ import { Link } from 'react-router-dom';
 
 import { TextField } from '@material-ui/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrashAlt, faPlus, } from '@fortawesome/free-solid-svg-icons';
+import {
+  faTrashAlt,
+  faPlus,
+} from '@fortawesome/free-solid-svg-icons';
 
 import { getEmptyBoard } from '../services/board-service';
-import { loadBoards, setBoards } from '../store/actions/boards-actions.js';
+import {
+  loadBoards,
+  setBoards,
+} from '../store/actions/boards-actions.js';
 import { BoardsNavBar } from '../cmps/BoardsNavBar';
-
 
 export function Workspace() {
   const dispatch = useDispatch();
@@ -36,31 +41,28 @@ export function Workspace() {
   };
 
   return (
-    <div className='work-space' >
+    <div className='work-space'>
       <BoardsNavBar />
       <h2>Workspace</h2>
       <div className='general-boards'>
         <h3>My Boards</h3>
-        <button className="add-board-btn"
-          onClick={onAddEmptyBoard}
-        >
-          <FontAwesomeIcon icon={faPlus} />
-        </button>
-        <TextField
-          style={{ paddingBottom: '20px' }}
-          placeholder='Add New Board...'
-          variant='standard'
-          onChange={(ev) => setBoardName(ev.target.value)}
-          value={boardName}
-          InputProps={{
-            disableUnderline: true,
-          }}
-        />
         <div className='work-space-boards'>
+          <button
+            className='board-preview flex justify-center add-board'
+            onClick={onAddEmptyBoard}
+          >
+            Add A New Board..
+          </button>
           {boards.map((board, idx) => (
             <Link to={`/board/${board._id}`} key={idx}>
-              <div className='board-preview flex justify-center' style={{ backgroundColor: board.style?.bgColor, backgroundImage : `url(${board.style?.bgColor})`, objectFit:'cover' }}>
-                {board.title}
+              <div
+                className='board-preview flex justify-center'
+                style={{
+                  backgroundColor: board.style?.bgColor,
+                  backgroundImage: `url(${board.style?.bgColor})`,
+                }}
+              >
+                {board.title ? board.title : 'Click To Set board'}
                 <button
                   className='remove-board'
                   onClick={(ev) => onRemoveBoard(ev, board._id)}
