@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
-
-export function ColorPick({ props, setCurrPopover, sendTask }) {
+import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
+export function ColorPick({ props, setCurrPopover, sendTask, popoverPos }) {
   const setColor = (color) => {
     sendTask(false, { ...props, bgColor: color });
   };
 
   return (
-    <div className='color-pick'>
-      <div className='nav-option-header flex justify-center'>
+    <div className='color-pick'
+    style={{ left: popoverPos.leftPos, top: popoverPos.topPos }}>
+      <div className='nav-option-header flex align-center'>
+        <button
+          className='clean-btn hide'
+        >
+          <CloseRoundedIcon />
+        </button>
         <h3>Choose a color</h3>
         <button
           className='clean-btn'
@@ -17,7 +21,7 @@ export function ColorPick({ props, setCurrPopover, sendTask }) {
             setCurrPopover(null);
           }}
         >
-          <FontAwesomeIcon icon={faTimes} className='close-x' />
+          <CloseRoundedIcon />
         </button>
       </div>
       <div className='colors'>
@@ -65,3 +69,4 @@ export function ColorPick({ props, setCurrPopover, sendTask }) {
     </div>
   );
 }
+

@@ -10,6 +10,7 @@ export function DynamicPopover({
   props,
   setCurrPopover,
   sendTask,
+  popoverPos
 }) {
   console.log('props', props);
   switch (name) {
@@ -19,6 +20,7 @@ export function DynamicPopover({
           props={props}
           setCurrPopover={setCurrPopover}
           sendTask={sendTask}
+          popoverPos={popoverPos}
         />
       );
     case 'LABELS':
@@ -27,6 +29,7 @@ export function DynamicPopover({
           props={props}
           setCurrPopover={setCurrPopover}
           sendTask={sendTask}
+          popoverPos={popoverPos}
         />
       );
     case 'COVER':
@@ -35,6 +38,7 @@ export function DynamicPopover({
           props={props}
           setCurrPopover={setCurrPopover}
           sendTask={sendTask}
+          popoverPos={popoverPos}
         />
       );
     case 'DATE':
@@ -43,6 +47,7 @@ export function DynamicPopover({
           props={props}
           setCurrPopover={setCurrPopover}
           sendTask={sendTask}
+          popoverPos={popoverPos}
         />
       );
     case 'ATTACHMENT':
@@ -51,6 +56,7 @@ export function DynamicPopover({
           props={props}
           setCurrPopover={setCurrPopover}
           sendTask={sendTask}
+          popoverPos={popoverPos}
         />
       );
     case 'CHECKLISTS':
@@ -59,6 +65,7 @@ export function DynamicPopover({
           props={props}
           setCurrPopover={setCurrPopover}
           sendTask={sendTask}
+          popoverPos={popoverPos}
         />
       );
     default:

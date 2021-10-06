@@ -65,6 +65,9 @@
     border: none;
     cursor: pointer;
     background-color: transparent;
+    &.hide{
+        visibility: hidden;
+    }
 }
 .clean-list{
     list-style-type: none;
@@ -81,6 +84,7 @@
     background-color: #0065ff;
     transition: background-color .15s ease-in-out;
     text-align: center;
+    cursor: pointer;
 }
 
 .blue-btn:hover {
@@ -94,18 +98,19 @@
         font-family: 'SourceSans-Light';
         font-size: 1rem;
         color: #a6a6a6;
+        margin-right: auto;
+        margin-left: auto;
     }
 
     button {
         position: relative;
-        right: -80px;
         color: #a6a6a6;
     }
     .right-btn{
-        right: -50px;
+        right: 6px;
     }
     .left-btn{
-       right: 50px; 
+        right: -6px;
     }
 }
 

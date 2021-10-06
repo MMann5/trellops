@@ -1,0 +1,27 @@
+.comments-list{
+    margin-bottom: 23px;
+    img{
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+    }
+    .comments-main-content{
+        .comments-member-name{
+            font-weight: 700;
+            margin-left: 7px;
+            margin-bottom: 5px;
+        }
+        .comment-txt{
+            margin-left: 7px;
+            width: 414px;
+            height: 36px;
+            background-color: rgb(255, 255, 255);
+            border-radius: 3px;
+            border: 0.5px rgba(180, 180, 180, 0.479) solid;
+            span{
+                margin-left: 14px;
+                font-size: rem(13px);
+            }
+        }
+    }
+}

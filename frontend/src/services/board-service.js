@@ -27,13 +27,13 @@ export function getEmptyGroup(txt) {
   };
 }
 
-export function getEmptyBoard(txt) {
+export function getEmptyBoard(txt, bgColor='#0079bf') {
   return {
     _id: utilService.makeId(),
     title: txt,
     createdAt: null,
     createdBy: {},
-    bgColor: '#0079bf',
+    style:{bgColor},
     labels: [],
     members: [],
     groups: [],
@@ -48,7 +48,9 @@ export function addComment(txt) {
     id: utilService.makeId(),
     txt,
     createdAt: Date.now(),
-    byMember: { _id: 'u101', fullname: 'Tal Tarablus' },
+    byMember: {_id: 'u103',
+    fullname: 'Ron Shmuel Kotigaro',
+    imgUrl: 'ron.png'},
   };
 }
 export function constructTask(txt) {

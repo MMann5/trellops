@@ -19,13 +19,18 @@
         color: $clr7;
         background-color: $bgClr1;
         border-radius: $borderRad1;
-        max-width: 770px;
+        height: 100%;
         position: absolute;
         z-index: 4;
-        top: 48px;
+        top: 0;
         right: 0;
         left: 0;
-        margin: 0 8px;
+        @media screen and (min-width: 560px){
+            max-width: 770px;
+            height: unset;
+            top: 48px;
+            margin: 0 8px;
+        }
 
         .close-window-btn {
             cursor: pointer;
@@ -127,6 +132,7 @@
 
                 span {
                     text-decoration: underline;
+                    margin-left: 4px;
                 }
             }
         }
@@ -195,7 +201,7 @@
 
                 .card-details-main {
                     width: 552px;
-                    margin: 16px 0px 0 16px;
+                    margin: 0 0px 0 16px;
                 }
             }
         }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import logo from '../assets/imgs/‏‏homelogo2.svg';
-import david from '../assets/imgs/profiles/david.jpg';
+import ron from '../assets/imgs/profiles/ron.png';
 import homeIcon from '../assets/imgs/icons/home.svg';
 
 export class BoardsNavBar extends Component {
@@ -27,7 +27,7 @@ export class BoardsNavBar extends Component {
           </Link>
         </div>
         <div className='profile-page-link'>
-          <img src={david} alt='' />
+          <img src={ron} alt='' />
         </div>
       </div>
     );

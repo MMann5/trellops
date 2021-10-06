@@ -2,14 +2,13 @@ import React, { useState, useEffect } from 'react';
 import CheckBoxOutlinedIcon from '@material-ui/icons/CheckBoxOutlined';
 import { TextareaAutosize, TextField } from '@material-ui/core';
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import Checkbox from 'rc-checkbox';
 
-export function TaskCheckList({ task, sendTask }) {
+export function TaskCheckList({ task, sendTask, togglePopover}) {
   const [listStateVal, createListVal] = React.useState(
     task.checklists ? task.checklists : ''
   );
-  console.log(task);
-  console.log(listStateVal);
   useEffect(() => {
     sendTask(false, { ...task, checklists: listStateVal });
   }, [listStateVal]);
@@ -25,34 +24,40 @@ export function TaskCheckList({ task, sendTask }) {
   };
   const list = task.checklists
     ? task.checklists.map((val, idx) => {
-        return (
-          <li key={idx}>
+      return (
+        <li key={idx} className="checklist-item flex align-center justify-space-between">
+          <div>
             <Checkbox
               onChange={(ev) => onChange(ev, idx)}
               checked={val.checked}
+              style={{
+                marginInline: '2px',
+              }}
             />
             <span
               style={{
-                marginInlineStart: '10px',
-                marginInlineEnd: '10px',
+                marginInlineStart: '17px',
+                marginInlineEnd: '17px',
               }}
             >
               {val.title}
             </span>
-            <button
-              style={{
-                marginInlineStart: '10px',
-              }}
-              onClick={() => removeCheck(idx)}
-              className='checkbox-btn clean-btn'
-            >
-              x
-            </button>
-          </li>
-        );
-      })
+          </div>
+          <button
+            style={{
+              marginInlineStart: '10px',
+            }}
+            onClick={() => removeCheck(idx)}
+            // onClick={togglePopover("CHECKLISTSBTN")}
+            className='checklist-dots-btn clean-btn'
+          >
+            <CloseRoundedIcon style={{ fontSize: '18px', color: '#42526e' }} />
+          </button>
+        </li>
+      );
+    })
     : '';
-  return <ul>{list}</ul>;
+  return <ul className="clean-list">{list}</ul>;
 }
 
 // <div className='checklist-preview'>

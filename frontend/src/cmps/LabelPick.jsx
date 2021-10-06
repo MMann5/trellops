@@ -1,15 +1,13 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
 // import Checkbox from 'rc-checkbox';
-
+import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
 import Checkbox from '@mui/material/Checkbox';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 
-export function LabelPick({ props, setCurrPopover, sendTask }) {
-  const getLabels = () => {};
+export function LabelPick({ props, setCurrPopover, sendTask, popoverPos }) {
+  const getLabels = () => { };
   const { board } = useSelector((state) => state.boardModule);
   const [stateVal, createStateVal] = React.useState({});
   const [labelStateVal, createLabelVal] = React.useState(
@@ -60,19 +58,25 @@ export function LabelPick({ props, setCurrPopover, sendTask }) {
   });
 
   return (
-    <div className='checklist'>
-      <div className='nav-option-header justify-center card-details-labels'>
-        {/* <h3>Add a Labels</h3> */}
-        <ul className='labels-container'>{labels}</ul>
+    <div className='checklist'
+    style={{ left: popoverPos.leftPos, top: popoverPos.topPos }}>
+      <div className='nav-option-header flex align-center'>
+        <button
+          className='clean-btn hide'
+        >
+          <CloseRoundedIcon />
+        </button>
+        <h3>Labels</h3>
         <button
           className='clean-btn'
           onClick={() => {
             setCurrPopover(null);
           }}
         >
-          <FontAwesomeIcon icon={faTimes} className='close-x' />
+          <CloseRoundedIcon />
         </button>
       </div>
+      <ul className='labels-container clean-list'>{labels}</ul>
     </div>
   );
 }

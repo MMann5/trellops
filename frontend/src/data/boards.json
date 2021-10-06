@@ -1,14 +1,16 @@
 [
   {
     "_id": "b101",
-    "title": "My awsome board",
+    "title": "Trellops is best",
     "createdAt": 1589983468418,
     "createdBy": {
-      "_id": "u101",
-      "fullname": "Abi Abambi",
-      "imgUrl": "http://some-img"
+      "_id": "u103",
+      "fullname": "Ron Shmuel Kotigaro",
+      "imgUrl": "ron.png"
     },
-    "style": {"bgColor":"/static/media/night.ef79fbd8.png"},
+    "style": {
+      "bgColor": "/static/media/night.ef79fbd8.png"
+    },
     "labels": [
       {
         "id": "l101",
@@ -34,34 +36,43 @@
         "id": "l105",
         "title": "Complex",
         "color": "#FFAF3F"
+      },
+      {
+        "id": "l106",
+        "title": "Bug",
+        "color": "#d64161"
       }
     ],
     "members": [
       {
         "_id": "u101",
         "fullname": "Tal Tarablus",
-        "imgUrl": "tal.jpg"
+        "imgUrl": "tal.jpg",
+        "avatarColor": "#eea29a"
       },
       {
         "_id": "u102",
         "fullname": "Michael Mann",
-        "imgUrl": "michael.png"
+        "imgUrl": "michael.png",
+        "avatarColor": "#04AA6D"
       },
       {
         "_id": "u103",
         "fullname": "Ron Shmuel Kotigaro",
-        "imgUrl": "ron.png"
+        "imgUrl": "ron.png",
+        "avatarColor": "#3e4444"
       },
       {
         "_id": "u104",
         "fullname": "David Ben Ishai",
-        "imgUrl": "david.jpg"
+        "imgUrl": "david.jpg",
+        "avatarColor": "#6b5b95"
       }
     ],
     "groups": [
       {
         "id": "g101",
-        "title": "Make a Trello",
+        "title": "Backlog",
         "tasks": [
           {
             "id": "c101",
@@ -71,13 +82,13 @@
             "bgColor": "rgba(255,255,255,0.5)",
             "comments": [
               {
-                "id": "ZdPnm",
-                "txt": "@Michael, did you find anything?",
+                "id": "Zdser",
+                "txt": "@Ron, did you find anything?",
                 "createdAt": 1590779817436.0,
                 "byMember": {
-                  "_id": "u101",
-                  "fullname": "Tal Tarablus",
-                  "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                  "_id": "u102",
+                  "fullname": "Michael Mann",
+                  "imgUrl": "michael.png"
                 }
               }
             ],
@@ -86,14 +97,15 @@
                 "_id": "u102",
                 "username": "Michael",
                 "fullname": "Michael Mann",
-                "imgUrl": "https://www.google.com/search?q=random+profile+picture&rlz=1C1NDCM_iwIL777IL777&sxsrf=AOaemvLNrFQ_vcG_2SPRhZdP-9hoYvlmyw:1633208139399&tbm=isch&source=iu&ictx=1&fir=28WseG_shT2cbM%252CTBlIsmmBIzRPHM%252C_%253Bd6nmAc1DACZdzM%252CIc6AIIfNZlZBdM%252C_%253BQJp4PLZLW3DUnM%252CLzzf4C4aN0_oiM%252C_%253BjjsTNt1nEG1RBM%252C_mqehD_6s57tiM%252C_%253BKSRL2R-EekQGPM%252C5ASeylnN9drX2M%252C_%253BqnoR3ksUxXE0wM%252CFChdS8tJ7QZuLM%252C_%253BUM07qGtUp3qmSM%252Cril1qDShORbXNM%252C_%253B6COpRQnftBH9qM%252CIFfQzOn3RF9cMM%252C_%253BGG-6UwPtWbX5ZM%252CQ02J6CqfDevs0M%252C_%253BW2w1aYfaoHhIpM%252CHUJ6_jt__ZegVM%252C_%253B-MDL8yZl08DHlM%252C0kQOENfh8kv4_M%252C_%253BZjK9EBRJFJ3a9M%252CHLlFTfW3mQg0SM%252C_%253BSkLwQL72hwiC_M%252CAVDhH1QPlikjaM%252C_%253BRQiUAYwo2NmE-M%252CHLlFTfW3mQg0SM%252C_%253B2emqwDGerYzuOM%252CxLJE5qqC6JDDRM%252C_%253B51UIF7o30diFrM%252CntsyisVRCbFhsM%252C_&vet=1&usg=AI4_-kTzJpSAQMvb4VFBlLgqAbK3C_ZbYQ&sa=X&sqi=2&ved=2ahUKEwjMwPi3zqzzAhVtQfEDHa_5DaMQ9QF6BAgpEAE#imgrc=-MDL8yZl08DHlM"
+                "imgUrl": "https://www.google.com/search?q=random+profile+picture&rlz=1C1NDCM_iwIL777IL777&sxsrf=AOaemvLNrFQ_vcG_2SPRhZdP-9hoYvlmyw:1633208139399&tbm=isch&source=iu&ictx=1&fir=28WseG_shT2cbM%252CTBlIsmmBIzRPHM%252C_%253Bd6nmAc1DACZdzM%252CIc6AIIfNZlZBdM%252C_%253BQJp4PLZLW3DUnM%252CLzzf4C4aN0_oiM%252C_%253BjjsTNt1nEG1RBM%252C_mqehD_6s57tiM%252C_%253BKSRL2R-EekQGPM%252C5ASeylnN9drX2M%252C_%253BqnoR3ksUxXE0wM%252CFChdS8tJ7QZuLM%252C_%253BUM07qGtUp3qmSM%252Cril1qDShORbXNM%252C_%253B6COpRQnftBH9qM%252CIFfQzOn3RF9cMM%252C_%253BGG-6UwPtWbX5ZM%252CQ02J6CqfDevs0M%252C_%253BW2w1aYfaoHhIpM%252CHUJ6_jt__ZegVM%252C_%253B-MDL8yZl08DHlM%252C0kQOENfh8kv4_M%252C_%253BZjK9EBRJFJ3a9M%252CHLlFTfW3mQg0SM%252C_%253BSkLwQL72hwiC_M%252CAVDhH1QPlikjaM%252C_%253BRQiUAYwo2NmE-M%252CHLlFTfW3mQg0SM%252C_%253B2emqwDGerYzuOM%252CxLJE5qqC6JDDRM%252C_%253B51UIF7o30diFrM%252CntsyisVRCbFhsM%252C_&vet=1&usg=AI4_-kTzJpSAQMvb4VFBlLgqAbK3C_ZbYQ&sa=X&sqi=2&ved=2ahUKEwjMwPi3zqzzAhVtQfEDHa_5DaMQ9QF6BAgpEAE#imgrc=-MDL8yZl08DHlM",
+                "avatarColor": "#04AA6D"
               }
             ],
             "labels": [
               {
-                "id": "l101",
-                "title": "Done",
-                "color": "#7BC86C"
+                "id": "l103",
+                "title": "Important",
+                "color": "#F5DD29"
               },
               {
                 "id": "l105",
@@ -102,15 +114,22 @@
               }
             ],
             "attachments": [
-              "https://i.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U"
+              "https://images-platform.99static.com//j3lFsXdVOtsovHgOHMt2TIOnevU=/279x0:1622x1343/fit-in/500x500/99designs-contests-attachments/23/23600/attachment_23600424"
             ]
           },
           {
             "id": "c102",
-            "title": "Add Samples",
-            "description": "It's important to find a good logo.",
-            "members": [],
-            "bgColor": "rgba(255,255,255,0.5)",
+            "title": "Add test data",
+            "description": "Data should be related to a real project like trellops. In fact, let's use trellops.",
+            "members": [
+              {
+                "_id": "u104",
+                "fullname": "David Ben Ishai",
+                "imgUrl": "david.jpg",
+                "avatarColor": "#6b5b95"
+              }
+            ],
+            "bgColor": "#5BA4CF",
             "dueDate": 16156215211,
             "comments": [],
             "labels": [
@@ -129,15 +148,15 @@
           {
             "id": "c103",
             "title": "Add member's photos",
-            "description": "It's important to find a good logo.",
+            "description": "All our photos are stored inside profile images.",
             "members": [],
             "bgColor": "rgba(255,255,255,0.5)",
             "comments": [],
             "labels": [
               {
-                "id": "l101",
-                "title": "Done",
-                "color": "#7BC86C"
+                "id": "l104",
+                "title": "Optional",
+                "color": "#d4f"
               },
               {
                 "id": "l105",
@@ -149,11 +168,31 @@
           {
             "id": "c105",
             "title": "Erase Local Storage",
-            "description": "It's important to find a good logo.",
-
+            "description": "",
             "bgColor": "rgba(255,255,255,0.5)",
             "dueDate": 16156215211,
-            "comments": [],
+            "comments": [
+              {
+                "id": "shwingg",
+                "txt": "@David, do you remember this?",
+                "createdAt": 1590779817436.0,
+                "byMember": {
+                  "_id": "u103",
+                  "fullname": "Ron Shmuel Kotigaro",
+                  "imgUrl": "ron.png"
+                }
+              },
+              {
+                "id": "shfgfdg",
+                "txt": "Yeah man. All cool",
+                "createdAt": 1590779817436.0,
+                "byMember": {
+                  "_id": "u104",
+                  "fullname": "David Ben Ishai",
+                  "imgUrl": "david.jpg"
+                }
+              }
+            ],
             "members": [],
             "labels": [
               {
@@ -171,9 +210,16 @@
           {
             "id": "c106",
             "title": "Check task Id is good",
-            "description": "It's important to find a good logo.",
+            "description": "Repeating the same ID will make bugs. Have to check",
             "bgColor": "rgba(255,255,255,0.5)",
-            "members": [],
+            "members": [
+              {
+                "_id": "u102",
+                "fullname": "Michael Mann",
+                "imgUrl": "michael.png",
+                "avatarColor": "#04AA6D"
+              }
+            ],
             "comments": [],
             "labels": [
               {
@@ -191,7 +237,7 @@
           {
             "id": "c107",
             "title": "Render Board's backgorund",
-            "description": "It's important to find a good logo.",
+            "description": "In unsplash website there are excellent pictures to choose from",
             "members": [],
             "bgColor": "rgba(255,255,255,0.5)",
             "comments": [],
@@ -212,13 +258,12 @@
       },
       {
         "id": "g102",
-        "title": "Bonus Tasks",
+        "title": "Doing",
         "tasks": [
           {
             "id": "c10553",
-            "title": "Add Test Data",
-            "description": "It's important to find a good logo.",
-
+            "title": "BoardApp",
+            "description": "Renders a list of cmps. Each item is a GroupList cmp and in it renders a list of cards cmps. Board holds groups components and within them tasks components are stored",
             "bgColor": "rgba(255,255,255,0.5)",
             "comments": [],
             "members": [
@@ -226,13 +271,15 @@
                 "_id": "u102",
                 "username": "Michael",
                 "fullname": "Michael Mann",
-                "imgUrl": "https://www.google.com/search?q=random+profile+picture&rlz=1C1NDCM_iwIL777IL777&sxsrf=AOaemvLNrFQ_vcG_2SPRhZdP-9hoYvlmyw:1633208139399&tbm=isch&source=iu&ictx=1&fir=28WseG_shT2cbM%252CTBlIsmmBIzRPHM%252C_%253Bd6nmAc1DACZdzM%252CIc6AIIfNZlZBdM%252C_%253BQJp4PLZLW3DUnM%252CLzzf4C4aN0_oiM%252C_%253BjjsTNt1nEG1RBM%252C_mqehD_6s57tiM%252C_%253BKSRL2R-EekQGPM%252C5ASeylnN9drX2M%252C_%253BqnoR3ksUxXE0wM%252CFChdS8tJ7QZuLM%252C_%253BUM07qGtUp3qmSM%252Cril1qDShORbXNM%252C_%253B6COpRQnftBH9qM%252CIFfQzOn3RF9cMM%252C_%253BGG-6UwPtWbX5ZM%252CQ02J6CqfDevs0M%252C_%253BW2w1aYfaoHhIpM%252CHUJ6_jt__ZegVM%252C_%253B-MDL8yZl08DHlM%252C0kQOENfh8kv4_M%252C_%253BZjK9EBRJFJ3a9M%252CHLlFTfW3mQg0SM%252C_%253BSkLwQL72hwiC_M%252CAVDhH1QPlikjaM%252C_%253BRQiUAYwo2NmE-M%252CHLlFTfW3mQg0SM%252C_%253B2emqwDGerYzuOM%252CxLJE5qqC6JDDRM%252C_%253B51UIF7o30diFrM%252CntsyisVRCbFhsM%252C_&vet=1&usg=AI4_-kTzJpSAQMvb4VFBlLgqAbK3C_ZbYQ&sa=X&sqi=2&ved=2ahUKEwjMwPi3zqzzAhVtQfEDHa_5DaMQ9QF6BAgpEAE#imgrc=-MDL8yZl08DHlM"
+                "imgUrl": "michael.png",
+                "avatarColor": "#04AA6D"
               },
               {
                 "_id": "u103",
                 "username": "Ron",
                 "fullname": "Ron Konti",
-                "imgUrl": "https://www.google.com/search?q=random+profile+picture&rlz=1C1NDCM_iwIL777IL777&sxsrf=AOaemvLNrFQ_vcG_2SPRhZdP-9hoYvlmyw:1633208139399&tbm=isch&source=iu&ictx=1&fir=28WseG_shT2cbM%252CTBlIsmmBIzRPHM%252C_%253Bd6nmAc1DACZdzM%252CIc6AIIfNZlZBdM%252C_%253BQJp4PLZLW3DUnM%252CLzzf4C4aN0_oiM%252C_%253BjjsTNt1nEG1RBM%252C_mqehD_6s57tiM%252C_%253BKSRL2R-EekQGPM%252C5ASeylnN9drX2M%252C_%253BqnoR3ksUxXE0wM%252CFChdS8tJ7QZuLM%252C_%253BUM07qGtUp3qmSM%252Cril1qDShORbXNM%252C_%253B6COpRQnftBH9qM%252CIFfQzOn3RF9cMM%252C_%253BGG-6UwPtWbX5ZM%252CQ02J6CqfDevs0M%252C_%253BW2w1aYfaoHhIpM%252CHUJ6_jt__ZegVM%252C_%253B-MDL8yZl08DHlM%252C0kQOENfh8kv4_M%252C_%253BZjK9EBRJFJ3a9M%252CHLlFTfW3mQg0SM%252C_%253BSkLwQL72hwiC_M%252CAVDhH1QPlikjaM%252C_%253BRQiUAYwo2NmE-M%252CHLlFTfW3mQg0SM%252C_%253B2emqwDGerYzuOM%252CxLJE5qqC6JDDRM%252C_%253B51UIF7o30diFrM%252CntsyisVRCbFhsM%252C_&vet=1&usg=AI4_-kTzJpSAQMvb4VFBlLgqAbK3C_ZbYQ&sa=X&sqi=2&ved=2ahUKEwjMwPi3zqzzAhVtQfEDHa_5DaMQ9QF6BAgpEAE#imgrc=-MDL8yZl08DHlM"
+                "imgUrl": "ron.png",
+                "avatarColor": "#3e4444"
               }
             ],
             "labels": [
@@ -250,41 +297,40 @@
           },
           {
             "id": "c104",
-            "title": "Help me",
-            "description": "I need a lot of help cleaning my code.",
-
+            "title": "CardDetails",
+            "description": "Found a bug in the label-pick component. Can't peak purple color.",
             "bgColor": "rgba(255,255,255,0.5)",
             "comments": [
               {
                 "id": "ZdPnm",
-                "txt": "also @yaronb please CR this",
+                "txt": "also @michael please CR this!",
                 "createdAt": 1590999817436.0,
                 "byMember": {
-                  "_id": "u101",
-                  "fullname": "Tal Tarablus",
-                  "imgUrl": "tal.jpg"
+                  "_id": "u104",
+                  "fullname": "David Ben Ishai",
+                  "imgUrl": "david.jpg"
                 }
               }
             ],
             "checklists": [
               {
                 "id": "212jX",
-                "title": "Do checklist",
+                "title": "Checklist cmp",
                 "checked": false
               },
               {
                 "id": "212jfX",
-                "title": "todo details",
+                "title": "Details cmp",
                 "checked": true
               },
               {
                 "id": "242jX",
-                "title": "trello app",
+                "title": "Add profile picture",
                 "checked": false
               },
               {
                 "id": "262jX",
-                "title": "hey you",
+                "title": "cComment cmp",
                 "checked": true
               }
             ],
@@ -293,7 +339,8 @@
                 "_id": "u101",
                 "username": "Tal",
                 "fullname": "Tal Tarablus",
-                "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
+                "avatarColor": "#eea29a"
               }
             ],
             "labels": [
@@ -303,9 +350,9 @@
                 "color": "#61bd"
               },
               {
-                "id": "l103",
-                "title": "Important",
-                "color": "#F5DD29"
+                "id": "l106",
+                "title": "Bug",
+                "color": "#d64161"
               }
             ],
             "createdAt": 1590999730348,
@@ -324,10 +371,211 @@
       },
       {
         "id": "g103",
-        "title": "Personal Todos",
+        "title": "Code Review",
         "tasks": [
           {
             "id": "d104",
+            "title": "HomePage",
+            "description": "NavBar, Logo, , Hero, Description, Button- get started Login Signup (no guest, only mail small on the right on bottom: button- start doing",
+            "members": [],
+            "bgColor": "rgba(255,255,255,0.5)",
+            "comments": [],
+            "labels": [
+              {
+                "id": "l101",
+                "title": "Done",
+                "color": "#7BC86C"
+              }
+            ]
+          },
+          {
+            "id": "d105",
+            "title": "Design mobile breackpoint",
+            "description": "I need a lot of help with this.",
+            "members": [
+              {
+              "_id": "u102",
+              "fullname": "Michael Mann",
+              "imgUrl": "michael.png",
+              "avatarColor": "#04AA6D"
+            },
+            {
+              "_id": "u103",
+              "fullname": "Ron Shmuel Kotigaro",
+              "imgUrl": "ron.png",
+              "avatarColor": "#3e4444"
+            },
+            {
+              "_id": "u104",
+              "fullname": "David Ben Ishai",
+              "imgUrl": "david.jpg",
+              "avatarColor": "#6b5b95"
+            }
+          ],
+            "bgColor": "rgba(255,255,255,0.5)",
+            "comments": [],
+            "labels": [
+              {
+                "id": "l101",
+                "title": "Done",
+                "color": "#7BC86C"
+              },
+              {
+                "id": "l105",
+                "title": "Complex",
+                "color": "#FFAF3F"
+              }
+            ]
+          },
+          {
+            "id": "d106",
+            "title": "Compress all images",
+            "description": "Michael knows a good app for this..",
+            "members": [],
+            "bgColor": "#CD8DE5",
+            "comments": [],
+            "labels": [
+              {
+                "id": "l101",
+                "title": "Done",
+                "color": "#7BC86C"
+              },
+              {
+                "id": "l105",
+                "title": "Complex",
+                "color": "#FFAF3F"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "g104",
+        "title": "Design",
+        "tasks": [
+          {
+            "id": "d2004",
+            "title": "Workspace",
+            "description": "Renders a list of custom boards with demo data. Each board has workspace title in it. Bonus feature: Stared boards get displayed at the top.",
+            "members": [],
+            "bgColor": "#F5DD29",
+            "comments": [],
+            "labels": [
+              {
+                "id": "l101",
+                "title": "Done",
+                "color": "#7BC86C"
+              }
+            ]
+          },
+          {
+            "id": "d105",
+            "title": "File Attachments",
+            "description": "",
+            "members": [
+              {
+              "_id": "u102",
+              "fullname": "Michael Mann",
+              "imgUrl": "michael.png",
+              "avatarColor": "#04AA6D"
+            },
+            {
+              "_id": "u104",
+              "fullname": "David Ben Ishai",
+              "imgUrl": "david.jpg",
+              "avatarColor": "#6b5b95"
+            }
+          ],
+            "bgColor": "rgba(255,255,255,0.5)",
+            "comments": [],
+            "labels": [
+              {
+                "id": "l101",
+                "title": "Done",
+                "color": "#7BC86C"
+              }
+            ]
+          },
+          {
+            "id": "d206",
+            "title": "BoardNavBar",
+            "description": "Copy features of Trello.",
+            "members": [],
+            "bgColor": "",
+            "comments": [],
+            "labels": [
+              {
+                "id": "l101",
+                "title": "Done",
+                "color": "#7BC86C"
+              },
+              {
+                "id": "l105",
+                "title": "Complex",
+                "color": "#FFAF3F"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "g105",
+        "title": "Done",
+        "tasks": [
+          {
+            "id": "d306",
+            "title": "ToyService",
+            "description": "Renders a list of custom boards with demo data. Each board has workspace title in it. Bonus feature: Stared boards get displayed at the top.",
+            "members": [],
+            "bgColor": "",
+            "comments": [],
+            "labels": [
+              {
+                "id": "l101",
+                "title": "Done",
+                "color": "#7BC86C"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "activities": []
+  },
+  {
+    "_id": "b102",
+    "title": "My favorite things",
+    "createdAt": 1589983469652,
+    "createdBy": {
+      "_id": "u102",
+      "fullname": "Abi Abambi",
+      "imgUrl": "http://some-img"
+    },
+    "style": {
+      "bgColor": "#0079bf"
+    },
+    "labels": [
+      {
+        "id": "l2101",
+        "title": "Done",
+        "color": "#61bd4f"
+      }
+    ],
+    "members": [
+      {
+        "_id": "u104",
+        "fullname": "David Ben Ishai",
+        "imgUrl": "https://www.google.com",
+        "avatarColor": "#6b5b95"
+      }
+    ],
+    "groups": [
+      {
+        "id": "g201",
+        "title": "Personal Todos",
+        "tasks": [
+          {
+            "id": "d3004",
             "title": "Make pizzas",
             "description": "I need a lot of help cleaning my code.",
             "members": [],
@@ -356,7 +604,7 @@
             ]
           },
           {
-            "id": "d106",
+            "id": "d406",
             "title": "Do my laundry",
             "description": "I need a lot of help cleaning my code.",
             "members": [],
@@ -396,15 +644,17 @@
     ]
   },
   {
-    "_id": "b102",
-    "title": "Robot",
+    "_id": "b103",
+    "title": "Building a tree house",
     "createdAt": 1589983469652,
     "createdBy": {
       "_id": "u102",
       "fullname": "Abi Abambi",
       "imgUrl": "http://some-img"
     },
-    "style":{"bgColor": "#0079bf"},
+    "style": {
+      "bgColor": "/static/media/island.c584b382.jpg"
+    },
     "labels": [
       {
         "id": "l2101",
@@ -416,111 +666,74 @@
       {
         "_id": "u104",
         "fullname": "David Ben Ishai",
-        "imgUrl": "https://www.google.com"
+        "imgUrl": "https://www.google.com",
+        "avatarColor": "#6b5b95"
       }
     ],
-    "groups": [
-      {
-        "id": "g201",
-        "title": "Group 1",
-        "tasks": [
-          {
-            "id": "c201",
-            "title": "Replace logo",
-            "description": "I need a lot of help cleaning my code.",
-            "bgColor": "rgba(255,255,255,0.5)",
-            "comments": [],
-            "labels": [
-              {
-                "id": "l101",
-                "title": "Done",
-                "color": "#7BC86C"
-              },
-              {
-                "id": "l105",
-                "title": "Complex",
-                "color": "#FFAF3F"
-              }
-            ]
-          },
-          {
-            "id": "c202",
-            "title": "Add Samples",
-            "description": "I need a lot of help cleaning my code.",
-            "members": [],
-            "bgColor": "rgba(255,255,255,0.5)",
-            "comments": [],
-            "labels": [
-              {
-                "id": "l101",
-                "title": "Done",
-                "color": "#7BC86C"
-              },
-              {
-                "id": "l105",
-                "title": "Complex",
-                "color": "#FFAF3F"
-              }
-            ]
-          },
-          {
-            "id": "c203",
-            "title": "Fix Paddings",
-            "description": "I need a lot of help cleaning my code.",
-            "members": [],
-            "bgColor": "rgba(255,255,255,0.5)",
-            "comments": [],
-            "labels": [
-              {
-                "id": "l101",
-                "title": "Done",
-                "color": "#7BC86C"
-              },
-              {
-                "id": "l105",
-                "title": "Complex",
-                "color": "#FFAF3F"
-              }
-            ]
-          },
-          {
-            "id": "c204",
-            "title": "Change font type",
-            "description": "I need a lot of help cleaning my code.",
-            "members": [],
-            "bgColor": "rgba(255,255,255,0.5)",
-            "comments": [],
-            "labels": [
-              {
-                "id": "l101",
-                "title": "Done",
-                "color": "#7BC86C"
-              },
-              {
-                "id": "l105",
-                "title": "Complex",
-                "color": "#FFAF3F"
-              }
-            ]
-          }
-        ]
-      }
-    ],
+    "groups":[],
     "activities": [
+    ]
+  },
+  {
+    "_id": "b104",
+    "title": "Trip to Paris",
+    "createdAt": 1589983469652,
+    "createdBy": {
+      "_id": "u102",
+      "fullname": "Abi Abambi",
+      "imgUrl": "http://some-img"
+    },
+    "style": {
+      "bgColor": "/static/media/balcony.aa711aa8.jpg"
+    },
+    "labels": [
       {
-        "id": "a101",
-        "txt": "Changed Color",
-        "createdAt": 154514,
-        "byMember": {
-          "_id": "u101",
-          "fullname": "Abi Abambi",
-          "imgUrl": "http://some-img"
-        },
-        "task": {
-          "id": "c101",
-          "title": "Replace Logo"
-        }
+        "id": "l2101",
+        "title": "Done",
+        "color": "#61bd4f"
       }
+    ],
+    "members": [
+      {
+        "_id": "u104",
+        "fullname": "David Ben Ishai",
+        "imgUrl": "https://www.google.com",
+        "avatarColor": "#6b5b95"
+      }
+    ],
+    "groups":[],
+    "activities": [
+    ]
+  },
+  {
+    "_id": "b105",
+    "title": "Fix at home",
+    "createdAt": 1589983469652,
+    "createdBy": {
+      "_id": "u102",
+      "fullname": "Abi Abambi",
+      "imgUrl": "http://some-img"
+    },
+    "style": {
+      "bgColor": "/static/media/malibu.7eb0ae98.jpg"
+    },
+    "labels": [
+      {
+        "id": "l2101",
+        "title": "Done",
+        "color": "#61bd4f"
+      }
+    ],
+    "members": [
+      {
+        "_id": "u104",
+        "fullname": "David Ben Ishai",
+        "imgUrl": "https://www.google.com",
+        "avatarColor": "#6b5b95"
+      }
+    ],
+    "groups":[],
+    "activities": [
     ]
   }
 ]

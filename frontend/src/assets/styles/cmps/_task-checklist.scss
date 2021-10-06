@@ -1,0 +1,12 @@
+.checklist-item{
+    border-radius: 3px;
+    .checklist-dots-btn{
+        visibility: hidden;
+    }
+}
+.checklist-item:hover{
+    background-color: rgba(9, 30, 66, 0.04);
+    .checklist-dots-btn{
+        visibility: visible;
+    }
+}

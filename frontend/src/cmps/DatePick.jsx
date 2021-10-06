@@ -6,16 +6,21 @@ import {
   MuiPickersUtilsProvider,
 } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
-export function DatePick({ props, setCurrPopover, sendTask }) {
+import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
+export function DatePick({ props, setCurrPopover, sendTask, popoverPos }) {
   const [startDate, setStartDate] = useState(Date.now());
   useEffect(() => {
     sendTask(false, { ...props, dueDate: startDate });
   }, [startDate]);
   return (
-    <div className='date-pick'>
-      <div className='nav-option-header flex justify-center'>
+    <div className='date-pick'
+    style={{ left: popoverPos.leftPos, top: popoverPos.topPos }}>
+      <div className='nav-option-header flex align-center'>
+      <button 
+          className='clean-btn hide'
+        >
+          <CloseRoundedIcon/>
+        </button>
         <h3>Date</h3>
         <button
           className='clean-btn'
@@ -23,7 +28,7 @@ export function DatePick({ props, setCurrPopover, sendTask }) {
             setCurrPopover(null);
           }}
         >
-          <FontAwesomeIcon icon={faTimes} className='close-x' />
+          <CloseRoundedIcon/>
         </button>
       </div>
       <MuiPickersUtilsProvider utils={DateFnsUtils}>

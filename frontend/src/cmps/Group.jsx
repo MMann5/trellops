@@ -9,7 +9,7 @@ import { TextField } from '@material-ui/core';
 import addIcon from '../assets/imgs/icons/add.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
-
+import AddIcon from '@mui/icons-material/Add';
 import { Task } from './Task';
 
 export default function Group({
@@ -91,18 +91,18 @@ export default function Group({
                   style: {
                     fontSize: '16px',
                     fontFamily: 'SourceSans-SemiBold',
-                    paddingLeft: '10px',
+                    paddingLeft: '17px',
                   },
                 }}
               />
-              <button
+              {/* <button
                 className='remove-group'
                 onClick={() => {
                   onRemoveGroup(group.id);
                 }}
               >
                 <FontAwesomeIcon icon={faTrash} />
-              </button>
+              </button> */}
             </div>
 
             <div className='card-list'>
@@ -116,8 +116,8 @@ export default function Group({
                   {provided.placeholder}
                 </div>
                 <div>
-                  <div className='card-btn-container'>
-                    <img src={addIcon} alt='' />
+                  <div className='card-btn-container flex align-center'>
+                    <AddIcon fontSize="small"/>
                     <button
                       className='card-btn'
                       onClick={() => onAddTask(group.id, taskVal)}

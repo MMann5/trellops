@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 import { TextField } from '@material-ui/core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
 import Checkbox from 'rc-checkbox';
 import { utilService } from '../services/util-service';
 
-export function Checklist({ props, setCurrPopover, sendTask }) {
+export function Checklist({ props, setCurrPopover, sendTask, popoverPos }) {
   const [stateVal, createStateVal] = React.useState({});
   const [listStateVal, createListVal] = React.useState(
     props.checklists ? props.checklists : []
@@ -14,16 +13,22 @@ export function Checklist({ props, setCurrPopover, sendTask }) {
     sendTask(false, { ...props, checklists: listStateVal });
   }, [listStateVal]);
   return (
-    <div className='checklist'>
-      <div className='nav-option-header flex justify-center'>
-        <h3>Add a Checklist</h3>
+    <div className='checklist'
+    style={{ left: popoverPos.leftPos, top: popoverPos.topPos }}>
+      <div className='nav-option-header flex align-center'>
+      <button 
+          className='clean-btn hide'
+        >
+          <CloseRoundedIcon/>
+        </button>
+        <h3>Add checklist</h3>
         <button
           className='clean-btn'
           onClick={() => {
             setCurrPopover(null);
           }}
         >
-          <FontAwesomeIcon icon={faTimes} className='close-x' />
+          <CloseRoundedIcon/>
         </button>
       </div>
       <TextField
@@ -44,7 +49,7 @@ export function Checklist({ props, setCurrPopover, sendTask }) {
       />
       <div>
         <button
-          className='blue-btn'
+          className='blue-btn checklist-add'
           onClick={() => {
             createListVal([...listStateVal, stateVal]);
             createStateVal({});

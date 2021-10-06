@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ReactComponent as PaperClipIcon } from '../assets/imgs/icons/paperclip-solid.svg';
 import { ReactComponent as MemberIcon } from '../assets/imgs/icons/person.svg';
@@ -26,6 +26,8 @@ import { addComment } from '../services/board-service';
 import { DynamicPopover } from '../cmps/DynamicPopover';
 import { TaskCheckList } from '../cmps/TaskDetails/TaskChecklist';
 import { TaskAttachments } from '../cmps/TaskDetails/TaskAttachments';
+import { ModalDetailsDate } from '../cmps/ModalDetailsDate';
+import { ModalDetailsComments } from '../cmps/ModalDetailsComments';
 
 export function TaskDetails({ props, board }) {
   const groupId = props.match.params.groupIdId;
@@ -41,7 +43,6 @@ export function TaskDetails({ props, board }) {
     const currTask = group.tasks.find((task) => {
       return task.id === taskId;
     });
-    console.log(currTask);
     return currTask;
   };
   const [boardId, setBoardId] = useState(props.match.params.boardId);
@@ -51,10 +52,12 @@ export function TaskDetails({ props, board }) {
   const [descVal, setDescVal] = useState('');
   const [currPopover, setCurrPopover] = useState('');
   const [currProps, setCurrProps] = useState('');
+  const [currPopoverPos, setCurrPopoverPos] = useState('');
 
-  const togglePopover = (name) => {
+  const togglePopover = (ev, name) => {
+    console.log('ev.target', ev.target);
+    setCurrPopoverPos(getPopoverPos(ev.target))
     setCurrPopover(name);
-    console.log('details props', props);
   };
 
   const dispatch = useDispatch();
@@ -125,20 +128,34 @@ export function TaskDetails({ props, board }) {
     });
   };
 
-  const comments = (
-    <ul>
-      {task.comments.map((comment, idx) => {
-        return (
-          <li key={idx}>
-            {comment.txt}{' '}
-            <div style={{ fontWeight: '800' }}>
-              {comment.byMember.fullname}
-            </div>
-          </li>
-        );
-      })}
-    </ul>
-  );
+  const getPopoverPos = (target) => {
+    const targetPos = target.getBoundingClientRect()
+    console.log('targetPos', targetPos);
+    const newBottom = targetPos.bottom + 6
+    const newLeft = targetPos.left
+    console.log('newLeft', newLeft);
+    console.log('newBottom', newBottom);
+    return { leftPos: newLeft, topPos: newBottom }
+  }
+
+  function useWindowSize() {
+    const [size, setSize] = useState([0, 0]);
+    useLayoutEffect(() => {
+      function updateSize() {
+        setSize([window.innerWidth, window.innerHeight]);
+      }
+      window.addEventListener('resize', updateSize);
+      updateSize();
+      return () => window.removeEventListener('resize', updateSize);
+    }, []);
+    return size;
+  }
+  
+  function ShowWindowDimensions(props) {
+    const [width, height] = useWindowSize();
+    console.log('Window size:', width, 'x', height);
+    // return <span>Window size: {width} x {height}</span>;
+  }
 
   return (
     <section className='card-details-container'>
@@ -158,8 +175,8 @@ export function TaskDetails({ props, board }) {
               aria-label='empty textarea'
             />
           </div>
-          <p className='bottom-list-name'>
-            {group ? group.title : 'No List'}
+          <p className='bottom-list-name'>in list
+            <span>{group ? group.title : 'No List'}</span>
           </p>
         </div>
         <div className='card-details-main-container'>
@@ -176,6 +193,9 @@ export function TaskDetails({ props, board }) {
                   <div className='labels-container flex wrap'>
                     <TaskMembers
                       members={task.members ? task.members : []}
+                      onClick={(ev) => {
+                        togglePopover('MEMBERS');
+                      }}
                     />
                   </div>
                 </div>
@@ -194,29 +214,7 @@ export function TaskDetails({ props, board }) {
                   </div>
                 )}
                 {task.dueDate ? (
-                  <div className='card-details-date item-container flex column align-flex-end'>
-                    <h3
-                      className='card-details-item-header'
-                      style={{ margin: '0' }}
-                    >
-                      Due Date
-                    </h3>
-                    <div
-                      className='date-container flex wrap'
-                      style={{ fontWeight: '800' }}
-                    >
-                      {new Date(task.dueDate).toLocaleDateString(
-                        'en-GB'
-                      )}
-                      <button
-                        onClick={() =>
-                          sendTask(false, { ...task, dueDate: '' })
-                        }
-                      >
-                        x
-                      </button>
-                    </div>
-                  </div>
+                  <ModalDetailsDate sendTask={sendTask} task={task} />
                 ) : (
                   ''
                 )}
@@ -252,7 +250,7 @@ export function TaskDetails({ props, board }) {
                   <h3>Checklist</h3>
                 </div>
                 <div className='card-checklists'>
-                  <TaskCheckList task={task} sendTask={sendTask} />
+                  <TaskCheckList task={task} sendTask={sendTask} togglePopover={togglePopover} />
                 </div>
               </div>
             )}
@@ -278,6 +276,7 @@ export function TaskDetails({ props, board }) {
                     placeholder='Write a comment'
                     onChange={(ev) => setCommentVal(ev.target.value)}
                     value={commentVal}
+                  // style={fontFamily: '\'Segoe UI\', Tahoma, Geneva, Verdana, sans-serif'}
                   />
                 </div>
                 <button
@@ -287,7 +286,7 @@ export function TaskDetails({ props, board }) {
                   Save
                 </button>
               </div>
-              <div>{task.comments.length ? comments : ''}</div>
+              <div>{task.comments.length ? <ModalDetailsComments task={task} /> : ''}</div>
             </div>
           </div>
           <div className='card-details-sidebar flex column full'>
@@ -295,7 +294,7 @@ export function TaskDetails({ props, board }) {
               <div className='add-section flex column'>
                 <button
                   className='secondary-btn actions-btn '
-                  onClick={() => togglePopover('MEMBERS')}
+                  onClick={(ev) => togglePopover(ev, 'MEMBERS')}
                 >
                   <div className='actions-btn-content flex align-center '>
                     <MemberIcon />
@@ -305,7 +304,7 @@ export function TaskDetails({ props, board }) {
                 </button>
                 <button
                   className='secondary-btn actions-btn'
-                  onClick={() => togglePopover('LABELS')}
+                  onClick={(ev) => togglePopover(ev, 'LABELS')}
                 >
                   <div className='actions-btn-content flex align-center'>
                     <LabelIcon />
@@ -316,7 +315,7 @@ export function TaskDetails({ props, board }) {
 
                 <button
                   className='secondary-btn actions-btn'
-                  onClick={() => togglePopover('CHECKLISTS')}
+                  onClick={(ev) => togglePopover(ev, 'CHECKLISTS')}
                 >
                   <div className='actions-btn-content flex align-center'>
                     <CheckboxIcon />
@@ -327,7 +326,7 @@ export function TaskDetails({ props, board }) {
 
                 <button
                   className='secondary-btn actions-btn'
-                  onClick={() => togglePopover('DATE')}
+                  onClick={(ev) => togglePopover(ev, 'DATE')}
                 >
                   <div className='actions-btn-content flex align-center'>
                     <CalendarTodayIcon />
@@ -338,7 +337,7 @@ export function TaskDetails({ props, board }) {
 
                 <button
                   className='secondary-btn actions-btn'
-                  onClick={() => togglePopover('ATTACHMENT')}
+                  onClick={(ev) => togglePopover(ev, 'ATTACHMENT')}
                 >
                   <div className='actions-btn-content flex align-center'>
                     <AttachFileIcon />
@@ -349,7 +348,7 @@ export function TaskDetails({ props, board }) {
 
                 <button
                   className='secondary-btn actions-btn'
-                  onClick={() => togglePopover('COVER')}
+                  onClick={(ev) => togglePopover(ev, 'COVER')}
                 >
                   <div className='actions-btn-content flex align-center'>
                     <CoverIcon />
@@ -386,6 +385,7 @@ export function TaskDetails({ props, board }) {
           <DynamicPopover
             name={currPopover}
             props={task}
+            popoverPos = {currPopoverPos}
             setCurrPopover={setCurrPopover}
             sendTask={sendTask}
           />
