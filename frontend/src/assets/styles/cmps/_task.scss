@@ -1,27 +1,32 @@
 .task-preview {
   position: relative;
-  // width: 272px;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 3px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
+  border-radius: 5px;
+  // background-size: cover;
+  // background-repeat: no-repeat;
+  // background-position: center center;
   cursor: pointer;
   display: block;
-  margin-bottom: 8px;
-  // max-width: 300px;
+  margin-inline-end: 4px;
   min-height: 20px;
   position: relative;
   text-decoration: none;
   z-index: 0;
   overflow: hidden;
-  padding: rem(6px) rem(10px) rem(2px);
-  box-shadow: 0px 1px 0 #c0c6d0;
+  padding: 6px 8px 2px;
+  box-shadow: 0 1px 0 #091e4240;
+  background-color: rgb(255, 255, 255);
+  margin-bottom: 8px;
+  max-width: 300px;
+
+  .task-title {
+    margin-bottom: 10px;
+  }
 
   &:hover {
     background-color: #fff;
   }
-  .task-background{
+
+  .task-background {
     height: 250px;
     margin-bottom: 10px;
   }
@@ -33,7 +38,7 @@
 
     .labels-task {
       border-radius: 4px;
-      padding: 2px;
+      padding: 1px 2px;
       color: #fff;
       margin-inline-end: 5px;
       font-size: 12px;
@@ -46,29 +51,44 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 3px;
-    .sign-task{
-      .progress-container{
-        .prog-percent-span{
+    margin: 0;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    .sign-task {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+
+      .progress-container {
+        .prog-percent-span {
           font-size: rem(12px);
         }
       }
+
+      span {
+        margin-inline-end: 2px;
+      }
+
+      svg {
+        color: rgba(0, 0, 0, 0.5);
+        align-items: center;
+      }
+
+
     }
+
     .avatar {
       display: flex;
       flex-direction: row;
+      align-items: center;
 
       .avatar-img {
         margin-inline-end: 2px;
       }
     }
 
-    svg {
-      width: 20px;
-      height: auto;
-      color: rgba(0, 0, 0, 0.733);
-    }
 
     button {
       border: none;

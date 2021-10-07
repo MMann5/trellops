@@ -55,7 +55,7 @@
 }
 
 .clean-link {
-    padding: inherit;
+    // padding: inherit;
     transition: inherit;
     border-radius: inherit;
     color: inherit;
@@ -66,16 +66,19 @@
     border: none;
     cursor: pointer;
     background-color: transparent;
-    &.hide{
+
+    &.hide {
         visibility: hidden;
     }
 }
-.clean-list{
+
+.clean-list {
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
-.blue-btn{
+
+.blue-btn {
     border-radius: 5px;
     border: none;
     font-family: "SourceSans-Light";
@@ -107,10 +110,12 @@
         position: relative;
         color: #a6a6a6;
     }
-    .right-btn{
+
+    .right-btn {
         right: 6px;
     }
-    .left-btn{
+
+    .left-btn {
         right: -6px;
     }
 }

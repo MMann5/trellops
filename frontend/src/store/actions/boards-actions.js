@@ -32,6 +32,7 @@ export function onSaveBoard(board) {
         groups: board.groups,
         style: board.style,
         activities: board.activities,
+        checklists: board.checklists,
       });
       dispatch({ type: 'SAVE_BOARD', board });
     } catch (err) {
