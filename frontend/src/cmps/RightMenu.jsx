@@ -1,20 +1,19 @@
 import * as React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { onDeleteBoard } from '../store/actions/boards-actions.js';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-import { color } from '@mui/system';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes, faChevronLeft, faSquare } from '@fortawesome/free-solid-svg-icons';
+import {
+  faTimes,
+  faChevronLeft,
+  faSquare,
+} from '@fortawesome/free-solid-svg-icons';
 import night from '../assets/imgs/backgrounds/night.png';
-import sky from '../assets/imgs/backgrounds/backgrounds.jpg';
 import house from '../assets/imgs/backgrounds/house.png';
 import malibu from '../assets/imgs/backgrounds/malibu.jpg';
 import island from '../assets/imgs/backgrounds/island.jpg';
@@ -22,6 +21,7 @@ import bunny from '../assets/imgs/backgrounds/bunny.jpg';
 import manupside from '../assets/imgs/backgrounds/manupside.jpg';
 import beach from '../assets/imgs/backgrounds/beach.jpg';
 import { ActivityList } from './ActivityList';
+import { useHistory } from 'react-router-dom';
 
 export function RightMenu({ setBgColor, board }) {
   const [state, setState] = React.useState({
@@ -30,7 +30,14 @@ export function RightMenu({ setBgColor, board }) {
     bottom: false,
     right: false,
   });
-  const [openedList, setOpenedList] = React.useState('menuList')
+  const [openedList, setOpenedList] = React.useState('menuList');
+  const dispatch = useDispatch();
+  let history = useHistory();
+
+  const onRemoveBoard = () => {
+    dispatch(onDeleteBoard(board._id));
+    history.push('/workspace');
+  };
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -43,8 +50,8 @@ export function RightMenu({ setBgColor, board }) {
     setState({ ...state, [anchor]: open });
   };
   const changeList = (currList) => {
-    setOpenedList(currList)
-  }
+    setOpenedList(currList);
+  };
 
   const menuList = (anchor) => (
     <Box
@@ -57,30 +64,44 @@ export function RightMenu({ setBgColor, board }) {
       onKeyDown={toggleDrawer(anchor, true)}
     >
       <List>
-        {[{ listName: 'list', title: 'Change background color' }, { listName: 'imgList', title: 'Change background image' }
-        ].map(
-          (text, index) => (
-            <ListItem button key={index} onClick={(ev) => {
+        {[
+          { listName: 'list', title: 'Change background color' },
+          { listName: 'imgList', title: 'Change background image' },
+          {
+            listName: 'dangerZone',
+            title: 'Come And Take A Ride To The Danger Zone',
+          },
+        ].map((text, index) => (
+          <ListItem
+            button
+            key={index}
+            onClick={(ev) => {
               // ev.preventDefault()
-              changeList(text.listName)
-            }}>
-              <div className="flex align-center">
-                <div>
-                  <FontAwesomeIcon icon={faSquare} style={{color:"rgb(0, 121, 191)"}}/>
-                </div>
-                <div className="nav-txt" style={{
-                  fontSize: "14px",
-                  fontWeight: "600",
-                  color: "rgba(0, 0, 0, 0.87)",
-                  lineHeight: "20px",
-                  marginLeft: "16px"
-                }}>
-                  {text.title}
-                </div>
+              changeList(text.listName);
+            }}
+          >
+            <div className='flex align-center'>
+              <div>
+                <FontAwesomeIcon
+                  icon={faSquare}
+                  style={{ color: 'rgb(0, 121, 191)' }}
+                />
               </div>
-            </ListItem>
-          )
-        )}
+              <div
+                className='nav-txt'
+                style={{
+                  fontSize: '14px',
+                  fontWeight: '600',
+                  color: 'rgba(0, 0, 0, 0.87)',
+                  lineHeight: '20px',
+                  marginLeft: '16px',
+                }}
+              >
+                {text.title}
+              </div>
+            </div>
+          </ListItem>
+        ))}
       </List>
     </Box>
   );
@@ -108,18 +129,24 @@ export function RightMenu({ setBgColor, board }) {
           '#334563',
           '#b3bac5',
           '#D90368',
-          '#820263'
-
-        ].map(
-          (text, index) => (
-            <ListItem button key={text} onClick={() => {
-              setBgColor(text)
-            }
-            }>
-              <ListItemText style={{ backgroundColor: text, height: '80px', padding: '10px 10px' }} />
-            </ListItem>
-          )
-        )}
+          '#820263',
+        ].map((text, index) => (
+          <ListItem
+            button
+            key={text}
+            onClick={() => {
+              setBgColor(text);
+            }}
+          >
+            <ListItemText
+              style={{
+                backgroundColor: text,
+                height: '80px',
+                padding: '10px 10px',
+              }}
+            />
+          </ListItem>
+        ))}
       </List>
     </Box>
   );
@@ -135,36 +162,86 @@ export function RightMenu({ setBgColor, board }) {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {[night, house, malibu, island, bunny, beach, manupside
-        ].map(
+        {[night, house, malibu, island, bunny, beach, manupside].map(
           (text, index) => (
-            <ListItem button key={text} onClick={() => {
-              setBgColor(text)
-            }}
-            style={{margin:'5px 0'}}>
-              <ListItemText style={{ backgroundImage: `url(${text})`, width:'177', height: '96px', padding: '10px 10px', backgroundSize:'cover', backgroundPosition: 'center'}} />
+            <ListItem
+              button
+              key={text}
+              onClick={() => {
+                setBgColor(text);
+              }}
+              style={{ margin: '5px 0' }}
+            >
+              <ListItemText
+                style={{
+                  backgroundImage: `url(${text})`,
+                  width: '177',
+                  height: '96px',
+                  padding: '10px 10px',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }}
+              />
             </ListItem>
           )
         )}
       </List>
     </Box>
   );
+  const dangerZone = (anchor) => (
+    <Box
+      sx={{
+        width:
+          anchor === 'top' || anchor === 'bottom' ? 'auto' : 200,
+      }}
+      role='presentation'
+      onClick={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer(anchor, false)}
+    >
+      <List>
+        {['delBoard'].map((text, index) => (
+          <ListItem
+            button
+            key={text}
+            onClick={onRemoveBoard}
+            style={{ margin: '5px 0' }}
+          >
+            <ListItemText
+              style={{
+                width: '177',
+                height: 'auto',
+                padding: '10px 10px',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+              }}
+            />
+            {text}
+          </ListItem>
+        ))}
+      </List>
+    </Box>
+  );
 
   return (
-    <div className="rigth-menu">
+    <div className='rigth-menu'>
       {['right'].map((anchor) => (
         <React.Fragment key={anchor}>
           <Drawer
             anchor={anchor}
             open={state[anchor]}
             onClose={toggleDrawer(anchor, false)}
+          ></Drawer>
+          <Button
+            onClick={toggleDrawer(anchor, true)}
+            style={{
+              textTransform: 'none',
+              fontSize: '1.2rem',
+              fontFamily:
+                "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+              fontWeight: '700',
+              fontSize: '16px',
+            }}
           >
-
-          </Drawer>
-          <Button onClick={
-            toggleDrawer(anchor, true)
-          }
-            style={{ textTransform: 'none', fontSize: '1.2rem', fontFamily: '\'Segoe UI\', Tahoma, Geneva, Verdana, sans-serif', fontWeight: '700', fontSize: '16px' }}>
             Show Menu
           </Button>
           <Drawer
@@ -172,19 +249,36 @@ export function RightMenu({ setBgColor, board }) {
             open={state[anchor]}
             onClose={toggleDrawer(anchor, false)}
           >
-            <div className="nav-option-header flex justify-center">
-              {(openedList !== 'menuList') && <button className="clean-btn left-btn" onClick={() => { setOpenedList('menuList') }}>
-                <FontAwesomeIcon icon={faChevronLeft} className="close-x" />
-              </button>}
+            <div className='nav-option-header flex justify-center'>
+              {openedList !== 'menuList' && (
+                <button
+                  className='clean-btn left-btn'
+                  onClick={() => {
+                    setOpenedList('menuList');
+                  }}
+                >
+                  <FontAwesomeIcon
+                    icon={faChevronLeft}
+                    className='close-x'
+                  />
+                </button>
+              )}
               <h3>Menu</h3>
-              <button className="clean-btn right-btn" onClick={toggleDrawer(anchor, false)}>
-                <FontAwesomeIcon icon={faTimes} className="close-x" />
+              <button
+                className='clean-btn right-btn'
+                onClick={toggleDrawer(anchor, false)}
+              >
+                <FontAwesomeIcon
+                  icon={faTimes}
+                  className='close-x'
+                />
               </button>
             </div>
-            {(openedList === 'menuList') && menuList(anchor)}
-            {(openedList === 'list') && list(anchor)}
-            {(openedList === 'imgList') && imgList(anchor)}
-            <ActivityList board={board}/>
+            {openedList === 'menuList' && menuList(anchor)}
+            {openedList === 'list' && list(anchor)}
+            {openedList === 'imgList' && imgList(anchor)}
+            {openedList === 'dangerZone' && dangerZone(anchor)}
+            <ActivityList board={board} />
           </Drawer>
         </React.Fragment>
       ))}

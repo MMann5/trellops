@@ -2,22 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { TextField, TextareaAutosize } from '@material-ui/core';
-import { setBoards } from '../store/actions/boards-actions.js';
+import {
+  setBoards,
+  onSaveBoard,
+} from '../store/actions/boards-actions.js';
 import { RightMenu } from './RightMenu';
 
 export function BoardHeader({ boards, board, setBgColor }) {
   const [boardName, setBoardName] = useState(board.title);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const idx = boards.findIndex(
-    (boardUnit) => board._id === boardUnit._id
-  );
   const dispatch = useDispatch();
   useEffect(() => {
     const newBoard = { ...board, title: boardName };
-    const boardsCopy = [...boards];
-    boardsCopy.splice(idx, 1, newBoard);
-    dispatch(setBoards(boardsCopy));
-  }, [dispatch, boardName]);
+    dispatch(onSaveBoard(newBoard));
+  }, [boardName]);
 
   return (
     <div className='board-header'>
