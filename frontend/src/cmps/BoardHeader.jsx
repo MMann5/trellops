@@ -8,7 +8,12 @@ import { TextField } from '@material-ui/core';
 // } from '../store/actions/boards-actions.js';
 import { RightMenu } from './RightMenu';
 
-export function BoardHeader({ boards, board, setBgColor }) {
+export function BoardHeader({
+  boards,
+  board,
+  setBgColor,
+  setBoardTitle,
+}) {
   const members = board.members.map((val, idx) => {
     return (
       <div key={idx}>
@@ -27,6 +32,7 @@ export function BoardHeader({ boards, board, setBgColor }) {
       <TextField
         variant='standard'
         value={board.title}
+        onChange={(ev) => setBoardTitle(ev.target.value)}
         InputProps={{
           disableUnderline: true,
         }}

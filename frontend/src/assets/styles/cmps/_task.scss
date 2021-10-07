@@ -61,6 +61,12 @@
       justify-content: space-around;
       align-items: center;
 
+      .progress-container {
+        .prog-percent-span {
+          font-size: rem(12px);
+        }
+      }
+
       span {
         margin-inline-end: 2px;
       }
@@ -82,7 +88,6 @@
         margin-inline-end: 2px;
       }
     }
-
 
 
     button {

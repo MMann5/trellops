@@ -39,6 +39,9 @@ const BoardSchema = new mongoose.Schema({
             },
           ],
           labels: [{ id: String, title: String, color: String }],
+          checklists: [
+            { id: String, title: String, checked: Boolean },
+          ],
           attachments: [String],
         },
       ],
