@@ -199,7 +199,7 @@ export function RightMenu({ setBgColor, board }) {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {['delBoard'].map((text, index) => (
+        {['Delete Board'].map((text, index) => (
           <ListItem
             button
             key={text}
