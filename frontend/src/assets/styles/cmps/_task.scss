@@ -48,7 +48,13 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 3px;
-
+    .sign-task{
+      .progress-container{
+        .prog-percent-span{
+          font-size: rem(12px);
+        }
+      }
+    }
     .avatar {
       display: flex;
       flex-direction: row;
@@ -59,8 +65,9 @@
     }
 
     svg {
-      width: 15px;
-      color: black;
+      width: 20px;
+      height: auto;
+      color: rgba(0, 0, 0, 0.733);
     }
 
     button {
