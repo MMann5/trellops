@@ -19,13 +19,13 @@ export function TaskAttachments({ task, sendTask }) {
   const attachment = task.attachments
     ? task.attachments.map((val, idx) => {
       return (
-        <li style={{ display: 'flex', height: '100px', marginBottom: '30px' }}>
+        <li key={idx} style={{ display: 'flex', height: '100px', marginBottom: '30px' }}>
           <img src={val} alt="" style={{ height: '120px', objectFit: 'contain', margin: '2px' }} />
           <div style={{ width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-betwween', padding: '6px 10px' }} >
             <div>
               <h5>{val}</h5>
               {/* <p>activity</p> */}
-              <button>Delete</button>
+              <button onClick={() => deleteAttachment(idx)}>Delete</button>
             </div>
           </div>
         </li >

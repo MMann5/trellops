@@ -61,26 +61,26 @@ export function Task({
             );
           })}
         </div>
-        <p style={{ color: 'black' }}>
-          {task.title ? task.title : 'Click To Set Title'}
-        </p>
+        <div className="task-title" style={{ color: 'black' }}>
+          <span>{task.title ? task.title : 'Click To Set Title'}</span>
+        </div>
         <div className='task-btns'>
           <div className='sign-task'>
-            <span>{task.description ? <SubjectIcon /> : ''}</span>
+            <span>{task.description ? <SubjectIcon fontSize="small" /> : ''}</span>
             <span>
               {task.checklists && task.checklists.length ? (
-                <CheckBoxOutlinedIcon style={(progressPercent===100)?{ backgroundColor: '#61bd4f', padding: '2px', 'width': '20px', borderRadius: '2px' }:{}} />
+                <CheckBoxOutlinedIcon fontSize="small" style={(progressPercent === 100) ? { backgroundColor: '#61bd4f', padding: '2px', 'width': '20px', borderRadius: '2px' } : {}} />
               ) : (
                 ''
               )}
             </span>
             <span>
-              {task.comments.length ? <ChatBubbleOutlineIcon /> : ''}
+              {task.comments.length ? <ChatBubbleOutlineIcon fontSize="small" /> : ''}
             </span>
-            <span>{task.dueDate ? <TimerIcon /> : ''}</span>
+            <span>{task.dueDate ? <TimerIcon fontSize="small" /> : ''}</span>
             <span>
               {task.attachments && task.attachments.length ? (
-                <AttachFileIcon />
+                <AttachFileIcon fontSize="small" />
               ) : (
                 ''
               )}
