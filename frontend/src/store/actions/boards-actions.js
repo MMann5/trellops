@@ -39,14 +39,39 @@ export function onSaveBoard(board) {
     }
   };
 }
-
-export function setBoards(boards) {
+export function onSetBoardTitle(boardId, title) {
   return async (dispatch) => {
     try {
-      boardService._save('boardsDB', boards);
-      dispatch({ type: 'SET_BOARDS', boards });
+      const newBoard = await boardService.updateBoardPrm({
+        id: boardId,
+        title,
+      });
+      dispatch({ type: 'SAVE_BOARD', newBoard });
     } catch (err) {
       console.log('BoardActions: err in onSaveBoard', err);
+    }
+  };
+}
+
+export function onAddBoard(body) {
+  return async (dispatch) => {
+    try {
+      const addedBoard = await boardService.addBoardPrm(body);
+      const boards = await boardService.getBoardsPrm();
+      dispatch({ type: 'SET_BOARDS', boards });
+    } catch (err) {
+      console.log('BoardActions: err in onAddBoard', err);
+    }
+  };
+}
+export function onDeleteBoard(id) {
+  return async (dispatch) => {
+    try {
+      const deletedBoard = await boardService.deleteBoardPrm(id);
+      const boards = await boardService.getBoardsPrm();
+      dispatch({ type: 'SET_BOARDS', boards });
+    } catch (err) {
+      console.log('BoardActions: err in onDeleteBoard ', err);
     }
   };
 }

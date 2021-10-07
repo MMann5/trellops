@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getEmptyBoard } from '../services/board-service';
+// import { getEmptyBoard } from '../services/board-service';
 import {
   loadBoards,
-  setBoards,
+  onAddBoard,
 } from '../store/actions/boards-actions.js';
 import { BoardsNavBar } from '../cmps/BoardsNavBar';
 import { WorkspacePopup } from '../cmps/WorkspacePopup';
@@ -22,21 +22,10 @@ export function Workspace() {
 
   const onAddEmptyBoard = (boardName, boardBackground) => {
     dispatch(
-      setBoards([
-        ...boards,
-        getEmptyBoard(boardName, boardBackground),
-      ])
+      onAddBoard({ txt: boardName, bgColor: boardBackground })
     );
   };
 
-  const onRemoveBoard = (ev, boardId) => {
-    ev.preventDefault();
-    ev.stopPropagation();
-    ev.nativeEvent.stopImmediatePropagation();
-    dispatch(
-      setBoards(boards.filter((board) => board._id !== boardId))
-    );
-  };
   const onShowPopup = () => {
     setIsPopShown(true);
   };
@@ -65,12 +54,6 @@ export function Workspace() {
                 }}
               >
                 {board.title}
-                {/* <button
-                  className='remove-board'
-                  onClick={(ev) => onRemoveBoard(ev, board._id)}
-                >
-                  <FontAwesomeIcon icon={faTrashAlt} />
-                </button> */}
               </div>
             </Link>
           ))}

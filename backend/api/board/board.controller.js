@@ -25,7 +25,7 @@ const addBoard = async (req, res) => {
   newBoard._id = mongoose.Types.ObjectId();
   newBoard.title = req.body.txt;
   newBoard.createdAt = Date.now();
-  newBoard.style.bgColor = '#0079bf';
+  newBoard.style.bgColor = req.body.bgColor;
   newBoard.groups = [];
   newBoard.createdBy = {};
   newBoard.activities = [];
@@ -34,21 +34,25 @@ const addBoard = async (req, res) => {
       _id: 'u101',
       fullname: 'Tal Tarablus',
       imgUrl: 'tal.jpg',
+      avatarColor: '#EEA29A',
     },
     {
       _id: 'u102',
       fullname: 'Michael Mann',
       imgUrl: 'michael.png',
+      avatarColor: '#04AA6D',
     },
     {
       _id: 'u103',
       fullname: 'Ron Shmuel Kotigaro',
       imgUrl: 'ron.png',
+      avatarColor: '#3E4444',
     },
     {
       _id: 'u104',
       fullname: 'David Ben Ishai',
       imgUrl: 'david.jpg',
+      avatarColor: '#6B5B95',
     },
   ];
   newBoard.labels = [

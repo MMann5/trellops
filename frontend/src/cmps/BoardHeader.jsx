@@ -1,28 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
-import { TextField, TextareaAutosize } from '@material-ui/core';
-import { setBoards } from '../store/actions/boards-actions.js';
+// import { useSelector, useDispatch } from 'react-redux';
+// import { Link, useParams } from 'react-router-dom';
+import { TextField } from '@material-ui/core';
+// import {
+//   setBoards,
+//   onSaveBoard,
+// } from '../store/actions/boards-actions.js';
 import { RightMenu } from './RightMenu';
 
 export function BoardHeader({ boards, board, setBgColor }) {
-  const [boardName, setBoardName] = useState(board.title);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const idx = boards.findIndex(
-    (boardUnit) => board._id === boardUnit._id
-  );
-  const dispatch = useDispatch();
-  useEffect(() => {
-    const newBoard = { ...board, title: boardName };
-    const boardsCopy = [...boards];
-    boardsCopy.splice(idx, 1, newBoard);
-    dispatch(setBoards(boardsCopy));
-  }, [dispatch, boardName]);
-
   const members = board.members.map((val, idx) => {
     return (
       <div key={idx}>
-        <img src={require(`../assets/imgs/profiles/${val.imgUrl}`).default} alt="" />
+        <img
+          src={
+            require(`../assets/imgs/profiles/${val.imgUrl}`).default
+          }
+          alt=''
+        />
       </div>
     );
   });
@@ -31,8 +26,7 @@ export function BoardHeader({ boards, board, setBgColor }) {
     <div className='board-header flex'>
       <TextField
         variant='standard'
-        value={boardName}
-        onChange={(ev) => setBoardName(ev.target.value)}
+        value={board.title}
         InputProps={{
           disableUnderline: true,
         }}
@@ -56,9 +50,7 @@ export function BoardHeader({ boards, board, setBgColor }) {
       />
       <div className='header-section flex  align-center'>
         <div className='board-header-members flex'>
-          <div className='members-icon flex'>
-            {members}
-          </div>
+          <div className='members-icon flex'>{members}</div>
           <a>
             <h4 className='wide-layout'>Invite</h4>
           </a>

@@ -221,9 +221,9 @@ function deleteBoardPrm(boardId) {
     throw err;
   }
 }
-function addBoardPrm(boardName) {
+function addBoardPrm(body) {
   try {
-    return httpService.post(`board`, { txt: boardName });
+    return httpService.post(`board`, body);
   } catch (err) {
     throw err;
   }

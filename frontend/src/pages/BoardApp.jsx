@@ -15,7 +15,6 @@ import {
   loadBoard,
   loadBoards,
   onSaveBoard,
-  setBoards,
 } from '../store/actions/boards-actions.js';
 import {
   getEmptyGroup,
@@ -46,7 +45,8 @@ export function BoardApp(props) {
   }, [board]);
 
   useEffect(() => {
-    boardState._id && dispatch(onSaveBoard(boardState));
+    if (JSON.stringify(boardState) !== JSON.stringify(board))
+      dispatch(onSaveBoard(boardState));
   }, [boardState]);
 
   const { boards } = useSelector((state) => state.boardModule);
@@ -63,7 +63,10 @@ export function BoardApp(props) {
       return {
         ...prevState,
         groups: [...boardState.groups, getEmptyGroup(groupName)],
-        activities: (boardState.activities.length === 0) ? [newActivity] : [...boardState.activities, newActivity],
+        activities:
+          boardState.activities.length === 0
+            ? [newActivity]
+            : [...boardState.activities, newActivity],
       };
     });
   };
@@ -81,7 +84,10 @@ export function BoardApp(props) {
         groups: boardState.groups.filter(
           (value) => value.id !== groupId
         ),
-        activities: (boardState.activities.length === 0) ? [newActivity] : [...boardState.activities, newActivity],
+        activities:
+          boardState.activities.length === 0
+            ? [newActivity]
+            : [...boardState.activities, newActivity],
       };
     });
   };
@@ -241,17 +247,17 @@ export function BoardApp(props) {
       })
     : '';
 
-  const setBgColor = (colorVal) => {
-    const boardCpy = { ...board };
-    boardCpy.style.bgColor = colorVal;
-    const boardsCpy = [...boards];
-    const boardIdx = boardsCpy.findIndex(
-      (val) => val._id === board._id
-    );
-    boardsCpy.splice(boardIdx, 1, boardCpy);
-    dispatch(setBoards(boardsCpy));
-    setBoardState(boardCpy);
-  };
+  // const setBgColor = (colorVal) => {
+  //   const boardCpy = { ...board };
+  //   boardCpy.style.bgColor = colorVal;
+  //   const boardsCpy = [...boards];
+  //   const boardIdx = boardsCpy.findIndex(
+  //     (val) => val._id === board._id
+  //   );
+  //   boardsCpy.splice(boardIdx, 1, boardCpy);
+  //   dispatch(setBoards(boardsCpy));
+  //   setBoardState(boardCpy);
+  // };
   return boardState._id ? (
     <div
       className='board-app flex column'
@@ -261,11 +267,7 @@ export function BoardApp(props) {
       }}
     >
       <BoardsNavBar />
-      <BoardHeader
-        boards={boards}
-        board={boardState}
-        setBgColor={setBgColor}
-      />
+      <BoardHeader board={boardState} />
       <DragDropContext onDragEnd={handleOnDragEnd}>
         {modalState && (
           <TaskDetails props={props} board={boardState} />
