@@ -25,10 +25,12 @@ export function Task({
     task.checklists?.forEach(todo => {
       if (todo.checked === true) doneTasks++
     });
-    const progressPercent = (doneTasks / sumOfTasks) * 100
-    return Math.floor(progressPercent);
+    const progressString = `${doneTasks}/${sumOfTasks}`
+    const progressPercent = Math.floor((doneTasks / sumOfTasks) * 100)
+    const progressData = { percent: progressPercent, string: progressString }
+    return progressData;
   }
-  const progressPercent = GetProgPercent()
+  const progressData = GetProgPercent()
 
   return (
     <div
@@ -47,7 +49,7 @@ export function Task({
       ) : (
         ''
       )}
-      <Link to={`/board/${boardId}/${groupId}/${task.id}`}>
+      <Link to={`/board/${boardId}/${groupId}/${task.id}`} className='clean-link'>
         <div className='label-view'>
           {task.labels?.map((label, idx) => {
             return (
@@ -65,15 +67,16 @@ export function Task({
           {task.title ? task.title : 'Click To Set Title'}
         </p>
         <div className='task-btns'>
-          <div className='sign-task'>
+          <div className='sign-task flex align-center'>
             <span>{task.description ? <SubjectIcon /> : ''}</span>
-            <span>
-              {task.checklists && task.checklists.length ? (
-                <CheckBoxOutlinedIcon style={(progressPercent===100)?{ backgroundColor: '#61bd4f', padding: '2px', 'width': '20px', borderRadius: '2px' }:{}} />
-              ) : (
-                ''
-              )}
-            </span>
+            {task.checklists && task.checklists.length ? (
+              <div className='progress-container'>
+                <span>
+                  <CheckBoxOutlinedIcon style={(progressData.percent === 100) ? { backgroundColor: '#61bd4f', padding: '2px', 'width': '20px', borderRadius: '2px' } : {}} />
+                </span>
+                <span className='prog-percent-span'>{progressData.string}</span>
+              </div>) : ('')}
+
             <span>
               {task.comments.length ? <ChatBubbleOutlineIcon /> : ''}
             </span>
