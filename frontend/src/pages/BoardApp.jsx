@@ -22,7 +22,7 @@ import {
   boardService,
 } from '../services/board-service.js';
 import { TaskDetails } from './TaskDetails';
-
+import { useDebounce } from 'use-debounce';
 export function BoardApp(props) {
   const [isLoaded, setIsLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -32,6 +32,7 @@ export function BoardApp(props) {
   }, []);
   const { board } = useSelector((state) => state.boardModule);
   const [boardState, setBoardState] = useState(board);
+  const [value] = useDebounce(boardState, 1000);
   const [modalState, setModalState] = useState(false);
   useEffect(() => {
     if (props.match.params.taskId) {
@@ -47,7 +48,7 @@ export function BoardApp(props) {
   useEffect(() => {
     if (JSON.stringify(boardState) !== JSON.stringify(board))
       dispatch(onSaveBoard(boardState));
-  }, [boardState]);
+  }, [value]);
 
   const { boards } = useSelector((state) => state.boardModule);
   const [groupName, setGroupName] = useState('');
@@ -71,8 +72,9 @@ export function BoardApp(props) {
     });
   };
 
-  const setBoardTitle = (txtInputVal) =>
+  const setBoardTitle = (txtInputVal) => {
     setBoardState({ ...boardState, title: txtInputVal });
+  };
 
   const onRemoveGroup = (groupId) => {
     debugger;
