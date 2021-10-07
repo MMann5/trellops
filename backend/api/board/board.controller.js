@@ -98,6 +98,7 @@ const updateBoard = (req, res) => {
             style: body.style,
             groups: body.groups,
             activities: body.activities,
+            checklists: body.checklists,
           },
         }
       : { $push: { groups: body.groups } },

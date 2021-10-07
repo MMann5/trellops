@@ -71,6 +71,9 @@ export function BoardApp(props) {
     });
   };
 
+  const setBoardTitle = (txtInputVal) =>
+    setBoardState({ ...boardState, title: txtInputVal });
+
   const onRemoveGroup = (groupId) => {
     debugger;
     const currGroup = boardService.findGroupById(board, groupId);
@@ -267,7 +270,10 @@ export function BoardApp(props) {
       }}
     >
       <BoardsNavBar />
-      <BoardHeader board={boardState} />
+      <BoardHeader
+        board={boardState}
+        setBoardTitle={setBoardTitle}
+      />
       <DragDropContext onDragEnd={handleOnDragEnd}>
         {modalState && (
           <TaskDetails props={props} board={boardState} />

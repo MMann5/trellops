@@ -215,26 +215,9 @@ export function RightMenu({ setBgColor, board }) {
                 backgroundPosition: 'center',
               }}
             />
-            {text}
+            Delete This Board
           </ListItem>
         ))}
-        <ListItem
-          button
-          // onClick={() => {
-          // }}
-          style={{ margin: '5px 0' }}
-        >
-          <ListItemText
-            style={{
-              width: '177',
-              height: '96px',
-              padding: '10px 10px',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            }}
-          />
-          Rename Board
-        </ListItem>
       </List>
     </Box>
   );
