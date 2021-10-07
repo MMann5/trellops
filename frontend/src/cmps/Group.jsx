@@ -95,14 +95,14 @@ export default function Group({
                   },
                 }}
               />
-              {/* <button
+              <button
                 className='remove-group'
                 onClick={() => {
                   onRemoveGroup(group.id);
                 }}
               >
                 <FontAwesomeIcon icon={faTrash} />
-              </button> */}
+              </button>
             </div>
 
             <div className='card-list'>

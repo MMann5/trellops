@@ -69,6 +69,7 @@ export function TaskDetails({ props, board }) {
   }, [descVal]);
 
   const sendTask = (isRemove, sentTask) => {
+    debugger;
     const currGrp = board.groups.find(
       (group) => group.id === groupId
     );
@@ -78,6 +79,7 @@ export function TaskDetails({ props, board }) {
     const taskIdx = currGrp.tasks.findIndex(
       (task) => task.id === taskId
     );
+    
     isRemove
       ? currGrp.tasks.splice(taskIdx, 1)
       : currGrp.tasks.splice(taskIdx, 1, sentTask ? sentTask : task);
@@ -149,12 +151,6 @@ export function TaskDetails({ props, board }) {
       return () => window.removeEventListener('resize', updateSize);
     }, []);
     return size;
-  }
-
-  function ShowWindowDimensions(props) {
-    const [width, height] = useWindowSize();
-    console.log('Window size:', width, 'x', height);
-    // return <span>Window size: {width} x {height}</span>;
   }
 
   return (

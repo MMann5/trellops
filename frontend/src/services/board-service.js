@@ -177,7 +177,8 @@ function getBoardById(boardId) {
   return board;
 }
 
-function createActivity(currUser, txt, task = null) {
+function createActivity(currUser, txt, taskOrGroup = null) {
+  debugger;
   const id = utilService.makeId();
   const newActivity = {
     id,
@@ -186,11 +187,11 @@ function createActivity(currUser, txt, task = null) {
     byMember: {
       _id: 'u101',
       fullname: 'Ron Kontigaro',
-      imgUrl: 'http://some-img',
+      imgUrl: 'ron.png',
     },
   };
-  if (task) {
-    newActivity.task = task;
+  if (taskOrGroup) {
+    newActivity.taskOrGroup.title = taskOrGroup.title
   }
   return newActivity;
 }

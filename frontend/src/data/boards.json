@@ -339,7 +339,7 @@
                 "_id": "u101",
                 "username": "Tal",
                 "fullname": "Tal Tarablus",
-                "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
+                "imgUrl": "tal.jpg",
                 "avatarColor": "#eea29a"
               }
             ],
@@ -361,7 +361,7 @@
               "_id": "u101",
               "username": "Tal",
               "fullname": "Tal Tarablus",
-              "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+              "imgUrl": "tal.jpg"
             },
             "style": {
               "bgColor": "#26de81"
@@ -550,7 +550,7 @@
           "fullname": "Michael Mann",
           "imgUrl": "michael.png"
         },
-        "task": {
+        "taskOrGroup": {
           "id": "c101",
           "title": "Replace Logo"
         }
@@ -564,7 +564,7 @@
           "fullname": "Michael Mann",
           "imgUrl": "michael.png"
         },
-        "group": {
+        "taskOrGroup": {
           "id": "g3330",
           "title": "Make a chat"
         }
@@ -578,7 +578,7 @@
           "fullname": "Ron Shmuel Kotigaro",
           "imgUrl": "ron.png"
         },
-        "task": {
+        "taskOrGroup": {
           "id": "c10553",
           "title": "BoardApp"
         }
@@ -590,9 +590,9 @@
     "title": "My favorite things",
     "createdAt": 1589983469652,
     "createdBy": {
-      "_id": "u102",
-      "fullname": "Abi Abambi",
-      "imgUrl": "http://some-img"
+      "_id": "u103",
+      "fullname": "Ron Shmuel Kotigaro",
+      "imgUrl": "ron.png"
     },
     "style": {
       "bgColor": "#0079bf"
@@ -675,11 +675,11 @@
         "txt": "Changed Color",
         "createdAt": 154514,
         "byMember": {
-          "_id": "u101",
-          "fullname": "Abi Abambi",
-          "imgUrl": "http://some-img"
+          "_id": "u103",
+          "fullname": "Ron Shmuel Kotigaro",
+          "imgUrl": "ron.png"
         },
-        "task": {
+        "taskOrGroup": {
           "id": "c101",
           "title": "Replace Logo"
         }
@@ -691,9 +691,9 @@
     "title": "Building a tree house",
     "createdAt": 1589983469652,
     "createdBy": {
-      "_id": "u102",
-      "fullname": "Abi Abambi",
-      "imgUrl": "http://some-img"
+      "_id": "u103",
+      "fullname": "Ron Shmuel Kotigaro",
+      "imgUrl": "ron.png"
     },
     "style": {
       "bgColor": "/static/media/island.c584b382.jpg"
@@ -721,9 +721,9 @@
     "title": "Trip to Paris",
     "createdAt": 1589983469652,
     "createdBy": {
-      "_id": "u102",
-      "fullname": "Abi Abambi",
-      "imgUrl": "http://some-img"
+      "_id": "u103",
+      "fullname": "Ron Shmuel Kotigaro",
+      "imgUrl": "ron.png"
     },
     "style": {
       "bgColor": "/static/media/balcony.aa711aa8.jpg"
@@ -751,9 +751,9 @@
     "title": "Fix at home",
     "createdAt": 1589983469652,
     "createdBy": {
-      "_id": "u102",
-      "fullname": "Abi Abambi",
-      "imgUrl": "http://some-img"
+      "_id": "u103",
+      "fullname": "Ron Shmuel Kotigaro",
+      "imgUrl": "ron.png"
     },
     "style": {
       "bgColor": "/static/media/malibu.7eb0ae98.jpg"
