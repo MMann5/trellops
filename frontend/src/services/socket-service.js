@@ -1,6 +1,6 @@
 import io from 'socket.io-client'
 import { httpService } from './http.service'
-const baseUrl = (process.env.NODE_ENV === 'production') ? '' : '//localhost:3030'
+const baseUrl = (process.env.NODE_ENV === 'production') ? '' : '//localhost:3030'//is this our backend port?
 export const socketService = createSocketService()
 
 

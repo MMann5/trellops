@@ -4,6 +4,8 @@ import { TextareaAutosize, TextField } from '@material-ui/core';
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import Checkbox from 'rc-checkbox';
+import { Progress } from 'antd';
+import { ProgressBar } from './ProgressBar';
 
 export function TaskCheckList({ task, sendTask, togglePopover}) {
   const [listStateVal, createListVal] = React.useState(
@@ -57,7 +59,12 @@ export function TaskCheckList({ task, sendTask, togglePopover}) {
       );
     })
     : '';
-  return <ul className="clean-list">{list}</ul>;
+  return (
+    <div className="checklist-container">
+      <ProgressBar task={task}/>
+      <ul className="clean-list">{list}</ul>
+    </div>
+    );
 }
 
 // <div className='checklist-preview'>

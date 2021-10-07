@@ -36,18 +36,26 @@
     }
 
     .header-section {
-        flex-grow: 1;
-
-        .board-header-members {
+        .board-header-members{
+            flex-grow: 1;
             align-self: center;
             margin-bottom: 8px;
-            flex-grow: 1;
-
-            button {
-                margin-left: 8px;
-                padding: 5px 14px;
-            }
         }
+        flex-grow: 1;
+        .members-icon{
+            margin-right: 10px;
+        }
+        img{
+            height: 32px;
+            width: 32px;
+            border-radius: 50%;
+        }
+
+        //     button {
+        //         margin-left: 8px;
+        //         padding: 5px 14px;
+        //     }
+        // }
     }
 
     &:hover {

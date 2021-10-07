@@ -283,7 +283,7 @@ export function TaskDetails({ props, board }) {
                   className='secondary-btn'
                   onClick={onAddComment}
                 >
-                  Save
+                  Send
                 </button>
               </div>
               <div>{task.comments.length ? <ModalDetailsComments task={task} /> : ''}</div>

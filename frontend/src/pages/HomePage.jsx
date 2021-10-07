@@ -18,7 +18,7 @@ export function HomePage() {
             <div className="hero-info">
               <h1>Trellops helps teams move work forward.</h1>
               <p>Collaborate, manage projects, and reach new productivity peaks. From high rises to the home office, the way your team works is unique—accomplish it all with Trellops.</p>
-              <Link to="/workspace">Get started!</Link>
+              <Link to="/workspace">Live Demo</Link>
             </div>
             <div className="hero-img">
               <img src={heroImgUrl} alt="" />
