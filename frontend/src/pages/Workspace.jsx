@@ -12,7 +12,7 @@ export function Workspace() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadBoards());
-  }, [dispatch]);
+  }, []);
 
   const { boards } = useSelector((state) => state.boardModule);
   const [boardsState, setBoardsState] = useState(boards);

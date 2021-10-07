@@ -1,8 +1,8 @@
 import { boardService } from '../../services/board-service.js';
 
 const initialState = {
-  boards: boardService.getBoards(),
-  board: boardService.getBoards()[0],
+  boards: [],
+  board: {},
 };
 
 export function boardReducer(state = initialState, action) {

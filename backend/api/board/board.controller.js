@@ -91,7 +91,7 @@ const updateBoard = (req, res) => {
       ? {
           $set: {
             title: body.title,
-            style: { bgColor: body.bgColor },
+            style: body.style,
             groups: body.groups,
             activities: body.activities,
           },

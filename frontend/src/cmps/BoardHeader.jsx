@@ -4,30 +4,22 @@ import { Link, useParams } from 'react-router-dom';
 import { TextField, TextareaAutosize } from '@material-ui/core';
 import { setBoards } from '../store/actions/boards-actions.js';
 import { RightMenu } from './RightMenu';
-export function BoardHeader({ board, setBgColor }) {
-  const dispatch = useDispatch();
-  const { boards } = useSelector((state) => state.boardModule);
-  const { boardId } = useParams();
 
-  if (!boardId) board._id = boardId;
-  const currBoard = boards.find(
-    (boardVal) => boardVal._id === boardId
-  );
-
-  const [boardName, setBoardName] = useState(currBoard.title);
+export function BoardHeader({ boards, board, setBgColor }) {
+  const [boardName, setBoardName] = useState(board.title);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const idx = boards.findIndex(
-    (boardUnit) => boardId === boardUnit._id
+    (boardUnit) => board._id === boardUnit._id
   );
-
+  const dispatch = useDispatch();
   useEffect(() => {
-    const newBoard = { ...currBoard, title: boardName };
+    const newBoard = { ...board, title: boardName };
     const boardsCopy = [...boards];
     boardsCopy.splice(idx, 1, newBoard);
     dispatch(setBoards(boardsCopy));
   }, [dispatch, boardName]);
 
-  const members = currBoard.members.map((val, idx) => {
+  const members = board.members.map((val, idx) => {
     return (
       <div key={idx}>
         <img src={require(`../assets/imgs/profiles/${val.imgUrl}`).default} alt="" />
@@ -58,7 +50,7 @@ export function BoardHeader({ board, setBgColor }) {
             position: 'relative',
             height: '22px',
             marginInlineEnd: '5px',
-            fontWeight: 'bold'
+            fontWeight: 'bold',
           },
         }}
       />
@@ -71,7 +63,7 @@ export function BoardHeader({ board, setBgColor }) {
             <h4 className='wide-layout'>Invite</h4>
           </a>
         </div>
-        <RightMenu setBgColor={setBgColor} board={board}/>
+        <RightMenu setBgColor={setBgColor} board={board} />
       </div>
     </div>
   );
