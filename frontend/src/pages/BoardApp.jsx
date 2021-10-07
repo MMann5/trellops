@@ -45,10 +45,7 @@ export function BoardApp(props) {
   }, [board]);
 
   useEffect(() => {
-    if (
-      boardState._id === props.match.params.boardId &&
-      JSON.stringify(boardState) !== JSON.stringify(board)
-    )
+    if (JSON.stringify(boardState) !== JSON.stringify(board))
       dispatch(onSaveBoard(boardState));
   }, [boardState]);
 
@@ -66,7 +63,10 @@ export function BoardApp(props) {
       return {
         ...prevState,
         groups: [...boardState.groups, getEmptyGroup(groupName)],
-        activities: (boardState.activities.length === 0) ? [newActivity] : [...boardState.activities, newActivity],
+        activities:
+          boardState.activities.length === 0
+            ? [newActivity]
+            : [...boardState.activities, newActivity],
       };
     });
   };
@@ -84,7 +84,10 @@ export function BoardApp(props) {
         groups: boardState.groups.filter(
           (value) => value.id !== groupId
         ),
-        activities: (boardState.activities.length === 0) ? [newActivity] : [...boardState.activities, newActivity],
+        activities:
+          boardState.activities.length === 0
+            ? [newActivity]
+            : [...boardState.activities, newActivity],
       };
     });
   };

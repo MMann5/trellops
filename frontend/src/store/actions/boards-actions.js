@@ -39,6 +39,19 @@ export function onSaveBoard(board) {
     }
   };
 }
+export function onSetBoardTitle(boardId, title) {
+  return async (dispatch) => {
+    try {
+      const newBoard = await boardService.updateBoardPrm({
+        id: boardId,
+        title,
+      });
+      dispatch({ type: 'SAVE_BOARD', newBoard });
+    } catch (err) {
+      console.log('BoardActions: err in onSaveBoard', err);
+    }
+  };
+}
 
 export function onAddBoard(body) {
   return async (dispatch) => {
