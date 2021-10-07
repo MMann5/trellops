@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Loader from 'react-loader-spinner';
 import { useDispatch, useSelector } from 'react-redux';
+import socketService from '../services/socket-service';
 import {
   DragDropContext,
   Droppable,
@@ -23,16 +24,37 @@ import {
 } from '../services/board-service.js';
 import { TaskDetails } from './TaskDetails';
 import { useDebounce } from 'use-debounce';
+import io from 'socket.io-client';
 export function BoardApp(props) {
   const [isLoaded, setIsLoaded] = useState(false);
+  const { board } = useSelector((state) => state.boardModule);
+  const [boardState, setBoardState] = useState(board);
+  var socket = io('ws://localhost:2556', {
+    transports: ['websocket'],
+  });
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadBoard(props.match.params.boardId, setIsLoaded));
     dispatch(loadBoards());
+    socket.on('move-applicant', (payload) => {
+      console.log(payload);
+      setBoardState((prevState) => {
+        return {
+          ...prevState,
+          groups: payload,
+        };
+      });
+    });
+    socket.on('set-bg', (payload) => {
+      setBoardState((prevState) => {
+        return {
+          ...prevState,
+          style: { bgColor: payload },
+        };
+      });
+    });
   }, []);
-  const { board } = useSelector((state) => state.boardModule);
-  const [boardState, setBoardState] = useState(board);
-  const [value] = useDebounce(boardState, 1000);
+  const [value] = useDebounce(boardState, 350);
   const [modalState, setModalState] = useState(false);
   useEffect(() => {
     if (props.match.params.taskId) {
@@ -46,7 +68,7 @@ export function BoardApp(props) {
   }, [board]);
 
   useEffect(() => {
-    if (JSON.stringify(boardState) !== JSON.stringify(board))
+    if (boardState._id === props.match.params.boardId)
       dispatch(onSaveBoard(boardState));
   }, [value]);
 
@@ -54,16 +76,20 @@ export function BoardApp(props) {
   const [groupName, setGroupName] = useState('');
 
   const onAddEmptyGroup = () => {
-    debugger;
     const currUser = 'Avi Abambi';
     const newActivity = boardService.createActivity(
       currUser,
       'added a new group'
     );
+    const newGroupArrCopy = [
+      ...boardState.groups,
+      getEmptyGroup(groupName),
+    ];
+    socket.emit('move-applicant', newGroupArrCopy);
     setBoardState((prevState) => {
       return {
         ...prevState,
-        groups: [...boardState.groups, getEmptyGroup(groupName)],
+        groups: newGroupArrCopy,
         activities:
           boardState.activities.length === 0
             ? [newActivity]
@@ -77,7 +103,6 @@ export function BoardApp(props) {
   };
 
   const onRemoveGroup = (groupId) => {
-    debugger;
     const currGroup = boardService.findGroupById(board, groupId);
     const newActivity = boardService.createActivity(
       'Ron Kontigaro',
@@ -113,6 +138,7 @@ export function BoardApp(props) {
 
     let boardGroupsCopy = [...boardState.groups];
     boardGroupsCopy.splice(idx, 1, groupCopy);
+    socket.emit('move-applicant', boardGroupsCopy);
     setBoardState((prevState) => {
       return {
         ...prevState,
@@ -139,8 +165,8 @@ export function BoardApp(props) {
       })
       .indexOf(groupId);
     let boardGroupsCopy = [...boardState.groups];
-
     boardGroupsCopy.splice(idx, 1, groupCopy);
+    socket.emit('move-applicant', boardGroupsCopy);
     setBoardState((prevState) => {
       return {
         ...prevState,
@@ -166,6 +192,7 @@ export function BoardApp(props) {
     groupCopy.tasks.splice(taskIdx, 1);
     let boardGroupsCopy = [...boardState.groups];
     boardGroupsCopy.splice(groupIdx, 1, groupCopy);
+    socket.emit('move-applicant', boardGroupsCopy);
     setBoardState((prevState) => {
       return {
         ...prevState,
@@ -189,6 +216,7 @@ export function BoardApp(props) {
     groupCopy.title = ev.target.value;
     let boardGroupsCopy = [...boardState.groups];
     boardGroupsCopy.splice(idx, 1, groupCopy);
+    socket.emit('move-applicant', boardGroupsCopy);
     setBoardState((prevState) => {
       return {
         ...prevState,
@@ -207,6 +235,7 @@ export function BoardApp(props) {
         1
       );
       groupsCpy.splice(result.destination.index, 0, reorderedGroup);
+      socket.emit('move-applicant', groupsCpy);
       setBoardState({ ...boardState, groups: groupsCpy });
     } else {
       const destGrp = groupsCpy.find(
@@ -217,6 +246,7 @@ export function BoardApp(props) {
       );
       const card = srcGrp.tasks.splice(source.index, 1);
       destGrp.tasks.splice(destination.index, 0, card[0]);
+      socket.emit('move-applicant', groupsCpy);
       setBoardState({ ...boardState, groups: groupsCpy });
     }
   };
@@ -252,17 +282,12 @@ export function BoardApp(props) {
       })
     : '';
 
-  // const setBgColor = (colorVal) => {
-  //   const boardCpy = { ...board };
-  //   boardCpy.style.bgColor = colorVal;
-  //   const boardsCpy = [...boards];
-  //   const boardIdx = boardsCpy.findIndex(
-  //     (val) => val._id === board._id
-  //   );
-  //   boardsCpy.splice(boardIdx, 1, boardCpy);
-  //   dispatch(setBoards(boardsCpy));
-  //   setBoardState(boardCpy);
-  // };
+  const setBgColor = (colorVal) => {
+    socket.emit('set-bg', colorVal);
+    dispatch(
+      onSaveBoard({ ...board, style: { bgColor: colorVal } })
+    );
+  };
   return boardState._id ? (
     <div
       className='board-app flex column'
@@ -273,6 +298,7 @@ export function BoardApp(props) {
     >
       <BoardsNavBar />
       <BoardHeader
+        setBgColor={setBgColor}
         board={boardState}
         setBoardTitle={setBoardTitle}
       />
@@ -309,7 +335,7 @@ export function BoardApp(props) {
     </div>
   ) : (
     <div style={{ margin: 'auto', textAlign: 'center' }}>
-      <Loader type='Bars' color='#0079bf' height={200} width={200} />
+      <Loader type='Bars' color='#0079bf' height={500} width={500} />
     </div>
   );
 }

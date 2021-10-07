@@ -2,7 +2,6 @@ import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ReactComponent as PaperClipIcon } from '../assets/imgs/icons/paperclip-solid.svg';
 import { ReactComponent as MemberIcon } from '../assets/imgs/icons/person.svg';
-
 import Swal from 'sweetalert2';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
@@ -28,6 +27,7 @@ import { TaskCheckList } from '../cmps/TaskDetails/TaskChecklist';
 import { TaskAttachments } from '../cmps/TaskDetails/TaskAttachments';
 import { ModalDetailsDate } from '../cmps/ModalDetailsDate';
 import { ModalDetailsComments } from '../cmps/ModalDetailsComments';
+import io from 'socket.io-client';
 
 export function TaskDetails({ props, board }) {
   const groupId = props.match.params.groupIdId;
@@ -67,7 +67,9 @@ export function TaskDetails({ props, board }) {
   useEffect(() => {
     sendTask(false, { ...task, description: descVal });
   }, [descVal]);
-
+  var socket = io('ws://localhost:2556', {
+    transports: ['websocket'],
+  });
   const sendTask = (isRemove, sentTask) => {
     const currGrp = board.groups.find(
       (group) => group.id === groupId
@@ -82,6 +84,7 @@ export function TaskDetails({ props, board }) {
       ? currGrp.tasks.splice(taskIdx, 1)
       : currGrp.tasks.splice(taskIdx, 1, sentTask ? sentTask : task);
     board.groups.splice(grpIdx, 1, currGrp);
+    socket.emit('move-applicant', board.groups);
     dispatch(onSaveBoard(board));
     if (isRemove) {
       closeModal();
@@ -154,7 +157,6 @@ export function TaskDetails({ props, board }) {
   function ShowWindowDimensions(props) {
     const [width, height] = useWindowSize();
     console.log('Window size:', width, 'x', height);
-    // return <span>Window size: {width} x {height}</span>;
   }
 
   return (
