@@ -18,7 +18,17 @@ export function Task({
   onSetTask,
   boardId,
 }) {
-  // const [toggleLabel, SetToggleLabel] = useState(false)
+
+  const GetProgPercent = () => {
+    const sumOfTasks = task.checklists?.length;
+    let doneTasks = 0;
+    task.checklists?.forEach(todo => {
+      if (todo.checked === true) doneTasks++
+    });
+    const progressPercent = (doneTasks / sumOfTasks) * 100
+    return Math.floor(progressPercent);
+  }
+  const progressPercent = GetProgPercent()
 
   return (
     <div
@@ -59,7 +69,7 @@ export function Task({
             <span>{task.description ? <SubjectIcon /> : ''}</span>
             <span>
               {task.checklists && task.checklists.length ? (
-                <CheckBoxOutlinedIcon />
+                <CheckBoxOutlinedIcon style={(progressPercent===100)?{ backgroundColor: '#61bd4f', padding: '2px', 'width': '20px', borderRadius: '2px' }:{}} />
               ) : (
                 ''
               )}

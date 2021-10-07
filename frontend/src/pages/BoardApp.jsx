@@ -56,6 +56,7 @@ export function BoardApp(props) {
   const [groupName, setGroupName] = useState('');
 
   const onAddEmptyGroup = () => {
+    debugger;
     const currUser = 'Avi Abambi';
     const newActivity = boardService.createActivity(
       currUser,
@@ -65,12 +66,13 @@ export function BoardApp(props) {
       return {
         ...prevState,
         groups: [...boardState.groups, getEmptyGroup(groupName)],
-        activities: [...boardState.activities, newActivity],
+        activities: (boardState.activities.length === 0) ? [newActivity] : [...boardState.activities, newActivity],
       };
     });
   };
 
   const onRemoveGroup = (groupId) => {
+    debugger;
     const currGroup = boardService.findGroupById(board, groupId);
     const newActivity = boardService.createActivity(
       'Ron Kontigaro',
@@ -82,7 +84,7 @@ export function BoardApp(props) {
         groups: boardState.groups.filter(
           (value) => value.id !== groupId
         ),
-        activities: [...boardState.activities, newActivity],
+        activities: (boardState.activities.length === 0) ? [newActivity] : [...boardState.activities, newActivity],
       };
     });
   };
@@ -123,7 +125,6 @@ export function BoardApp(props) {
       (task) => task.id === taskId
     );
     groupCopy.tasks[taskIdx].title = ev.target.value;
-
     const idx = boardState.groups
       .map((group) => {
         return group.id;

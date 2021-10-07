@@ -1,6 +1,5 @@
 import { height } from '@mui/system';
 import React, { useState, useEffect } from 'react';
-
 export function TaskAttachments({ task, sendTask }) {
   const [attachmentStateVal, createAttachmentVal] = React.useState(
     task.attachments ? task.attachments : ''

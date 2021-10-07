@@ -17,8 +17,16 @@ export function BoardHeader({ boards, board, setBgColor }) {
     dispatch(onSaveBoard(newBoard));
   }, [boardName]);
 
+  const members = board.members.map((val, idx) => {
+    return (
+      <div key={idx}>
+        <img src={require(`../assets/imgs/profiles/${val.imgUrl}`).default} alt="" />
+      </div>
+    );
+  });
+
   return (
-    <div className='board-header'>
+    <div className='board-header flex'>
       <TextField
         variant='standard'
         value={boardName}
@@ -44,8 +52,11 @@ export function BoardHeader({ boards, board, setBgColor }) {
           },
         }}
       />
-      <div className='flex header-section'>
-        <div className='board-header-members flex align-center'>
+      <div className='header-section flex  align-center'>
+        <div className='board-header-members flex'>
+          <div className='members-icon flex'>
+            {members}
+          </div>
           <a>
             <h4 className='wide-layout'>Invite</h4>
           </a>
