@@ -7,7 +7,6 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 export function ActivityList({ board }) {
   const activities = board.activities
-  console.log('activities', activities);
   const organizeActivity = (activity) => {
     switch (activity) {
       case 'new group':
@@ -16,6 +15,8 @@ export function ActivityList({ board }) {
         return `added a new task to this board` //${activity.taskOrGroup.title}
       case 'removed group':
         return `removed a group from this board` //${activity.taskOrGroup.title?}
+      case 'task removed':
+        return `removed task` //${activity.taskOrGroup.title?}
     }
     return activity;
   }
@@ -46,7 +47,7 @@ export function ActivityList({ board }) {
                   lineHeight: "20px",
                   marginLeft: "16px"
                 }}>
-                  <span>{activity.byMember.fullname} {organizeActivity(activity.txt)}</span>
+                  <span>{activity.byMember.fullname} {organizeActivity(activity.txt)} {activity.taskOrGroup?.title}</span>
                 </div>
               </div>
               <ListItemText style={{

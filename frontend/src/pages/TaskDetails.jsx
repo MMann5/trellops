@@ -2,7 +2,7 @@ import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ReactComponent as PaperClipIcon } from '../assets/imgs/icons/paperclip-solid.svg';
 import { ReactComponent as MemberIcon } from '../assets/imgs/icons/person.svg';
-
+import { boardService } from '../services/board-service';
 import Swal from 'sweetalert2';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
@@ -79,7 +79,18 @@ export function TaskDetails({ props, board }) {
     const taskIdx = currGrp.tasks.findIndex(
       (task) => task.id === taskId
     );
-    
+    const currTask = currGrp.tasks.find(
+      (task) => task.id === taskId
+    );
+    if (isRemove){
+      const newActivity = 
+        boardService.createActivity(
+          'Ron Kontigaro',
+          'task removed',
+          currTask
+        ) 
+        board.activities.push(newActivity)
+    }
     isRemove
       ? currGrp.tasks.splice(taskIdx, 1)
       : currGrp.tasks.splice(taskIdx, 1, sentTask ? sentTask : task);

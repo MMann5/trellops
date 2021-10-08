@@ -191,7 +191,8 @@ function createActivity(currUser, txt, taskOrGroup = null) {
     },
   };
   if (taskOrGroup) {
-    newActivity.taskOrGroup.title = taskOrGroup.title
+    const activityEl = {title: taskOrGroup.title}
+    newActivity.taskOrGroup = activityEl
   }
   return newActivity;
 }

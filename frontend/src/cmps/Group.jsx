@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import { TextField } from '@material-ui/core';
 import addIcon from '../assets/imgs/icons/add.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import AddIcon from '@mui/icons-material/Add';
 import { Task } from './Task';

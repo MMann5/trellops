@@ -95,7 +95,6 @@ export function BoardApp(props) {
   };
 
   const onAddTask = (groupId, txt) => {
-    debugger;
     const group = boardState.groups.find(
       (value) => value.id === groupId
     );
@@ -127,7 +126,6 @@ export function BoardApp(props) {
   };
 
   const onSetTask = (ev, groupId, taskId) => {
-    debugger;
     ev.stopPropagation();
     const group = boardState.groups.find(
       (value) => value.id === groupId
