@@ -1,6 +1,7 @@
-import { height } from '@mui/system';
 import React, { useState, useEffect } from 'react';
-export function TaskAttachments({ task, sendTask }) {
+
+
+export function DetailsAttachments({ task, sendTask }) {
   const [attachmentStateVal, createAttachmentVal] = React.useState(
     task.attachments ? task.attachments : ''
   );
@@ -24,7 +25,6 @@ export function TaskAttachments({ task, sendTask }) {
           <div style={{ width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-betwween', padding: '6px 10px' }} >
             <div>
               <h5>{val}</h5>
-              {/* <p>activity</p> */}
               <button onClick={() => deleteAttachment(idx)}>Delete</button>
             </div>
           </div>

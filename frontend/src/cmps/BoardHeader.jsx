@@ -3,7 +3,6 @@ import { TextField } from '@material-ui/core';
 import { RightMenu } from './RightMenu';
 
 export function BoardHeader({
-  boards,
   board,
   setBgColor,
   setBoardTitle,
@@ -51,9 +50,6 @@ export function BoardHeader({
       <div className='header-section flex  align-center'>
         <div className='board-header-members flex'>
           <div className='members-icon flex'>{members}</div>
-          <a>
-            <h4 className='wide-layout'>Invite</h4>
-          </a>
         </div>
         <RightMenu setBgColor={setBgColor} board={board} />
       </div>

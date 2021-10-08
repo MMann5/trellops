@@ -32,17 +32,3 @@ const getGroup = async (boardId, groupId) =>
     { id: boardId, 'groups.id': groupId },
     { 'groups.$': 1 }
   );
-
-BoardData.find(
-  { id: 'b101', 'members._id': 'u101' },
-  { 'members.$': 1 }
-).then((result) => console.log(result));
-
-BoardData.find(
-  { id: 'b101', 'groups.id': 'g101' },
-  { 'groups.$': 1 }
-).then((result) => console.log(result));
-
-BoardData.findOne({ id: 'b101' }).then((result) =>
-  console.log(result)
-);

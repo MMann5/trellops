@@ -17,7 +17,6 @@ http.listen(2556, () => {
 
 io.on('connection', (socket) => {
   console.log('HELLO');
-  // move applicant to another list/index
   socket.on('move-applicant', (payload) => {
     socket.broadcast.emit('move-applicant', payload);
   });

@@ -16,6 +16,10 @@ export const routes = [
     component: LoginSignup,
   },
   {
+    path: '/signup',
+    component: LoginSignup,
+  },
+  {
     path: '/workspace',
     component: Workspace,
   },

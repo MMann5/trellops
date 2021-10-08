@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import io from 'socket.io-client';
 import { ReactComponent as PaperClipIcon } from '../assets/imgs/icons/paperclip-solid.svg';
 import { ReactComponent as MemberIcon } from '../assets/imgs/icons/person.svg';
 import Swal from 'sweetalert2';
@@ -17,17 +18,16 @@ import CheckboxIcon from '@material-ui/icons/CheckBoxOutlined';
 import CoverIcon from '@material-ui/icons/VideoLabel';
 import MinusIcon from '@material-ui/icons/RemoveOutlined';
 import CopyIcon from '@material-ui/icons/FileCopyOutlined';
-import { TaskMembers } from '../cmps/TaskDetails/TaskMembers';
-import { ModalDetailsLables } from '../cmps/ModalDetailsLables';
+import { DetailsMembers } from '../cmps/TaskDetails/DetailsMembers';
+import { DetailsLables } from '../cmps/TaskDetails/DetailsLables';
 import { onSaveBoard } from '../store/actions/boards-actions';
 import { utilService } from '../services/util-service';
 import { addComment } from '../services/board-service';
 import { DynamicPopover } from '../cmps/DynamicPopover';
-import { TaskCheckList } from '../cmps/TaskDetails/TaskChecklist';
-import { TaskAttachments } from '../cmps/TaskDetails/TaskAttachments';
-import { ModalDetailsDate } from '../cmps/ModalDetailsDate';
-import { ModalDetailsComments } from '../cmps/ModalDetailsComments';
-import io from 'socket.io-client';
+import { DetailsChecklist } from '../cmps/TaskDetails/DetailsChecklist';
+import { DetailsAttachments } from '../cmps/TaskDetails/DetailsAttachments';
+import { DetailsDate } from '../cmps/TaskDetails/DetailsDate';
+import { DetailsComments } from '../cmps/TaskDetails/DetailsComments';
 
 export function TaskDetails({ props, board }) {
   const groupId = props.match.params.groupIdId;
@@ -71,7 +71,6 @@ export function TaskDetails({ props, board }) {
     transports: ['websocket'],
   });
   const sendTask = (isRemove, sentTask) => {
-    debugger;
     const currGrp = board.groups.find(
       (group) => group.id === groupId
     );
@@ -191,7 +190,7 @@ export function TaskDetails({ props, board }) {
                     {task.members.length ? 'Members' : ''}
                   </h3>
                   <div className='labels-container flex wrap'>
-                    <TaskMembers
+                    <DetailsMembers
                       members={task.members ? task.members : []}
                       onClick={(ev) => {
                         togglePopover('MEMBERS');
@@ -209,12 +208,12 @@ export function TaskDetails({ props, board }) {
                       Labels
                     </h3>
                     <div className='labels-container flex wrap'>
-                      <ModalDetailsLables labels={task.labels} />
+                      <DetailsLables labels={task.labels} />
                     </div>
                   </div>
                 )}
                 {task.dueDate ? (
-                  <ModalDetailsDate
+                  <DetailsDate
                     sendTask={sendTask}
                     task={task}
                   />
@@ -242,7 +241,7 @@ export function TaskDetails({ props, board }) {
                   <h3>Attachments</h3>
                 </div>
                 <div className='card-checklists '>
-                  <TaskAttachments task={task} sendTask={sendTask} />
+                  <DetailsAttachments task={task} sendTask={sendTask} />
                 </div>
               </div>
             )}
@@ -253,7 +252,7 @@ export function TaskDetails({ props, board }) {
                   <h3>Checklist</h3>
                 </div>
                 <div className='card-checklists'>
-                  <TaskCheckList
+                  <DetailsChecklist
                     task={task}
                     sendTask={sendTask}
                     togglePopover={togglePopover}
@@ -283,7 +282,7 @@ export function TaskDetails({ props, board }) {
                     placeholder='Write a comment'
                     onChange={(ev) => setCommentVal(ev.target.value)}
                     value={commentVal}
-                    // style={fontFamily: '\'Segoe UI\', Tahoma, Geneva, Verdana, sans-serif'}
+                  // style={fontFamily: '\'Segoe UI\', Tahoma, Geneva, Verdana, sans-serif'}
                   />
                 </div>
                 <button
@@ -295,7 +294,7 @@ export function TaskDetails({ props, board }) {
               </div>
               <div>
                 {task.comments.length ? (
-                  <ModalDetailsComments task={task} />
+                  <DetailsComments task={task} />
                 ) : (
                   ''
                 )}

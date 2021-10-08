@@ -5,6 +5,7 @@ import logo from '../assets/imgs/‏‏homelogo2.svg';
 import ron from '../assets/imgs/profiles/ron.png';
 import homeIcon from '../assets/imgs/icons/home.svg';
 
+
 export class BoardsNavBar extends Component {
   render() {
     return (
@@ -20,7 +21,6 @@ export class BoardsNavBar extends Component {
           </Link>
         </div>
         <div className='logo'>
-          {/* needs to render currUser profile picture path */}
           <img src={logo} alt='' />
           <Link to='/'>
             <h3>Trellops</h3>

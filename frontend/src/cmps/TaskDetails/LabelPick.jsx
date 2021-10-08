@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-// import Checkbox from 'rc-checkbox';
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
 import Checkbox from '@mui/material/Checkbox';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
@@ -59,7 +58,7 @@ export function LabelPick({ props, setCurrPopover, sendTask, popoverPos }) {
 
   return (
     <div className='checklist'
-    style={{ left: popoverPos.leftPos, top: popoverPos.topPos }}>
+      style={{ left: popoverPos.leftPos, top: popoverPos.topPos }}>
       <div className='nav-option-header flex align-center'>
         <button
           className='clean-btn hide'

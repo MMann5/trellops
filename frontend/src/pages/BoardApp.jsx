@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { useDebounce } from 'use-debounce';
 import Loader from 'react-loader-spinner';
 import { useDispatch, useSelector } from 'react-redux';
-import socketService from '../services/socket-service';
+import io from 'socket.io-client';
 import {
   DragDropContext,
   Droppable,
@@ -9,22 +10,25 @@ import {
 } from 'react-beautiful-dnd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import Group from '../cmps/Group';
-import { BoardsNavBar } from '../cmps/BoardsNavBar.jsx';
-import { BoardHeader } from '../cmps/BoardHeader.jsx';
+
 import {
   loadBoard,
   loadBoards,
   onSaveBoard,
 } from '../store/actions/boards-actions.js';
+
 import {
   getEmptyGroup,
   constructTask,
   boardService,
 } from '../services/board-service.js';
+
+import Group from '../cmps/Group';
+import { BoardsNavBar } from '../cmps/BoardsNavBar.jsx';
+import { BoardHeader } from '../cmps/BoardHeader.jsx';
 import { TaskDetails } from './TaskDetails';
-import { useDebounce } from 'use-debounce';
-import io from 'socket.io-client';
+
+
 export function BoardApp(props) {
   const [isLoaded, setIsLoaded] = useState(false);
   const { board } = useSelector((state) => state.boardModule);
@@ -122,7 +126,6 @@ export function BoardApp(props) {
   };
 
   const onAddTask = (groupId, txt) => {
-    debugger;
     const group = boardState.groups.find(
       (value) => value.id === groupId
     );
@@ -155,7 +158,6 @@ export function BoardApp(props) {
   };
 
   const onSetTask = (ev, groupId, taskId) => {
-    debugger;
     ev.stopPropagation();
     const group = boardState.groups.find(
       (value) => value.id === groupId
@@ -261,33 +263,33 @@ export function BoardApp(props) {
 
   var groups = boardState.groups
     ? boardState.groups.map((group, idx) => {
-        return (
-          <Draggable
-            key={group.id}
-            draggableId={group.id}
-            index={idx}
-          >
-            {(provided) => (
-              <div
-                {...provided.draggableProps}
-                {...provided.dragHandleProps}
-                ref={provided.innerRef}
-              >
-                <Group
-                  boardId={boardState._id}
-                  onRemoveGroup={onRemoveGroup}
-                  group={group}
-                  setGroupTitle={setGroupTitle}
-                  key={group.id}
-                  onAddTask={onAddTask}
-                  onRemoveTask={onRemoveTask}
-                  onSetTask={onSetTask}
-                />
-              </div>
-            )}
-          </Draggable>
-        );
-      })
+      return (
+        <Draggable
+          key={group.id}
+          draggableId={group.id}
+          index={idx}
+        >
+          {(provided) => (
+            <div
+              {...provided.draggableProps}
+              {...provided.dragHandleProps}
+              ref={provided.innerRef}
+            >
+              <Group
+                boardId={boardState._id}
+                onRemoveGroup={onRemoveGroup}
+                group={group}
+                setGroupTitle={setGroupTitle}
+                key={group.id}
+                onAddTask={onAddTask}
+                onRemoveTask={onRemoveTask}
+                onSetTask={onSetTask}
+              />
+            </div>
+          )}
+        </Draggable>
+      );
+    })
     : '';
 
   const setBgColor = (colorVal) => {

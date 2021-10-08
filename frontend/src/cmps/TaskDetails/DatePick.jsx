@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import 'react-datepicker/dist/react-datepicker.css';
-
 import {
   DatePicker,
   MuiPickersUtilsProvider,
 } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
+
+
 export function DatePick({ props, setCurrPopover, sendTask, popoverPos }) {
   const [startDate, setStartDate] = useState(Date.now());
   useEffect(() => {
@@ -14,12 +15,12 @@ export function DatePick({ props, setCurrPopover, sendTask, popoverPos }) {
   }, [startDate]);
   return (
     <div className='date-pick'
-    style={{ left: popoverPos.leftPos, top: popoverPos.topPos }}>
+      style={{ left: popoverPos.leftPos, top: popoverPos.topPos }}>
       <div className='nav-option-header flex align-center'>
-      <button 
+        <button
           className='clean-btn hide'
         >
-          <CloseRoundedIcon/>
+          <CloseRoundedIcon />
         </button>
         <h3>Date</h3>
         <button
@@ -28,7 +29,7 @@ export function DatePick({ props, setCurrPopover, sendTask, popoverPos }) {
             setCurrPopover(null);
           }}
         >
-          <CloseRoundedIcon/>
+          <CloseRoundedIcon />
         </button>
       </div>
       <MuiPickersUtilsProvider utils={DateFnsUtils}>

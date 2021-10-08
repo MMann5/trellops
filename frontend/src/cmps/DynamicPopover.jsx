@@ -1,9 +1,10 @@
-import { LabelPick } from './LabelPick';
-import { MemberPick } from './MemberPick';
-import { ColorPick } from './ColorPick';
-import { Checklist } from './Checklist';
-import { DatePick } from './DatePick';
-import { FileAttachment } from './FileAttachment';
+import { LabelPick } from './TaskDetails/LabelPick';
+import { MemberPick } from './TaskDetails/MemberPick';
+import { ColorPick } from './TaskDetails/ColorPick';
+import { Checklist } from './TaskDetails/Checklist';
+import { DatePick } from './TaskDetails/DatePick';
+import { FileAttachment } from './TaskDetails/FileAttachment';
+
 
 export function DynamicPopover({
   name,

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import React from 'react'
 import logo from '../assets/imgs/home-logo.svg';
 
 export function NavLogin() {

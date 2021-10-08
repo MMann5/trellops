@@ -29,7 +29,7 @@ export function HomePage() {
           <div className="product-info">
             <h2>It's more than work. It's a way of working together.</h2>
             <p>Start with a Trellops board, lists, and cards. Customize and expand with more features as your teamwork grows. Manage projects, organize tasks, and build team spirit—all in one place.</p>
-            <Link to={`/board/${board._id}`} className="clean-link" >Start doing →</Link>
+            {/* <Link to={`/board/${board._id}`} className="clean-link" >Start doing →</Link> */}
           </div>
           <div>
             <img src={productImgUrl} alt="" />

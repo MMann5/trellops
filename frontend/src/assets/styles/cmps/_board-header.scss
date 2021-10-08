@@ -36,16 +36,19 @@
     }
 
     .header-section {
-        .board-header-members{
+        .board-header-members {
             flex-grow: 1;
             align-self: center;
-            margin-bottom: 8px;
+            // margin-bottom: 8px;
         }
+
         flex-grow: 1;
-        .members-icon{
+
+        .members-icon {
             margin-right: 10px;
         }
-        img{
+
+        img {
             height: 32px;
             width: 32px;
             border-radius: 50%;

@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-// import { getEmptyBoard } from '../services/board-service';
+
 import {
   loadBoards,
   onAddBoard,
 } from '../store/actions/boards-actions.js';
 import { BoardsNavBar } from '../cmps/BoardsNavBar';
 import { WorkspacePopup } from '../cmps/WorkspacePopup';
+
+
 export function Workspace() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -38,9 +40,8 @@ export function Workspace() {
       className={isPopShown ? 'work-space opacity' : 'work-space'}
     >
       <BoardsNavBar />
-      {/* <h2>Workspace</h2> */}
       <div className='general-boards'>
-        <h3>My Boards</h3>
+        <h2>Workspace</h2>
         <div className='work-space-boards'>
           {boards.map((board, idx) => (
             <Link to={`/board/${board._id}`} key={idx}>
