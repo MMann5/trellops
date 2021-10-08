@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { TextField } from '@material-ui/core';
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
+
+
 export function FileAttachment({ props, setCurrPopover, sendTask, popoverPos }) {
   const [stateVal, createStateVal] = useState('');
   const checkUrl = (url) =>
@@ -8,12 +10,12 @@ export function FileAttachment({ props, setCurrPopover, sendTask, popoverPos }) 
 
   return (
     <div className='checklist'
-    style={{ left: popoverPos.leftPos, top: popoverPos.topPos }}>
+      style={{ left: popoverPos.leftPos, top: popoverPos.topPos }}>
       <div className='nav-option-header flex align-center'>
-      <button 
+        <button
           className='clean-btn hide'
         >
-          <CloseRoundedIcon/>
+          <CloseRoundedIcon />
         </button>
         <h3>Attach an Image link</h3>
         <button
@@ -22,7 +24,7 @@ export function FileAttachment({ props, setCurrPopover, sendTask, popoverPos }) 
             setCurrPopover(null);
           }}
         >
-          <CloseRoundedIcon/>
+          <CloseRoundedIcon />
         </button>
       </div>
       <TextField

@@ -147,8 +147,6 @@ function post(entityType = 'boardsDB', newEntity) {
 
 function put(entityType = 'boardsDB', updatedEntity) {
   return query(entityType).then((entities) => {
-    // const idx = entities.findIndex(entity => entity._id === updatedEntity._id)
-    // entities.splice(idx, 1, updatedEntity)
     _save(entityType, updatedEntity);
     return updatedEntity;
   });
@@ -178,10 +176,10 @@ function getBoardById(boardId) {
 }
 
 function createActivity(currUser, txt, taskOrGroup = null) {
-  debugger;
   const id = utilService.makeId();
   const newActivity = {
     id,
+
     txt,
     createdAt: Date.now(),
     byMember: {

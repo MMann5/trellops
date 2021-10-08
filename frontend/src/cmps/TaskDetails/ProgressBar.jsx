@@ -1,12 +1,8 @@
 import React from "react";
 import Styled from 'styled-components'
-export function ProgressBar({task}) {
-    // const Container =Styled.div`
-    //     progress {
-    //         color: 'green'
-    //     }
-    // `;
 
+
+export function ProgressBar({ task }) {
     const GetProgPercent = () => {
         const sumOfTasks = task.checklists.length;
         let doneTasks = 0;

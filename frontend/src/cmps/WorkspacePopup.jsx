@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
 import night from '../assets/imgs/backgrounds/night.png';
-import sky from '../assets/imgs/backgrounds/backgrounds.jpg';
 import house from '../assets/imgs/backgrounds/house.png';
 import malibu from '../assets/imgs/backgrounds/malibu.jpg';
 import island from '../assets/imgs/backgrounds/island.jpg';
@@ -9,8 +8,9 @@ import bunny from '../assets/imgs/backgrounds/bunny.jpg';
 import manupside from '../assets/imgs/backgrounds/manupside.jpg';
 import beach from '../assets/imgs/backgrounds/beach.jpg';
 import balcony from '../assets/imgs/backgrounds/balcony.jpg';
-import mountain from '../assets/imgs/backgrounds/mountain.jpg';
 import home from '../assets/imgs/backgrounds/home.jpg';
+
+
 export function WorkspacePopup({
   setBoardName,
   onAddEmptyBoard,

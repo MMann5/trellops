@@ -23,6 +23,7 @@ import beach from '../assets/imgs/backgrounds/beach.jpg';
 import { ActivityList } from './ActivityList';
 import { useHistory } from 'react-router-dom';
 
+
 export function RightMenu({ setBgColor, board }) {
   const [state, setState] = React.useState({
     top: false,

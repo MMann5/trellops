@@ -1,21 +1,17 @@
-import React, { useState } from 'react';
-import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
+import React from 'react';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
-import { TextField } from '@material-ui/core';
 import CheckBoxOutlinedIcon from '@material-ui/icons/CheckBoxOutlined';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
-import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import TimerIcon from '@mui/icons-material/Timer';
 import { Link } from 'react-router-dom';
 import SubjectIcon from '@material-ui/icons/Subject';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
-import { deepOrange } from '@mui/material/colors';
+
+
 export function Task({
   task,
-  onRemoveTask,
   groupId,
-  onSetTask,
   boardId,
 }) {
 
@@ -70,11 +66,11 @@ export function Task({
           <div className='sign-task flex align-center'>
             <span>{task.description ? <SubjectIcon fontSize="small" /> : ''}</span>
             {task.checklists && task.checklists.length ? (
-              <div className='progress-container'>
-                <span>
-                  <CheckBoxOutlinedIcon fontSize="small" style={(progressData.percent === 100) ? { backgroundColor: '#61bd4f', padding: '2px', 'width': '20px', borderRadius: '2px' } : {}} />
+              <div className='progress-container' >
+                <span style={(progressData.percent === 100) ? { backgroundColor: '#61bd4f' } : {}}>
+                  <CheckBoxOutlinedIcon fontSize="small" />
                 </span>
-                <span className='prog-percent-span'>{progressData.string}</span>
+                {/* <span className='prog-percent-span'>{progressData.string}</span> */}
               </div>) : ('')}
 
             <span>
@@ -96,9 +92,8 @@ export function Task({
                   <Stack direction='row' spacing={2}>
                     <Avatar
                       sx={{
-                        width: 28,
-                        height: 28,
-                        // bgcolor: deepOrange[300],
+                        width: 25,
+                        height: 25,
                         fontSize: '0.85rem',
                         fontWeight: 400,
                         backgroundColor: member.avatarColor,
