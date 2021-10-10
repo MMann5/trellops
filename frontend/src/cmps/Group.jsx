@@ -37,33 +37,35 @@ export default function Group({
       ? style
       : { ...style, transitionDuration: '0.001s' };
 
-  var list = tasks.map((task, idx) => {
-    if (!task) return;
-    return (
-      <Draggable key={task.id} draggableId={task.id} index={idx}>
-        {(provided, snapshot) => (
-          <div
-            {...provided.draggableProps}
-            {...provided.dragHandleProps}
-            ref={provided.innerRef}
-            style={dragStyle(
-              provided.draggableProps.style,
-              snapshot
-            )}
-          >
-            <Task
-              key={task.id}
-              task={task}
-              onRemoveTask={onRemoveTask}
-              groupId={group.id}
-              onSetTask={onSetTask}
-              boardId={board._id}
-            />
-          </div>
-        )}
-      </Draggable>
-    );
-  });
+  var list =
+    tasks &&
+    tasks.map((task, idx) => {
+      if (!task) return;
+      return (
+        <Draggable key={task.id} draggableId={task.id} index={idx}>
+          {(provided, snapshot) => (
+            <div
+              {...provided.draggableProps}
+              {...provided.dragHandleProps}
+              ref={provided.innerRef}
+              style={dragStyle(
+                provided.draggableProps.style,
+                snapshot
+              )}
+            >
+              <Task
+                key={task.id}
+                task={task}
+                onRemoveTask={onRemoveTask}
+                groupId={group.id}
+                onSetTask={onSetTask}
+                boardId={board._id}
+              />
+            </div>
+          )}
+        </Draggable>
+      );
+    });
 
   const [taskVal, setTaskVal] = useState('');
   const composeTask = (ev) => {

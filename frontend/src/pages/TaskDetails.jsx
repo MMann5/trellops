@@ -82,42 +82,59 @@ export function TaskDetails({ props, board }) {
     const currTask = currGrp.tasks.find(
       (task) => task.id === taskId
     );
-    if (task.attachments && sentTask?.attachments && (task.attachments.length < sentTask.attachments.length)) {
+    if (
+      task.attachments &&
+      sentTask?.attachments &&
+      task.attachments.length < sentTask.attachments.length
+    ) {
       const newActivity = boardService.createActivity(
         'added attachment',
-        sentTask,
-      )
-      board.activities.push(newActivity)
+        sentTask
+      );
+      board.activities.push(newActivity);
     }
-    if (task.attachments && sentTask?.attachments && (task.attachments.length > sentTask.attachments.length)) {
+    if (
+      task.attachments &&
+      sentTask?.attachments &&
+      task.attachments.length > sentTask.attachments.length
+    ) {
       const newActivity = boardService.createActivity(
         'deleted attachment',
         sentTask
-      )
-      board.activities.push(newActivity)
+      );
+      board.activities.push(newActivity);
     }
-    if (task.checklists && sentTask?.checklists && (task.checklists.length < sentTask.checklists.length)) {
+    if (
+      task.checklists &&
+      sentTask?.checklists &&
+      task.checklists.length < sentTask.checklists.length
+    ) {
       const newActivity = boardService.createActivity(
         'added checklist',
         sentTask,
-        activityItem)
-      board.activities.push(newActivity)
+        activityItem
+      );
+      board.activities.push(newActivity);
     }
-    if (task.checklists && sentTask?.checklists && (task.checklists.length > sentTask.checklists.length)) {
+    if (
+      task.checklists &&
+      sentTask?.checklists &&
+      task.checklists.length > sentTask.checklists.length
+    ) {
       const newActivity = boardService.createActivity(
         'removed checklist',
         sentTask,
-        activityItem)
-      board.activities.push(newActivity)
+        activityItem
+      );
+      board.activities.push(newActivity);
     }
     if (isRemove) {
-      const newActivity =
-        boardService.createActivity(
-          'task removed',
-          currGrp,
-          currTask.title
-        )
-      board.activities.push(newActivity)
+      const newActivity = boardService.createActivity(
+        'task removed',
+        currGrp,
+        currTask.title
+      );
+      board.activities.push(newActivity);
     }
     isRemove
       ? currGrp.tasks.splice(taskIdx, 1)
@@ -249,10 +266,7 @@ export function TaskDetails({ props, board }) {
                   </div>
                 )}
                 {task.dueDate ? (
-                  <DetailsDate
-                    sendTask={sendTask}
-                    task={task}
-                  />
+                  <DetailsDate sendTask={sendTask} task={task} />
                 ) : (
                   ''
                 )}
@@ -277,7 +291,10 @@ export function TaskDetails({ props, board }) {
                   <h3>Attachments</h3>
                 </div>
                 <div className='card-checklists '>
-                  <DetailsAttachments task={task} sendTask={sendTask} />
+                  <DetailsAttachments
+                    task={task}
+                    sendTask={sendTask}
+                  />
                 </div>
               </div>
             )}
@@ -318,7 +335,7 @@ export function TaskDetails({ props, board }) {
                     placeholder='Write a comment'
                     onChange={(ev) => setCommentVal(ev.target.value)}
                     value={commentVal}
-                  // style={fontFamily: '\'Segoe UI\', Tahoma, Geneva, Verdana, sans-serif'}
+                    // style={fontFamily: '\'Segoe UI\', Tahoma, Geneva, Verdana, sans-serif'}
                   />
                 </div>
                 <button
