@@ -29,8 +29,6 @@ export function MemberPick({
     const copyMember = [...memberStateVal];
     copyMember[idx].checked = e.target.checked;
     const copySend = [...copyMember];
-    console.log(copyMember);
-    console.log(copySend);
     const checkedMembers = copySend.filter(
       (member) => member.checked
     );

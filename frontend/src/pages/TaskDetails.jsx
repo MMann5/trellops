@@ -54,9 +54,7 @@ export function TaskDetails({ props, board }) {
   const [currPopover, setCurrPopover] = useState('');
   const [currProps, setCurrProps] = useState('');
   const [currPopoverPos, setCurrPopoverPos] = useState('');
-
   const togglePopover = (ev, name) => {
-    console.log('ev.target', ev.target);
     setCurrPopoverPos(getPopoverPos(ev.target));
     setCurrPopover(name);
   };
@@ -71,7 +69,7 @@ export function TaskDetails({ props, board }) {
   var socket = io('ws://localhost:2556', {
     transports: ['websocket'],
   });
-  const sendTask = (isRemove, sentTask) => {
+  const sendTask = (isRemove, sentTask, activityItem = '') => {
     const currGrp = board.groups.find(
       (group) => group.id === groupId
     );
@@ -84,14 +82,42 @@ export function TaskDetails({ props, board }) {
     const currTask = currGrp.tasks.find(
       (task) => task.id === taskId
     );
-    if (isRemove){
-      const newActivity = 
+    if (task.attachments && sentTask?.attachments && (task.attachments.length < sentTask.attachments.length)) {
+      const newActivity = boardService.createActivity(
+        'added attachment',
+        sentTask,
+      )
+      board.activities.push(newActivity)
+    }
+    if (task.attachments && sentTask?.attachments && (task.attachments.length > sentTask.attachments.length)) {
+      const newActivity = boardService.createActivity(
+        'deleted attachment',
+        sentTask
+      )
+      board.activities.push(newActivity)
+    }
+    if (task.checklists && sentTask?.checklists && (task.checklists.length < sentTask.checklists.length)) {
+      const newActivity = boardService.createActivity(
+        'added checklist',
+        sentTask,
+        activityItem)
+      board.activities.push(newActivity)
+    }
+    if (task.checklists && sentTask?.checklists && (task.checklists.length > sentTask.checklists.length)) {
+      const newActivity = boardService.createActivity(
+        'removed checklist',
+        sentTask,
+        activityItem)
+      board.activities.push(newActivity)
+    }
+    if (isRemove) {
+      const newActivity =
         boardService.createActivity(
-          'Ron Kontigaro',
           'task removed',
-          currTask
-        ) 
-        board.activities.push(newActivity)
+          currGrp,
+          currTask.title
+        )
+      board.activities.push(newActivity)
     }
     isRemove
       ? currGrp.tasks.splice(taskIdx, 1)
@@ -146,11 +172,8 @@ export function TaskDetails({ props, board }) {
 
   const getPopoverPos = (target) => {
     const targetPos = target.getBoundingClientRect();
-    console.log('targetPos', targetPos);
     const newBottom = targetPos.bottom + 6;
     const newLeft = targetPos.left;
-    console.log('newLeft', newLeft);
-    console.log('newBottom', newBottom);
     return { leftPos: newLeft, topPos: newBottom };
   };
 
@@ -183,6 +206,7 @@ export function TaskDetails({ props, board }) {
               value={task.title}
               placeholder='Write A New Task'
               aria-label='empty textarea'
+              autoFocus
             />
           </div>
           <p className='bottom-list-name'>

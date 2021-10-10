@@ -65,12 +65,14 @@
       }
 
       .board-preview.new {
-        background-color: #0079bf;
-        color: $clr5;
-
+        // background-color: #0079bf;
+        // color: $clr5;
+        background-color: #091e420a;
+        color: $clr4;
+        font-weight: normal;
         &:hover {
           background-color: #fff;
-          color: $clr4;
+          color: black;
         }
       }
     }

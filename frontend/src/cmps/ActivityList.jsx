@@ -3,51 +3,61 @@ import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-
-
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 export function ActivityList({ board }) {
   const activities = board.activities
-  const organizeActivity = (activity) => {
-    switch (activity) {
+  const lastActivities = activities.slice(Math.max(activities.length - 20, 0))
+  const organizeActivity = (actionType, txt, taskOrGroup, fullname) => {
+    console.log(actionType, txt, taskOrGroup, fullname);
+    let name = <span className='activity-member'>{fullname}</span>
+    let destination = <span>{taskOrGroup}</span>
+    let item = <span className='txt-underline'>{txt}</span>
+    switch (actionType) {
       case 'new group':
-        return `added a new group to this board`
+        return <div>{name}added a new list to this board</div>
       case 'new task':
-        return `added a new task to this board` //${activity.taskOrGroup.title}
+        return <div>{name}<span>added a new task to </span>{destination}</div>
       case 'removed group':
-        return `removed a group from this board` //${activity.taskOrGroup.title?}
+        return <div>{name}<span>removed list </span>{taskOrGroup}</div>
       case 'task removed':
-        return `removed task` //${activity.taskOrGroup.title?}
-    }
-    return activity;
+        return <div>{name}<span>removed </span>{item}<span> from </span>{taskOrGroup}</div>
+      case 'added checklist':
+        return <div>{name}<span>added </span>{item}<span> to a checklist in </span>{taskOrGroup}</div>
+      case 'removed checklist':
+        return <div>{name}<span>removed </span>{item.title}<span> from a checklist in </span>{taskOrGroup}</div>
+      case 'added attachment':
+        return <div>{name}<span>attached a file to </span>{destination}</div>
+      case 'deleted attachment':
+        return `removed an attachment from ${taskOrGroup}`
+    };
   }
 
   const activityList = (
     <Box
       sx={{
-        width: 200,
+        width: 339,
       }}
       role='presentation'>
       <List>
-        <h3>Activity</h3>
-        {activities.map(
+        <div className='activities-header flex align-center'>
+          <FormatListBulletedIcon style={{fontSize:'14px', marginLeft:'1px'}}/>
+          <span className='activities-header-txt'>Activity</span>
+        </div>
+        {lastActivities.map(
           (activity, index) => (
             <ListItem button key={index} onClick={(ev) => {
             }}>
-              <div className="flex align-center">
+              <div className='flex align-center'>
                 {(activity.byMember.imgUrl !== 'http://some-img') && <img
                   src={
                     require(`../assets/imgs/profiles/${activity.byMember.imgUrl}`).default
                   }
                   alt=''
                 />}
-                <div className="nav-txt flex align-center" style={{
-                  fontSize: "14px",
-                  fontWeight: "600",
-                  color: "rgba(0, 0, 0, 0.87)",
-                  lineHeight: "20px",
-                  marginLeft: "16px"
-                }}>
-                  <span>{activity.byMember.fullname} {organizeActivity(activity.txt)} {activity.taskOrGroup?.title}</span>
+                <div className='nav-txt-container flex align-center'>
+                  <span>{organizeActivity(activity.actionType, activity.txt, activity.taskOrGroup?.title, activity.byMember.fullname)}</span>
+                  {/* <span className='taskOrGroup'>{activity.taskOrGroup?.title}</span> */}
+                  {/* <div>{activity.createdAt.getDate() +'/'+activity.createdAt.getMonth()+'/'}</div> */}
                 </div>
               </div>
               <ListItemText style={{
@@ -60,7 +70,7 @@ export function ActivityList({ board }) {
     </Box>
   );
   return (
-    <div className="activity-list">
+    <div className='activity-list'>
       {activityList}
     </div>
   )
