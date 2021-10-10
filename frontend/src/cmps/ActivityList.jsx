@@ -6,6 +6,7 @@ import ListItemText from '@mui/material/ListItemText';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 export function ActivityList({ board }) {
   const activities = board.activities
+  activities.reverse()
   const lastActivities = activities.slice(Math.max(activities.length - 20, 0))
   const organizeActivity = (actionType, txt, taskOrGroup, fullname) => {
     console.log(actionType, txt, taskOrGroup, fullname);
@@ -40,7 +41,7 @@ export function ActivityList({ board }) {
       role='presentation'>
       <List>
         <div className='activities-header flex align-center'>
-          <FormatListBulletedIcon style={{fontSize:'14px', marginLeft:'1px'}}/>
+          <FormatListBulletedIcon style={{ fontSize: '14px', marginLeft: '1px' }} />
           <span className='activities-header-txt'>Activity</span>
         </div>
         {lastActivities.map(
@@ -57,8 +58,8 @@ export function ActivityList({ board }) {
                 <div className='nav-txt-container flex align-center'>
                   <span>{organizeActivity(activity.actionType, activity.txt, activity.taskOrGroup?.title, activity.byMember.fullname)}</span>
                   {/* <span className='taskOrGroup'>{activity.taskOrGroup?.title}</span> */}
-                  {/* <div>{activity.createdAt.getDate() +'/'+activity.createdAt.getMonth()+'/'}</div> */}
                 </div>
+                <div className='date' >{new Date(activity.createdAt).toLocaleDateString()}</div>
               </div>
               <ListItemText style={{
                 backgroundColor: '#fff', height: '50px'
