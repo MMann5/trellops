@@ -58,7 +58,7 @@ export function BoardApp(props) {
       });
     });
   }, []);
-  const [value] = useDebounce(boardState, 1000);
+  const [value] = useDebounce(boardState, 1500);
   const [modalState, setModalState] = useState(false);
   useEffect(() => {
     if (props.match.params.taskId) {
