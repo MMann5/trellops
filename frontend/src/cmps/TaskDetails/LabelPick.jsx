@@ -5,8 +5,9 @@ import Checkbox from '@mui/material/Checkbox';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 
-export function LabelPick({ props, setCurrPopover, sendTask, popoverPos }) {
-  const getLabels = () => { };
+export function LabelPick({ bodyObj }) {
+  const { props, setCurrPopover, sendTask, popoverPos } = bodyObj;
+  const getLabels = () => {};
   const { board } = useSelector((state) => state.boardModule);
   const [stateVal, createStateVal] = React.useState({});
   const [labelStateVal, createLabelVal] = React.useState(
@@ -57,12 +58,12 @@ export function LabelPick({ props, setCurrPopover, sendTask, popoverPos }) {
   });
 
   return (
-    <div className='checklist'
-      style={{ left: popoverPos.leftPos, top: popoverPos.topPos }}>
+    <div
+      className='checklist'
+      style={{ left: popoverPos.leftPos, top: popoverPos.topPos }}
+    >
       <div className='nav-option-header flex align-center'>
-        <button
-          className='clean-btn hide'
-        >
+        <button className='clean-btn hide'>
           <CloseRoundedIcon />
         </button>
         <h3>Labels</h3>

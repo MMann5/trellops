@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
 
-
-export function ColorPick({ props, setCurrPopover, sendTask, popoverPos }) {
+export function ColorPick({ bodyObj }) {
+  const { props, setCurrPopover, sendTask, popoverPos } = bodyObj;
   const setColor = (color) => {
     sendTask(false, { ...props, bgColor: color });
   };
 
   return (
-    <div className='color-pick'
-      style={{ left: popoverPos.leftPos, top: popoverPos.topPos }}>
+    <div
+      className='color-pick'
+      style={{ left: popoverPos.leftPos, top: popoverPos.topPos }}
+    >
       <div className='nav-option-header flex align-center'>
-        <button
-          className='clean-btn hide'
-        >
+        <button className='clean-btn hide'>
           <CloseRoundedIcon />
         </button>
         <h3>Choose a color</h3>
@@ -71,4 +71,3 @@ export function ColorPick({ props, setCurrPopover, sendTask, popoverPos }) {
     </div>
   );
 }
-

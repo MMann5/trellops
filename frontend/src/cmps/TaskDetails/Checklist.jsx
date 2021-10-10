@@ -4,28 +4,34 @@ import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
 import { utilService } from '../../services/util-service';
 import { boardService } from '../../services/board-service';
 
-export function Checklist({ props, setCurrPopover, sendTask, popoverPos }) {
+export function Checklist({ bodyObj }) {
+  const { props, setCurrPopover, sendTask, popoverPos } = bodyObj;
   const [stateVal, createStateVal] = React.useState({});
   const [listStateVal, createListVal] = React.useState(
     props.checklists ? props.checklists : []
   );
   useEffect(() => {
-    let checklistTitle = listStateVal[listStateVal.length - 1]?.title
-    sendTask(false, { ...props, checklists: listStateVal }, checklistTitle);
+    let checklistTitle =
+      listStateVal[listStateVal.length - 1]?.title;
+    sendTask(
+      false,
+      { ...props, checklists: listStateVal },
+      checklistTitle
+    );
   }, [listStateVal]);
   const pressKey = (ev) => {
     if (ev.keyCode === 13) {
       createListVal([...listStateVal, stateVal]);
       createStateVal({});
     }
-  }
+  };
   return (
-    <div className='checklist'
-      style={{ left: popoverPos.leftPos, top: popoverPos.topPos }}>
+    <div
+      className='checklist'
+      style={{ left: popoverPos.leftPos, top: popoverPos.topPos }}
+    >
       <div className='nav-option-header flex align-center'>
-        <button
-          className='clean-btn hide'
-        >
+        <button className='clean-btn hide'>
           <CloseRoundedIcon />
         </button>
         <h3>Add checklist</h3>
@@ -53,7 +59,7 @@ export function Checklist({ props, setCurrPopover, sendTask, popoverPos }) {
           })
         }
         value={stateVal.title ? stateVal.title : ''}
-        inputRef={input => input && input.focus()}
+        inputRef={(input) => input && input.focus()}
         onKeyDown={pressKey}
       />
       <div>

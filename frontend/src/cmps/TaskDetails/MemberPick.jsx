@@ -3,12 +3,8 @@ import { useSelector } from 'react-redux';
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
 import Checkbox from 'rc-checkbox';
 
-export function MemberPick({
-  props,
-  setCurrPopover,
-  sendTask,
-  popoverPos,
-}) {
+export function MemberPick({ bodyObj }) {
+  const { props, setCurrPopover, sendTask, popoverPos } = bodyObj;
   const { board } = useSelector((state) => state.boardModule);
   const [stateVal, createStateVal] = React.useState({});
   const [memberStateVal, createMemberVal] = React.useState(

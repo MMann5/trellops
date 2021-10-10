@@ -7,19 +7,19 @@ import {
 import DateFnsUtils from '@date-io/date-fns';
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
 
-
-export function DatePick({ props, setCurrPopover, sendTask, popoverPos }) {
+export function DatePick({ bodyObj }) {
+  const { props, setCurrPopover, sendTask, popoverPos } = bodyObj;
   const [startDate, setStartDate] = useState(Date.now());
   useEffect(() => {
     sendTask(false, { ...props, dueDate: startDate });
   }, [startDate]);
   return (
-    <div className='date-pick'
-      style={{ left: popoverPos.leftPos, top: popoverPos.topPos }}>
+    <div
+      className='date-pick'
+      style={{ left: popoverPos.leftPos, top: popoverPos.topPos }}
+    >
       <div className='nav-option-header flex align-center'>
-        <button
-          className='clean-btn hide'
-        >
+        <button className='clean-btn hide'>
           <CloseRoundedIcon />
         </button>
         <h3>Date</h3>

@@ -5,69 +5,27 @@ import { Checklist } from './TaskDetails/Checklist';
 import { DatePick } from './TaskDetails/DatePick';
 import { FileAttachment } from './TaskDetails/FileAttachment';
 
-
 export function DynamicPopover({
   name,
   props,
   setCurrPopover,
   sendTask,
-  popoverPos
+  popoverPos,
 }) {
+  const bodyObj = { props, setCurrPopover, sendTask, popoverPos };
   switch (name) {
     case 'MEMBERS':
-      return (
-        <MemberPick
-          props={props}
-          setCurrPopover={setCurrPopover}
-          sendTask={sendTask}
-          popoverPos={popoverPos}
-        />
-      );
+      return <MemberPick bodyObj={bodyObj} />;
     case 'LABELS':
-      return (
-        <LabelPick
-          props={props}
-          setCurrPopover={setCurrPopover}
-          sendTask={sendTask}
-          popoverPos={popoverPos}
-        />
-      );
+      return <LabelPick bodyObj={bodyObj} />;
     case 'COVER':
-      return (
-        <ColorPick
-          props={props}
-          setCurrPopover={setCurrPopover}
-          sendTask={sendTask}
-          popoverPos={popoverPos}
-        />
-      );
+      return <ColorPick bodyObj={bodyObj} />;
     case 'DATE':
-      return (
-        <DatePick
-          props={props}
-          setCurrPopover={setCurrPopover}
-          sendTask={sendTask}
-          popoverPos={popoverPos}
-        />
-      );
+      return <DatePick bodyObj={bodyObj} />;
     case 'ATTACHMENT':
-      return (
-        <FileAttachment
-          props={props}
-          setCurrPopover={setCurrPopover}
-          sendTask={sendTask}
-          popoverPos={popoverPos}
-        />
-      );
+      return <FileAttachment bodyObj={bodyObj} />;
     case 'CHECKLISTS':
-      return (
-        <Checklist
-          props={props}
-          setCurrPopover={setCurrPopover}
-          sendTask={sendTask}
-          popoverPos={popoverPos}
-        />
-      );
+      return <Checklist bodyObj={bodyObj} />;
     default:
       return '';
   }
