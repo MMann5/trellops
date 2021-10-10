@@ -32,9 +32,17 @@ export function MemberPick({
     const checkedMembers = copySend.filter(
       (member) => member.checked
     );
-    createMemberVal(checkedMembers);
+    const newMembers = copyMember.map((member) => {
+      return {
+        ...member,
+        checked: checkedMembers.some(
+          (checkedMember) => checkedMember._id === member._id
+        ),
+      };
+    });
+    createMemberVal(newMembers);
     const members = checkedMembers.map(
-      ({ checked, avatarColor, ...keepAttrs }) => keepAttrs
+      ({ checked, ...keepAttrs }) => keepAttrs
     );
     sendTask(false, { ...props, members });
   };

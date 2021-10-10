@@ -35,6 +35,7 @@ const BoardSchema = new mongoose.Schema({
               _id: String,
               fullname: String,
               imgUrl: String,
+              avatarColor: String,
             },
           ],
           labels: [{ id: String, title: String, color: String }],
@@ -46,7 +47,15 @@ const BoardSchema = new mongoose.Schema({
       ],
     },
   ],
-  activities: [{ _id: String, actionType: String, createdAt: Number,taskOrGroup:{title:String}, byMember: { _id: String, fullname: String, imgUrl: String} }],
+  activities: [
+    {
+      _id: String,
+      actionType: String,
+      createdAt: Number,
+      taskOrGroup: { title: String },
+      byMember: { _id: String, fullname: String, imgUrl: String },
+    },
+  ],
 });
 
 module.exports = mongoose.model('boardData', BoardSchema, 'board');
