@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { TextField } from '@material-ui/core';
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
 import { utilService } from '../../services/util-service';
+import { boardService } from '../../services/board-service';
 
 export function Checklist({ props, setCurrPopover, sendTask, popoverPos }) {
   const [stateVal, createStateVal] = React.useState({});
@@ -9,8 +10,15 @@ export function Checklist({ props, setCurrPopover, sendTask, popoverPos }) {
     props.checklists ? props.checklists : []
   );
   useEffect(() => {
-    sendTask(false, { ...props, checklists: listStateVal });
+    let checklistTitle = listStateVal[listStateVal.length - 1]?.title
+    sendTask(false, { ...props, checklists: listStateVal }, checklistTitle);
   }, [listStateVal]);
+  const pressKey = (ev) => {
+    if (ev.keyCode === 13) {
+      createListVal([...listStateVal, stateVal]);
+      createStateVal({});
+    }
+  }
   return (
     <div className='checklist'
       style={{ left: popoverPos.leftPos, top: popoverPos.topPos }}>
@@ -45,6 +53,8 @@ export function Checklist({ props, setCurrPopover, sendTask, popoverPos }) {
           })
         }
         value={stateVal.title ? stateVal.title : ''}
+        inputRef={input => input && input.focus()}
+        onKeyDown={pressKey}
       />
       <div>
         <button

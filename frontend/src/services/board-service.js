@@ -175,11 +175,11 @@ function getBoardById(boardId) {
   return board;
 }
 
-function createActivity(currUser, txt, taskOrGroup = null) {
-  const id = utilService.makeId();
+function createActivity(actionType, taskOrGroup = null, txt = '') {
+  const _id = utilService.makeId();
   const newActivity = {
-    id,
-
+    _id,
+    actionType,
     txt,
     createdAt: Date.now(),
     byMember: {

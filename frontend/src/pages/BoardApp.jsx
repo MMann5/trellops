@@ -41,7 +41,7 @@ export function BoardApp(props) {
     dispatch(loadBoard(props.match.params.boardId, setIsLoaded));
     dispatch(loadBoards());
     socket.on('move-applicant', (payload) => {
-      console.log(payload);
+      console.log('socket was on in BoardApp');
       setBoardState((prevState) => {
         return {
           ...prevState,
@@ -81,8 +81,7 @@ export function BoardApp(props) {
 
   const onAddEmptyGroup = () => {
     const newActivity = boardService.createActivity(
-      'Ron Kontigaro',
-      'new group'
+      'new group',
     );
     const newGroupArrCopy = [
       ...boardState.groups,
@@ -108,8 +107,10 @@ export function BoardApp(props) {
   const onRemoveGroup = (groupId) => {
     const currGroup = boardService.findGroupById(board, groupId);
     const newActivity = boardService.createActivity(
-      'Ron Kontigaro',
-      'removed group'
+      'removed group',
+      currGroup,
+      null,
+      
     );
     setBoardState((prevState) => {
       return {
@@ -139,8 +140,9 @@ export function BoardApp(props) {
       })
       .indexOf(groupId);
     const newActivity = boardService.createActivity(
-      'Ron Kontigaro',
-      'new task'
+      'new task',
+      group,
+      txt
     );
     let boardGroupsCopy = [...boardState.groups];
     boardGroupsCopy.splice(idx, 1, groupCopy);

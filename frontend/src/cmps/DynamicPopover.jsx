@@ -13,7 +13,6 @@ export function DynamicPopover({
   sendTask,
   popoverPos
 }) {
-  console.log('props', props);
   switch (name) {
     case 'MEMBERS':
       return (

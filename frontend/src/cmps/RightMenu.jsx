@@ -58,7 +58,7 @@ export function RightMenu({ setBgColor, board }) {
     <Box
       sx={{
         width:
-          anchor === 'top' || anchor === 'bottom' ? 'auto' : 200,
+          anchor === 'top' || anchor === 'bottom' ? 'auto' : 339,
       }}
       role='presentation'
       onClick={toggleDrawer(anchor, true)}
@@ -70,7 +70,7 @@ export function RightMenu({ setBgColor, board }) {
           { listName: 'imgList', title: 'Change background image' },
           {
             listName: 'dangerZone',
-            title: 'Come And Take A Ride To The Danger Zone',
+            title: 'Delete Board',
           },
         ].map((text, index) => (
           <ListItem
@@ -85,7 +85,7 @@ export function RightMenu({ setBgColor, board }) {
               <div>
                 <FontAwesomeIcon
                   icon={faSquare}
-                  style={{ color: 'rgb(0, 121, 191)' }}
+                  style={{ color: 'rgb(0, 121, 191)', marginLeft: '9px' }}
                 />
               </div>
               <div
@@ -95,7 +95,7 @@ export function RightMenu({ setBgColor, board }) {
                   fontWeight: '600',
                   color: 'rgba(0, 0, 0, 0.87)',
                   lineHeight: '20px',
-                  marginLeft: '16px',
+                  marginLeft: '20px',
                 }}
               >
                 {text.title}
@@ -111,7 +111,7 @@ export function RightMenu({ setBgColor, board }) {
     <Box
       sx={{
         width:
-          anchor === 'top' || anchor === 'bottom' ? 'auto' : 200,
+          anchor === 'top' || anchor === 'bottom' ? 'auto' : 339,
       }}
       role='presentation'
       onClick={toggleDrawer(anchor, false)}
@@ -156,7 +156,7 @@ export function RightMenu({ setBgColor, board }) {
     <Box
       sx={{
         width:
-          anchor === 'top' || anchor === 'bottom' ? 'auto' : 200,
+          anchor === 'top' || anchor === 'bottom' ? 'auto' : 339,
       }}
       role='presentation'
       onClick={toggleDrawer(anchor, false)}
@@ -193,7 +193,7 @@ export function RightMenu({ setBgColor, board }) {
     <Box
       sx={{
         width:
-          anchor === 'top' || anchor === 'bottom' ? 'auto' : 200,
+          anchor === 'top' || anchor === 'bottom' ? 'auto' : 339,
       }}
       role='presentation'
       onClick={toggleDrawer(anchor, false)}
@@ -279,7 +279,7 @@ export function RightMenu({ setBgColor, board }) {
             {openedList === 'list' && list(anchor)}
             {openedList === 'imgList' && imgList(anchor)}
             {openedList === 'dangerZone' && dangerZone(anchor)}
-            <ActivityList board={board} />
+            {openedList === 'menuList' && <ActivityList board={board} />}
           </Drawer>
         </React.Fragment>
       ))}
