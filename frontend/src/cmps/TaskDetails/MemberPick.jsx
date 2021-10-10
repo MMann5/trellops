@@ -1,16 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { TextField } from '@material-ui/core';
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
-import { Popover } from '@material-ui/core';
 import Checkbox from 'rc-checkbox';
-import David from '../assets/imgs/profiles/david.jpg';
-import Michael from '../assets/imgs/profiles/michael.png';
-import Ron from '../assets/imgs/profiles/ron.png';
-import Tal from '../assets/imgs/profiles/tal.jpg';
-import Avatar from '@mui/material/Avatar';
-import Stack from '@mui/material/Stack';
-import { deepOrange, deepPurple } from '@mui/material/colors';
 
 export function MemberPick({ props, setCurrPopover, sendTask, popoverPos }) {
   const { board } = useSelector((state) => state.boardModule);
@@ -45,7 +36,7 @@ export function MemberPick({ props, setCurrPopover, sendTask, popoverPos }) {
   const members = memberStateVal.map((val, idx) => {
     return (
       <li key={idx}>
-        <img src={require(`../assets/imgs/profiles/${val.imgUrl}`).default} alt="" />
+        <img src={require(`../../assets/imgs/profiles/${val.imgUrl}`).default} alt="" />
         <Checkbox
           onChange={(ev) => onChange(ev, idx)}
           checked={val.checked}

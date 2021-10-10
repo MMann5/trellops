@@ -147,8 +147,6 @@ function post(entityType = 'boardsDB', newEntity) {
 
 function put(entityType = 'boardsDB', updatedEntity) {
   return query(entityType).then((entities) => {
-    // const idx = entities.findIndex(entity => entity._id === updatedEntity._id)
-    // entities.splice(idx, 1, updatedEntity)
     _save(entityType, updatedEntity);
     return updatedEntity;
   });
@@ -181,6 +179,7 @@ function createActivity(currUser, txt, taskOrGroup = null) {
   const id = utilService.makeId();
   const newActivity = {
     id,
+
     txt,
     createdAt: Date.now(),
     byMember: {
@@ -190,7 +189,8 @@ function createActivity(currUser, txt, taskOrGroup = null) {
     },
   };
   if (taskOrGroup) {
-    newActivity.taskOrGroup.title = taskOrGroup.title
+    const activityEl = {title: taskOrGroup.title}
+    newActivity.taskOrGroup = activityEl
   }
   return newActivity;
 }

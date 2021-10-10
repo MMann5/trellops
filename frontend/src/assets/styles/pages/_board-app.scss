@@ -10,7 +10,6 @@
     white-space: nowrap;
     padding-bottom: 10px;
     margin-bottom: 10px;
-    background-color: #0000;
     display: flex;
     align-items: flex-start;
 
@@ -35,9 +34,9 @@
 
     .add-group-btn {
       width: 272px;
-      height: 47px;
+      height: 38px;
       color: #fff;
-      padding: 15px 15px;
+      padding: 9px 15px;
       margin: 4px;
       cursor: pointer;
       background-color: #00000070;
@@ -45,7 +44,7 @@
       border: none;
 
       span {
-        padding-left: 15px;
+        // padding-left: 15px;
       }
 
       &:hover {

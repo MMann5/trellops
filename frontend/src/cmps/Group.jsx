@@ -4,12 +4,16 @@ import {
   Droppable,
   Draggable,
 } from 'react-beautiful-dnd';
+import Popover from '@mui/material/Popover';
+import Typography from '@mui/material/Typography';
 import { useSelector } from 'react-redux';
 import { TextField } from '@material-ui/core';
 import addIcon from '../assets/imgs/icons/add.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import AddIcon from '@mui/icons-material/Add';
+import Button from '@mui/material/Button';
 import { Task } from './Task';
 
 export default function Group({
@@ -71,6 +75,19 @@ export default function Group({
     setTasks(items);
   };
 
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
+
   return (
     <div className='group-container'>
       <Droppable droppableId={group.id}>
@@ -79,8 +96,7 @@ export default function Group({
             <div className='remove-div'>
               <TextField
                 autoFocus
-                // className='group-title'
-                placeholder='Enter list title...'
+                placeholder='Enter a title...'
                 variant='standard'
                 value={group.title}
                 onChange={(ev) => setGroupTitle(ev, group.id)}
@@ -95,13 +111,27 @@ export default function Group({
                   },
                 }}
               />
-              <button
-                className='remove-group'
-                onClick={() => {
-                  onRemoveGroup(group.id);
+              <Popover
+                id={id}
+                open={open}
+                anchorEl={anchorEl}
+                onClose={handleClose}
+                height='1000px'
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'left',
                 }}
               >
-                <FontAwesomeIcon icon={faTrash} />
+                <h5 style={{ cursor: 'pointer' }}
+                  onClick={() => {
+                    onRemoveGroup(group.id);
+                  }}
+                >Delete List</h5>
+              </Popover>
+              <button className='remove-group'
+                aria-describedby={id} onClick={handleClick}
+              >
+                <MoreHorizIcon />
               </button>
             </div>
 
@@ -117,7 +147,7 @@ export default function Group({
                 </div>
                 <div>
                   <div className='card-btn-container flex align-center'>
-                    <AddIcon fontSize="small"/>
+                    <AddIcon fontSize="small" />
                     <button
                       className='card-btn'
                       onClick={() => onAddTask(group.id, taskVal)}
@@ -130,8 +160,9 @@ export default function Group({
               </div>
             </div>
           </div>
-        )}
-      </Droppable>
-    </div>
+        )
+        }
+      </Droppable >
+    </div >
   );
 }

@@ -1,5 +1,3 @@
-import { boardService } from '../../services/board-service.js';
-
 const initialState = {
   boards: [],
   board: {},
