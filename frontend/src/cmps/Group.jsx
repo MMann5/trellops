@@ -23,7 +23,7 @@ export default function Group({
   onAddTask,
   onRemoveTask,
   onSetTask,
-  boardId
+  boardId,
 }) {
   const { board } = useSelector((state) => state.boardModule);
   const currGroup = board.groups.find((g) => g.id === group.id);
@@ -38,6 +38,7 @@ export default function Group({
       : { ...style, transitionDuration: '0.001s' };
 
   var list = tasks.map((task, idx) => {
+    if (!task) return;
     return (
       <Draggable key={task.id} draggableId={task.id} index={idx}>
         {(provided, snapshot) => (
@@ -122,14 +123,19 @@ export default function Group({
                   horizontal: 'left',
                 }}
               >
-                <h5 style={{ cursor: 'pointer' }}
+                <h5
+                  style={{ cursor: 'pointer' }}
                   onClick={() => {
                     onRemoveGroup(group.id);
                   }}
-                >Delete List</h5>
+                >
+                  Delete List
+                </h5>
               </Popover>
-              <button className='remove-group'
-                aria-describedby={id} onClick={handleClick}
+              <button
+                className='remove-group'
+                aria-describedby={id}
+                onClick={handleClick}
               >
                 <MoreHorizIcon />
               </button>
@@ -147,7 +153,7 @@ export default function Group({
                 </div>
                 <div>
                   <div className='card-btn-container flex align-center'>
-                    <AddIcon fontSize="small" />
+                    <AddIcon fontSize='small' />
                     <button
                       className='card-btn'
                       onClick={() => onAddTask(group.id, taskVal)}
@@ -160,9 +166,8 @@ export default function Group({
               </div>
             </div>
           </div>
-        )
-        }
-      </Droppable >
-    </div >
+        )}
+      </Droppable>
+    </div>
   );
 }

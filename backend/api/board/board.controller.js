@@ -89,14 +89,12 @@ const addBoard = async (req, res) => {
 
 const updateBoard = (req, res) => {
   const { body } = req;
-      BoardModel.findByIdAndUpdate(body._id, body, (err, user) => {
-        if (err) {
-            return res
-                .status(500)
-                .send({error: "unsuccessful"})
-        };
-        res.send({success: "success"});
-    });
+  BoardModel.findByIdAndUpdate(body._id, body, (err, user) => {
+    if (err) {
+      return res.status(500).send({ error: 'unsuccessful' });
+    }
+    res.send({ success: 'success' });
+  });
 };
 
 const removeBoard = (req, res) => {
