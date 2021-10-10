@@ -178,7 +178,6 @@ function getBoardById(boardId) {
 }
 
 function createActivity(currUser, txt, taskOrGroup = null) {
-  debugger;
   const id = utilService.makeId();
   const newActivity = {
     id,

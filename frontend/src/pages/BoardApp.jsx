@@ -54,7 +54,7 @@ export function BoardApp(props) {
       });
     });
   }, []);
-  const [value] = useDebounce(boardState, 350);
+  const [value] = useDebounce(boardState, 1000);
   const [modalState, setModalState] = useState(false);
   useEffect(() => {
     if (props.match.params.taskId) {
@@ -122,7 +122,6 @@ export function BoardApp(props) {
   };
 
   const onAddTask = (groupId, txt) => {
-    debugger;
     const group = boardState.groups.find(
       (value) => value.id === groupId
     );
