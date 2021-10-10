@@ -32,8 +32,7 @@ const BoardSchema = new mongoose.Schema({
           ],
           members: [
             {
-              id: String,
-              username: String,
+              _id: String,
               fullname: String,
               imgUrl: String,
             },
