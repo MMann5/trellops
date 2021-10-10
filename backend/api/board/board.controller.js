@@ -89,26 +89,14 @@ const addBoard = async (req, res) => {
 
 const updateBoard = (req, res) => {
   const { body } = req;
-  BoardModel.findByIdAndUpdate(
-    body.id,
-    Array.isArray(body.groups) || !body.groups
-      ? {
-          $set: {
-            title: body.title,
-            style: body.style,
-            groups: body.groups,
-            activities: body.activities,
-            checklists: body.checklists,
-          },
-        }
-      : { $push: { groups: body.groups } },
-    {
-      new: true,
-    },
-    function (err, updatedBoard) {
-      err ? res.send(err) : res.json(updatedBoard);
-    }
-  );
+      BoardModel.findByIdAndUpdate(body._id, body, (err, user) => {
+        if (err) {
+            return res
+                .status(500)
+                .send({error: "unsuccessful"})
+        };
+        res.send({success: "success"});
+    });
 };
 
 const removeBoard = (req, res) => {

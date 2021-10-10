@@ -26,14 +26,8 @@ export function loadBoard(boardId, setIsLoaded) {
 export function onSaveBoard(board) {
   return async (dispatch) => {
     try {
-      const newBoard = await boardService.updateBoardPrm({
-        id: board._id,
-        title: board.title,
-        groups: board.groups,
-        style: board.style,
-        activities: board.activities,
-        checklists: board.checklists,
-      });
+      const newBoard = await boardService.updateBoardPrm(board);
+      console.log(newBoard);
       dispatch({ type: 'SAVE_BOARD', board });
     } catch (err) {
       console.log('BoardActions: err in onSaveBoard', err);
