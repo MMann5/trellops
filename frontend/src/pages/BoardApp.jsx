@@ -28,13 +28,12 @@ import { BoardsNavBar } from '../cmps/BoardsNavBar.jsx';
 import { BoardHeader } from '../cmps/BoardHeader.jsx';
 import { TaskDetails } from './TaskDetails';
 
-
 export function BoardApp(props) {
   const [isLoaded, setIsLoaded] = useState(false);
   const { board } = useSelector((state) => state.boardModule);
   const [boardState, setBoardState] = useState(board);
   var socket = io('ws://localhost:2556', {
-    transports: ['websocket'],
+    transports: ['websocket', 'polling'],
   });
   const dispatch = useDispatch();
   useEffect(() => {
@@ -80,9 +79,7 @@ export function BoardApp(props) {
   const [groupName, setGroupName] = useState('');
 
   const onAddEmptyGroup = () => {
-    const newActivity = boardService.createActivity(
-      'new group',
-    );
+    const newActivity = boardService.createActivity('new group');
     const newGroupArrCopy = [
       ...boardState.groups,
       getEmptyGroup(groupName),
@@ -109,8 +106,7 @@ export function BoardApp(props) {
     const newActivity = boardService.createActivity(
       'removed group',
       currGroup,
-      null,
-      
+      null
     );
     setBoardState((prevState) => {
       return {
@@ -265,33 +261,33 @@ export function BoardApp(props) {
 
   var groups = boardState.groups
     ? boardState.groups.map((group, idx) => {
-      return (
-        <Draggable
-          key={group.id}
-          draggableId={group.id}
-          index={idx}
-        >
-          {(provided) => (
-            <div
-              {...provided.draggableProps}
-              {...provided.dragHandleProps}
-              ref={provided.innerRef}
-            >
-              <Group
-                boardId={boardState._id}
-                onRemoveGroup={onRemoveGroup}
-                group={group}
-                setGroupTitle={setGroupTitle}
-                key={group.id}
-                onAddTask={onAddTask}
-                onRemoveTask={onRemoveTask}
-                onSetTask={onSetTask}
-              />
-            </div>
-          )}
-        </Draggable>
-      );
-    })
+        return (
+          <Draggable
+            key={group.id}
+            draggableId={group.id}
+            index={idx}
+          >
+            {(provided) => (
+              <div
+                {...provided.draggableProps}
+                {...provided.dragHandleProps}
+                ref={provided.innerRef}
+              >
+                <Group
+                  boardId={boardState._id}
+                  onRemoveGroup={onRemoveGroup}
+                  group={group}
+                  setGroupTitle={setGroupTitle}
+                  key={group.id}
+                  onAddTask={onAddTask}
+                  onRemoveTask={onRemoveTask}
+                  onSetTask={onSetTask}
+                />
+              </div>
+            )}
+          </Draggable>
+        );
+      })
     : '';
 
   const setBgColor = (colorVal) => {
