@@ -7,6 +7,7 @@ import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 export function ActivityList({ board }) {
   const activities = board.activities;
   activities.reverse();
+  // const lastActivities = activities.slice(Math.max(activities.length - 20, 0))
   const lastActivities = activities;
   const organizeActivity = (
     actionType,
@@ -82,6 +83,8 @@ export function ActivityList({ board }) {
             {destination}
           </div>
         );
+      // case 'dragged task':
+      //   return `moved ${item} to ${taskOrGroup}`
       case 'add label':
         return (
           <div>
@@ -100,11 +103,8 @@ export function ActivityList({ board }) {
             {destination}
           </div>
         );
-      default:
-        return;
     }
   };
-
   const activityList = (
     <Box
       sx={{
@@ -141,6 +141,7 @@ export function ActivityList({ board }) {
                       activity.byMember.fullname
                     )}
                   </span>
+                  {/* <span className='taskOrGroup'>{activity.taskOrGroup?.title}</span> */}
                 </div>
               </div>
               <div className='date flex'>

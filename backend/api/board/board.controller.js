@@ -57,40 +57,40 @@ const addBoard = async (req, res) => {
   ];
   newBoard.labels = [
     {
-      "id": "l101",
-      "title": "Urgent",
-      "color": "#011627"
+      id: 'l101',
+      title: 'Urgent',
+      color: '#011627',
     },
     {
-      "id": "l102",
-      "title": "Low priority",
-      "color": "#FF0022"
+      id: 'l102',
+      title: 'Low priority',
+      color: '#FF0022',
     },
     {
-      "id": "l103",
-      "title": "Important",
-      "color": "#B91372"
+      id: 'l103',
+      title: 'Important',
+      color: '#B91372',
     },
     {
-      "id": "l104",
-      "title": "Optional",
-      "color": "#0075C4"
+      id: 'l104',
+      title: 'Optional',
+      color: '#0075C4',
     },
     {
-      "id": "l105",
-      "title": "Complex",
-      "color": "#591F0A"
+      id: 'l105',
+      title: 'Complex',
+      color: '#591F0A',
     },
     {
-      "id": "l106",
-      "title": "Bug",
-      "color": "#D65108"
+      id: 'l106',
+      title: 'Bug',
+      color: '#D65108',
     },
     {
-      "id": "l106",
-      "title": "High Priority",
-      "color": "#960200"
-    }
+      id: 'l106',
+      title: 'High Priority',
+      color: '#960200',
+    },
   ];
   await newBoard.save((err, newBoard) =>
     err ? res.send(err) : res.json(newBoard)
