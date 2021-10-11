@@ -64,26 +64,20 @@ export function Task({
         </div>
         <div className='task-btns'>
           <div className='sign-task flex align-center'>
-            <span>{task.description ? <SubjectIcon fontSize="small" /> : ''}</span>
+            {task.description ? <span><SubjectIcon fontSize="small"/></span> : ''}
             {task.checklists && task.checklists.length ? (
-              <div className='progress-container' >
                 <span style={(progressData.percent === 100) ? { backgroundColor: '#61bd4f' } : {}}>
                   <CheckBoxOutlinedIcon fontSize="small" />
                 </span>
-                {/* <span className='prog-percent-span'>{progressData.string}</span> */}
-              </div>) : ('')}
-
-            <span>
-              {task.comments.length ? <ChatBubbleOutlineIcon fontSize="small" /> : ''}
-            </span>
-            <span>{task.dueDate ? <TimerIcon fontSize="small" /> : ''}</span>
-            <span>
+                // {/* <span className='prog-percent-span'>{progressData.string}</span> */}
+              ) : ''}
+              {task.comments.length ?  <span><ChatBubbleOutlineIcon fontSize="small" /></span> : ''}
+            {task.dueDate ? <span><TimerIcon fontSize="small" /></span> : ''}
               {task.attachments && task.attachments.length ? (
-                <AttachFileIcon fontSize="small" />
+                <span><AttachFileIcon fontSize="small" /></span>
               ) : (
                 ''
               )}
-            </span>
           </div>
           <div className='avatar'>
             {task.members?.map((member, idx) => {

@@ -1,19 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import {
-  DragDropContext,
-  Droppable,
-  Draggable,
-} from 'react-beautiful-dnd';
+import { Droppable, Draggable } from 'react-beautiful-dnd';
 import Popover from '@mui/material/Popover';
-import Typography from '@mui/material/Typography';
 import { useSelector } from 'react-redux';
 import { TextField } from '@material-ui/core';
-import addIcon from '../assets/imgs/icons/add.svg';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import AddIcon from '@mui/icons-material/Add';
-import Button from '@mui/material/Button';
 import { Task } from './Task';
 
 export default function Group({
@@ -23,7 +14,6 @@ export default function Group({
   onAddTask,
   onRemoveTask,
   onSetTask,
-  boardId,
 }) {
   const { board } = useSelector((state) => state.boardModule);
   const currGroup = board.groups.find((g) => g.id === group.id);

@@ -1,8 +1,6 @@
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
 import { Switch, Route } from 'react-router';
 import { routes } from './routes';
-import { onSetBoardKey } from './store/actions/boards-actions';
 export function App() {
   return (
     <div>

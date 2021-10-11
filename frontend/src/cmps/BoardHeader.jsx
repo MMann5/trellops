@@ -1,12 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { TextField } from '@material-ui/core';
 import { RightMenu } from './RightMenu';
 
-export function BoardHeader({
-  board,
-  setBgColor,
-  setBoardTitle,
-}) {
+export function BoardHeader({ board, setBgColor, setBoardTitle }) {
   const members = board.members.map((val, idx) => {
     return (
       <div key={idx}>

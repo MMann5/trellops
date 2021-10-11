@@ -25,6 +25,7 @@ export function MemberPick({ bodyObj }) {
     const copyMember = [...memberStateVal];
     copyMember[idx].checked = e.target.checked;
     const copySend = [...copyMember];
+    const activityItem = copyMember[idx].fullname;
     const checkedMembers = copySend.filter(
       (member) => member.checked
     );
@@ -40,7 +41,7 @@ export function MemberPick({ bodyObj }) {
     const members = checkedMembers.map(
       ({ checked, ...keepAttrs }) => keepAttrs
     );
-    sendTask(false, { ...props, members });
+    sendTask(false, { ...props, members }, activityItem);
   };
 
   const members = memberStateVal.map((val, idx) => {

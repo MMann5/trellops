@@ -1,7 +1,7 @@
 [
   {
     "_id": "b101",
-    "title": "Trellops is best",
+    "title": "Mr. Toy",
     "createdAt": 1589983468418,
     "createdBy": {
       "_id": "u103",
@@ -9,38 +9,43 @@
       "imgUrl": "ron.png"
     },
     "style": {
-      "bgColor": "/static/media/night.ef79fbd8.png"
+      "bgColor": "#011627"
     },
     "labels": [
       {
         "id": "l101",
-        "title": "Done",
-        "color": "#7BC86C"
+        "title": "Urgent",
+        "color": "#011627"
       },
       {
         "id": "l102",
-        "title": "In Progress",
-        "color": "#61bd"
+        "title": "Low priority",
+        "color": "#FF0022"
       },
       {
         "id": "l103",
         "title": "Important",
-        "color": "#F5DD29"
+        "color": "#B91372"
       },
       {
         "id": "l104",
         "title": "Optional",
-        "color": "#d4f"
+        "color": "#0075C4"
       },
       {
         "id": "l105",
         "title": "Complex",
-        "color": "#FFAF3F"
+        "color": "#591F0A"
       },
       {
         "id": "l106",
         "title": "Bug",
-        "color": "#d64161"
+        "color": "#D65108"
+      },
+      {
+        "id": "l106",
+        "title": "High Priority",
+        "color": "#960200"
       }
     ],
     "members": [
@@ -101,18 +106,7 @@
                 "avatarColor": "#04AA6D"
               }
             ],
-            "labels": [
-              {
-                "id": "l103",
-                "title": "Important",
-                "color": "#F5DD29"
-              },
-              {
-                "id": "l105",
-                "title": "Complex",
-                "color": "#FFAF3F"
-              }
-            ],
+            "labels": [],
             "attachments": [
               "https://images-platform.99static.com//j3lFsXdVOtsovHgOHMt2TIOnevU=/279x0:1622x1343/fit-in/500x500/99designs-contests-attachments/23/23600/attachment_23600424"
             ]
@@ -132,18 +126,7 @@
             "bgColor": "#5BA4CF",
             "dueDate": 1633535850067,
             "comments": [],
-            "labels": [
-              {
-                "id": "l102",
-                "title": "In Progress",
-                "color": "#61bd"
-              },
-              {
-                "id": "l103",
-                "title": "Important",
-                "color": "#F5DD29"
-              }
-            ]
+            "labels": []
           },
           {
             "id": "c103",
@@ -152,18 +135,7 @@
             "members": [],
             "bgColor": "rgba(255,255,255,0.5)",
             "comments": [],
-            "labels": [
-              {
-                "id": "l104",
-                "title": "Optional",
-                "color": "#d4f"
-              },
-              {
-                "id": "l105",
-                "title": "Complex",
-                "color": "#FFAF3F"
-              }
-            ]
+            "labels": []
           },
           {
             "id": "c105",
@@ -194,18 +166,7 @@
               }
             ],
             "members": [],
-            "labels": [
-              {
-                "id": "l102",
-                "title": "In Progress",
-                "color": "#61bd"
-              },
-              {
-                "id": "l103",
-                "title": "Important",
-                "color": "#F5DD29"
-              }
-            ]
+            "labels": []
           },
           {
             "id": "c106",
@@ -221,18 +182,7 @@
               }
             ],
             "comments": [],
-            "labels": [
-              {
-                "id": "l101",
-                "title": "Done",
-                "color": "#7BC86C"
-              },
-              {
-                "id": "l105",
-                "title": "Complex",
-                "color": "#FFAF3F"
-              }
-            ]
+            "labels": []
           },
           {
             "id": "c107",
@@ -241,18 +191,7 @@
             "members": [],
             "bgColor": "rgba(255,255,255,0.5)",
             "comments": [],
-            "labels": [
-              {
-                "id": "l102",
-                "title": "In Progress",
-                "color": "#61bd"
-              },
-              {
-                "id": "l103",
-                "title": "Important",
-                "color": "#F5DD29"
-              }
-            ]
+            "labels": []
           }
         ]
       },
@@ -282,18 +221,7 @@
                 "avatarColor": "#3e4444"
               }
             ],
-            "labels": [
-              {
-                "id": "l101",
-                "title": "Done",
-                "color": "#7BC86C"
-              },
-              {
-                "id": "l105",
-                "title": "Complex",
-                "color": "#FFAF3F"
-              }
-            ],
+            "labels": [],
             "attachments":"https://images.all-free-download.com/images/graphiclarge/pink_pig_toy_196172.jpg"
           },
           {
@@ -313,28 +241,7 @@
                 }
               }
             ],
-            "checklists": [
-              {
-                "id": "212jX",
-                "title": "Checklist cmp",
-                "checked": false
-              },
-              {
-                "id": "212jfX",
-                "title": "Details cmp",
-                "checked": true
-              },
-              {
-                "id": "242jX",
-                "title": "Add profile picture",
-                "checked": false
-              },
-              {
-                "id": "262jX",
-                "title": "cComment cmp",
-                "checked": true
-              }
-            ],
+            "checklists": [],
             "members": [
               {
                 "_id": "u101",
@@ -344,18 +251,7 @@
                 "avatarColor": "#eea29a"
               }
             ],
-            "labels": [
-              {
-                "id": "l102",
-                "title": "In Progress",
-                "color": "#61bd"
-              },
-              {
-                "id": "l106",
-                "title": "Bug",
-                "color": "#d64161"
-              }
-            ],
+            "labels": [],
             "createdAt": 1590999730348,
             "dueDate": 16156215211,
             "byMember": {
@@ -381,13 +277,7 @@
             "members": [],
             "bgColor": "rgba(255,255,255,0.5)",
             "comments": [],
-            "labels": [
-              {
-                "id": "l101",
-                "title": "Done",
-                "color": "#7BC86C"
-              }
-            ]
+            "labels": []
           },
           {
             "id": "d105",
@@ -415,18 +305,7 @@
             ],
             "bgColor": "rgba(255,255,255,0.5)",
             "comments": [],
-            "labels": [
-              {
-                "id": "l101",
-                "title": "Done",
-                "color": "#7BC86C"
-              },
-              {
-                "id": "l105",
-                "title": "Complex",
-                "color": "#FFAF3F"
-              }
-            ]
+            "labels": []
           },
           {
             "id": "d106",
@@ -435,18 +314,7 @@
             "members": [],
             "bgColor": "#CD8DE5",
             "comments": [],
-            "labels": [
-              {
-                "id": "l101",
-                "title": "Done",
-                "color": "#7BC86C"
-              },
-              {
-                "id": "l105",
-                "title": "Complex",
-                "color": "#FFAF3F"
-              }
-            ]
+            "labels": []
           }
         ]
       },
@@ -461,13 +329,7 @@
             "members": [],
             "bgColor": "#F5DD29",
             "comments": [],
-            "labels": [
-              {
-                "id": "l101",
-                "title": "Done",
-                "color": "#7BC86C"
-              }
-            ]
+            "labels": []
           },
           {
             "id": "d200003",
@@ -489,13 +351,7 @@
             ],
             "bgColor": "rgba(255,255,255,0.5)",
             "comments": [],
-            "labels": [
-              {
-                "id": "l101",
-                "title": "Done",
-                "color": "#7BC86C"
-              }
-            ]
+            "labels": []
           },
           {
             "id": "d206",
@@ -504,18 +360,7 @@
             "members": [],
             "bgColor": "",
             "comments": [],
-            "labels": [
-              {
-                "id": "l101",
-                "title": "Done",
-                "color": "#7BC86C"
-              },
-              {
-                "id": "l105",
-                "title": "Complex",
-                "color": "#FFAF3F"
-              }
-            ]
+            "labels": []
           }
         ]
       },
@@ -530,13 +375,7 @@
             "members": [],
             "bgColor": "",
             "comments": [],
-            "labels": [
-              {
-                "id": "l101",
-                "title": "Done",
-                "color": "#7BC86C"
-              }
-            ],
+            "labels": [],
             "attachments":"https://media.istockphoto.com/photos/many-colored-toy-cars-on-multicolored-background-picture-id1136542784?s=612x612"
           },
           {
@@ -559,18 +398,7 @@
             ],
             "bgColor": "",
             "comments": [],
-            "labels": [
-              {
-                "id": "l101",
-                "title": "Done",
-                "color": "#7BC86C"
-              },
-              {
-                "id": "l103",
-                "title": "Important",
-                "color": "#F5DD29"
-              }
-            ]
+            "labels": []
           }
         ]
       },
@@ -611,18 +439,7 @@
             ],
             "bgColor": "",
             "comments": [],
-            "labels": [
-              {
-                "id": "l104",
-                "title": "Optional",
-                "color": "#d4f"
-              },
-              {
-                "id": "l105",
-                "title": "Complex",
-                "color": "#FFAF3F"
-              }
-            ]
+            "labels": []
           }
         ]
       }
@@ -630,7 +447,7 @@
     "activities": [
       {
         "id": "a10111",
-        "txt": "Changed Color",
+        "actionType":"added checklist",
         "createdAt": 1633601068386,
         "byMember": {
           "_id": "u102",
@@ -640,227 +457,9 @@
         "taskOrGroup": {
           "id": "c101",
           "title": "Replace Logo"
-        }
-      },
-      {
-        "id": "a1022",
-        "txt": "Deleted list",
-        "createdAt": 1633601087388,
-        "byMember": {
-          "_id": "u102",
-          "fullname": "Michael Mann",
-          "imgUrl": "michael.png"
         },
-        "taskOrGroup": {
-          "id": "g3330",
-          "title": "Make a chat"
-        }
-      },
-      {
-        "id": "a10111",
-        "txt": "Changed description",
-        "createdAt": 1633601067777,
-        "byMember": {
-          "_id": "u103",
-          "fullname": "Ron Shmuel Kotigaro",
-          "imgUrl": "ron.png"
-        },
-        "taskOrGroup": {
-          "id": "c10553",
-          "title": "BoardApp"
-        }
+        "txt":"Toys pictures"
       }
     ]
-  },
-  {
-    "_id": "b102",
-    "title": "My favorite things",
-    "createdAt": 1589983469652,
-    "createdBy": {
-      "_id": "u103",
-      "fullname": "Ron Shmuel Kotigaro",
-      "imgUrl": "ron.png"
-    },
-    "style": {
-      "bgColor": "#0079bf"
-    },
-    "labels": [
-      {
-        "id": "l2101",
-        "title": "Done",
-        "color": "#61bd4f"
-      }
-    ],
-    "members": [
-      {
-        "_id": "u104",
-        "fullname": "David Ben Ishai",
-        "imgUrl": "david.jpg",
-        "avatarColor": "#6b5b95"
-      }
-    ],
-    "groups": [
-      {
-        "id": "g201",
-        "title": "Personal Todos",
-        "tasks": [
-          {
-            "id": "d3004",
-            "title": "Make pizzas",
-            "description": "I need a lot of help cleaning my code.",
-            "members": [],
-            "bgColor": "rgba(255,255,255,0.5)",
-            "comments": [],
-            "labels": []
-          },
-          {
-            "id": "d1333330",
-            "title": "Clean the room",
-            "description": "I need a lot of help cleaning my code.",
-            "members": [],
-            "bgColor": "rgba(255,255,255,0.5)",
-            "comments": [],
-            "labels": [
-              {
-                "id": "l101",
-                "title": "Done",
-                "color": "#7BC86C"
-              },
-              {
-                "id": "l105",
-                "title": "Complex",
-                "color": "#FFAF3F"
-              }
-            ]
-          },
-          {
-            "id": "d406",
-            "title": "Do my laundry",
-            "description": "I need a lot of help cleaning my code.",
-            "members": [],
-            "bgColor": "rgba(255,255,255,0.5)",
-            "comments": [],
-            "labels": [
-              {
-                "id": "l101",
-                "title": "Done",
-                "color": "#7BC86C"
-              },
-              {
-                "id": "l105",
-                "title": "Complex",
-                "color": "#FFAF3F"
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "activities": [
-      {
-        "id": "a101",
-        "txt": "Changed Color",
-        "createdAt": 154514,
-        "byMember": {
-          "_id": "u103",
-          "fullname": "Ron Shmuel Kotigaro",
-          "imgUrl": "ron.png"
-        },
-        "taskOrGroup": {
-          "id": "c101",
-          "title": "Replace Logo"
-        }
-      }
-    ]
-  },
-  {
-    "_id": "b103",
-    "title": "Building a tree house",
-    "createdAt": 1589983469652,
-    "createdBy": {
-      "_id": "u103",
-      "fullname": "Ron Shmuel Kotigaro",
-      "imgUrl": "ron.png"
-    },
-    "style": {
-      "bgColor": "/static/media/island.c584b382.jpg"
-    },
-    "labels": [
-      {
-        "id": "l2101",
-        "title": "Done",
-        "color": "#61bd4f"
-      }
-    ],
-    "members": [
-      {
-        "_id": "u104",
-        "fullname": "David Ben Ishai",
-        "imgUrl": "david.jpg",
-        "avatarColor": "#6b5b95"
-      }
-    ],
-    "groups": [],
-    "activities": []
-  },
-  {
-    "_id": "b104",
-    "title": "Trip to Paris",
-    "createdAt": 1589983469652,
-    "createdBy": {
-      "_id": "u103",
-      "fullname": "Ron Shmuel Kotigaro",
-      "imgUrl": "ron.png"
-    },
-    "style": {
-      "bgColor": "/static/media/balcony.aa711aa8.jpg"
-    },
-    "labels": [
-      {
-        "id": "l2101",
-        "title": "Done",
-        "color": "#61bd4f"
-      }
-    ],
-    "members": [
-      {
-        "_id": "u104",
-        "fullname": "David Ben Ishai",
-        "imgUrl": "david.jpg",
-        "avatarColor": "#6b5b95"
-      }
-    ],
-    "groups": [],
-    "activities": []
-  },
-  {
-    "_id": "b105",
-    "title": "Fix at home",
-    "createdAt": 1589983469652,
-    "createdBy": {
-      "_id": "u103",
-      "fullname": "Ron Shmuel Kotigaro",
-      "imgUrl": "ron.png"
-    },
-    "style": {
-      "bgColor": "/static/media/malibu.7eb0ae98.jpg"
-    },
-    "labels": [
-      {
-        "id": "l2101",
-        "title": "Done",
-        "color": "#61bd4f"
-      }
-    ],
-    "members": [
-      {
-        "_id": "u104",
-        "fullname": "David Ben Ishai",
-        "imgUrl": "david.jpg",
-        "avatarColor": "#6b5b95"
-      }
-    ],
-    "groups": [],
-    "activities": []
   }
 ]

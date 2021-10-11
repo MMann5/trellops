@@ -7,6 +7,9 @@ import Button from '@mui/material/Button';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
+import ImageIcon from '@mui/icons-material/Image';
+import ColorLensIcon from '@mui/icons-material/ColorLens';
+import WarningIcon from '@mui/icons-material/Warning';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faTimes,
@@ -66,11 +69,14 @@ export function RightMenu({ setBgColor, board }) {
     >
       <List>
         {[
-          { listName: 'list', title: 'Change background color' },
-          { listName: 'imgList', title: 'Change background image' },
+          { listName: 'list', title: 'Change background color', object:<ColorLensIcon  color="primary"/> },
+          { listName: 'imgList', title: 'Change background image', object: <ImageIcon  color="primary"
+          />},
           {
             listName: 'dangerZone',
             title: 'Delete Board',
+            object: <WarningIcon color="success"
+            />
           },
         ].map((text, index) => (
           <ListItem
@@ -83,10 +89,7 @@ export function RightMenu({ setBgColor, board }) {
           >
             <div className='flex align-center'>
               <div>
-                <FontAwesomeIcon
-                  icon={faSquare}
-                  style={{ color: 'rgb(0, 121, 191)', marginLeft: '9px' }}
-                />
+               {text.object}
               </div>
               <div
                 className='nav-txt'
@@ -243,7 +246,7 @@ export function RightMenu({ setBgColor, board }) {
               fontSize: '16px',
             }}
           >
-            Show Menu
+            Show menu
           </Button>
           <Drawer
             anchor={anchor}

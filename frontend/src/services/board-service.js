@@ -43,30 +43,40 @@ export function getEmptyBoard(txt, bgColor = '#0079bf') {
     style: { bgColor },
     labels: [
       {
-        id: 'l101',
-        title: 'Done',
-        color: '#7BC86C',
+        "id": "l101",
+        "title": "Urgent",
+        "color": "#011627"
       },
       {
-        id: 'l102',
-        title: 'In Progress',
-        color: '#61bd',
+        "id": "l102",
+        "title": "Low priority",
+        "color": "#FF0022"
       },
       {
-        id: 'l103',
-        title: 'Important',
-        color: '#F5DD29',
+        "id": "l103",
+        "title": "Important",
+        "color": "#B91372"
       },
       {
-        id: 'l104',
-        title: 'Optional',
-        color: '#d4f',
+        "id": "l104",
+        "title": "Optional",
+        "color": "#0075C4"
       },
       {
-        id: 'l105',
-        title: 'Complex',
-        color: '#FFAF3F',
+        "id": "l105",
+        "title": "Complex",
+        "color": "#591F0A"
       },
+      {
+        "id": "l106",
+        "title": "Bug",
+        "color": "#D65108"
+      },
+      {
+        "id": "l106",
+        "title": "High Priority",
+        "color": "#960200"
+      }
     ],
     members: [
       {
