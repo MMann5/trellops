@@ -2,7 +2,7 @@ import Axios from 'axios';
 
 const BASE_URL =
   process.env.NODE_ENV === 'production'
-    ? '/api/'
+    ? window.location.origin + '/api/'
     : '//127.0.0.1:2556/api/';
 
 var axios = Axios.create({

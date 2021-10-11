@@ -29,7 +29,7 @@
 
     .labels-task {
       border-radius: 4px;
-      padding: 0px 2px;
+      padding: 0px 5px;
       color: #fff;
       margin-inline-end: 5px;
       font-size: 12px;
@@ -50,18 +50,12 @@
       display: flex;
       flex-direction: row;
       align-items: center;
-
-      .progress-container {
+      span{
+        line-height: 0;
+        border-radius: 2px;
         padding: 0px;
-        width: 20px;
-        display: flex;
-
-        span {
-          border-radius: 2px;
-          padding: 0px;
-        }
+        margin-right: 8px;
       }
-
 
       svg {
         color: rgba(0, 0, 0, 0.5);

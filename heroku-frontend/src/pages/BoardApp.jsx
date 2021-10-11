@@ -32,7 +32,7 @@ export function BoardApp(props) {
   const [isLoaded, setIsLoaded] = useState(false);
   const { board } = useSelector((state) => state.boardModule);
   const [boardState, setBoardState] = useState(board);
-  var socket = io('ws://localhost:2556', {
+  var socket = io(window.location.origin.replace(/^http/, 'ws'), {
     transports: ['websocket', 'polling'],
   });
   const dispatch = useDispatch();
@@ -40,7 +40,6 @@ export function BoardApp(props) {
     dispatch(loadBoard(props.match.params.boardId, setIsLoaded));
     dispatch(loadBoards());
     socket.on('move-applicant', (payload) => {
-      console.log('socket was on in BoardApp');
       setBoardState((prevState) => {
         return {
           ...prevState,
@@ -244,6 +243,7 @@ export function BoardApp(props) {
       );
       groupsCpy.splice(result.destination.index, 0, reorderedGroup);
       socket.emit('move-applicant', groupsCpy);
+      console.log('reorderedGroup', reorderedGroup);
       setBoardState({ ...boardState, groups: groupsCpy });
     } else {
       const destGrp = groupsCpy.find(

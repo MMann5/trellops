@@ -46,7 +46,7 @@ export function Workspace() {
           {boards.map((board, idx) => (
             <Link to={`/board/${board._id}`} key={idx}>
               <div
-                className='board-preview flex justify-center'
+                className='board-preview'
                 style={{
                   backgroundColor: board.style?.bgColor,
                   backgroundImage: `url(${board.style?.bgColor})`,
@@ -54,7 +54,7 @@ export function Workspace() {
                   backgroundPosition: 'center',
                 }}
               >
-                {board.title}
+                <div>{board.title}</div>
               </div>
             </Link>
           ))}

@@ -7,9 +7,9 @@ import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 export function ActivityList({ board }) {
   const activities = board.activities
   activities.reverse()
-  const lastActivities = activities.slice(Math.max(activities.length - 20, 0))
+  // const lastActivities = activities.slice(Math.max(activities.length - 20, 0))
+  const lastActivities = activities;
   const organizeActivity = (actionType, txt, taskOrGroup, fullname) => {
-    console.log(actionType, txt, taskOrGroup, fullname);
     let name = <span className='activity-member'>{fullname}</span>
     let destination = <span>{taskOrGroup}</span>
     let item = <span className='txt-underline'>{txt}</span>
@@ -25,11 +25,17 @@ export function ActivityList({ board }) {
       case 'added checklist':
         return <div>{name}<span>added </span>{item}<span> to a checklist in </span>{taskOrGroup}</div>
       case 'removed checklist':
-        return <div>{name}<span>removed </span>{item.title}<span> from a checklist in </span>{taskOrGroup}</div>
+        return <div>{name}<span>removed </span>{item}<span> from a checklist in </span>{taskOrGroup}</div>
       case 'added attachment':
         return <div>{name}<span>attached a file to </span>{destination}</div>
       case 'deleted attachment':
-        return `removed an attachment from ${taskOrGroup}`
+        return <div>{name}<span>removed an attachment from </span>{destination}</div>
+      // case 'dragged task':
+      //   return `moved ${item} to ${taskOrGroup}`
+      case 'add label':
+        return <div>{name}<span>added </span>{item} <span> label to </span>{destination}</div>
+      case 'add member':
+        return <div>{name}<span>added </span>{item} <span> </span>{destination}</div>
     };
   }
 
@@ -48,18 +54,20 @@ export function ActivityList({ board }) {
           (activity, index) => (
             <ListItem button key={index} onClick={(ev) => {
             }}>
-              <div className='flex align-center'>
-                {(activity.byMember.imgUrl !== 'http://some-img') && <img
-                  src={
-                    require(`../assets/imgs/profiles/${activity.byMember.imgUrl}`).default
-                  }
-                  alt=''
-                />}
-                <div className='nav-txt-container flex align-center'>
-                  <span>{organizeActivity(activity.actionType, activity.txt, activity.taskOrGroup?.title, activity.byMember.fullname)}</span>
-                  {/* <span className='taskOrGroup'>{activity.taskOrGroup?.title}</span> */}
+              <div className="flex column">
+                <div className='flex align-center'>
+                  {(activity.byMember.imgUrl !== 'http://some-img') && <img
+                    src={
+                      require(`../assets/imgs/profiles/${activity.byMember.imgUrl}`).default
+                    }
+                    alt=''
+                  />}
+                  <div className='nav-txt-container flex align-center'>
+                    <span>{organizeActivity(activity.actionType, activity.txt, activity.taskOrGroup?.title, activity.byMember.fullname)}</span>
+                    {/* <span className='taskOrGroup'>{activity.taskOrGroup?.title}</span> */}
+                  </div>
                 </div>
-                <div className='date' >{new Date(activity.createdAt).toLocaleDateString()}</div>
+                <div className='date flex' >{new Date(activity.createdAt).toLocaleDateString()}</div>
               </div>
               <ListItemText style={{
                 backgroundColor: '#fff', height: '50px'

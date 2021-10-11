@@ -54,6 +54,7 @@ const BoardSchema = new mongoose.Schema({
       createdAt: Number,
       taskOrGroup: { title: String },
       byMember: { _id: String, fullname: String, imgUrl: String },
+      txt: String
     },
   ],
 });

@@ -19,6 +19,7 @@ import CheckboxIcon from '@material-ui/icons/CheckBoxOutlined';
 import CoverIcon from '@material-ui/icons/VideoLabel';
 import MinusIcon from '@material-ui/icons/RemoveOutlined';
 import CopyIcon from '@material-ui/icons/FileCopyOutlined';
+import { ThemeProvider, createTheme } from '@material-ui/core/styles';
 import { DetailsMembers } from '../cmps/TaskDetails/DetailsMembers';
 import { DetailsLables } from '../cmps/TaskDetails/DetailsLables';
 import { onSaveBoard } from '../store/actions/boards-actions';
@@ -54,6 +55,7 @@ export function TaskDetails({ props, board }) {
   const [currPopover, setCurrPopover] = useState('');
   const [currProps, setCurrProps] = useState('');
   const [currPopoverPos, setCurrPopoverPos] = useState('');
+  const [size, setSize] = useState([0, 0]);
   const togglePopover = (ev, name) => {
     setCurrPopoverPos(getPopoverPos(ev.target));
     setCurrPopover(name);
@@ -66,8 +68,8 @@ export function TaskDetails({ props, board }) {
   useEffect(() => {
     sendTask(false, { ...task, description: descVal });
   }, [descVal]);
-  var socket = io('ws://localhost:2556', {
-    transports: ['websocket'],
+  var socket = io(window.location.origin.replace(/^http/, 'ws'), {
+    transports: ['websocket', 'polling'],
   });
   const sendTask = (isRemove, sentTask, activityItem = '') => {
     const currGrp = board.groups.find(
@@ -82,6 +84,7 @@ export function TaskDetails({ props, board }) {
     const currTask = currGrp.tasks.find(
       (task) => task.id === taskId
     );
+    //Creating Activities 
     if (
       task.attachments &&
       sentTask?.attachments &&
@@ -136,6 +139,27 @@ export function TaskDetails({ props, board }) {
       );
       board.activities.push(newActivity);
     }
+    if (task.labels &&
+      sentTask?.labels &&
+      task.labels.length < sentTask.labels.length){
+        const newActivity = boardService.createActivity(
+          'add label',
+          sentTask,
+          activityItem.label
+        );
+        board.activities.push(newActivity);
+      }
+    if (task.members &&
+      sentTask?.members &&
+      task.members.length < sentTask.members.length){
+        const newActivity = boardService.createActivity(
+          'add member',
+          sentTask,
+          activityItem
+        );
+        board.activities.push(newActivity);
+      }
+    //
     isRemove
       ? currGrp.tasks.splice(taskIdx, 1)
       : currGrp.tasks.splice(taskIdx, 1, sentTask ? sentTask : task);
@@ -189,13 +213,22 @@ export function TaskDetails({ props, board }) {
 
   const getPopoverPos = (target) => {
     const targetPos = target.getBoundingClientRect();
-    const newBottom = targetPos.bottom + 6;
-    const newLeft = targetPos.left;
+    let newLeft = 0
+    let newBottom =0
+    if (size[0] < 786) {
+      newLeft = targetPos.left-(200);
+      newBottom = targetPos.bottom -312
+    } else if (size[0] < 1280){
+      newLeft = targetPos.left - 190;
+      newBottom = targetPos.bottom + 6;
+    } else{
+      newLeft = targetPos.left;
+      newBottom = targetPos.bottom + 6;
+    }
     return { leftPos: newLeft, topPos: newBottom };
   };
 
   function useWindowSize() {
-    const [size, setSize] = useState([0, 0]);
     useLayoutEffect(() => {
       function updateSize() {
         setSize([window.innerWidth, window.innerHeight]);
@@ -206,6 +239,15 @@ export function TaskDetails({ props, board }) {
     }, []);
     return size;
   }
+  useWindowSize();
+  //variable for mui styling-not working
+  // const theme = createTheme({
+  //   typography: {
+  //     fontFamily: 
+  //       '"Segoe UI"',
+  //   },
+  // });
+  
 
   return (
     <section className='card-details-container'>
@@ -223,7 +265,6 @@ export function TaskDetails({ props, board }) {
               value={task.title}
               placeholder='Write A New Task'
               aria-label='empty textarea'
-              autoFocus
             />
           </div>
           <p className='bottom-list-name'>
@@ -278,10 +319,10 @@ export function TaskDetails({ props, board }) {
                 <h3>Description</h3>
               </div>
               <div className='card-description-edit flex column'>
-                <TextareaAutosize
-                  value={descVal}
-                  onChange={(ev) => setDescVal(ev.target.value)}
-                />
+                  <TextareaAutosize
+                    value={descVal}
+                    onChange={(ev) => setDescVal(ev.target.value)}
+                  />
               </div>
             </div>
             {task.attachments && task.attachments.length > 0 && (
@@ -335,7 +376,7 @@ export function TaskDetails({ props, board }) {
                     placeholder='Write a comment'
                     onChange={(ev) => setCommentVal(ev.target.value)}
                     value={commentVal}
-                    // style={fontFamily: '\'Segoe UI\', Tahoma, Geneva, Verdana, sans-serif'}
+                  // style={fontFamily: '\'Segoe UI\', Tahoma, Geneva, Verdana, sans-serif'}
                   />
                 </div>
                 <button

@@ -7,7 +7,7 @@ import BookmarkIcon from '@mui/icons-material/Bookmark';
 
 export function LabelPick({ bodyObj }) {
   const { props, setCurrPopover, sendTask, popoverPos } = bodyObj;
-  const getLabels = () => {};
+  const getLabels = () => { };
   const { board } = useSelector((state) => state.boardModule);
   const [stateVal, createStateVal] = React.useState({});
   const [labelStateVal, createLabelVal] = React.useState(
@@ -25,14 +25,12 @@ export function LabelPick({ bodyObj }) {
     copyLabel[idx].checked = e.target.checked;
     createLabelVal(copyLabel);
     const copySend = [...copyLabel];
-    console.log(copyLabel);
-    console.log(copySend);
     const checkedLabels = copySend.filter((label) => label.checked);
-    sendTask(false, { ...props, labels: checkedLabels });
+    const activityItem = { label: copyLabel[idx].title, isChecked: e.target.checked }
+    sendTask(false, { ...props, labels: checkedLabels}, activityItem);
   };
 
   const labels = labelStateVal.map((val, idx) => {
-    console.log(val);
     return (
       <li
         className='label'
