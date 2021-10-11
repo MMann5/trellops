@@ -9,7 +9,7 @@ const {
 
 const router = express.Router();
 router.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.header('Access-Control-Allow-Origin', 'http://localhost:2556');
   next();
 });
 router.get('/', getBoards);

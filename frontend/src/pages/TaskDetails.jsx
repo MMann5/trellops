@@ -29,7 +29,7 @@ import { DetailsChecklist } from '../cmps/TaskDetails/DetailsChecklist';
 import { DetailsAttachments } from '../cmps/TaskDetails/DetailsAttachments';
 import { DetailsDate } from '../cmps/TaskDetails/DetailsDate';
 import { DetailsComments } from '../cmps/TaskDetails/DetailsComments';
-
+import socket from '../services/socket-service';
 export function TaskDetails({ props, board }) {
   const groupId = props.match.params.groupIdId;
   const taskId = props.match.params.taskId;
@@ -66,9 +66,6 @@ export function TaskDetails({ props, board }) {
   useEffect(() => {
     sendTask(false, { ...task, description: descVal });
   }, [descVal]);
-  var socket = io('ws://localhost:2556', {
-    transports: ['websocket'],
-  });
   const sendTask = (isRemove, sentTask, activityItem = '') => {
     const currGrp = board.groups.find(
       (group) => group.id === groupId

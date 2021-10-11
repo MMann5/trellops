@@ -27,20 +27,16 @@ import Group from '../cmps/Group';
 import { BoardsNavBar } from '../cmps/BoardsNavBar.jsx';
 import { BoardHeader } from '../cmps/BoardHeader.jsx';
 import { TaskDetails } from './TaskDetails';
-
+import socket from '../services/socket-service';
 export function BoardApp(props) {
   const [isLoaded, setIsLoaded] = useState(false);
   const { board } = useSelector((state) => state.boardModule);
   const [boardState, setBoardState] = useState(board);
-  var socket = io('ws://localhost:2556', {
-    transports: ['websocket', 'polling'],
-  });
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadBoard(props.match.params.boardId, setIsLoaded));
     dispatch(loadBoards());
     socket.on('move-applicant', (payload) => {
-      console.log('socket was on in BoardApp');
       setBoardState((prevState) => {
         return {
           ...prevState,
@@ -56,8 +52,9 @@ export function BoardApp(props) {
         };
       });
     });
+    return () => socket.close();
   }, []);
-  const [value] = useDebounce(boardState, 1500);
+  const [value] = useDebounce(boardState, 1000);
   const [modalState, setModalState] = useState(false);
   useEffect(() => {
     if (props.match.params.taskId) {
@@ -71,8 +68,9 @@ export function BoardApp(props) {
   }, [board]);
 
   useEffect(() => {
-    if (boardState._id === props.match.params.boardId)
+    if (boardState._id === props.match.params.boardId) {
       dispatch(onSaveBoard(boardState));
+    }
   }, [value]);
 
   const { boards } = useSelector((state) => state.boardModule);
@@ -108,12 +106,14 @@ export function BoardApp(props) {
       currGroup,
       null
     );
+    const newGroups = boardState.groups.filter(
+      (value) => value.id !== groupId
+    );
+    socket.emit('move-applicant', newGroups);
     setBoardState((prevState) => {
       return {
         ...prevState,
-        groups: boardState.groups.filter(
-          (value) => value.id !== groupId
-        ),
+        groups: newGroups,
         activities:
           boardState.activities.length === 0
             ? [newActivity]
@@ -243,7 +243,6 @@ export function BoardApp(props) {
         1
       );
       groupsCpy.splice(result.destination.index, 0, reorderedGroup);
-      socket.emit('move-applicant', groupsCpy);
       setBoardState({ ...boardState, groups: groupsCpy });
     } else {
       const destGrp = groupsCpy.find(
@@ -254,9 +253,9 @@ export function BoardApp(props) {
       );
       const card = srcGrp.tasks.splice(source.index, 1);
       destGrp.tasks.splice(destination.index, 0, card[0]);
-      socket.emit('move-applicant', groupsCpy);
       setBoardState({ ...boardState, groups: groupsCpy });
     }
+    socket.emit('move-applicant', groupsCpy);
   };
 
   var groups = boardState.groups

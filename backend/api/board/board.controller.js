@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const BoardModel = require('../../schemas/board');
 const config = require('../../config/dev.js');
-
+const { parse, stringify } = require('flatted');
 mongoose
   .connect(config.dbURL, {
     useNewUrlParser: true,
@@ -89,11 +89,11 @@ const addBoard = async (req, res) => {
 
 const updateBoard = (req, res) => {
   const { body } = req;
-  BoardModel.findByIdAndUpdate(body._id, body, (err, user) => {
+  BoardModel.findByIdAndUpdate(body._id, body, (err, board) => {
     if (err) {
       return res.status(500).send({ error: 'unsuccessful' });
     }
-    res.send({ success: 'success' });
+    res.json(board);
   });
 };
 
