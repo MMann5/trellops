@@ -54,7 +54,7 @@ export function BoardApp(props) {
     });
     return () => socket.close();
   }, []);
-  const [value] = useDebounce(boardState, 1000);
+  const [value] = useDebounce(boardState, 1500);
   const [modalState, setModalState] = useState(false);
   useEffect(() => {
     if (props.match.params.taskId) {
@@ -64,12 +64,29 @@ export function BoardApp(props) {
     }
   });
   useEffect(() => {
-    setBoardState(board);
+    if (JSON.stringify(boardState) === JSON.stringify(board)) return;
+    const boardCpy = { ...board };
+    if (board && board._id) {
+      const filterdTasks = board.groups.tasks?.filter?.(
+        (task) => task !== null
+      );
+      boardCpy.groups.tasks = filterdTasks;
+      setBoardState(filterdTasks ? boardCpy : board);
+    } else {
+      setBoardState(board);
+    }
   }, [board]);
 
   useEffect(() => {
     if (boardState._id === props.match.params.boardId) {
-      dispatch(onSaveBoard(boardState));
+      const boardStateCpy = { ...boardState };
+      const filterdTasks = boardState.groups.tasks?.filter?.(
+        (task) => task !== null
+      );
+      boardStateCpy.groups.tasks = filterdTasks;
+      dispatch(
+        onSaveBoard(filterdTasks ? boardStateCpy : boardState)
+      );
     }
   }, [value]);
 
@@ -235,7 +252,7 @@ export function BoardApp(props) {
 
   const handleOnDragEnd = (result) => {
     const { destination, source, type } = result;
-    const groupsCpy = Array.from(boardState.groups);
+    const groupsCpy = [...boardState.groups];
     if (!destination) return;
     if (result.type === 'group') {
       const [reorderedGroup] = groupsCpy.splice(
@@ -251,8 +268,8 @@ export function BoardApp(props) {
       const srcGrp = groupsCpy.find(
         (group) => group.id === source.droppableId
       );
-      const card = srcGrp.tasks.splice(source.index, 1);
-      destGrp.tasks.splice(destination.index, 0, card[0]);
+      const [card] = srcGrp.tasks.splice(source.index, 1);
+      destGrp.tasks.splice(destination.index, 0, card);
       setBoardState({ ...boardState, groups: groupsCpy });
     }
     socket.emit('move-applicant', groupsCpy);

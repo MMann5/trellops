@@ -27,7 +27,6 @@ export function onSaveBoard(board) {
   return async (dispatch) => {
     try {
       const newBoard = await boardService.updateBoardPrm(board);
-      console.log(newBoard);
       dispatch({ type: 'SAVE_BOARD', board });
     } catch (err) {
       console.log('BoardActions: err in onSaveBoard', err);

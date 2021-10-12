@@ -37,22 +37,21 @@ import socket from '../services/socket-service';
 export function TaskDetails({ props, board }) {
   const groupId = props.match.params.groupIdId;
   const taskId = props.match.params.taskId;
-
-  const getGroup = (groupId) => {
-    const currGroup = board.groups.find(
-      (value) => value.id === groupId
-    );
-    return currGroup;
-  };
-  const getTask = (taskId) => {
-    const currTask = group.tasks.find((task) => {
-      return task.id === taskId;
-    });
-    return currTask;
-  };
+  const boardMdl = useSelector((state) => state.boardModule);
+  const reduxBoard = boardMdl.board;
+  const getTask = (taskId, groupId) =>
+    reduxBoard && reduxBoard.groups
+      ? reduxBoard.groups
+          .find?.((group) => group.id === groupId)
+          ?.tasks?.find?.((task) => task.id === taskId)
+      : board.groups
+          .find((group) => group.id === groupId)
+          .tasks.find((task) => task.id === taskId);
+  const [group, setGroup] = useState(
+    board.groups.find((group) => group.id === groupId)
+  );
   const [boardId, setBoardId] = useState(props.match.params.boardId);
-  const [group, setGroup] = useState(getGroup(groupId));
-  const [task, setTask] = useState(getTask(taskId));
+  const [task, setTask] = useState(getTask(taskId, groupId));
   const [commentVal, setCommentVal] = useState('');
   const [descVal, setDescVal] = useState(task.description);
   const [currPopover, setCurrPopover] = useState('');
@@ -63,7 +62,6 @@ export function TaskDetails({ props, board }) {
     setCurrPopoverPos(getPopoverPos(ev.target));
     setCurrPopover(name);
   };
-
   const dispatch = useDispatch();
   useEffect(() => {
     sendTask(false);
@@ -71,6 +69,13 @@ export function TaskDetails({ props, board }) {
   useEffect(() => {
     sendTask(false, { ...task, description: descVal });
   }, [descVal]);
+  useEffect(() => {
+    if (!reduxBoard?.groups) return;
+    const dbTask = getTask(taskId, groupId);
+    if (JSON.stringify(task) === JSON.stringify(dbTask)) return;
+    setTask(dbTask);
+  }, [reduxBoard]);
+
   const sendTask = (isRemove, sentTask, activityItem = '') => {
     const currGrp = board.groups.find(
       (group) => group.id === groupId
